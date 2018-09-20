@@ -1,0 +1,13 @@
+<launch>
+
+  <node name = "sis_v_reader"
+  	type = "relay.py"
+    	pkg = "pci_boards_driver">
+    <remap from = '/cpz3177' to = '/cpz3177_1_rsw0_diff1'/>
+    <remap from = '/sis_v' to = '/sis_v_1' />
+    <param name = "config_file"
+           value = "$(find pci_boards_driver)/relay_conf/sis_v_reader.conf" />
+	   
+  </node>
+
+</launch>
