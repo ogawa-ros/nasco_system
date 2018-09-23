@@ -1,0 +1,14 @@
+<launch>
+
+
+<!--
+<include file="$(find nasco_system)/launch/pci_boards.launch" />
+-->
+<include file="$(find nasco_system)/launch/test_pci_boards.launch" />
+<include file="$(find nasco_system)/launch/sis_vol.launch" />
+<include file="$(find nasco_system)/launch/sis_cur.launch" />
+<include file="$(find nasco_system)/launch/sis_vol_cmd.launch" />
+<include file="$(find nasco_system)/launch/sis_vol_cmd_monitor.launch" />
+
+
+</launch>

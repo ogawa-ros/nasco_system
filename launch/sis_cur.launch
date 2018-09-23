@@ -1,108 +1,108 @@
 <launch>
 
-  <node name = "sis_cur_2l_reader"
+  <node name = "sis_cur_2l"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = '/cpz3177' to = '/cpz3177_1_rsw0_diff2'/>
+    <remap from = '/cpz3177' to = '/cpz3177_rsw0_diff2'/>
     <remap from = '/sis_cur' to = '/sis_cur_2l' />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/sis_cur_reader.conf" />
   </node>
 
-  <node name = "sis_cur_2r_reader"
+  <node name = "sis_cur_2r"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = '/cpz3177' to = '/cpz3177_1_rsw0_diff4'/>
+    <remap from = '/cpz3177' to = '/cpz3177_rsw0_diff4'/>
     <remap from = '/sis_cur' to = '/sis_cur_2r' />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/sis_cur_reader.conf" />
   </node>
 
-  <node name = "sis_cur_3l_reader"
+  <node name = "sis_cur_3l"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = '/cpz3177' to = '/cpz3177_2_rsw0_diff6'/>
+    <remap from = '/cpz3177' to = '/cpz3177_rsw0_diff6'/>
     <remap from = '/sis_cur' to = '/sis_cur_3l' />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/sis_cur_reader.conf" />
   </node>
 
-  <node name = "sis_cur_3r_reader"
+  <node name = "sis_cur_3r"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = '/cpz3177' to = '/cpz3177_1_rsw0_diff8'/>
+    <remap from = '/cpz3177' to = '/cpz3177_rsw0_diff8'/>
     <remap from = '/sis_cur' to = '/sis_cur_3r' />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/sis_cur_reader.conf" />
   </node>
 
-  <node name = "sis_cur_4l_reader"
+  <node name = "sis_cur_4l"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = '/cpz3177' to = '/cpz3177_1_rsw0_diff10'/>
+    <remap from = '/cpz3177' to = '/cpz3177_rsw0_diff10'/>
     <remap from = '/sis_cur' to = '/sis_cur_4l' />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/sis_cur_reader.conf" />
   </node>
 
-  <node name = "sis_cur_4r_reader"
+  <node name = "sis_cur_4r"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = '/cpz3177' to = '/cpz3177_1_rsw0_diff12'/>
+    <remap from = '/cpz3177' to = '/cpz3177_rsw0_diff12'/>
     <remap from = '/sis_cur' to = '/sis_cur_4r' />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/sis_cur_reader.conf" />
   </node>
 
-  <node name = "sis_cur_5l_reader"
+  <node name = "sis_cur_5l"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = '/cpz3177' to = '/cpz3177_1_rsw0_diff14'/>
+    <remap from = '/cpz3177' to = '/cpz3177_rsw0_diff14'/>
     <remap from = '/sis_cur' to = '/sis_cur_5l' />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/sis_cur_reader.conf" />
   </node>
 
-  <node name = "sis_cur_5r_reader"
+  <node name = "sis_cur_5r"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = '/cpz3177' to = '/cpz3177_1_rsw0_diff16'/>
+    <remap from = '/cpz3177' to = '/cpz3177_rsw0_diff16'/>
     <remap from = '/sis_cur' to = '/sis_cur_5r' />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/sis_cur_reader.conf" />
   </node>
 
-  <node name = "sis_cur_1lu_reader"
+  <node name = "sis_cur_1lu"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = '/cpz3177' to = '/cpz3177_1_rsw0_diff18'/>
+    <remap from = '/cpz3177' to = '/cpz3177_rsw0_diff18'/>
     <remap from = '/sis_cur' to = '/sis_cur_1lu' />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/sis_cur_reader.conf" />
   </node>
 
-  <node name = "sis_cur_1ll_reader"
+  <node name = "sis_cur_1ll"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = '/cpz3177' to = '/cpz3177_1_rsw0_diff20'/>
+    <remap from = '/cpz3177' to = '/cpz3177_rsw0_diff20'/>
     <remap from = '/sis_cur' to = '/sis_cur_1ll' />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/sis_cur_reader.conf" />
   </node>
 
-  <node name = "sis_cur_1ru_reader"
+  <node name = "sis_cur_1ru"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = '/cpz3177' to = '/cpz3177_1_rsw0_diff22'/>
+    <remap from = '/cpz3177' to = '/cpz3177_rsw0_diff22'/>
     <remap from = '/sis_cur' to = '/sis_cur_1ru' />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/sis_cur_reader.conf" />
   </node>
 
-  <node name = "sis_cur_1rl_reader"
+  <node name = "sis_cur_1rl"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = '/cpz3177' to = '/cpz3177_1_rsw0_diff24'/>
+    <remap from = '/cpz3177' to = '/cpz3177_rsw0_diff24'/>
     <remap from = '/sis_cur' to = '/sis_cur_1rl' />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/sis_cur_reader.conf" />

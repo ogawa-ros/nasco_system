@@ -1,0 +1,113 @@
+<launch>
+
+
+  <node name = "sis_vol_2l_cmd_monitor"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = "/cpz340816" to = "/cpz340816_rsw0_1" />
+    <remap from = "/sis_vol" to = "/sis_vol_2l_cmd_mon" />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/sis_vol_cmd_reader.conf" />
+  </node>
+
+  <node name = "sis_vol_2r_cmd_monitor"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = "/cpz340816" to = "/cpz340816_rsw0_2" />
+    <remap from = "/sis_vol" to = "/sis_vol_2r_cmd_mon" />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/sis_vol_cmd_reader.conf" />
+  </node>
+
+  <node name = "sis_vol_3l_cmd_monitor"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = "/cpz340816" to = "/cpz340816_rsw0_3" />
+    <remap from = "/sis_vol" to = "/sis_vol_3l_cmd_mon" />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/sis_vol_cmd_reader.conf" />
+  </node>
+
+  <node name = "sis_vol_3r_cmd_monitor"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = "/cpz340816" to = "/cpz340816_rsw0_4" />
+    <remap from = "/sis_vol" to = "/sis_vol_3r_cmd_mon" />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/sis_vol_cmd_reader.conf" />
+  </node>
+
+  <node name = "sis_vol_4l_cmd_monitor"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = "/cpz340816" to = "/cpz340816_rsw1_1" />
+    <remap from = "/sis_vol" to = "/sis_vol_4l_cmd_mon" />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/sis_vol_cmd_reader.conf" />
+  </node>
+
+  <node name = "sis_vol_4r_cmd_monitor"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = "/cpz340816" to = "/cpz340816_rsw1_2" />
+    <remap from = "/sis_vol" to = "/sis_vol_2l_cmd_mon" />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/sis_vol_cmd_reader.conf" />
+  </node>
+
+  <node name = "sis_vol_5r_cmd_monitor"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = "/cpz340816" to = "/cpz340816_rsw1_3" />
+    <remap from = "/sis_vol" to = "/sis_vol_5r_cmd_mon" />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/sis_vol_cmd_reader.conf" />
+  </node>
+
+  <node name = "sis_vol_5l_cmd_monitor"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = "/cpz340816" to = "/cpz340816_rsw1_4" />
+    <remap from = "/sis_vol" to = "/sis_vol_5l_cmd_mon" />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/sis_vol_cmd_reader.conf" />
+  </node>
+
+  <node name = "sis_vol_1lu_cmd_monitor"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = "/cpz340816" to = "/cpz340816_rsw2_1" />
+    <remap from = "/sis_vol" to = "/sis_vol_1lu_cmd_mon" />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/sis_vol_cmd_reader.conf" />
+  </node>
+
+  <node name = "sis_vol_1ll_cmd_monitor"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = "/cpz340816" to = "/cpz340816_rsw2_2" />
+    <remap from = "/sis_vol" to = "/sis_vol_1ll_cmd_mon" />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/sis_vol_cmd_reader.conf" />
+  </node>
+
+  <node name = "sis_vol_1ru_cmd_monitor"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = "/cpz340816" to = "/cpz340816_rsw2_3" />
+    <remap from = "/sis_vol" to = "/sis_vol_1ru_cmd_mon" />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/sis_vol_cmd_reader.conf" />
+  </node>
+
+  <node name = "sis_vol_1rl_cmd_monitor"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = "/cpz340816" to = "/cpz340816_rsw2_4" />
+    <remap from = "/sis_vol" to = "/sis_vol_rl_cmd_mon" />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/sis_vol_cmd_reader.conf" />
+  </node>
+
+
+</launch>
