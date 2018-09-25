@@ -19,10 +19,10 @@ data_dir = '/home/amigos/data/experiments/'
 save_dir = os.path.join(data_dir, name)
 # --
 
-sis_list = ['1lu', '1ll', '1ru', '1rl',
-            '2l', '2r', '3l', '3r',
-            '4l', '4r', '5l', '5r']
 
+sis_list = ['2l', '2r', '3l', '3r',
+            '4l', '4r', '5l', '5r',
+            '1lu', '1ll', '1ru', '1rl']
 
 class logger_high(object):
     
@@ -55,35 +55,16 @@ class logger_high(object):
     def callback_voltage(self, req, idx):
         if self.flag == 0:
             return
-        self.sis_vol[idx] = req.data
-        if idx == 0: print(req.data)
-
-        # self.sis_vol[idx] = req.data
-        # print(self.sis_vol)
-
-        # self.data_vol.append(self.sis_vol)
-
-        # filename_vol = self.saveto + '/sis_vol.txt'
         
-        # numpy.savetxt(filename_vol, numpy.array(self.data_vol), delimiter=' ', fmt='%.3f')
+        self.sis_vol[idx] = req.data
         return
 
     def callback_current(self, req, idx):
         if self.flag == 0:
             return
-        self.sis_cur[idx] = req.data
-        '''
-        if self.flag == 0:
-            return
         
         self.sis_cur[idx] = req.data
-        self.data_cur.append(self.sis_cur)
-
-        filename_cur = self.saveto + '/sis_cur.txt'
-        
-        numpy.savetxt(filename_cur, numpy.array(self.data_cur), delimiter=' ', fmt='%.3f')
         return
-        '''
 
     def log(self):
         while not rospy.is_shutdown():
@@ -100,7 +81,7 @@ class logger_high(object):
             f_vol.close()
             f_cur.close()
             
-            time.sleep(0.05)
+            time.sleep(1 * 10 ** (-2)) # 10 msec.
 
     def start_thread(self):
         th = threading.Thread(target=self.log)
@@ -129,4 +110,3 @@ if __name__ == '__main__':
                         for idx, sis in enumerate(sis_list)]
     flag_sub = rospy.Subscriber('log_triger', String, st.set_flag)
     rospy.spin()
-

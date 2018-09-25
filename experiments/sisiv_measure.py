@@ -10,9 +10,9 @@ import rospy
 from std_msgs.msg import String
 
 
-sis_list = ['1lu', '1ll', '1ru', '1rl',
-            '2l', '2r', '3l', '3r',
-            '4l', '4r', '5l', '5r']
+sis_list = ['2l', '2r', '3l', '3r',
+            '4l', '4r', '5l', '5r',
+            '1lu', '1ll', '1ru', '1rl']
 
 beam_num = 12
 initial_voltage = -7  # mV
@@ -43,6 +43,7 @@ except KeyboardInterrupt:
     
 for _ in sis_list:
     ctrl.output_voltage(sis=_, voltage=0)
+    time.sleep(5 * 10 ** (-2)) # 50 msec.
 
 msg = String()
 msg.data = ''
