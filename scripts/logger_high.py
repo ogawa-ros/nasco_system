@@ -24,6 +24,7 @@ sis_list = ['2l', '2r', '3l', '3r',
             '4l', '4r', '5l', '5r',
             '1lu', '1ll', '1ru', '1rl']
 
+
 class logger_high(object):
     
     def __init__(self):
@@ -81,7 +82,7 @@ class logger_high(object):
             f_vol.close()
             f_cur.close()
             
-            time.sleep(1 * 10 ** (-2)) # 10 msec.
+            time.sleep(1e-2) # 10 msec.
 
     def start_thread(self):
         th = threading.Thread(target=self.log)

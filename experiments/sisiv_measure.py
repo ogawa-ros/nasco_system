@@ -24,7 +24,7 @@ roop = int((final_voltage - initial_voltage) / step)
 msg = String()
 msg.data = str(time.time())
 pub = rospy.Publisher('log_triger', String, queue_size=1)
-time.sleep(3 * 10 ** (-1))
+time.sleep(3e-1) # 300 msec.
 pub.publish(msg)
 
 
@@ -32,7 +32,7 @@ try:
     for vol in range(roop+1):
         for _ in sis_list:
             ctrl.output_voltage(sis=_, voltage=vol*step-final_voltage)
-            time.sleep(1 * 10 ** (-2)) # 10 msec.
+            time.sleep(1e-2) # 10 msec.
 except KeyboardInterrupt:
     for _ in sis_list:
         ctrl.output_voltage(sis=_, voltage=0)
@@ -43,7 +43,7 @@ except KeyboardInterrupt:
     
 for _ in sis_list:
     ctrl.output_voltage(sis=_, voltage=0)
-    time.sleep(5 * 10 ** (-2)) # 50 msec.
+    time.sleep(5e-2) # 50 msec.
 
 msg = String()
 msg.data = ''

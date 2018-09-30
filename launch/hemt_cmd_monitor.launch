@@ -1,0 +1,221 @@
+<launch>
+
+
+  <node name = "hemt_2l_vd_cmd_monitor"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = "/cpz340816" to = "/cpz340816_rsw0_5" />
+    <remap from = "/hemt" to = "/hemt_2l_vd_cmd_monitor" />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
+  </node>
+
+  <node name = "hemt_2l_vg1_cmd_monitor"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = "/cpz340816" to = "/cpz340816_rsw0_6" />
+    <remap from = "/hemt" to = "/hemt_2l_vg1_cmd_monitor" />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
+  </node>
+
+  <node name = "hemt_2l_vg2_cmd_monitor"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = "/cpz340816" to = "/cpz340816_rsw0_7" />
+    <remap from = "/hemt" to = "/hemt_2l_vg2_cmd_monitor" />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
+  </node>
+
+  <node name = "hemt_2r_vd_cmd_monitor"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = "/cpz340816" to = "/cpz340816_rsw0_8" />
+    <remap from = "/hemt" to = "/hemt_2r_vd_cmd_monitor" />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
+  </node>
+
+  <node name = "hemt_2r_vg1_cmd_monitor"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = "/cpz340816" to = "/cpz340816_rsw0_9" />
+    <remap from = "/hemt" to = "/hemt_2r_vg1_cmd_monitor" />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
+  </node>
+
+  <node name = "hemt_2r_vg2_cmd_monitor"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = "/cpz340816" to = "/cpz340816_rsw0_10" />
+    <remap from = "/hemt" to = "/hemt_2r_vg2_cmd_monitor" />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
+  </node>
+
+  <node name = "hemt_3l_vd_cmd_monitor"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = "/cpz340816" to = "/cpz340816_rsw0_11" />
+    <remap from = "/hemt" to = "/hemt_3l_vd_cmd_monitor" />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
+  </node>
+
+  <node name = "hemt_3l_vg1_cmd_monitor"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = "/cpz340816" to = "/cpz340816_rsw0_12" />
+    <remap from = "/hemt" to = "/hemt_3l_vg1_cmd_monitor" />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
+  </node>
+
+  <node name = "hemt_3l_vg2_cmd_monitor"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = "/cpz340816" to = "/cpz340816_rsw0_13" />
+    <remap from = "/hemt" to = "/hemt_3l_vg2_cmd_monitor" />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
+  </node>
+
+  <node name = "hemt_3r_vd_cmd_monitor"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = "/cpz340816" to = "/cpz340816_rsw0_14" />
+    <remap from = "/hemt" to = "/hemt_3r_vd_cmd_monitor" />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
+  </node>
+
+  <node name = "hemt_3r_vg1_cmd_monitor"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = "/cpz340816" to = "/cpz340816_rsw0_15" />
+    <remap from = "/hemt" to = "/hemt_3r_vg1_cmd_monitor" />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
+  </node>
+
+  <node name = "hemt_3r_vg2_cmd_monitor"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = "/cpz340816" to = "/cpz340816_rsw0_16" />
+    <remap from = "/hemt" to = "/hemt_3r_vg2_cmd_monitor" />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
+  </node>
+
+  <node name = "hemt_4l_vd_cmd_monitor"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = "/cpz340816" to = "/cpz340816_rsw1_5" />
+    <remap from = "/hemt" to = "/hemt_4l_vd_cmd_monitor" />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
+  </node>
+
+  <node name = "hemt_4l_vg1_cmd_monitor"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = "/cpz340816" to = "/cpz340816_rsw1_6" />
+    <remap from = "/hemt" to = "/hemt_4l_vg1_cmd_monitor" />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
+  </node>
+
+  <node name = "hemt_4l_vg2_cmd_monitor"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = "/cpz340816" to = "/cpz340816_rsw1_7" />
+    <remap from = "/hemt" to = "/hemt_4l_vg2_cmd_monitor" />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
+  </node>
+
+  <node name = "hemt_4r_vd_cmd_monitor"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = "/cpz340816" to = "/cpz340816_rsw1_8" />
+    <remap from = "/hemt" to = "/hemt_4r_vd_cmd_monitor" />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
+  </node>
+
+  <node name = "hemt_4r_vg1_cmd_monitor"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = "/cpz340816" to = "/cpz340816_rsw1_9" />
+    <remap from = "/hemt" to = "/hemt_4r_vg1_cmd_monitor" />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
+  </node>
+
+  <node name = "hemt_4r_vg2_cmd_monitor"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = "/cpz340816" to = "/cpz340816_rsw1_10" />
+    <remap from = "/hemt" to = "/hemt_4r_vg2_cmd_monitor" />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
+  </node>
+
+  <node name = "hemt_5l_vd_cmd_monitor"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = "/cpz340816" to = "/cpz340816_rsw1_11" />
+    <remap from = "/hemt" to = "/hemt_5l_vd_cmd_monitor" />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
+  </node>
+
+  <node name = "hemt_5l_vg1_cmd_monitor"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = "/cpz340816" to = "/cpz340816_rsw1_12" />
+    <remap from = "/hemt" to = "/hemt_5l_vg1_cmd_monitor" />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
+  </node>
+
+  <node name = "hemt_5l_vg2_cmd_monitor"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = "/cpz340816" to = "/cpz340816_rsw1_13" />
+    <remap from = "/hemt" to = "/hemt_5l_vg2_cmd_monitor" />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
+  </node>
+
+  <node name = "hemt_5r_vd_cmd_monitor"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = "/cpz340816" to = "/cpz340816_rsw1_14" />
+    <remap from = "/hemt" to = "/hemt_5r_vd_cmd_monitor" />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
+  </node>
+
+  <node name = "hemt_5r_vg1_cmd_monitor"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = "/cpz340816" to = "/cpz340816_rsw1_15" />
+    <remap from = "/hemt" to = "/hemt_5r_vg1_cmd_monitor" />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
+  </node>
+
+  <node name = "hemt_5r_vg2_cmd_monitor"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = "/cpz340816" to = "/cpz340816_rsw1_16" />
+    <remap from = "/hemt" to = "/hemt_5r_vg2_cmd_monitor" />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
+  </node>
+
+
+</launch>

@@ -5,10 +5,20 @@
 <include file="$(find nasco_system)/launch/pci_boards.launch" />
 -->
 <include file="$(find nasco_system)/launch/test_pci_boards.launch" />
+
 <include file="$(find nasco_system)/launch/sis_vol.launch" />
 <include file="$(find nasco_system)/launch/sis_cur.launch" />
 <include file="$(find nasco_system)/launch/sis_vol_cmd.launch" />
 <include file="$(find nasco_system)/launch/sis_vol_cmd_monitor.launch" />
+
+<include file="$(find nasco_system)/launch/hemt.launch" />
+<include file="$(find nasco_system)/launch/hemt_cmd.launch" />
+<include file="$(find nasco_system)/launch/hemt_cmd_monitor.launch" />
+
+<include file="$(find nasco_system)/launch/loatt.launch" />
+<include file="$(find nasco_system)/launch/loatt_cmd.launch" />
+
+<include file="$(find nasco_system)/launch/rx_device.launch" />
 
 
 </launch>
