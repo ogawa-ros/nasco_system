@@ -15,7 +15,7 @@ from std_msgs.msg import String
 
 # --
 name = 'logger_high'
-data_dir = '/home/amigos/data/experiments/'
+data_dir = '/home/necst/data/experiments/'
 save_dir = os.path.join(data_dir, name)
 # --
 
