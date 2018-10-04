@@ -1,3 +1,4 @@
+import time
 import hemt_vol_controller as con
 import configparser
 
@@ -16,3 +17,4 @@ for hemt in hemt_list:
 	vg2.append(float(config.get(hemt, "vg2")))
 for i in range(len(vd)):
     con.output_voltage(hemt_list[i], vd[i], vg1[i], vg2[i])
+    time.sleep(1e-2)

@@ -15,7 +15,7 @@
   </node>
 
   <node pkg="rx_device_driver" name="e8250d" type="e8250d_signal_generator.py" required="true">
-    <param name="~host" value="192.168.100.152" />
+    <param name="~host" value="192.168.100.116" />
     <param name="~port" value="19" />
     <param name="~rate" value="1" />
     <param name="~topic_pub_freq" value="lo_1st_freq" />

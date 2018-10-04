@@ -5,6 +5,7 @@ from std_msgs.msg import Float64
 
 name = 'hemt_vol_controller'
 rospy.init_node(name)
+interval = 1e-1
 
 hemt_list = ['2l', '2r', '3l', '3r',
             '4l', '4r', '5l', '5r',
@@ -22,15 +23,18 @@ def output_voltage(hemt='', vd = 0.0, vg1 = 0.0, vg2 = 0.0):
     msg = Float64()
     msg.data = vd
     pub = pub_list_vd[hemt_list.index(hemt)]
+    time.sleep(interval)
     pub.publish(msg)
     
     msg = Float64()
     msg.data = vg1
     pub = pub_list_vg1[hemt_list.index(hemt)]
+    time.sleep(interval)
     pub.publish(msg)
     
     msg = Float64()
     msg.data = vg2
     pub = pub_list_vg2[hemt_list.index(hemt)]
+    time.sleep(interval)
     pub.publish(msg)
     time.sleep(1e-3) # 1 msec.
