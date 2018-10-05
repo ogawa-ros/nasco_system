@@ -1,9 +1,9 @@
-
 import time
 
 import rospy
 from std_msgs.msg import Int32
 from std_msgs.msg import Float64
+
 
 name = 'controller'
 rospy.init_node(name)
@@ -16,10 +16,33 @@ config = configparser.ConfigParser()
 config.read('../configuration/tuning.conf')
 
 
-#--- lo
+# --- launch publisher
+
+# --- lo
 pub_lo_1st_freq = rospy.Publisher('/lo_1st_freq_cmd', Float64, queue_size=1)
 pub_lo_1st_power = rospy.Publisher('/lo_1st_power_cmd', Float64, queue_size=1)
 pub_lo_1st_onoff = rospy.Publisher('/lo_1st_onoff_cmd', Int32, queue_size=1)
+
+# --- sis
+topic_list = ['/sis_vol_{}_cmd'.format(_) for _ in beam_list]
+pub_list = [rospy.Publisher(topic, Float64, queue_size=1) for topic in topic_list]
+
+# --- hemt
+topic_vd_list = ['/hemt_{}_vd_cmd'.format(_) for _ in beam_list]
+topic_vg1_list = ['/hemt_{}_vg1_cmd'.format(_) for _ in beam_list]
+topic_vg2_list = ['/hemt_{}_vg2_cmd'.format(_) for _ in beam_list]
+pub_vd_list = [rospy.Publisher(topic, Float64, queue_size=1) for topic in topic_list_vd]
+pub_vg1_list = [rospy.Publisher(topic, Float64, queue_size=1) for topic in topic_list_vg1]
+pub_vg2_list = [rospy.Publisher(topic, Float64, queue_size=1) for topic in topic_list_vg2]
+
+# --- loatt
+loatt_list = beam_list[:-4]
+loatt.list.extend(['1l', '1r'])
+topic_loatt_list = ['/loatt_{}_cmd'.format(_) for _ in topic_loatt_list]
+pub_loatt_list = [rospy.Publisher(topi, Float64, queue_size=1)
+                  for topic in topic_loatt_list]
+
+# ---
 
 
 class InvalidRangeError(Exception):
@@ -27,7 +50,7 @@ class InvalidRangeError(Exception):
 
 
 def set_1st_lo(frequency=0., signal_power=0., config=False):
-    step = 1e-1
+    step = 0.1 # dBm
     interval = 5e-1
     freq, power, onoff = Float64(), Float64(), Int32()
     power.data = 0.
@@ -64,7 +87,7 @@ def set_1st_lo(frequency=0., signal_power=0., config=False):
                 pub_lo_1st_power.publish(power)
                 time.sleep(interval)
         else:
-            msg = 'Output power range is -20 -- 30V,'
+            msg = 'Output power range is -20 -- 30 dBm,'
             msg += ' while {}dBm is given.'.format(signal_power)
             raise InvalidRangeError(msg)
     return
@@ -84,10 +107,8 @@ def unset_1st_lo():
 def output_sis_voltage(sis='', voltage=0., config=False):
     interval = 1e-3
     msg = Float64()
-    topic_list = ['/sis_vol_{}_cmd'.format(_) for _ in beam_list]
-    pub_list = [rospy.Publisher(topic, Float64, queue_size=1) for topic in topic_list]
     if config == True:
-        vol_list = [float(config.get(sis, 'sisv')) for sis in beam_list]
+        vol_list = [float(config.get(beam, 'sisv')) for beam in beam_list]
         for pub, vol in zip(pub_list, vol_list):
             msg.data = vol
             pub.publish(msg)
@@ -103,12 +124,6 @@ def output_sis_voltage(sis='', voltage=0., config=False):
 def output_hemt_voltage(beam='', **kargs, config=False):
     interval = 1e-3
     msg = Flaot64()
-    topic_vd_list = ['/hemt_{}_vd_cmd'.format(_) for _ in beam_list]
-    topic_vg1_list = ['/hemt_{}_vg1_cmd'.format(_) for _ in beam_list]
-    topic_vg2_list = ['/hemt_{}_vg2_cmd'.format(_) for _ in beam_list]
-    pub_vd_list = [rospy.Publisher(topic, Float64, queue_size=1) for topic in topic_list_vd]
-    pub_vg1_list = [rospy.Publisher(topic, Float64, queue_size=1) for topic in topic_list_vg1]
-    pub_vg2_list = [rospy.Publisher(topic, Float64, queue_size=1) for topic in topic_list_vg2]
 
     if config == True:
         vd_list = [float(config.get(beam, 'vd')) for beam in beam_list]
@@ -143,11 +158,6 @@ def output_hemt_voltage(beam='', **kargs, config=False):
 def output_loatt_current(beam='', current=0., config=False):
     interval = 5e-3
     msg = Float64()
-    loatt_list = beam_list[:-4]
-    loatt.list.extend(['1l', '1r'])
-    topic_loatt_list = ['/loatt_{}_cmd'.format(_) for _ in topic_loatt_list]
-    pub_loatt_list = [rospy.Publisher(topi, Float64, queue_size=1)
-                          for topic in topic_loatt_list]
 
     if config == True:
         loatt_list = [float(config.get(beam, 'loatt')) for beam in beam_list[:-2]]
