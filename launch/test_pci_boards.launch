@@ -9,7 +9,7 @@
 
   <node pkg="pci_boards_driver" name="cpz3177_2" type="cpz3177.py" required="true" output="screen">
     <param name="~rate" value="0.01" />
-    <param name="~rsw_id" value="1" />
+    <param name="~rsw_id" value="0" />
     <param name="~diffch_list" value="[]" />
   </node>
 
