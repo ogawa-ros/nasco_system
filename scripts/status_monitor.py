@@ -16,7 +16,7 @@ name = 'status_monitor'
 data_dir = '/home/necst/data/experiments/'
 save_dir = os.path.join(data_dir, name)
 
-exp_time = datetime.datetime.utcnow()
+exp_time = time.time()
 ymd = exp_time.strftime("%Y%m%d_")
 hms = exp_time.strftime("%H%M%S")
 filename =  ymd + hms + ".txt"
@@ -27,12 +27,14 @@ saveto = os.path.join(save_dir + filename)
 interval = int(sys.argv[1])
 
 
-class logger_low(object):
+class status_monitor(object):
 
     def __init__(self):
-        self.timestamp = 0
+        self.timestamp = 0.
         self.l218_temp = [0.] * 8
         self.tpg261_pressure = 0.
+        self.ondo = 0.
+        self.hum = 0.
 
     def callback_temp(self, req, idx):
         self.l218_temp[idx] = req.data
@@ -42,10 +44,49 @@ class logger_low(object):
         self.tpg261_pressure = req
         return
 
+    def callback_ondo(self, req):
+        self.ondo = req.data
+        return
+
+    def callback_hum(self, req):
+        self.hum = req.data
+        return
+
     def log(self):
         while not rospy.is_shutdown():
-            ctime = time.time()
             f = open(saveto, 'a')
-            temp = self_vol
-    
-            
+            _ctime = time.time()
+            ctime = datetime.datetime.fromtimestamp(_ctime)
+            date = ctime.strftime('%Y-%m-%d %H:%M:%S')
+            l218_temp = [temp for temp in self.l218_temp]
+            pre = [self.tpg261_pressure]
+            ondo = self.ondo
+            msg = data + l218_temp + pre + ondo
+            msg1 = '{0} {1:.1f}K {2:.1f}K {3:.1f}K {4:.1f}K {5:.1f}K {6:.1f}K {7:.1f}K {8:.1f}K {9:.1f}torr {10:.1f}deg {11:.1f}%'.fromat(*msg)
+            msg2 = '{0} {1:.1f} {2:.1f} {3:.1f} {4:.1f} {5:.1f} {6:.1f} {7:.1f} {8:.1f} {9:.1f} {10:.1f} {11:.1f}'.fromat(*msg)
+            print(msg1)
+            f.write(msg2)
+            f.close()
+
+            time.sleep(interval)
+            continue
+        return
+
+
+if __name__ == '__main__':
+    if not os.path.exists(save_dir):
+        os.makedirs(save_dir)
+        pass
+
+    st = status_monitor()
+    rospy.init_node(name)
+    temp_sub_list = [rospy.Subscriber('/lakeshore_ch{}'.format(ch),
+                                     Float64,
+                                     st.callback_temp) \
+                     for ch in range(1, 8 + 1)]
+    pressure_sub = rospy.Subscriber('/tpg261_torr', Float64, st.callback_pressure)
+    ondo_sub = rospy.Subscriber('/ondotori_temp', Float64, st.callback_ondo)
+    hum_sub = rospy.Subscriber('/ondotori_hum', Float64, st.callback_hum)
+    st.log()
+
+

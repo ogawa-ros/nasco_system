@@ -39,7 +39,7 @@
   <node pkg="pci_boards_driver" name="cpz340516_2" type="cpz340516.py" required="true" output="screen">
     <param name="~rate" value="0.01" />
     <param name="~rsw_id" value="1" />
-    <param name="~DA01ch_list" value="[]" />    
+    <param name="~DA01ch_list" value="[]" />
   </node>
 
 
