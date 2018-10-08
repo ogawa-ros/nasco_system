@@ -4,7 +4,7 @@
   <node name = "hemt_2l_vd"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/cpz3177" to = "/cpz3177_rsw0_single1"/>
+    <remap from = "/cpz3177" to = "/cpz3177_rsw1_single1"/>
     <remap from = "/hemt" to = "/hemt_2l_vd" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
@@ -13,7 +13,7 @@
   <node name = "hemt_2l_vg1"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/cpz3177" to = "/cpz3177_rsw0_single2"/>
+    <remap from = "/cpz3177" to = "/cpz3177_rsw1_single2"/>
     <remap from = "/hemt" to = "/hemt_2l_vg1" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
@@ -22,7 +22,7 @@
   <node name = "hemt_2l_vg2"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/cpz3177" to = "/cpz3177_rsw0_single3"/>
+    <remap from = "/cpz3177" to = "/cpz3177_rsw1_single3"/>
     <remap from = "/hemt" to = "/hemt_2l_vg2" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
@@ -31,7 +31,7 @@
   <node name = "hemt_2l_id"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/cpz3177" to = "/cpz3177_rsw0_single4"/>
+    <remap from = "/cpz3177" to = "/cpz3177_rsw1_single4"/>
     <remap from = "/hemt" to = "/hemt_2l_id" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
@@ -40,7 +40,7 @@
   <node name = "hemt_2r_vd"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/cpz3177" to = "/cpz3177_rsw0_single5"/>
+    <remap from = "/cpz3177" to = "/cpz3177_rsw1_single5"/>
     <remap from = "/hemt" to = "/hemt_2r_vd" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
@@ -49,7 +49,7 @@
   <node name = "hemt_2r_vg1"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/cpz3177" to = "/cpz3177_rsw0_single6"/>
+    <remap from = "/cpz3177" to = "/cpz3177_rsw1_single6"/>
     <remap from = "/hemt" to = "/hemt_2r_vg1" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
@@ -58,7 +58,7 @@
   <node name = "hemt_2r_vg2"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/cpz3177" to = "/cpz3177_rsw0_single7"/>
+    <remap from = "/cpz3177" to = "/cpz3177_rsw1_single7"/>
     <remap from = "/hemt" to = "/hemt_2r_vg2" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
@@ -67,7 +67,7 @@
   <node name = "hemt_2r_id"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/cpz3177" to = "/cpz3177_rsw0_single8"/>
+    <remap from = "/cpz3177" to = "/cpz3177_rsw1_single8"/>
     <remap from = "/hemt" to = "/hemt_2r_id" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
@@ -76,7 +76,7 @@
   <node name = "hemt_3l_vd"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/cpz3177" to = "/cpz3177_rsw0_single9"/>
+    <remap from = "/cpz3177" to = "/cpz3177_rsw1_single9"/>
     <remap from = "/hemt" to = "/hemt_3l_vd" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
@@ -85,7 +85,7 @@
   <node name = "hemt_3l_vg1"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/cpz3177" to = "/cpz3177_rsw0_single10"/>
+    <remap from = "/cpz3177" to = "/cpz3177_rsw1_single10"/>
     <remap from = "/hemt" to = "/hemt_3l_vg1" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
@@ -94,7 +94,7 @@
   <node name = "hemt_3l_vg2"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/cpz3177" to = "/cpz3177_rsw0_single11"/>
+    <remap from = "/cpz3177" to = "/cpz3177_rsw1_single11"/>
     <remap from = "/hemt" to = "/hemt_3l_vg2" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
@@ -103,7 +103,7 @@
   <node name = "hemt_3l_id"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/cpz3177" to = "/cpz3177_rsw0_single12"/>
+    <remap from = "/cpz3177" to = "/cpz3177_rsw1_single12"/>
     <remap from = "/hemt" to = "/hemt_3l_id" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
@@ -112,7 +112,7 @@
   <node name = "hemt_3r_vd"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/cpz3177" to = "/cpz3177_rsw0_single13"/>
+    <remap from = "/cpz3177" to = "/cpz3177_rsw1_single13"/>
     <remap from = "/hemt" to = "/hemt_3r_vd" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
@@ -121,7 +121,7 @@
   <node name = "hemt_3r_vg1"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/cpz3177" to = "/cpz3177_rsw0_single14"/>
+    <remap from = "/cpz3177" to = "/cpz3177_rsw1_single14"/>
     <remap from = "/hemt" to = "/hemt_3r_vg1" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
@@ -130,7 +130,7 @@
   <node name = "hemt_3r_vg2"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/cpz3177" to = "/cpz3177_rsw0_single15"/>
+    <remap from = "/cpz3177" to = "/cpz3177_rsw1_single15"/>
     <remap from = "/hemt" to = "/hemt_3r_vg2" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
@@ -139,7 +139,7 @@
   <node name = "hemt_3r_id"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/cpz3177" to = "/cpz3177_rsw0_single16"/>
+    <remap from = "/cpz3177" to = "/cpz3177_rsw1_single16"/>
     <remap from = "/hemt" to = "/hemt_3r_id" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
@@ -148,7 +148,7 @@
   <node name = "hemt_4l_vd"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/cpz3177" to = "/cpz3177_rsw0_single17"/>
+    <remap from = "/cpz3177" to = "/cpz3177_rsw1_single17"/>
     <remap from = "/hemt" to = "/hemt_4l_vd" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
@@ -157,7 +157,7 @@
   <node name = "hemt_4l_vg1"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/cpz3177" to = "/cpz3177_rsw0_single18"/>
+    <remap from = "/cpz3177" to = "/cpz3177_rsw1_single18"/>
     <remap from = "/hemt" to = "/hemt_4l_vg1" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
@@ -166,7 +166,7 @@
   <node name = "hemt_4l_vg2"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/cpz3177" to = "/cpz3177_rsw0_single19"/>
+    <remap from = "/cpz3177" to = "/cpz3177_rsw1_single19"/>
     <remap from = "/hemt" to = "/hemt_4l_vg2" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
@@ -175,7 +175,7 @@
   <node name = "hemt_4l_id"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/cpz3177" to = "/cpz3177_rsw0_single20"/>
+    <remap from = "/cpz3177" to = "/cpz3177_rsw1_single20"/>
     <remap from = "/hemt" to = "/hemt_4l_id" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
@@ -184,7 +184,7 @@
   <node name = "hemt_4r_vd"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/cpz3177" to = "/cpz3177_rsw0_single21"/>
+    <remap from = "/cpz3177" to = "/cpz3177_rsw1_single21"/>
     <remap from = "/hemt" to = "/hemt_4r_vd" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
@@ -193,7 +193,7 @@
   <node name = "hemt_4r_vg1"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/cpz3177" to = "/cpz3177_rsw0_single22"/>
+    <remap from = "/cpz3177" to = "/cpz3177_rsw1_single22"/>
     <remap from = "/hemt" to = "/hemt_4r_vg1" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
@@ -202,7 +202,7 @@
   <node name = "hemt_4r_vg2"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/cpz3177" to = "/cpz3177_rsw0_single23"/>
+    <remap from = "/cpz3177" to = "/cpz3177_rsw1_single23"/>
     <remap from = "/hemt" to = "/hemt_4r_vg2" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
@@ -211,7 +211,7 @@
   <node name = "hemt_4r_id"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/cpz3177" to = "/cpz3177_rsw0_single24"/>
+    <remap from = "/cpz3177" to = "/cpz3177_rsw1_single24"/>
     <remap from = "/hemt" to = "/hemt_4r_id" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
@@ -220,7 +220,7 @@
   <node name = "hemt_5l_vd"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/cpz3177" to = "/cpz3177_rsw0_single25"/>
+    <remap from = "/cpz3177" to = "/cpz3177_rsw1_single25"/>
     <remap from = "/hemt" to = "/hemt_5l_vd" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
@@ -229,7 +229,7 @@
   <node name = "hemt_5l_vg1"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/cpz3177" to = "/cpz3177_rsw0_single26"/>
+    <remap from = "/cpz3177" to = "/cpz3177_rsw1_single26"/>
     <remap from = "/hemt" to = "/hemt_5l_vg1" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
@@ -238,7 +238,7 @@
   <node name = "hemt_5l_vg2"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/cpz3177" to = "/cpz3177_rsw0_single27"/>
+    <remap from = "/cpz3177" to = "/cpz3177_rsw1_single27"/>
     <remap from = "/hemt" to = "/hemt_5l_vg2" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
@@ -247,7 +247,7 @@
   <node name = "hemt_5l_id"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/cpz3177" to = "/cpz3177_rsw0_single28"/>
+    <remap from = "/cpz3177" to = "/cpz3177_rsw1_single28"/>
     <remap from = "/hemt" to = "/hemt_5l_id" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
@@ -256,7 +256,7 @@
   <node name = "hemt_5r_vd"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/cpz3177" to = "/cpz3177_rsw0_single29"/>
+    <remap from = "/cpz3177" to = "/cpz3177_rsw1_single29"/>
     <remap from = "/hemt" to = "/hemt_5r_vd" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
@@ -265,7 +265,7 @@
   <node name = "hemt_5r_vg1"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/cpz3177" to = "/cpz3177_rsw0_single30"/>
+    <remap from = "/cpz3177" to = "/cpz3177_rsw1_single30"/>
     <remap from = "/hemt" to = "/hemt_5r_vg1" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
@@ -274,7 +274,7 @@
   <node name = "hemt_5r_vg2"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/cpz3177" to = "/cpz3177_rsw0_single31"/>
+    <remap from = "/cpz3177" to = "/cpz3177_rsw1_single31"/>
     <remap from = "/hemt" to = "/hemt_5r_vg2" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
@@ -283,7 +283,7 @@
   <node name = "hemt_5r_id"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/cpz3177" to = "/cpz3177_rsw0_single32"/>
+    <remap from = "/cpz3177" to = "/cpz3177_rsw1_single32"/>
     <remap from = "/hemt" to = "/hemt_5r_id" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/hemt_reader.conf" />
