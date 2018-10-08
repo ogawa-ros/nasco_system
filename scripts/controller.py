@@ -1,4 +1,5 @@
 import time
+import configparser
 
 import rospy
 from std_msgs.msg import Int32
@@ -12,8 +13,8 @@ beam_list = ['2l', '2r', '3l', '3r',
              '4l', '4r', '5l', '5r',
              '1lu', '1ll', '1ru', '1rl']
 
-config = configparser.ConfigParser()
-config.read('../configuration/tuning.conf')
+config_file = configparser.ConfigParser()
+config_file.read('../configuration/tuning.conf')
 
 
 # --- launch publisher
@@ -31,15 +32,15 @@ pub_list = [rospy.Publisher(topic, Float64, queue_size=1) for topic in topic_lis
 topic_vd_list = ['/hemt_{}_vd_cmd'.format(_) for _ in beam_list]
 topic_vg1_list = ['/hemt_{}_vg1_cmd'.format(_) for _ in beam_list]
 topic_vg2_list = ['/hemt_{}_vg2_cmd'.format(_) for _ in beam_list]
-pub_vd_list = [rospy.Publisher(topic, Float64, queue_size=1) for topic in topic_list_vd]
-pub_vg1_list = [rospy.Publisher(topic, Float64, queue_size=1) for topic in topic_list_vg1]
-pub_vg2_list = [rospy.Publisher(topic, Float64, queue_size=1) for topic in topic_list_vg2]
+pub_vd_list = [rospy.Publisher(topic, Float64, queue_size=1) for topic in topic_vd_list]
+pub_vg1_list = [rospy.Publisher(topic, Float64, queue_size=1) for topic in topic_vg1_list]
+pub_vg2_list = [rospy.Publisher(topic, Float64, queue_size=1) for topic in topic_vg2_list]
 
 # --- loatt
 loatt_list = beam_list[:-4]
-loatt.list.extend(['1l', '1r'])
-topic_loatt_list = ['/loatt_{}_cmd'.format(_) for _ in topic_loatt_list]
-pub_loatt_list = [rospy.Publisher(topi, Float64, queue_size=1)
+loatt_list.extend(['1l', '1r'])
+topic_loatt_list = ['/loatt_{}_cmd'.format(_) for _ in loatt_list]
+pub_loatt_list = [rospy.Publisher(topic, Float64, queue_size=1)
                   for topic in topic_loatt_list]
 
 # ---
@@ -55,37 +56,37 @@ def set_1st_lo(frequency=0., signal_power=0., config=False):
     freq, power, onoff = Float64(), Float64(), Int32()
     power.data = 0.
     onoff.data = 1
-    pub_lo_1st_power.pub(power)
+    pub_lo_1st_power.publish(power)
     time.sleep(interval)
 
     if config == True:
-        freq.data = float(config.get(freq, 'lo_1st'))
-        target_power = float(config.get(power, 'lo_1st'))
+        freq.data = float(config_file.get('lo_1st', 'freq'))
+        target_power = float(config_file.get('lo_1st', 'power'))
 
-        pub_lo_1st_freq.pub(freq)
+        pub_lo_1st_freq.publish(freq)
         time.sleep(interval)
-        pub_lo_1st_onoff.pub(onoff)
+        pub_lo_1st_onoff.publish(onoff)
         time.sleep(interval)
 
         for _ in range(1, int(target_power / step)):
             power.data = float(_ * step)
             pub_lo_1st_power.publish(power)
-            time.sleep(interval)
+            time.sleep(1e-2) # 10 msec.
 
     else:
         if -20. < signal_power < 30.:
             freq.data = frequency
             target_power = signal_power
 
-            pub_lo_1st_freq.pub(freq)
+            pub_lo_1st_freq.publish(freq)
             time.sleep(interval)
-            pub_lo_1st_onoff.pub(onoff)
+            pub_lo_1st_onoff.publish(onoff)
             time.sleep(interval)
 
-            for _ in range(1, int(target_power / step)):
+            for _ in range(1, int(target_power / step+0.1)):
                 power.data = float(_ * step)
                 pub_lo_1st_power.publish(power)
-                time.sleep(interval)
+                time.sleep(1e-2) # 10 msec.
         else:
             msg = 'Output power range is -20 -- 30 dBm,'
             msg += ' while {}dBm is given.'.format(signal_power)
@@ -97,18 +98,18 @@ def unset_1st_lo():
     freq, power, onoff = Float64(), Float64(), Int32()
     freq.data, power.data, onoff.data = 0., 0., 0
 
-    pub_freq.publish(freq)
+    pub_lo_1st_freq.publish(freq)
     time.sleep(interval)
-    pub_power.publish(power)
+    pub_lo_1st_power.publish(power)
     time.sleep(interval)
-    pub_onoff.publish(onoff)
+    pub_lo_1st_onoff.publish(onoff)
     return
 
 def output_sis_voltage(sis='', voltage=0., config=False):
     interval = 1e-3
     msg = Float64()
     if config == True:
-        vol_list = [float(config.get(beam, 'sisv')) for beam in beam_list]
+        vol_list = [float(config_file.get(beam, 'sisv')) for beam in beam_list]
         for pub, vol in zip(pub_list, vol_list):
             msg.data = vol
             pub.publish(msg)
@@ -121,14 +122,14 @@ def output_sis_voltage(sis='', voltage=0., config=False):
         time.sleep(interval)
     return
 
-def output_hemt_voltage(beam='', **kargs, config=False):
+def output_hemt_voltage(beam='2r', config=False, **kargs):
     interval = 1e-3
-    msg = Flaot64()
+    msg = Float64()
 
     if config == True:
-        vd_list = [float(config.get(beam, 'vd')) for beam in beam_list]
-        vg1_list = [float(config.get(beam, 'vg1')) for beam in beam_list]
-        vg2_list = [float(config.get(beam, 'vg2')) for beam in beam_list]
+        vd_list = [float(config_file.get(beam, 'vd')) for beam in beam_list]
+        vg1_list = [float(config_file.get(beam, 'vg1')) for beam in beam_list]
+        vg2_list = [float(config_file.get(beam, 'vg2')) for beam in beam_list]
         for pub_vd, pub_vg1, pub_vg2, vd, vg1, vg2 in zip(pub_vd_list, pub_vg1_list, pub_vg2_list,
                                                           vd_list, vg1_list, vg2_list):
             msg.data = vd
@@ -149,19 +150,19 @@ def output_hemt_voltage(beam='', **kargs, config=False):
             pub_vd_list[idx].publish(msg)
         if 'vg1' in kargs:
             msg.data = kargs['vg1']
-            pub_vd_list[idx].publish(msg)
+            pub_vg1_list[idx].publish(msg)
         if 'vg2' in kargs:
             msg.data = kargs['vg2']
-            pub_vd_list[idx].publish(msg)
+            pub_vg2_list[idx].publish(msg)
     return
 
-def output_loatt_current(beam='', current=0., config=False):
+def output_loatt_current(beam='2l', current=0., config=False):
     interval = 5e-3
     msg = Float64()
 
     if config == True:
-        loatt_list = [float(config.get(beam, 'loatt')) for beam in beam_list[:-2]]
-        for pub, current zip(pub_loatt_list, loatt_list):
+        loatt_cur_list = [float(config_file.get(beam, 'lo_att')) for beam in beam_list[:-2]]
+        for pub, current in zip(pub_loatt_list, loatt_cur_list):
             msg.data = current
             pub.publish(msg)
             time.sleep(interval)

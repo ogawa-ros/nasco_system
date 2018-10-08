@@ -3,10 +3,8 @@
 
 import sys
 import time
-import argparse
 sys.path.append('/home/necst/ros/src/nasco_system/scripts')
 import controller as ctrl
-
 
 import rospy
 from std_msgs.msg import String
@@ -20,24 +18,22 @@ beam_num = 12
 initial_voltage = -10  # mV
 final_voltage = 10     # mV
 step = 0.1             # mV
-interval = 0.1         # sec.
+interval = 5e-3        # 5 msec.
+fixtime = 1.           # 1 sec.
 roop = int((final_voltage - initial_voltage) / step)
 
-# Set LO.
-parser = argparse.ArgumentParser(description='SISIV Measurement with LOCAL.')
-parser.add_argument('--lo', default='', help='>>> python sisiv_measure.py --lo 1')
-args = parser.parse_args()
-lo = args.lo
+# Start Chopper
 
-if lo == '1':
-    lo = '-lo'
-    ctrl.set_1st_lo(config=True)
-else: pass
+
+# Set Param
+ctrl.output_loatt_current(config=True)
+ctrl.set_1st_lo(config=True)
+ctrl.output_hemt_voltage(config=True)
 
 # Start Log.
 msg = String()
-msg.data = str(time.time()) + lo
-flag_name = 'sisiv_trigger'
+msg.data = str(time.time())
+flag_name = 'yfac_trigger'
 pub = rospy.Publisher(flag_name, String, queue_size=1)
 time.sleep(1.5) # 1.5 sec.
 pub.publish(msg)
@@ -46,10 +42,11 @@ try:
     for vol in range(roop+1):
         for _ in beam_list:
             ctrl.output_sis_voltage(sis=_, voltage=vol*step+initial_voltage)
-            time.sleep(1e-2) # 10 msec.
+            time.sleep(interval)
+        time.sleep(fixtime)
 except KeyboardInterrupt:
     for _ in beam_list:
-        ctrl.output_sis_voltage(sis=_, voltage=0)
+        ctrl.outpu_sis_voltage(sis=_, voltage=0)
     msg = String
     msg.data = ''
     pub.publish(msg)
@@ -57,12 +54,15 @@ except KeyboardInterrupt:
 
 for _ in beam_list:
     ctrl.output_sis_voltage(sis=_, voltage=0)
-    time.sleep(5e-2) # 50 msec.
+    time.sleep(interval)
 
 # Finish Log.
 msg = String()
 msg.data = ''
 pub.publish(msg)
 
+# Stop Chopper
+
+
 # Unset LO.
-if lo == '1': ctrl.unset_1st_lo()
+ctrl.unset_1st_lo()

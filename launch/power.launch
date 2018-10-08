@@ -13,7 +13,7 @@
   <node name = "power_2"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = '/cpz3177' to = '/cpz3177_rsw0_single54' />
+    <remap from = '/cpz3177' to = '/cpz3177_rsw0_single54'/>
     <remap from = '/power' to = '/power_2' />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/power_reader.conf" />
