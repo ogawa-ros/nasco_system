@@ -87,7 +87,7 @@ class beam_monitor(object):
         th.start()
 
     def log(self):
-        print('\n\n/------- nasco beam monitor（適当）\n')
+        print('\n\n/------- nasco beam monitor \n')
         print('[BEAM / SISV / SISI / VD / VG1 / VG2 / ID / LOATT]')
         
         print('\n\n\n\n\n\n\n\n\n\n\n\n')
