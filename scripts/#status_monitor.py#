@@ -62,8 +62,8 @@ class status_monitor(object):
             pre = [self.tpg261_pressure]
             ondo = [self.ondo, self.hum]
             msg = date + l218_temp + pre + ondo
-            msg1 = '{0} {1:.2f}K {2:.2f}K {3:.2f}K {4:.2f}K {5:.2f}K {6:.2f}K {7:.2f}K {8:.2f}K {9:.1}torr {10:.2f}deg {11:.2f}%'.format(*msg)
-            msg2 = '{0} {1:.2f} {2:.2f} {3:.2f} {4:.2f} {5:.2f} {6:.2f} {7:.2f} {8:.2f} {9:.1} {10:.2f} {11:.2f}\n'.format(*msg)
+            msg1 = '{0} {1:.1f}K {2:.1f}K {3:.1f}K {4:.1f}K {5:.1f}K {6:.1f}K {7:.1f}K {8:.1f}K {9:.1}torr {10:.1f}deg {11:.1f}%'.format(*msg)
+            msg2 = '{0} {1:.1f} {2:.1f} {3:.1f} {4:.1f} {5:.1f} {6:.1f} {7:.1f} {8:.1f} {9:.1} {10:.1f} {11:.1f}\n'.format(*msg)
             print(msg1)
             f.write(msg2)
             f.close()

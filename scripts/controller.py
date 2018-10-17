@@ -14,7 +14,7 @@ beam_list = ['2l', '2r', '3l', '3r',
              '1lu', '1ll', '1ru', '1rl']
 
 config_file = configparser.ConfigParser()
-config_file.read('../configuration/tuning.conf')
+config_file.read('/home/necst/ros/src/nasco_system/configuration/tuning.conf')
 
 
 # --- launch publisher
@@ -72,6 +72,7 @@ def set_1st_lo(frequency=0., signal_power=0., config=False):
             power.data = float(_ * step)
             pub_lo_1st_power.publish(power)
             time.sleep(1e-2) # 10 msec.
+        return
 
     else:
         if -20. < signal_power < 30.:
@@ -87,6 +88,8 @@ def set_1st_lo(frequency=0., signal_power=0., config=False):
                 power.data = float(_ * step)
                 pub_lo_1st_power.publish(power)
                 time.sleep(1e-2) # 10 msec.
+        while not(onoff): return
+        
         else:
             msg = 'Output power range is -20 -- 30 dBm,'
             msg += ' while {}dBm is given.'.format(signal_power)

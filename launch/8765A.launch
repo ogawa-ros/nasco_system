@@ -1,0 +1,36 @@
+<launch>
+
+  <node name = "switch_level_cmd_writer"
+        type = "relay.py"
+        pkg = "nasco_system">
+    <param name = "config_file"
+        value = "$(find nasco_system)/relay_conf/switch_level_cmd_writer.conf" />
+  </node>
+
+  <node name = "switch_level_reader"
+        type = "relay.py"
+        pkg = "nasco_system">
+    <param name = "config_file"
+        value = "$(find nasco_system)/relay_conf/switch_level_reader.conf" />
+  </node>
+
+  <node name = "switch_voltage_cmd_writer"
+        type = "relay.py"
+        pkg = "nasco_system">
+    <param name = "config_file"
+        value = "$(find nasco_system)/relay_conf/switch_voltage_cmd_writer.conf" />
+  </node>
+
+  <node name = "switch_voltage_reader"
+        type = "relay.py"
+        pkg = "nasco_system">
+    <param name = "config_file"
+        value = "$(find nasco_system)/relay_conf/switch_voltage_reader.conf" />
+  </node>
+
+  <node name = "switch_8765a"
+        type = "8765a.py"
+        pkg = "nasco_system">
+  </node>
+
+</launch>
