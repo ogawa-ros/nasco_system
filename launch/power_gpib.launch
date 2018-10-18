@@ -1,13 +1,12 @@
 <launch>
 
-<!--
 <node name = "gpib_power_1"
   	type = "2437A.py"
     	pkg = "nasco_system">
     <param name = "~number" value = "1" />
-    <param name = "~ip" value = "192.168.100.1" />
+    <param name = "~ip" value = "192.168.100.106" />
   </node>
--->
+  
   <node name = "gpib_power_2"
   	type = "2437A.py"
     	pkg = "nasco_system">
