@@ -16,7 +16,7 @@ from std_msgs.msg import String
 # --
 name = 'sisiv_logger'
 flag_name = 'sisiv_trigger'
-data_dir = '/home/necst/data/experiments/'
+data_dir = '/home/amigos/data/experiments/'
 save_dir = os.path.join(data_dir, name)
 # --
 

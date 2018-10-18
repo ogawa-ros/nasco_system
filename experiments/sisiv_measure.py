@@ -4,7 +4,7 @@
 import sys
 import time
 import argparse
-sys.path.append('/home/necst/ros/src/nasco_system/scripts')
+sys.path.append('/home/amigos/ros/src/nasco_system/scripts')
 import controller as ctrl
 
 
