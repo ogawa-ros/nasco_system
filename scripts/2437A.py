@@ -8,7 +8,7 @@ import NASCORX_System.device.ML2437A as ML2437A
 
 name = "ML2437A"
 
-class ML2437A(object):
+class ML2437(object):
 
     def __init__(self, port):
         self.num = rospy.get_param("~number")
@@ -31,7 +31,7 @@ class ML2437A(object):
 
 if __name__ == "__main__":
     rospy.init_node(name)
-    m = ML2437A(port = 13)
+    m = ML2437(port = 13)
 
     while not rospy.is_shutdown():
         m.pub_function()
