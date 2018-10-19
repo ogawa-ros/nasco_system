@@ -14,7 +14,7 @@ beam_list = ['2l', '2r', '3l', '3r',
              '1lu', '1ll', '1ru', '1rl']
 
 config_file = configparser.ConfigParser()
-config_file.read('/home/necst/ros/src/nasco_system/configuration/tuning.conf')
+config_file.read('/home/amigos/ros/src/nasco_system/configuration/tuning.conf')
 
 
 # --- launch publisher

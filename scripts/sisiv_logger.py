@@ -55,6 +55,7 @@ class sisiv_logger(object):
             self.filename_cur = self.saveto + '/sis_cur.txt'
             f_vol = open(self.filename_vol, 'a')
             f_cur = open(self.filename_cur, 'a')
+            print("FILE OPEN")
             f_vol.close()
             f_cur.close()
             self.flag = 1
@@ -80,7 +81,6 @@ class sisiv_logger(object):
 
             sis_vol = ' '.join(map(str, self.sis_vol)) + '\n'
             sis_cur = ' '.join(map(str, self.sis_cur)) + '\n'
-
             f_vol = open(self.filename_vol, 'a')
             f_cur = open(self.filename_cur, 'a')
             f_vol.write(sis_vol)

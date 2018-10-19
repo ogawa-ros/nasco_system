@@ -20,7 +20,7 @@ sisv_sweep_flag = 'sisv_sweep_trigger'
 loatt_sweep_flag = 'loatt_sweep_trigger'
 hemt_sweep_flag = 'hemt_sweep_trigger'
 hot_monitor_flag = 'hot_monitor_trigger'
-data_dir = '/home/necst/data/experiments/'
+data_dir = '/home/amigos/data/experiments/'
 save_dir = os.path.join(data_dir, name)
 # --
 
@@ -189,7 +189,8 @@ class logger(object):
             f_id.close()
             f_loatt.close()
             f_power.close()
-
+            
+            #time.sleep(3.0) # for gpib
             time.sleep(1e-2) # 10 msec.
 
     def start_thread(self):
