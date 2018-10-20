@@ -52,6 +52,7 @@ class logger(object):
         self.hemt_id = [0.] * 12
         self.loatt = [0.] * 10
         self.power = [0.] * 2
+        self.xffts = [0.]
         self.filename_datatime = ''
         self.filename_vol = ''
         self.filename_cur = ''
@@ -61,6 +62,7 @@ class logger(object):
         self.filename_id = ''
         self.filename_loatt = ''
         self.filename_power = ''
+        self.filename_xffts = ''
 
     def set_flag(self, req, param):
         trigger = req.data
@@ -85,6 +87,7 @@ class logger(object):
             self.filename_id = self.saveto + '/hemt_id.txt'
             self.filename_loatt = self.saveto + '/loatt.txt'
             self.filename_power = self.saveto + '/power.txt'
+            self.filename_xffts = self.saveto + '/xffts.txt'
             print("FILE OPEN")
             f_datetime = open(self.filename_datatime, 'a')
             f_vol = open(self.filename_vol, 'a')
@@ -95,6 +98,7 @@ class logger(object):
             f_id = open(self.filename_id, 'a')
             f_loatt = open(self.filename_loatt, 'a')
             f_power = open(self.filename_power, 'a')
+            f_xffts = open(self.filename_xffts, 'a')
             f_datetime.close()
             f_vol.close()
             f_cur.close()
@@ -104,6 +108,7 @@ class logger(object):
             f_id.close()
             f_loatt.close()
             f_power.close()
+            f_xffts.close()
             self.flag = 1
 
     def callback_voltage(self, req, idx):
@@ -146,6 +151,11 @@ class logger(object):
         self.power[idx] = req.data
         return
 
+    def callback_xffts(self, req):
+
+        self.xffts = req.data
+        return
+
     def log(self):
         while not rospy.is_shutdown():
             if self.flag == 0:
@@ -160,6 +170,7 @@ class logger(object):
             hemt_id = ' '.join(map(str, self.hemt_id)) + '\n'
             loatt = ' '.join(map(str, self.loatt)) + '\n'            
             power = ' '.join(map(str, self.power)) + '\n'
+            xffts = ' '.join(map(str, self.xffts)) + '\n'
 
             f_datatime = open(self.filename_datatime, 'a')
             f_vol = open(self.filename_vol, 'a')
@@ -170,6 +181,7 @@ class logger(object):
             f_id = open(self.filename_id, 'a')
             f_loatt = open(self.filename_loatt, 'a')
             f_power = open(self.filename_power, 'a')
+            f_xffts = open(self.filename_xffts, 'a')
             f_datatime.write(datatime)
             f_vol.write(sis_vol)
             f_cur.write(sis_cur)
@@ -180,6 +192,7 @@ class logger(object):
             f_vd.write(hemt_vd)
             f_loatt.write(loatt)
             f_power.write(power)
+            f_xffts.write(xffts)
             f_datatime.close()
             f_vol.close()
             f_cur.close()
@@ -189,6 +202,7 @@ class logger(object):
             f_id.close()
             f_loatt.close()
             f_power.close()
+            f_xffts.close()
             
             #time.sleep(4.0) # for gpib
             time.sleep(1e-2) # 10 msec.
@@ -222,6 +236,10 @@ if __name__ == '__main__':
                                        st.callback_power,
                                        callback_args = idx)
                         for ch, idx in enumerate(range(2), start=1)]
+
+    xffts_sub_list = rospy.Subscriber('/XFFTS_PM1',
+                                       Float64,
+                                       st.callback_xffts)
 
     hemt_vd_sub_list = [rospy.Subscriber('/hemt_{}_vd'.format(beam),
                                          Float64,
