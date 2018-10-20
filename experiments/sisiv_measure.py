@@ -39,8 +39,9 @@ msg = String()
 msg.data = str(time.time())# + lo
 flag_name = 'sisiv_trigger'
 pub = rospy.Publisher(flag_name, String, queue_size=1)
-time.sleep(3.0) # 1.5 sec.
+time.sleep(1.5) # 1.5 sec.
 pub.publish(msg)
+time.sleep(3.0)
 
 try:
     for vol in range(roop+1):

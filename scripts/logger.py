@@ -190,7 +190,7 @@ class logger(object):
             f_loatt.close()
             f_power.close()
             
-            #time.sleep(3.0) # for gpib
+            #time.sleep(4.0) # for gpib
             time.sleep(1e-2) # 10 msec.
 
     def start_thread(self):
