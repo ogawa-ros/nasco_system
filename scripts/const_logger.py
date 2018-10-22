@@ -15,7 +15,8 @@ import std_msgs.msg
 
 # --
 name = 'const_logger'
-dbpath = '/home/amigos/data/const/nasco_system.db'
+t = datetime.datetime.fromtimestamp(time.time())
+dbpath = '/home/amigos/data/const/nasco_{}.db'.format(t.strftime('%Y%m%d'))
 # --
 
 
