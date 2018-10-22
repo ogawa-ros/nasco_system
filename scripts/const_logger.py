@@ -46,34 +46,13 @@ class logger(object):
 
     def make_table(self):
         self.c.execute("create table if not exists datatime (time float)")
-        self.c.execute("create table if not exists sis_vol (
-                 2l float, 2r float, 3l float, 3r float, 4l float, 4r float
-                 5l float, 5r float, 1lu float, 1ll float, 1ru float, 1rl float
-                 )")
-        self.c.execute("create table if not exists sis_cur (
-                 2l float, 2r float, 3l float, 3r float, 4l float, 4r float
-                 5l float, 5r float, 1lu float, 1ll float, 1ru float, 1rl float
-                 )")
-        self.c.execute("create table if not exists hemt_vd (
-                 2l float, 2r float, 3l float, 3r float, 4l float, 4r float
-                 5l float, 5r float, 1lu float, 1ll float, 1ru float, 1rl float
-                 )")
-        self.c.execute("create table if not exists hemt_vg1 (
-                 2l float, 2r float, 3l float, 3r float, 4l float, 4r float
-                 5l float, 5r float, 1lu float, 1ll float, 1ru float, 1rl float
-                 )")
-        self.c.execute("create table if not exists hemt_vg2 (
-                 2l float, 2r float, 3l float, 3r float, 4l float, 4r float
-                 5l float, 5r float, 1lu float, 1ll float, 1ru float, 1rl float
-                 )")
-        self.c.execute("create table if not exists hemt_id (
-                 2l float, 2r float, 3l float, 3r float, 4l float, 4r float
-                 5l float, 5r float, 1lu float, 1ll float, 1ru float, 1rl float
-                 )")
-        self.c.execute("create table if not exists loatt (
-                 2l float, 2r float, 3l float, 3r float, 4l float, 4r float
-                 5l float, 5r float, 1l float, 1r float
-                 )")
+        self.c.execute("create table if not exists sis_vol (2l float, 2r float, 3l float, 3r float, 4l float, 4r float, 5l float, 5r float, 1lu float, 1ll float, 1ru float, 1rl float)")
+        self.c.execute("create table if not exists sis_cur (2l float, 2r float, 3l float, 3r float, 4l float, 4r float, 5l float, 5r float, 1lu float, 1ll float, 1ru float, 1rl float)")
+        self.c.execute("create table if not exists hemt_vd (2l float, 2r float, 3l float, 3r float, 4l float, 4r float, 5l float, 5r float, 1lu float, 1ll float, 1ru float, 1rl float)")
+        self.c.execute("create table if not exists hemt_vg1 (2l float, 2r float, 3l float, 3r float, 4l float, 4r float, 5l float, 5r float, 1lu float, 1ll float, 1ru float, 1rl float)")
+        self.c.execute("create table if not exists hemt_vg2 (2l float, 2r float, 3l float, 3r float, 4l float, 4r float, 5l float, 5r float, 1lu float, 1ll float, 1ru float, 1rl float)")
+        self.c.execute("create table if not exists hemt_id (2l float, 2r float, 3l float, 3r float, 4l float, 4r float, 5l float, 5r float, 1lu float, 1ll float, 1ru float, 1rl float)")
+        self.c.execute("create table if not exists loatt (2l float, 2r float, 3l float, 3r float, 4l float, 4r float, 5l float, 5r float, 1l float, 1r float)")
         self.c.execute("create table if not exists power (data1 float, data2 float)")
         self.c.execute("create table if not exists xffts (data float)")
         return
