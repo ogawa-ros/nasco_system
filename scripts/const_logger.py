@@ -45,7 +45,37 @@ class logger(object):
         pass
 
     def make_table(self):
-        self.cursor.execute("create table if not exists xffts (time float, pm float)")
+        self.c.execute("create table if not exists datatime (time float)")
+        self.c.execute("create table if not exists sis_vol (
+                 2l float, 2r float, 3l float, 3r float, 4l float, 4r float
+                 5l float, 5r float, 1lu float, 1ll float, 1ru float, 1rl float
+                 )")
+        self.c.execute("create table if not exists sis_cur (
+                 2l float, 2r float, 3l float, 3r float, 4l float, 4r float
+                 5l float, 5r float, 1lu float, 1ll float, 1ru float, 1rl float
+                 )")
+        self.c.execute("create table if not exists hemt_vd (
+                 2l float, 2r float, 3l float, 3r float, 4l float, 4r float
+                 5l float, 5r float, 1lu float, 1ll float, 1ru float, 1rl float
+                 )")
+        self.c.execute("create table if not exists hemt_vg1 (
+                 2l float, 2r float, 3l float, 3r float, 4l float, 4r float
+                 5l float, 5r float, 1lu float, 1ll float, 1ru float, 1rl float
+                 )")
+        self.c.execute("create table if not exists hemt_vg2 (
+                 2l float, 2r float, 3l float, 3r float, 4l float, 4r float
+                 5l float, 5r float, 1lu float, 1ll float, 1ru float, 1rl float
+                 )")
+        self.c.execute("create table if not exists hemt_id (
+                 2l float, 2r float, 3l float, 3r float, 4l float, 4r float
+                 5l float, 5r float, 1lu float, 1ll float, 1ru float, 1rl float
+                 )")
+        self.c.execute("create table if not exists loatt (
+                 2l float, 2r float, 3l float, 3r float, 4l float, 4r float
+                 5l float, 5r float, 1l float, 1r float
+                 )")
+        self.c.execute("create table if not exists power (data1 float, data2 float)")
+        self.c.execute("create table if not exists xffts (data float)")
         return
 
     def callback_voltage(self, req, idx):
@@ -86,31 +116,28 @@ class logger(object):
 
     def log(self):
         connection = sqlite3.connect(dbpath)
-        self.cursor = connection.cursor()
+        self.c = connection.cursor()
 
         self.make_table()
         while not rospy.is_shutdown():
-            """
-            datatime = str(time.time()) + '\n'
-            sis_vol = ' '.join(map(str, self.sis_vol)) + '\n'
-            sis_cur = ' '.join(map(str, self.sis_cur)) + '\n'
-            hemt_vd = ' '.join(map(str, self.hemt_vd)) + '\n'
-            hemt_vg1 = ' '.join(map(str, self.hemt_vg1)) + '\n'
-            hemt_vg2 = ' '.join(map(str, self.hemt_vg2)) + '\n'
-            hemt_id = ' '.join(map(str, self.hemt_id)) + '\n'
-            loatt = ' '.join(map(str, self.loatt)) + '\n'            
-            power = ' '.join(map(str, self.power)) + '\n'
-            xffts = ' '.join(map(str, self.xffts)) + '\n'
-            """
-
-            self.cursor.execute("INSERT into xffts (time, PM) values (?,?)",
-                    (time.time(), self.xffts))
+            self.c.execute("INSERT into datatime values (?)", (time.time(),))
+            self.c.execute("INSERT into sis_vol values ( ?,?,?,?,?,?,?,?,?,?,?,?)", tuple(self.sis_vol))
+            self.c.execute("INSERT into sis_cur values (?,?,?,?,?,?,?,?,?,?,?,?)", tuple(self.sis_cur))
+            self.c.execute("INSERT into hemt_vd values (?,?,?,?,?,?,?,?,?,?,?,?)", tuple(self.hemt_vd))
+            self.c.execute("INSERT into hemt_vg1 values (?,?,?,?,?,?,?,?,?,?,?,?)", tuple(self.hemt_vg1))
+            self.c.execute("INSERT into hemt_vg2 values (?,?,?,?,?,?,?,?,?,?,?,?)", tuple(self.hemt_vg2))
+            self.c.execute("INSERT into hemt_id values (?,?,?,?,?,?,?,?,?,?,?,?)", tuple(self.hemt_id))
+            self.c.execute("INSERT into loatt values (?,?,?,?,?,?,?,?,?,?)", tuple(self.loatt))
+            self.c.execute("INSERT into power values (?,?)", tuple(self.power))
+            self.cr.execute("INSERT into xffts values (?)", (self.xffts,))
             connection.commit()
             
             time.sleep(1e-2) # 10 msec.
             continue
         else:
             connection.close()
+        
+        return
 
     def start_thread(self):
         th = threading.Thread(target=self.log)
