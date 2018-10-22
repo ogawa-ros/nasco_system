@@ -16,10 +16,11 @@ beam_num = 12
 
 initial_voltage = 7  # mV
 final_voltage =  9     # mV
-step = 0.1             # mV
+#step = 0.1             # mV
+step = 0.3            # for gpib
 interval = 5e-3        # 5 msec.
 fixtime = 1.           # 1 sec.
-#fixtime = 3.           # for gpib
+#fixtime = 5.           # for gpib
 roop = int((final_voltage - initial_voltage) / step)
 
 # Start Chopper
@@ -39,7 +40,7 @@ msg.data = str(time.time())
 flag_name = 'sisv_sweep_trigger'
 pub = rospy.Publisher(flag_name, String, queue_size=1)
 time.sleep(1.5) # 1.5 sec.
-pub.publish('')
+#pub.publish('')
 time.sleep(3.0)
 pub.publish(msg)
 time.sleep(1.5)
