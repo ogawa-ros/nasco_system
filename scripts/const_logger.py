@@ -40,16 +40,12 @@ class logger(object):
         self.hemt_id = [0.] * 12
         self.loatt = [0.] * 10
         self.power = [0.] * 2
-        self.xffts = [0.]
+        self.xffts = 0
 
-        connection = sqlite3.connect(dpath)
-        self.cursor = connection.cursor()
-
-        self.make_table()
         pass
 
-    def make_table():
-        self.cursor.execute("create table if not exists xffts (time float, PM float)")
+    def make_table(self):
+        self.cursor.execute("create table if not exists xffts (time float, pm float)")
         return
 
     def callback_voltage(self, req, idx):
@@ -89,6 +85,10 @@ class logger(object):
         return
 
     def log(self):
+        connection = sqlite3.connect(dbpath)
+        self.cursor = connection.cursor()
+
+        self.make_table()
         while not rospy.is_shutdown():
             """
             datatime = str(time.time()) + '\n'
@@ -105,9 +105,12 @@ class logger(object):
 
             self.cursor.execute("INSERT into xffts (time, PM) values (?,?)",
                     (time.time(), self.xffts))
+            connection.commit()
             
             time.sleep(1e-2) # 10 msec.
             continue
+        else:
+            connection.close()
 
     def start_thread(self):
         th = threading.Thread(target=self.log)
@@ -121,47 +124,47 @@ if __name__ == '__main__':
     st.start_thread()
     rospy.init_node(name)
     sis_vol_sub_list = [rospy.Subscriber('sis_vol_{}'.format(sis),
-                                         Float64,
+                                         std_msgs.msg.Float64,
                                          st.callback_voltage,
                                          callback_args = idx)
                         for idx, sis in enumerate(beam_list)]
     sis_cur_sub_list = [rospy.Subscriber('sis_cur_{}'.format(sis),
-                                         Float64,
+                                         std_msgs.msg.Float64,
                                          st.callback_current,
                                          callback_args = idx)
                         for idx, sis in enumerate(beam_list)]
     power_sub_list = [rospy.Subscriber('power_{}'.format(ch),
-                                       Float64,
+                                       std_msgs.msg.Float64,
                                        st.callback_power,
                                        callback_args = idx)
                         for ch, idx in enumerate(range(2), start=1)]
 
     xffts_sub_list = rospy.Subscriber('/XFFTS_PM1',
-                                       Float64,
+                                       std_msgs.msg.Float64,
                                        st.callback_xffts)
 
     hemt_vd_sub_list = [rospy.Subscriber('/hemt_{}_vd'.format(beam),
-                                         Float64,
+                                         std_msgs.msg.Float64,
                                          st.callback_hemt_vd,
                                          callback_args = idx)
                         for idx, beam in enumerate(beam_list)]
     hemt_vg1_sub_list = [rospy.Subscriber('/hemt_{}_vg1'.format(beam),
-                                         Float64,
+                                         std_msgs.msg.Float64,
                                          st.callback_hemt_vg1,
                                          callback_args = idx)
                         for idx, beam in enumerate(beam_list)]
     hemt_vg2_sub_list = [rospy.Subscriber('/hemt_{}_vg2'.format(beam),
-                                         Float64,
+                                         std_msgs.msg.Float64,
                                          st.callback_hemt_vg2,
                                          callback_args = idx)
                         for idx, beam in enumerate(beam_list)]
     hemt_id_sub_list = [rospy.Subscriber('/hemt_{}_id'.format(beam),
-                                         Float64,
+                                         std_msgs.msg.Float64,
                                          st.callback_hemt_id,
                                          callback_args = idx)
                         for idx, beam in enumerate(beam_list)]
     loatt_sub_list = [rospy.Subscriber('/loatt_{}'.format(loatt),
-                                         Float64,
+                                         std_msgs.msg.Float64,
                                          st.callback_loatt,
                                          callback_args = idx)
                         for idx, loatt in enumerate(loatt_list)]
