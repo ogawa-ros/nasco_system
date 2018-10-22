@@ -13,7 +13,7 @@ from std_msgs.msg import Float64
 
 # --
 name = 'status_monitor'
-data_dir = '/home/necst/data/experiments/'
+data_dir = '/home/amigos/data/experiments/'
 save_dir = os.path.join(data_dir, name)
 
 exp_time = datetime.datetime.fromtimestamp(time.time())
