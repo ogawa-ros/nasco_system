@@ -108,7 +108,7 @@ class logger(object):
             self.c.execute("INSERT into hemt_id values (?,?,?,?,?,?,?,?,?,?,?,?)", tuple(self.hemt_id))
             self.c.execute("INSERT into loatt values (?,?,?,?,?,?,?,?,?,?)", tuple(self.loatt))
             self.c.execute("INSERT into power values (?,?)", tuple(self.power))
-            self.cr.execute("INSERT into xffts values (?)", (self.xffts,))
+            self.c.execute("INSERT into xffts values (?)", (self.xffts,))
             connection.commit()
             
             time.sleep(1e-2) # 10 msec.
