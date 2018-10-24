@@ -22,17 +22,30 @@ class slider(object):
     sleep_short = 0.5
 
     def __init__(self):
-        self.rsw_id = rospy.get_param("~rsw_id")
+        rospy.init_node(name)
+        self.rsw_id = input("rsw_id(0 or 1): ")
         
         self.axis = ['x', 'y', 'z']
         self.pub_ptp_onoff = [rospy.Publisher('/cpz7415v_rsw{0}_{1}_ptp_onoff_cmd'.format(self.rsw_id, i), Bool, queue_size=1) for i in self.axis]
-        self.pub_length = [rospy.Publisher('/cpz7415v_rsw{0}_{1}_pulse_num_cmd'.format(self.rms_id, i), Int64, queue_size=1) for i in self.axis]
-        self.pub_speed = [rospy.Publisher('/cpz7415v_rsw{0}_{1}_fh_speed_cmd'.format(self.rms_id, i),Int64, queue_size=1) for i in self.axis]
-        self.pub_home = [rospy.Publisher('/cpz7415v_rsw{0}_{1}_move_to_home'.format(self.rms_id, i), Bool, queue_size=1) for i in self.axis]
-            
+        self.pub_length = [rospy.Publisher('/cpz7415v_rsw{0}_{1}_pulse_num_cmd'.format(self.rsw_id, i), Int64, queue_size=1) for i in self.axis]
+        self.pub_speed = [rospy.Publisher('/cpz7415v_rsw{0}_{1}_fh_speed_cmd'.format(self.rsw_id, i),Int64, queue_size=1) for i in self.axis]
+        self.pub_home = [rospy.Publisher('/cpz7415v_rsw{0}_{1}_move_to_home'.format(self.rsw_id, i), Bool, queue_size=1) for i in self.axis]
+        
         self.sub = [rospy.Subscriber('/cpz7415v_rsw0_{}_onoff'.format(i), Bool, self.callback, callback_args = i) for i in self.axis]
         self.sub_XFFTS = rospy.Subscriber('/XFFTS_PM1', Float64, self.callback_XFFTS)
+        sub_th = threading.Thread(
+                target = self.sub_function,
+                daemon = True,
+                )
+        sub_th.start()
         pass
+
+
+    def sub_function(self):
+        rospy.spin()
+        return
+
+
         '''
         axis
         x : 0
@@ -91,8 +104,8 @@ class slider(object):
               '\n\n' + pycolor.ENDC)
         return
 
-	def on_ptp(self, axis = 0, len = 1):
-    	self.set_length(axis = axis, len = len)
+    def on_ptp(self, axis = 0, len = 1):
+        self.set_length(axis = axis, len = len)
 		self.ptp_onoff(axis_num = axis, onoff = 1)
 
         while self.move_onoff[axis] == True:
@@ -143,7 +156,7 @@ class slider(object):
             msg = 'Axis : {0}\nStroke : {1} [mm]\nCoorValue : {0} = {2} [mm]\nDestinate : {0} = {3} [mm]\nRemaining : {0} = {4} [mm]'.format(axis, strk, x, last, last - x)
             print('============'+'Knifeedge Measurement'+'============')
             print(msg)
-            print('=========================================\n\n')
+        print('=========================================\n\n')
             x = x + strk
             return
             
@@ -155,133 +168,3 @@ class slider(object):
         print(pycolor.RED + '{0}-axis Measurement finished!!!'format(axis) + pycolor.ENDC)
         return
         
-    
-        
-	def slide_x_go(self, x = 90, y = 30, length = 70, strk = 1 ,speed = 1000, tool = 'nothing', sleep_measure = 5, dir = '/home/amigos/beam_pattern/data/2018_10_20_script_test', beam_num = 'nothing'):
-		self.initialize(x = x, y = y, length = length, strk = strk ,speed = speed, dir = dir)
-		self.on_ptp(axis = 0, len = x)
-		self.measure(x = x, y = y, length = length, axis = 'x', strk = strk, direction = 'ccw', tool = tool, sleep_measure = sleep_measure, beam_num = beam_num)
-		self.finalize()
-		return
-		
-	def slide_x_back(self, x = 90, y = 30, length = 70, strk = 1 ,speed = 1000, tool = 'nothing', sleep_measure = 5, dir = '/home/amigos/beam_pattern/data/2018_10_20_script_test', beam_num = 'nothing'):
-		self.initialize(x = x, y = y, length = length, strk = strk ,speed = speed, dir = dir)
-		self.on_ptp(axis = 0, len = self.last_x)
-		self.measure(x = x, y = y, length = length, axis = 'x', strk = - strk, direction = 'cw', tool = tool, sleep_measure = sleep_measure, beam_num = beam_num)
-		self.finalize()
-		return
-		
-	
-	def slide_y_back(self, x = 90, y = 30, length = 70, strk = 1 ,speed = 1000, tool = 'nothing', sleep_measure = 5, dir = '/home/amigos/beam_pattern/data/2018_10_20_script_test', beam_num = 'nothing'):
-		self.initialize(x = x, y = y, length = length, strk = strk ,speed = speed, dir = dir)
-		self.on_ptp(axis = 1, len = -y)
-		self.measure(x = x, y = y, length = length, axis = 'y', strk = -strk, direction = 'cw', tool = tool, sleep_measure = sleep_measure, beam_num = beam_num)
-		self.finalize()
-		return
-	
-	def slide_y_go(self, x = 90, y = 30, length = 70, strk = 1 ,speed = 1000, tool = 'nothing',sleep_measure = 5, dir = '/home/amigos/beam_pattern/data/2018_10_20_script_test', beam_num = 'nothing'):
-		self.initialize(x = x, y = y, length = length, strk = strk ,speed = speed, dir = dir)
-		self.on_ptp(axis = 1, len = 190 - self.last_y)
-		self.measure(x = x, y = y, length = length, axis = 'y', strk = strk, direction = 'ccw', tool = tool, sleep_measure = sleep_measure, beam_num = beam_num)
-		self.finalize()
-		return	
-		
-	def slide_x_lap(self, x = 90, y = 30, length = 70, strk = 1 ,speed = 1000, tool = 'nothing', sleep_measure = 5, dir = '/home/amigos/beam_pattern/data/2018_10_20_script_test', beam_num = 'nothing'):
-		self.initialize(x = x, y = y, length = length, strk = strk ,speed = speed, dir = dir)
-		self.on_ptp(axis = 0, len = self.last_x)
-		self.measure(x = x, y = y, length = length, axis = 'x', strk = strk, direction = 'ccw', tool = tool, sleep_measure = sleep_measure, beam_num = beam_num)
-		self.on_ptp(axis = 0, len = - strk)
-		self.measure(x = x, y = y, length = length, axis = 'x', strk = - strk, direction = 'cw', tool = tool, sleep_measure = sleep_measure, beam_num = beam_num)
-		self.finalize()
-		return
-		
-	def slide_y_lap(self, x = 90, y = 30, length = 70, strk = 1 ,speed = 1000, tool = 'nothing', sleep_measure = 5, dir = '/home/amigos/beam_pattern/data/2018_10_20_script_test', beam_num = 'nothing'):
-		self.initialize(x = x, y = y, length = length, strk = strk ,speed = speed, dir = dir)
-		self.on_ptp(axis = 1, len = -y)
-		self.measure(x = x, y = y, length = length, axis = 'y', strk = - strk, direction = 'cw', tool = tool, sleep_measure = sleep_measure, beam_num = beam_num)
-		self.on_ptp(axis = 1, len = strk)
-		self.measure(x = x, y = y, length = length, axis = 'y', strk = strk, direction = 'ccw', tool = tool, sleep_measure = sleep_measure, beam_num = beam_num)
-		self.finalize()
-		return
-		
-	def slide_xy_lap(self, x = 90, y = 30, length = 70, strk = 1 ,speed = 1000, tool = 'nothing', sleep_measure = 5, dir = '/home/amigos/beam_pattern/data/2018_10_20_script_test', beam_num = 'nothing'):
-		self.initialize(x = x, y = y, length = length, strk = strk ,speed = speed, dir = dir)
-		self.on_ptp(axis = 0, len = self.last_x)
-		self.measure(x = x, y = y, length = length, axis = 'x', strk = strk, direction = 'ccw', tool = tool, sleep_measure = sleep_measure, beam_num = beam_num)
-		self.on_ptp(axis = 0, len = - strk)
-		self.measure(x = x, y = y, length = length, axis = 'x', strk = - strk, direction = 'cw', tool = tool, sleep_measure = sleep_measure, beam_num = beam_num)
-		self.move_to_home(axis = 'x', cmd = True)
-		time.sleep(self.sleep_long)
-		self.on_ptp(axis = 1, len = -y)
-		self.measure(x = x, y = y, length = length, axis = 'y', strk = - strk, direction = 'cw', tool = tool, sleep_measure = sleep_measure, beam_num = beam_num)
-		self.on_ptp(axis = 1, len = strk)
-		self.measure(x = x, y = y, length = length, axis = 'y', strk = strk, direction = 'ccw', tool = tool, sleep_measure = sleep_measure, beam_num = beam_num)
-		self.finalize()
-		return
-		
-	def slide_yx_lap(self, x = 90, y = 30, length = 70, strk = 1 ,speed = 1000, tool = 'nothing', sleep_measure = 5, dir = '/home/amigos/beam_pattern/data/2018_10_20_script_test', beam_num = 'nothing'):
-		self.initialize(x = x, y = y, length = length, strk = strk ,speed = speed, dir = dir)
-		self.on_ptp(axis = 1, len = -y)
-		self.measure(x = x, y = y, length = length, axis = 'y', strk = - strk, direction = 'cw', tool = tool, sleep_measure = sleep_measure, beam_num = beam_num)
-		self.on_ptp(axis = 1, len = strk)
-		self.measure(x = x, y = y, length = length, axis = 'y', strk = strk, direction = 'ccw', tool = tool, sleep_measure = sleep_measure, beam_num = beam_num)
-		self.move_to_home(axis = 'y', cmd = True)
-		time.sleep(self.sleep_long)
-		self.on_ptp(axis = 0, len = self.last_x)
-		self.measure(x = x, y = y, length = length, axis = 'x', strk = strk, direction = 'ccw', tool = tool, sleep_measure = sleep_measure, beam_num = beam_num)
-		self.on_ptp(axis = 0, len = - strk)
-		self.measure(x = x, y = y, length = length, axis = 'x', strk = - strk, direction = 'cw', tool = tool, sleep_measure = sleep_measure, beam_num = beam_num)
-		self.finalize()
-		return
-		
-	def slide_x_go_y_back(self, x = 90, y = 30, length = 70, strk = 1 ,speed = 1000, tool = 'nothing', sleep_measure = 5, dir = '/home/amigos/beam_pattern/data/2018_10_20_script_test', beam_num = 'nothing'):
-		self.initialize(x = x, y = y, length = length, strk = strk ,speed = speed, dir = dir)
-		self.on_ptp(axis = 0, len = self.last_x)
-		self.measure(x = x, y = y, length = length, axis = 'x', strk = strk, direction = 'ccw', tool = tool, sleep_measure = sleep_measure, beam_num = beam_num)
-		self.move_to_home(axis = 'x', cmd = True)
-		time.sleep(self.sleep_long)
-		self.on_ptp(axis = 1, len = -y)
-		self.measure(x = x, y = y, length = length, axis = 'y', strk = - strk, direction = 'cw', tool = tool, sleep_measure = sleep_measure, beam_num = beam_num)
-		self.finalize()
-		return
-		
-	def slide_y_back_x_go(self, x = 90, y = 30, length = 70, strk = 1 ,speed = 1000, tool = 'nothing', sleep_measure = 5, dir = '/home/amigos/beam_pattern/data/2018_10_20_script_test', beam_num = 'nothing'):
-		self.initialize(x = x, y = y, length = length, strk = strk ,speed = speed, dir = dir)
-		self.on_ptp(axis = 1, len = -y)
-		self.measure(x = x, y = y, length = length, axis = 'y', strk = - strk, direction = 'cw', tool = tool, sleep_measure = sleep_measure, beam_num = beam_num)
-		self.move_to_home(axis = 'y', cmd = True)
-		time.sleep(self.sleep_long)
-		self.on_ptp(axis = 0, len = self.last_x)
-		self.measure(x = x, y = y, length = length, axis = 'x', strk = strk, direction = 'ccw', tool = tool, sleep_measure = sleep_measure, beam_num = beam_num)
-		self.finalize()
-		return
-
-    def commander(self):
-        cmd_list = ["x_go", "x_back", "y_go", "y_back", "x_lap", "y_lap", "xy_lap", "yx_lap", "x_go_y_back", "y_back_x_go"]
-        func_list = [self.slide_x_go, self.slide_x_back, self.slide_y_go, self.slide_y_back,
-                    self.slide_x_lap, self.slide_y_lap, self.slide_xy_lap,
-                    self.slide_yx_lap, self.slide_x_go_y_back, self.slide_y_back_x_go]
-        while not rospy.is_shutdonw():
-            self.cmd = input("COMMAND: ")
-            if self.cmd in cmd_list:
-                cmd_index = cmd_list.index(self.cmd)
-                func_list[cmd_index]()
-            else:
-                pass
-            
-            continue
-
-        return
-
-
-if __name__=="__main__":
-    rospy.init_node(name)
-    slider = slider()
-    
-    th = threading.Thread(
-            target = slider.commander,
-            daemon = True,
-            )
-    th.start()
-    
-    rospy.spin()
