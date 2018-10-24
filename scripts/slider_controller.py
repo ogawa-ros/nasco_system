@@ -21,9 +21,9 @@ class slider(object):
     sleep_long = 1
     sleep_short = 0.5
 
-    def __init__(self):
+    def __init__(self, rsw_id):
         rospy.init_node(name)
-        self.rsw_id = input("rsw_id(0 or 1): ")
+        self.rsw_id = rsw_id
         
         self.axis = ['x', 'y', 'z']
         self.pub_position = [rospy.Publisher('/cpz7415v_rsw{0}_{1}_position_cmd'.format(self.rsw_id, i), Int64, queue_size=1) for i in self.axis]
