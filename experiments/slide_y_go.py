@@ -10,9 +10,10 @@ import slider_controller
 ctrl = slider_controller.slider(rsw_id = "0")
 
 # set parameter
-x = 90
-y = 30
-length = 70
+x_start = 90
+x_last = 160
+y_start = 100
+y_last = 30
 strk = 1
 speed = 1000
 tool = 'nothing'
@@ -22,9 +23,9 @@ beam_num = 'nothing'
 
 
 # command
-ctrl.initialize(x, y, length, strk, speed, dir)
-ctrl.on_ptp(axis = 1, len = 190 - last_y)# need change
-ctrl.measure(x = x, y = y, length = length, axis = 'y', strk = strk, direction = 'ccw', tool = tool, sleep_measure = sleep_measure, beam_num = beam_num)
+ctrl.initialize(x_start, y_start, speed, dir)
+ctrl.measure(x_start = x_start, x_last = xlast, y_start = y_start, y_last = y_last,
+            axis = 'y', strk = strk, direction = 'ccw', tool = tool, sleep_measure = sleep_measure, beam_num = beam_num)
 ctrl.finalize()
 
 
