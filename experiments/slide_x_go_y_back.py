@@ -32,3 +32,12 @@ ctrl.measure(x = x, y = y, length = length, axis = 'y', strk = - strk, direction
 ctrl.finalize()
 
 
+# set parameter
+x_start = 80
+x_last = 170
+strk = 1
+speed = 1000
+tool = 'nothing'
+sleep_measure = 1
+dir = '/home/amigos/beam_pattern/data/2018_10_24_script_test'
+beam_num = 'nothing'

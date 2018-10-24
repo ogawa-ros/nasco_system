@@ -19,7 +19,7 @@ class slider(object):
     p = [0, 0, 0]
 
     sleep_long = 1
-    sleep_short = 0.5
+    sleep_short = 0.3
 
     def __init__(self, rsw_id):
         rospy.init_node(name)
@@ -32,6 +32,10 @@ class slider(object):
         self.sub_position = [rospy.Subscriber('/cpz7415v_rsw{0}_{1}_position'.format(self.rsw_id, i), Int64, self.callback_position, callback_args= i) for i in self.axis]
 
         self.sub_XFFTS = rospy.Subscriber('/XFFTS_PM1', Float64, self.callback_XFFTS)
+        
+        self.sub_PM1 = rospy.Subscriber('/power_1', Float64, self.callback_PM1)
+        self.sub_PM2 = rospy.Subscriber('/power_2', Float64, self.callback_PM2)
+       
         
         sub_th = threading.Thread(
                 target = self.sub_function,
@@ -52,11 +56,7 @@ class slider(object):
         '''
     def set_position(self, axis = 0, position = 0):
         self.pub_position[axis].publish(position)
-        return    
-
-    def set_speed(self, axis = 0, speed = 1000):
-        self.pub_speed[axis].publish(speed)
-        return    
+        return       
 
     def callback_position(self, req, args):
         if args == "x":
@@ -70,16 +70,22 @@ class slider(object):
     def callback_XFFTS(self, req):
         self.PM = req.data
         return
+        
+    def callback_PM1(self, req):
+        self.PM1 = req.data
+        return
+        
+    def callback_PM2(self, req):
+        self.PM2 = req.data
+        return
 
-    def initialize(self, x_start, y_start, speed, dir):
+    def initialize(self, speed, dir):
         axis = [0,1]
-        start_pos = [x_start, y_start]
+        start_pos = [0,0]
         for axis in axis:
-            self.set_speed(axis = axis, speed = speed) #速度設定
-            #time.sleep(self.sleep_long)
-            self.set_position(axis = axis, position = start_pos[i])
-
-
+            self.set_position(axis = axis, position = start_pos)
+            time.sleep(sleep_long)
+            
         self.now = datetime.datetime.now()
         
         os.mkdir('{0}/data_at_{1:%Y%m%d-%H%M%S}_test_1'.format(dir, self.now), exist_ok = True)
@@ -92,24 +98,16 @@ class slider(object):
               '\n\n' + pycolor.ENDC)
         return
 
-    def measure(self, x_start, x_last, y_start, y_last, axis, strk, direction, tool, sleep_measure, beam_num):
+    def measure(self, start, last, axis, strk, direction, tool, sleep_measure, beam_num):
         data = []
         if axis == 'x':
             axis_num = 0
-            x = x_start
-            last = x_last
         elif axis == 'y':
             axis_num =1
-            x = y_start
-            last = y_last
-        elif axis == 'z':
-            axis_num = 2
-            x = z_start
-            last = z_last
         else:
             print('axis error')
 
-        for i in range(x_last - x_start):
+        for i in range((last - start)/strk):
             if tool == 'nothing':
                 time.sleep(sleep_measure)
                 ret_2 = time.time()
@@ -117,16 +115,19 @@ class slider(object):
             elif tool == 'XFFTS':
                 ret_2 = self.PM
                 ret_3 = beam_num
+            elif tool == 'Powermeter'
+            	ret_2 = self.PM1
+            	ret_3 = self.PM2
             else:
                 print('tool error')
             
-            data.append([x, ret_1,ret_2, ret_3])
+            data.append([self.p[axis_num], ret_1,ret_2, ret_3])
             
             numpy.savetxt('{0:%Y%m%d-%H%M%S}_{1}_{2}_{3}.csv'.format(self.now, axis, direction, tool), numpy.array(data), delimiter=',', fmt=['%.0f', '%f', '%f', '%f'])
-            self.set_position(axis = axis_num, position = x + strk)
-            time.sleep(0.1)
+            self.set_position(axis = axis_num, position = x)
+            time.sleep(sleep_short)
 
-            msg = 'Axis : {0}\nStroke : {1} [mm]\nCoorValue : {0} = {2} [mm]\nDestinate : {0} = {3} [mm]\nRemaining : {0} = {4} [mm]'.format(axis, strk, x, last, last - x)
+            msg = 'Axis : {0}\nStroke : {1} [mm]\nCoorValue : {0} = {2} [mm]\nDestinate : {0} = {3} [mm]\nRemaining : {0} = {4} [mm]'.format(axis, strk, self.p[axis_num], last, last - x)
             print('============'+'Knifeedge Measurement'+'============')
             print(msg)
             print('=========================================\n\n')
@@ -136,7 +137,7 @@ class slider(object):
             
     def finalize(self):
         axis = [0,1]
-        final_pos = [0, 190]
+        final_pos = [0, 0]
         for axis in axis:
             self.set_position(axis = axis, position = final_pos[axis])
         
