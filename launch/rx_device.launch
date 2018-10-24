@@ -33,8 +33,10 @@
     <param name="~rate" value="1" />
   </node>
 
-<!--
+
 <include file="$(find nasco_system)/launch/power.launch" />
--->
+
+<!--
 <include file="$(find nasco_system)/launch/power_gpib.launch" />
+-->
 </launch>
