@@ -88,6 +88,7 @@ class logger(object):
             self.filename_loatt = self.saveto + '/loatt.txt'
             self.filename_power = self.saveto + '/power.txt'
             self.filename_xffts = self.saveto + '/xffts.txt'
+        
             print("FILE OPEN")
             f_datetime = open(self.filename_datatime, 'a')
             f_vol = open(self.filename_vol, 'a')
@@ -99,6 +100,7 @@ class logger(object):
             f_loatt = open(self.filename_loatt, 'a')
             f_power = open(self.filename_power, 'a')
             f_xffts = open(self.filename_xffts, 'a')
+
             f_datetime.close()
             f_vol.close()
             f_cur.close()
@@ -159,6 +161,7 @@ class logger(object):
     def log(self):
         while not rospy.is_shutdown():
             if self.flag == 0:
+                time.sleep(0.1)
                 continue
 
             datatime = str(time.time()) + '\n'
@@ -203,14 +206,53 @@ class logger(object):
             f_loatt.close()
             f_power.close()
             f_xffts.close()
+
             
             #time.sleep(4.0) # for gpib
             time.sleep(1e-2) # 10 msec.
+
+    def save_roachspec(self):
+        from subprocess import Popen
+        cmd = 'python /home/amigos/ros/src/roach/scripts/save_spec.py {} {}'
+
+        while not rospy.is_shutdown():
+            if self.flag == 0:
+                time.sleep(0.1)
+                continue
+            else:
+                p_1_1 = Popen(cmd.format(1,1).split(' '))
+                p_1_2 = Popen(cmd.format(1,2).split(' '))
+                p_2_1 = Popen(cmd.format(2,1).split(' '))
+                p_2_2 = Popen(cmd.format(2,2).split(' '))
+                p_3_1 = Popen(cmd.format(3,1).split(' '))
+                p_3_2 = Popen(cmd.format(3,2).split(' '))
+                p_4_1 = Popen(cmd.format(4,1).split(' '))
+                p_4_2 = Popen(cmd.format(4,2).split(' '))
+                p_5_1 = Popen(cmd.format(5,1).split(' '))
+                p_5_2 = Popen(cmd.format(5,2).split(' '))
+                if self.flag == 0:
+                    p_1_1.kill()
+                    p_1_2.kill()
+                    p_2_1.kill()
+                    p_2_2.kill()
+                    p_3_1.kill()
+                    p_3_2.kill()
+                    p_4_1.kill()
+                    p_4_2.kill()
+                    p_5_1.kill()
+                    p_5_2.kill()
+                    print('process killed')
+                    continue
+                else:
+                    time.sleep(0.1)
 
     def start_thread(self):
         th = threading.Thread(target=self.log)
         th.setDaemon(True)
         th.start()
+        th_roach = threading.Thread(target=self.save_roachspec)
+        th_roach.setDaemon(True)
+        th_roach.start()
 
 
 if __name__ == '__main__':
@@ -287,5 +329,4 @@ if __name__ == '__main__':
                                       String,
                                       st.set_flag,
                                       callback_args = 'hot_monitor')
-
     rospy.spin()
