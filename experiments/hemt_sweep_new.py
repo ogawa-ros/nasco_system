@@ -27,7 +27,7 @@ ctrl.output_loatt_current(config = True)
 #cf = 90/36*100 #degree conversion
 #mc_msg = int   
 #mc_msg.data = cf
-#pub_mc = rospy.Pubilsher('7415_rsw0_z_position_cmd', int64 ,queue_size = 1)
+pub_mc = rospy.Publisher('/cpz7415v_rsw0_z_position_cmd', Int64 ,queue_size = 1)
 
 # hemt_param
 
@@ -36,7 +36,6 @@ final_voltage = 2
 step = 0.1
 #set_log                                                                                                                                                                          
 msg = String()
-msg.data = str(time.time())
 f_msg = String()
 f_msg.data = ''
 flag_name = 'hemt_sweep_trigger'
@@ -46,6 +45,7 @@ time.sleep(1.5)
 try:
 
     for i in range(0,3,2):
+        msg.data = str(time.time())
         pub.publish(msg)
         time.sleep(1)
         #HOT
@@ -60,9 +60,10 @@ try:
 
         pub.publish(f_msg)  #HOT finish
 
-        #pub_mc.publish(mc_msg)  #COLD Set
+        pub_mc.publish(250)  #COLD Set
         time.sleep(chopper_wait)
 
+        msg.data = str(time.time())
         pub.publish(msg)
         time.sleep(1)
 
@@ -80,7 +81,7 @@ try:
         pub.publish(f_msg)
         time.sleep(1)
         
-        #pub_mc.publish(mc_msg)
+        pub_mc.publish(0)
         time.sleep(chopper_wait)
 
 except KeyboardInterrupt:

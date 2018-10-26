@@ -15,6 +15,9 @@ from std_msgs.msg import String
 beam_list = ['2l', '2r', '3l', '3r',
              '4l', '4r', '5l', '5r',
              '1lu', '1ll', '1ru', '1rl']
+loatt_list = ['2l', '2r', '3l', '3r',
+             '4l', '4r', '5l', '5r',
+             '1l', '1r']
 beam_num = 12
 
 initial_voltage = -10  # mV
@@ -40,14 +43,22 @@ msg.data = str(time.time())# + lo
 flag_name = 'sisiv_trigger'
 pub = rospy.Publisher(flag_name, String, queue_size=1)
 time.sleep(1.5) # 1.5 sec.
-pub.publish(msg)
-time.sleep(3.0)
 
 try:
-    for vol in range(roop+1):
-        for _ in beam_list:
-            ctrl.output_sis_voltage(sis=_, voltage=vol*step+initial_voltage)
-            time.sleep(1e-2) # 10 msec.
+    for cur in range(1,11):
+        for _ in loatt_list:
+            ctrl.output_loatt_current(beam = _ ,current = cur)
+            time.sleep(1e-3)
+        msg = String()
+        msg.data = str(time.time())
+        pub.publish(msg)
+        for  vol in range(roop+1):
+            for _ in beam_list:
+                ctrl.output_sis_voltage(sis=_, voltage=vol*step+initial_voltage)
+                time.sleep(1e-2) # 10 msec.
+        f_msg = String()
+        f_msg.data = ''
+        pub.publish(f_msg)
 except KeyboardInterrupt:
     for _ in beam_list:
         ctrl.output_sis_voltage(sis=_, voltage=0)

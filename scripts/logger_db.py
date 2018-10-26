@@ -126,7 +126,7 @@ class logger(object):
                 continue
             
             conn = sqlite3.connect(self.saveto + "nasco_system.db")
-            self.c = connection.cursor()
+            self.c = conn.cursor()
             self.make_table()
             
             while self.flag == 1:
