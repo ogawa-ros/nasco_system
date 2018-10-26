@@ -18,7 +18,7 @@ class controller(object):
         self.ps = PS()
 
         # ----
-        self.slider = SLIDER(self.ps)
+        self.slider = SLIDER(self.ps, rsw_id="0")
         self.sis = SIS(self.ps)
         self.hemt = HEMT(self.ps)
         self.loatt = LOATT(self.ps)
@@ -58,11 +58,11 @@ class PS(object):
         sub_th.start()
         pass
 
-    def publish(self, topic_name="", msg):
+    def publish(self, topic_name, msg):
         self.pub[topic_name].publish(msg)
         return
 
-    def subscribe(self, topic_name=""):
+    def subscribe(self, topic_name):
         return self.sub[topic_name][1]
 
     def callback(self, req, topic_name):
@@ -104,7 +104,7 @@ class SIS(object):
         self.ps = ps
         pass
 
-    def output_sis_voltage(self, beam="", voltage=0):
+    def output_sis_voltage(self, beam, voltage):
         if beam not in self.beam_list:
             print("Invalid Beam Name")
             return
@@ -152,7 +152,7 @@ class HEMT(object):
         self.ps = ps
         pass
 
-    def output_hemt_voltage(self, beam="", **kargs):
+    def output_hemt_voltage(self, beam, **kargs):
         if beam not in self.beam_list:
             print("Invalid Beam Name")
             return
@@ -203,7 +203,7 @@ class LOATT(object):
         self.ps = ps
         pass
 
-    def output_loatt_current(self, beam="", current=0):
+    def output_loatt_current(self, beam, current):
         if beam not in self.loatt_list:
             print("Invalid Beam Name")
             return
@@ -241,9 +241,9 @@ class LOATT(object):
 class SLIDER(object):
     axis = {
               #'ex':[initial position, current position, final position, do_number]
-                'x':[0, 0, 0, 1]
-                'y':[0, 0, 0, 2]
-                'z':[0, 0, 0, 3]
+                'x':[0, 0, 0, 1],
+                'y':[0, 0, 0, 2],
+                'z':[0, 0, 0, 3],
             }
 
     def __init__(self, ps, rsw_id):
@@ -282,7 +282,7 @@ class SLIDER(object):
         self.ps.publish(topic_name=name, msg=True)
         return
 
-    def set_position(self, axis, position=0):
+    def set_position(self, axis, position):
         if axis not in self.axis:
             print("Invalid Axis")
             return
