@@ -58,11 +58,11 @@ class PS(object):
         sub_th.start()
         pass
 
-    def publish(self, topic_name = "", msg):
+    def publish(self, topic_name="", msg):
         self.pub[topic_name].publish(msg)
         return
 
-    def subscribe(self, topic_name = ""):
+    def subscribe(self, topic_name=""):
         return self.sub[topic_name][1]
 
     def callback(self, req, topic_name):
@@ -104,7 +104,7 @@ class SIS(object):
         self.ps = ps
         pass
 
-    def output_sis_voltage(self, beam = "", voltage = 0):
+    def output_sis_voltage(self, beam="", voltage=0):
         if beam not in self.beam_list:
             print("Invalid Beam Name")
             return
@@ -118,7 +118,7 @@ class SIS(object):
                     queue_size = 1
                 )
 
-        self.ps.publish(topic_name = name, msg = voltage)
+        self.ps.publish(topic_name=name, msg=voltage)
         return
 
     def output_sis_voltage_config(self): # changed
@@ -133,7 +133,7 @@ class SIS(object):
                     )
             
             voltage = float(self.config_file.get(beam, 'sisv'))
-            self.ps.publish(topic_name = name, msg = voltage)
+            self.ps.publish(topic_name=name, msg=voltage)
             time.sleep(0.001)
         
         return
@@ -152,7 +152,7 @@ class HEMT(object):
         self.ps = ps
         pass
 
-    def output_hemt_voltage(self, beam = "", **kargs):
+    def output_hemt_voltage(self, beam="", **kargs):
         if beam not in self.beam_list:
             print("Invalid Beam Name")
             return
@@ -167,7 +167,7 @@ class HEMT(object):
                         queue_size = 1
                     )
 
-            self.ps.publish(topic_name = name, msg = kargs[key])
+            self.ps.publish(topic_name=name, msg=kargs[key])
 
         return
 
@@ -184,7 +184,7 @@ class HEMT(object):
                         )
             
                 voltage = float(self.config_file.get(beam, str(target)))
-                self.ps.publish(topic_name = name, msg = voltage)
+                self.ps.publish(topic_name=name, msg=voltage)
                 time.sleep(0.001)
         
         return
@@ -203,7 +203,7 @@ class LOATT(object):
         self.ps = ps
         pass
 
-    def output_loatt_current(self, beam = "", current = 0):
+    def output_loatt_current(self, beam="", current=0):
         if beam not in self.loatt_list:
             print("Invalid Beam Name")
             return
@@ -217,7 +217,7 @@ class LOATT(object):
                     queue_size = 1
                 )
 
-        self.ps.publish(topic_name = name, msg = current)
+        self.ps.publish(topic_name=name, msg=current)
         return
 
     def output_loatt_current_config(self): # changed
@@ -232,7 +232,7 @@ class LOATT(object):
                     )
             
             current = float(self.config_file.get(beam, 'lo_att'))
-            self.ps.publish(topic_name = name, msg = current)
+            self.ps.publish(topic_name=name, msg=current)
             time.sleep(0.005)
         
         return
@@ -240,10 +240,10 @@ class LOATT(object):
 
 class SLIDER(object):
     axis = {
-              #'ex':[initial position, current position, final position]
-                'x':[0, 0, 0]
-                'y':[0, 0, 0]
-                'z':[0, 0, 0]
+              #'ex':[initial position, current position, final position, do_number]
+                'x':[0, 0, 0, 1]
+                'y':[0, 0, 0, 2]
+                'z':[0, 0, 0, 3]
             }
 
     def __init__(self, ps, rsw_id):
@@ -259,11 +259,28 @@ class SLIDER(object):
 
     def finalize(self):
         for key in self.axis:
-            self.set_position(axis = key, position = self.axis[key][2])
+            self.set_position(axis=key, position=self.axis[key][2])
             time.sleep(5) # need?
         return
+    
+    def set_origin_position(self, axis, msg=True):
+        if axis not in self.axis:
+            print("Invalid Axis")
+            return
 
-    def set_position(self, axis = "x", position = 0):
+        name = "/cpz7415v_rsw{0}_do{1}_cmd".format(self.rsw_id, self.axis[axis][3])
+        
+        if name not in self.ps.pub:
+            self.ps.set_publisher(
+                    topic_name = name,
+                    data_class = std_msgs.msg.Bool,
+                    queue_size = 1
+                )
+
+        self.ps.publish(topic_name=name, msg=msg)
+        return
+
+    def set_position(self, axis, position=0):
         if axis not in self.axis:
             print("Invalid Axis")
             return
@@ -277,10 +294,10 @@ class SLIDER(object):
                     queue_size = 1
                 )
 
-        self.ps.publish(topic_name = name, msg = position*100)
+        self.ps.publish(topic_name=name, msg=position*100)
         return
 
-    def get_position(self, axis = "x"):
+    def get_position(self, axis):
         if axis not in self.axis:
             print("Invalid Axis")
             return
@@ -293,8 +310,19 @@ class SLIDER(object):
                     data_class = std_msgs.msg.Int64
                 )
         
-        ret = self.ps.subscribe(topic_name = name)
+        ret = self.ps.subscribe(topic_name=name)
         return ret
 
-    def error_reset(self):
+    def error_reset(self, msg=True):
+        name = "/cpz7415v_rsw{0}_do4_cmd".format(self.rsw_id)
+        
+        if name not in self.ps.pub:
+            self.ps.set_publisher(
+                    topic_name = name,
+                    data_class = std_msgs.msg.Bool,
+                    queue_size = 1
+                )
+
+        self.ps.publish(topic_name=name, msg=msg)
+        return
         
