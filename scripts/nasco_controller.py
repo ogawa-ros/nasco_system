@@ -28,17 +28,19 @@ class controller(object):
         print(self.ps.pub.keys())
         return
 
-    def display_subscriber(self):
-        print(self.ps.sub.keys())
-        return
-
     def delete_publisher(self):
         self.ps.pub.clear()
+        return
+
+    """
+    def display_subscriber(self):
+        print(self.ps.sub.keys())
         return
 
     def delete_subscriber(self):
         self.ps.sub.clear()
         return
+    """
 
 
 class PS(object):
@@ -46,28 +48,34 @@ class PS(object):
             #"topic_name":rospy.Publisher(name, data_class, queue_size)
             }
     
+    """
     sub = {
             #"topic_name":[rospy.Subscriber(name, data_class, callback, callback_args), 0]
             }
+    """
 
     def __init__(self):
+        """
         sub_th = threading.Thread(
                 target = self.sub_function,
                 daemon = True
                 )
         sub_th.start()
+        """
         pass
 
     def publish(self, topic_name, msg):
         self.pub[topic_name].publish(msg)
         return
-
+    
+    """
     def subscribe(self, topic_name):
         return self.sub[topic_name][1]
 
     def callback(self, req, topic_name):
         self.sub[topic_name][1] = req.data
         return
+    """
 
     def set_publisher(self, topic_name, data_class, queue_size):
         self.pub[topic_name] = rospy.Publisher(
@@ -77,6 +85,7 @@ class PS(object):
                                         )
         return
 
+    """
     def set_subscriber(self, topic_name, data_class):
         self.sub[topic_name] = [rospy.Subscriber(
                                             name = topic_name,
@@ -89,6 +98,7 @@ class PS(object):
     def sub_function(self):
         rospy.spin()
         return
+    """
 
 
 class SIS(object):
@@ -298,22 +308,6 @@ class SLIDER(object):
 
         self.ps.publish(topic_name=name, msg=position*100)
         return
-
-    def get_position(self, axis):
-        if axis not in self.axis:
-            print("Invalid Axis")
-            return
-
-        name = "/cpz7415v_rsw{0}_{1}_position".format(self.rsw_id, axis)
-
-        if name not in self.ps.sub:
-            self.ps.set_subscriber(
-                    topic_name = name,
-                    data_class = std_msgs.msg.Int64
-                )
-        
-        ret = self.ps.subscribe(topic_name=name)
-        return ret
 
     def error_reset(self):
         # False before True
