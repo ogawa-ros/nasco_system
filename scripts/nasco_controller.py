@@ -263,7 +263,7 @@ class SLIDER(object):
             time.sleep(5) # need?
         return
     
-    def set_origin_position(self, axis, msg=True):
+    def set_origin_position(self, axis):
         if axis not in self.axis:
             print("Invalid Axis")
             return
@@ -277,7 +277,9 @@ class SLIDER(object):
                     queue_size = 1
                 )
 
-        self.ps.publish(topic_name=name, msg=msg)
+        self.ps.publish(topic_name=name, msg=False)
+        time.sleep(1)
+        self.ps.publish(topic_name=name, msg=True)
         return
 
     def set_position(self, axis, position=0):
@@ -313,7 +315,8 @@ class SLIDER(object):
         ret = self.ps.subscribe(topic_name=name)
         return ret
 
-    def error_reset(self, msg=True):
+    def error_reset(self):
+        # False before True
         name = "/cpz7415v_rsw{0}_do4_cmd".format(self.rsw_id)
         
         if name not in self.ps.pub:
@@ -323,6 +326,8 @@ class SLIDER(object):
                     queue_size = 1
                 )
 
-        self.ps.publish(topic_name=name, msg=msg)
+        self.ps.publish(topic_name=name, msg=False)
+        time.sleep(1)
+        self.ps.publish(topic_name=name, msg=True)
         return
         
