@@ -10,14 +10,14 @@ import slider_controller
 ctrl = slider_controller.slider(rsw_id = "0")
 
 # set parameter
-x_start = 80
-x_last = 170
-y_start = - 60
-y_last = - 150
+x_start = 0
+x_last = 190
+y_start = - 0
+y_last = - 190
 strk = 1
 tool = 'nothing'
 sleep_measure = 1
-dir = '/home/amigos/beam_pattern/data/2018_10_26_script_test/test3/'
+dir = '/home/amigos/beam_pattern/data/2018_10_26_script_test/test4/'
 beam_num = 'nothing'
 sleep = 3
 
