@@ -45,7 +45,7 @@ class controller(object):
 
 class PS(object):
     pub = {
-            #"topic_name":rospy.Publisher(name, data_class, queue_size)
+            #"topic_name":rospy.Publisher(name, data_class, queue_size, latch)
             }
     
     """
@@ -81,8 +81,10 @@ class PS(object):
         self.pub[topic_name] = rospy.Publisher(
                                             name = topic_name,
                                             data_class = data_class,
-                                            queue_size = queue_size
+                                            queue_size = queue_size,
+                                            latch = True,
                                         )
+        time.sleep(1)
         return
 
     """
