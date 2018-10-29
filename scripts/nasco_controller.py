@@ -253,7 +253,7 @@ class LOATT(object):
                         queue_size = 1
                     )
             
-            if beam == "1l" or "1r":
+            if beam == "1l" or beam == "1r":
                 current = float(self.config_file.get(beam+'u', 'lo_att'))
             else:
                 current = float(self.config_file.get(beam, 'lo_att'))
