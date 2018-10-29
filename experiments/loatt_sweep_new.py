@@ -29,7 +29,7 @@ chopper_wait = 10
 # Set Param
 #ctrl.set_1st_lo(config=True)
 ctrl.output_hemt_voltage(config = True)
-ctrl.output_sis_voltage(config = True)
+#ctrl.output_sis_voltage(config = True)
 
 # Start Log.
 msg = String()
@@ -55,6 +55,11 @@ try:
 
     pub_mc.publish(250)   # COLD set
     time.sleep(chopper_wait)
+
+    for _ in beam_list:
+            ctrl.output_loatt_current(beam=_, current=0)
+    time.sleep(fixtime)
+
 
     #COLD
     msg = String()

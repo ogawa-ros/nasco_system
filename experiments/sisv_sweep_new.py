@@ -32,7 +32,7 @@ pub_mc = rospy.Publisher('/cpz7415v_rsw0_z_position_cmd', Int64 , queue_size = 1
 chopper_wait = 10.
 
 # Set Param
-ctrl.output_loatt_current(config=True)
+#ctrl.output_loatt_current(config=True)
 #ctrl.set_1st_lo(config=True)
 ctrl.output_hemt_voltage(config=True)
 
@@ -52,15 +52,18 @@ time.sleep(3.0)
 
 try:
     #HOT
-    pub.publish(msg)
+    for _ in beam_list:
+        ctrl.output_sis_voltage(sis=_, voltage=initial_voltage)
+
     time.sleep(1)
+
+    pub.publish(msg)
+    time.sleep(1e-3)
 
     for vol in range(roop+1):
         for _ in beam_list:
             ctrl.output_sis_voltage(sis=_, voltage=vol*step+initial_voltage)
-            time.sleep(interval)
         time.sleep(fixtime)
-    time.sleep(fixtime)
 
     pub.publish(f_msg)
     time.sleep(10)
@@ -68,6 +71,11 @@ try:
     pub_mc.publish(250)
     time.sleep(chopper_wait)
 
+    for _ in beam_list:
+        ctrl.output_sis_voltage(sis=_, voltage=initial_voltage)
+
+    time.sleep(1)
+    
     #COLD
     msg = String()
     msg.data = str(time.time())
@@ -79,7 +87,6 @@ try:
     for vol in range(roop+1):
         for _ in beam_list:
             ctrl.output_sis_voltage(sis=_, voltage=vol*step+initial_voltage)
-            time.sleep(interval)
         time.sleep(fixtime)
     time.sleep(fixtime)
 
@@ -96,6 +103,8 @@ except KeyboardInterrupt:
 for _ in beam_list:
     ctrl.output_sis_voltage(sis=_, voltage=0)
     time.sleep(interval)
+
+pub_mc.publish(250)
 
 # Finish Log.
 

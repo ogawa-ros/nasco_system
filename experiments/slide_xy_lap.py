@@ -17,7 +17,7 @@ y_last = - 190
 strk = 1
 tool = 'nothing'
 sleep_measure = 1
-dir = '/home/amigos/beam_pattern/data/2018_10_26_script_test/test5/'
+dir = '/home/amigos/beam_pattern/data/2018_10_26_script_test/test8/'
 beam_num = 'nothing'
 sleep = 3
 
