@@ -84,7 +84,7 @@ class PS(object):
                                             queue_size = queue_size,
                                             latch = True,
                                         )
-        time.sleep(1)
+        time.sleep(0.01)
         return
 
     """
@@ -159,6 +159,10 @@ class HEMT(object):
 
     config_file = configparser.ConfigParser()
     config_file.read('/home/amigos/ros/src/nasco_system/configuration/tuning.conf')
+    config_file0 = configparser.ConfigParser()
+    config_file0.read('/home/amigos/ros/src/nasco_system/configuration/hemt0.conf')
+    config_file1 = configparser.ConfigParser()
+    config_file1.read('/home/amigos/ros/src/nasco_system/configuration/hemt1.conf')
 
     def __init__(self, ps):
         self.ps = ps
@@ -183,7 +187,7 @@ class HEMT(object):
 
         return
 
-    def output_hemt_voltage_config(self, *args):# changed
+    def output_hemt_voltage_config(self, *args, config=None):# changed
         for beam in self.beam_list:
             for target in args:
                 name = "/hemt_{0}_{1}_cmd".format(beam, target)
@@ -194,8 +198,14 @@ class HEMT(object):
                             data_class = std_msgs.msg.Float64,
                             queue_size = 1
                         )
-            
-                voltage = float(self.config_file.get(beam, str(target)))
+                
+                if config == None:
+                    voltage = float(self.config_file.get(beam, target))
+                elif config == 0:
+                    voltage = float(self.config_file0.get(beam, target))
+                elif config == 1:
+                    voltage = float(self.config_file1.get(beam, target))
+                
                 self.ps.publish(topic_name=name, msg=voltage)
                 time.sleep(0.001)
         
@@ -243,7 +253,11 @@ class LOATT(object):
                         queue_size = 1
                     )
             
-            current = float(self.config_file.get(beam, 'lo_att'))
+            if beam == "1l" or "1r":
+                current = float(self.config_file.get(beam+'u', 'lo_att'))
+            else:
+                current = float(self.config_file.get(beam, 'lo_att'))
+            
             self.ps.publish(topic_name=name, msg=current)
             time.sleep(0.005)
         
