@@ -18,10 +18,10 @@ class controller(object):
         self.ps = PS()
 
         # ----
-        self.slider = SLIDER(self.ps, rsw_id="0")
-        self.sis = SIS(self.ps)
-        self.hemt = HEMT(self.ps)
-        self.loatt = LOATT(self.ps)
+        self.slider = SLIDER(rsw_id="0")
+        self.sis = SIS()
+        self.hemt = HEMT()
+        self.loatt = LOATT()
         pass
 
     def display_publisher(self):
@@ -112,8 +112,8 @@ class SIS(object):
     config_file = configparser.ConfigParser()
     config_file.read('/home/amigos/ros/src/nasco_system/configuration/tuning.conf')
 
-    def __init__(self, ps):
-        self.ps = ps
+    def __init__(self):
+        self.ps = PS()
         pass
 
     def output_sis_voltage(self, beam, voltage):
@@ -164,8 +164,8 @@ class HEMT(object):
     config_file1 = configparser.ConfigParser()
     config_file1.read('/home/amigos/ros/src/nasco_system/configuration/hemt1.conf')
 
-    def __init__(self, ps):
-        self.ps = ps
+    def __init__(self):
+        self.ps = PS()
         pass
 
     def output_hemt_voltage(self, beam, **kargs):
@@ -221,8 +221,8 @@ class LOATT(object):
     config_file = configparser.ConfigParser()
     config_file.read('/home/amigos/ros/src/nasco_system/configuration/tuning.conf')
 
-    def __init__(self, ps):
-        self.ps = ps
+    def __init__(self):
+        self.ps = PS()
         pass
 
     def output_loatt_current(self, beam, current):
@@ -272,8 +272,8 @@ class SLIDER(object):
                 'z':[0, 0, 0, 3],
             }
 
-    def __init__(self, ps, rsw_id):
-        self.ps = ps
+    def __init__(self, rsw_id):
+        self.ps = PS()
         self.rsw_id = rsw_id
         pass
 
@@ -340,4 +340,24 @@ class SLIDER(object):
         time.sleep(1)
         self.ps.publish(topic_name=name, msg=True)
         return
-        
+
+
+class SWITCH(object):
+    
+    def __init__(self):
+        self.ps = PS()
+        pass
+
+    def switch(self, command):
+        name = "switch_level_cmd"
+
+        if name not in self.ps.pub:
+            self.ps.set_publisher(
+                    topic_name = name,
+                    data_class = std_msgs.msg.String,
+                    queue_size = 1
+                )
+
+        self.ps.publish(topic_name=name, msg=command)
+        return
+
