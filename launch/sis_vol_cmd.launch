@@ -55,20 +55,20 @@
            value = "$(find nasco_system)/relay_conf/sis_vol_writer.conf" />
   </node>
 
-  <node name = "sis_vol_5r_cmd"
+  <node name = "sis_vol_5l_cmd"
   	type = "relay.py"
     	pkg = "nasco_system">
     <remap from = "/cpz340816" to = "/cpz340816_rsw1_3_cmd" />
-    <remap from = "/sis_vol" to = "/sis_vol_5r_cmd" />
+    <remap from = "/sis_vol" to = "/sis_vol_5l_cmd" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/sis_vol_writer.conf" />
   </node>
 
-  <node name = "sis_vol_5l_cmd"
+  <node name = "sis_vol_5r_cmd"
   	type = "relay.py"
     	pkg = "nasco_system">
     <remap from = "/cpz340816" to = "/cpz340816_rsw1_4_cmd" />
-    <remap from = "/sis_vol" to = "/sis_vol_5l_cmd" />
+    <remap from = "/sis_vol" to = "/sis_vol_5r_cmd" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/sis_vol_writer.conf" />
   </node>
