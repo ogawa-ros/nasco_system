@@ -267,10 +267,11 @@ class LOATT(object):
 
 class SLIDER(object):
     axis = {
-              #'ex':[initial position, current position, final position, do_number]
-                'x':[0, 0, 0, 1],
-                'y':[0, 0, 0, 2],
-                'z':[0, 0, 0, 3],
+              #'ex':[initial position, current position, final position]
+                'x':[0, 0, 0],
+                'y':[0, 0, 0],
+                'z':[0, 0, 0],
+                'u':[0, 0, 0],
             }
 
     def __init__(self, rsw_id):
@@ -290,12 +291,8 @@ class SLIDER(object):
             time.sleep(5) # need?
         return
     
-    def set_origin_position(self, axis):
-        if axis not in self.axis:
-            print("Invalid Axis")
-            return
-
-        name = "/cpz7415v_rsw{0}_do{1}_cmd".format(self.rsw_id, self.axis[axis][3])
+    def set_origin_position(self):
+        name = "/cpz7415v_rsw{0}_do1_cmd".format(self.rsw_id)
         
         if name not in self.ps.pub:
             self.ps.set_publisher(
@@ -309,12 +306,12 @@ class SLIDER(object):
         self.ps.publish(topic_name=name, msg=True)
         return
 
-    def set_position(self, axis, position):
+    def set_step(self, axis, step):
         if axis not in self.axis:
             print("Invalid Axis")
             return
 
-        name = "/cpz7415v_rsw{0}_{1}_position_cmd".format(self.rsw_id, axis)
+        name = "/cpz7415v_rsw{0}_{1}_step_cmd".format(self.rsw_id, axis)
         
         if name not in self.ps.pub:
             self.ps.set_publisher(
@@ -323,7 +320,7 @@ class SLIDER(object):
                     queue_size = 1
                 )
 
-        self.ps.publish(topic_name=name, msg=position*100)
+        self.ps.publish(topic_name=name, msg=step)
         return
 
     def error_reset(self):
@@ -344,13 +341,18 @@ class SLIDER(object):
 
 
 class SWITCH(object):
+    num_list = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
     
     def __init__(self):
         self.ps = PS()
         pass
 
-    def switch(self, command):
-        name = "switch_level_cmd"
+    def switch(self, num, command):
+        if num not in self.num_list:
+            print("Invalid Switch Number")
+            return
+
+        name = "/switch{}_cmd".format(num)
 
         if name not in self.ps.pub:
             self.ps.set_publisher(
