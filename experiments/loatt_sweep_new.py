@@ -3,7 +3,8 @@
 import sys
 import time
 sys.path.append('/home/amigos/ros/src/nasco_system/scripts')
-import controller as ctrl
+import nasco_controller
+ctrl = nasco_controller.controller()
 import rospy
 from std_msgs.msg import String
 from std_msgs.msg import Int64
@@ -16,20 +17,17 @@ initial_current = 0  # mA
 final_current = 10     # mA
 step = 0.1             # mV
 interval = 5e-2        # 50 msec.
-fixtime = 3           # 3 sec.
+fixtime = 0.5           # 0.5 sec.
 roop = int((final_current - initial_current) / step)
 
 # Set Chopper
+chopper_wait = 5
+ctrl.slider.set_position('x',100)
 
-#cf = (90/36)*100  #degree conversion
-#mc_msg = Int64
-#mc_msg.data = cf
-pub_mc = rospy.Publisher('/cpz7415v_rsw0_z_position_cmd' , Int64 , queue_size = 1)
-chopper_wait = 10
 # Set Param
 #ctrl.set_1st_lo(config=True)
-ctrl.output_hemt_voltage(config = True)
-#ctrl.output_sis_voltage(config = True)
+ctrl.hemt.output_hemt_voltage_config()
+ctrl.sis.output_sis_voltage_config()
 
 # Start Log.
 msg = String()
@@ -41,23 +39,30 @@ pub = rospy.Publisher(flag_name, String, queue_size=1)
 time.sleep(1.5) # 1.5 sec.
 
 try:
+    #HOT_initialize
+    for _ in beam_list:
+            ctrl.loatt.output_loatt_current(beam=_, current=0)
+
+    time.sleep(fixtime)
+
     #HOT
     pub.publish(msg)
     time.sleep(1e-3) # 1 msec
     
     for cur in range(roop+1):
         for _ in beam_list:
-            ctrl.output_loatt_current(beam=_, current=cur*step)
+            ctrl.loatt.output_loatt_current(beam=_, current=cur*step)
         time.sleep(fixtime)
 
     pub.publish(f_msg)   # HOT finsh
     time.sleep(1)
 
-    pub_mc.publish(250)   # COLD set
+    # COLD set
+    ctrl.slider.set_position('x',0)
     time.sleep(chopper_wait)
 
     for _ in beam_list:
-            ctrl.output_loatt_current(beam=_, current=0)
+            ctrl.loatt.output_loatt_current(beam=_, current=0)
     time.sleep(fixtime)
 
 
@@ -70,21 +75,19 @@ try:
     
     for cur in range(roop+1):
         for _ in beam_list:
-            ctrl.output_loatt_current(beam=_, current=cur*step)
+            ctrl.loatt.output_loatt_current(beam=_, current=cur*step)
         time.sleep(fixtime)
 
     pub.publish(f_msg)   #COLD finish
-    time.sleep(1)
-    
-    pub_mc.publish(250) 
+    time.sleep(1) 
     
 except KeyboardInterrupt:
     pub.publish(f_msg)
     for _ in beam_list:
-        ctrl.output_loatt_current(beam=_, current=0)
+        ctrl.loatt.output_loatt_current(beam=_, current=0)
 
 for _ in beam_list:
-    ctrl.output_loatt_current(beam=_, current=0)
+    ctrl.loatt.output_loatt_current(beam=_, current=0)
     time.sleep(interval)
 
 # Finish Log.

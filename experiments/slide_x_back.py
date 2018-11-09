@@ -14,7 +14,7 @@ x_last = 80
 strk = 1
 tool = 'nothing'
 sleep_measure = 1
-dir = '/home/amigos/beam_pattern/data/2018_10_24_script_test'
+dir = '/home/amigos/beam_pattern/data/2018_11_27_script_test'
 beam_num = 'nothing'
 
 # command

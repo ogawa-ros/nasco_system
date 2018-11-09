@@ -30,7 +30,7 @@ msg = String()
 msg.data = str(time.time())
 flag_name = 'sisv_sweep_trigger'
 pub = rospy.Publisher(flag_name, String, queue_size=1)
-time.sleep(3e-2) # 30 msec.
+time.sleep(1e-1) # 100 msec.
 pub.publish(msg)
 
 try:

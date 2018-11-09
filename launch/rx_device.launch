@@ -34,9 +34,10 @@
   </node>
 
 
-<include file="$(find nasco_system)/launch/power.launch" />
-
 <!--
-<include file="$(find nasco_system)/launch/power_gpib.launch" />
+<include file="$(find nasco_system)/launch/power.launch" />
 -->
+
+<include file="$(find nasco_system)/launch/power_gpib.launch" />
+
 </launch>

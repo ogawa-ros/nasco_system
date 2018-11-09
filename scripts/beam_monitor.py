@@ -107,17 +107,17 @@ class beam_monitor(object):
             [exec('globals()["id_{0}"] = {1}'.format(beam, _id)) for beam, _id in zip(beam_list, hemt_id)]            
             [exec('globals()["lo_{0}"] = {1}'.format(beam, lo)) for beam, lo in zip(loatt_list, loatt)]
             print('\u001B[12A', end='')
-            print('Beam-2l   :  {v_2l:.1f}mV  {c_2l:.1f}uA  {vd_2l:.1f}V  {vg1_2l:.1f}V  {vg2_2l:.1f}V  {id_2l:.1f}mA  {lo_2l:.1f}mA  \n'\
-                  'Beam-2r   :  {v_2r:.1f}mV  {c_2r:.1f}uA  {vd_2r:.1f}V  {vg1_2r:.1f}V  {vg2_2r:.1f}V  {id_2r:.1f}mA  {lo_2r:.1f}mA  \n'\
-                  'Beam-3l   :  {v_3l:.1f}mV  {c_3l:.1f}uA  {vd_3l:.1f}V  {vg1_3l:.1f}V  {vg2_3l:.1f}V  {id_3l:.1f}mA  {lo_3l:.1f}mA  \n'\
-                  'Beam-3r   :  {v_3r:.1f}mV  {c_3r:.1f}uA  {vd_3r:.1f}V  {vg1_3r:.1f}V  {vg2_3r:.1f}V  {id_3r:.1f}mA  {lo_3r:.1f}mA  \n'\
-                  'Beam-4l   :  {v_4l:.1f}mV  {c_4l:.1f}uA  {vd_4l:.1f}V  {vg1_4l:.1f}V  {vg2_4l:.1f}V  {id_4l:.1f}mA  {lo_4l:.1f}mA  \n'\
-                  'Beam-4r   :  {v_4r:.1f}mV  {c_4r:.1f}uA  {vd_4r:.1f}V  {vg1_4r:.1f}V  {vg2_4r:.1f}V  {id_4r:.1f}mA  {lo_4r:.1f}mA  \n'\
-                  'Beam-5l   :  {v_5l:.1f}mV  {c_5l:.1f}uA  {vd_5l:.1f}V  {vg1_5l:.1f}V  {vg2_5l:.1f}V  {id_5l:.1f}mA  {lo_5l:.1f}mA  \n'\
-                  'Beam-5r   :  {v_5r:.1f}mV  {c_5r:.1f}uA  {vd_5r:.1f}V  {vg1_5r:.1f}V  {vg2_5r:.1f}V  {id_5r:.1f}mA  {lo_5r:.1f}mA  \n'\
-                  'Beam-1lu  :  {v_1lu:.1f}mV  {c_1lu:.1f}uA  {vd_1lu:.1f}V  {vg1_1lu:.1f}V  {vg2_1lu:.1f}V  {id_1lu:.1f}mA  {lo_1l:.1f}mA  \n'\
-                  'Beam-1ll  :  {v_1ll:.1f}mV  {c_1ll:.1f}uA  {vd_1ll:.1f}V  {vg1_1ll:.1f}V  {vg2_1ll:.1f}V  {id_1ll:.1f}mA  {lo_1l:.1f}mA  \n'\
-                  'Beam-1ru  :  {v_1ru:.1f}mV  {c_1ru:.1f}uA  {vd_1ru:.1f}V  {vg1_1ru:.1f}V  {vg2_1ru:.1f}V  {id_1ru:.1f}mA  {lo_1r:.1f}mA  \n'\
+            print('Beam-2l   :  {v_2l:.1f}mV  {c_2l:.1f}uA  {vd_2l:.1f}V  {vg1_2l:.1f}V  {vg2_2l:.1f}V  {id_2l:.1f}mA  {lo_2l:.1f}mA     \n'\
+                  'Beam-2r   :  {v_2r:.1f}mV  {c_2r:.1f}uA  {vd_2r:.1f}V  {vg1_2r:.1f}V  {vg2_2r:.1f}V  {id_2r:.1f}mA  {lo_2r:.1f}mA     \n'\
+                  'Beam-3l   :  {v_3l:.1f}mV  {c_3l:.1f}uA  {vd_3l:.1f}V  {vg1_3l:.1f}V  {vg2_3l:.1f}V  {id_3l:.1f}mA  {lo_3l:.1f}mA     \n'\
+                  'Beam-3r   :  {v_3r:.1f}mV  {c_3r:.1f}uA  {vd_3r:.1f}V  {vg1_3r:.1f}V  {vg2_3r:.1f}V  {id_3r:.1f}mA  {lo_3r:.1f}mA     \n'\
+                  'Beam-4l   :  {v_4l:.1f}mV  {c_4l:.1f}uA  {vd_4l:.1f}V  {vg1_4l:.1f}V  {vg2_4l:.1f}V  {id_4l:.1f}mA  {lo_4l:.1f}mA     \n'\
+                  'Beam-4r   :  {v_4r:.1f}mV  {c_4r:.1f}uA  {vd_4r:.1f}V  {vg1_4r:.1f}V  {vg2_4r:.1f}V  {id_4r:.1f}mA  {lo_4r:.1f}mA     \n'\
+                  'Beam-5l   :  {v_5l:.1f}mV  {c_5l:.1f}uA  {vd_5l:.1f}V  {vg1_5l:.1f}V  {vg2_5l:.1f}V  {id_5l:.1f}mA  {lo_5l:.1f}mA     \n'\
+                  'Beam-5r   :  {v_5r:.1f}mV  {c_5r:.1f}uA  {vd_5r:.1f}V  {vg1_5r:.1f}V  {vg2_5r:.1f}V  {id_5r:.1f}mA  {lo_5r:.1f}mA     \n'\
+                  'Beam-1lu  :  {v_1lu:.1f}mV  {c_1lu:.1f}uA  {vd_1lu:.1f}V  {vg1_1lu:.1f}V  {vg2_1lu:.1f}V  {id_1lu:.1f}mA  {lo_1l:.1f}mA     \n'\
+                  'Beam-1ll  :  {v_1ll:.1f}mV  {c_1ll:.1f}uA  {vd_1ll:.1f}V  {vg1_1ll:.1f}V  {vg2_1ll:.1f}V  {id_1ll:.1f}mA  {lo_1l:.1f}mA     \n'\
+                  'Beam-1ru  :  {v_1ru:.1f}mV  {c_1ru:.1f}uA  {vd_1ru:.1f}V  {vg1_1ru:.1f}V  {vg2_1ru:.1f}V  {id_1ru:.1f}mA  {lo_1r:.1f}mA     \n'\
                   'Beam-1rl  :  {v_1rl:.1f}mV  {c_1rl:.1f}uA  {vd_1rl:.1f}V  {vg1_1rl:.1f}V  {vg2_1rl:.1f}V  {id_1rl:.1f}mA  {lo_1r:.1f}mA  '
                   .format(**globals()))
             

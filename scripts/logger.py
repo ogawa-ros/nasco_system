@@ -26,8 +26,8 @@ save_dir = os.path.join(data_dir, name)
 
 
 beam_list = ['2l', '2r', '3l', '3r',
-            '4l', '4r', '5l', '5r',
-            '1lu', '1ll', '1ru', '1rl']
+             '4l', '4r', '5l', '5r',
+             '1lu', '1ll', '1ru', '1rl']
 
 loatt_list = beam_list[:-4]
 loatt_list.extend(['1l', '1r'])
@@ -192,7 +192,6 @@ class logger(object):
             f_vg1.write(hemt_vg1)
             f_vg2.write(hemt_vg2)
             f_id.write(hemt_id)
-            f_vd.write(hemt_vd)
             f_loatt.write(loatt)
             f_power.write(power)
             f_xffts.write(xffts)
@@ -209,11 +208,11 @@ class logger(object):
 
             
             #time.sleep(4.0) # for gpib
-            time.sleep(1e-1) # 10 msec.
-    """
+            time.sleep(1e-2) # 10 msec.
+
     def save_roachspec(self):
         from subprocess import Popen
-        cmd = 'python /home/amigos/ros/src/roach/scripts/save_spec.py {} {}'
+        cmd = 'python /home/amigos/ros/src/roach/scripts/save_spec_hemtsweep.py {} {}'
 
         while not rospy.is_shutdown():
             if self.flag == 0:
@@ -245,14 +244,14 @@ class logger(object):
                     continue
                 else:
                     time.sleep(0.1)
-    """
+
     def start_thread(self):
         th = threading.Thread(target=self.log)
         th.setDaemon(True)
         th.start()
-        #th_roach = threading.Thread(target=self.save_roachspec)
-        #th_roach.setDaemon(True)
-        #th_roach.start()
+        th_roach = threading.Thread(target=self.save_roachspec)
+        th_roach.setDaemon(True)
+        th_roach.start()
 
 
 if __name__ == '__main__':

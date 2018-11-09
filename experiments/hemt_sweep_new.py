@@ -8,106 +8,98 @@ from std_msgs.msg import Int64
 from std_msgs.msg import String
 
 
-
 beam_list = ['2l','2r','3l','3r',
              '4l','4r','5l','5r']
 
 interval = 5e-3
-fixtime = 1
-chopper_wait = 10
-
-
-# Set Param
-
-ctrl.sis.output_sis_voltage(config = True)
-ctrl.loatt.output_loatt_current(config = True)
-
-
-# Set chopper
-
-#cf = 90/36*100 #degree conversion
-#mc_msg = int   
-#mc_msg.data = cf
-#pub_mc = rospy.Publisher('/cpz7415v_rsw0_z_position_cmd', Int64 ,queue_size = 1)
+fixtime = 0.5
+trigger_wait = 1.5
+chopper_wait = 3.
+vg1_wait = 1e-1 # 100 msec
+wait = 1
 
 # hemt_param
-
-initial_voltage = -2
-final_voltage = 2
+initial_voltage = -2.
+final_voltage = 2.
 step = 0.1
-#set_log                                                                                                                                                                          
+roop = int((final_voltage - initial_voltage) / step)
+[ctrl.hemt.output_hemt_voltage(beam=beam, vd=1.2) for beam in beam_list] # vd
+
+# set_log
 msg = String()
 f_msg = String()
 f_msg.data = ''
 flag_name = 'hemt_sweep_trigger'
 pub = rospy.Publisher(flag_name, String , queue_size = 1)
-time.sleep(1.5)
+
+# home position
+ctrl.slider.set_position('x', 0)
+print('[INFO] cold position.')
+time.sleep(chopper_wait)
 
 try:
+    #---
     
-    for i in range(0,3,2):
-        for _ in beam_list:
-            ctrl.hemt.output_hemt_voltage(beam =_,vd = 1.2, vg1 = initial_voltage, vg2 = initial_voltage)
-            time.sleep(interval)
-        time.sleep(fixtime)
-
-        msg.data = str(time.time())
-        pub.publish(msg)
-
-        #HOT
-        for vol1 in range(int((initial_voltage + i)/step) ,int((initial_voltage + i+2)/step)):
-            for vol2 in range(-20, 21):
-                for _ in beam_list:
-                    ctrl.output_hemt_voltage(beam = _, vd = 1.2 , vg1 = vol1*step, vg2 = vol2*step)
-                    time.sleep(interval)
-                time.sleep(fixtime)
-
-        time.sleep(fixtime)
-
-        pub.publish(f_msg)  #HOT finish
-
-        pub_mc.publish(250)  #COLD Set
-        time.sleep(chopper_wait)
+    # initialize
+    [ctrl.hemt.output_hemt_voltage(beam=beam, vg1=initial_voltage) for beam in beam_list] # vg1
+    [ctrl.hemt.output_hemt_voltage(beam=beam, vg2=initial_voltage) for beam in beam_list] # vg2
+    time.sleep(wait)
         
-        for _ in beam_list:
-            ctrl.hemt.output_hemt_voltage(beam =_,vd = 1.2, vg1 = initial_voltage, vg2 = initial_voltage)
-            time.sleep(interval)
-        time.sleep(fixtime)
+    # set hot
+    ctrl.slider.set_position('x', 100)
+    print('[INFO] hot position.')    
+    time.sleep(chopper_wait)
 
+    # start logger
+    msg.data = str(time.time())
+    pub.publish(msg)
+    time.sleep(trigger_wait)
+
+    # HOT
+    for vg1 in range(roop+1):
+        [ctrl.hemt.output_hemt_voltage(beam=beam, vg1=vg1*step+initial_voltage) for beam in beam_list]
+        time.sleep(vg1_wait)
+        for vg2 in range(roop+1):
+            [ctrl.hemt.output_hemt_voltage(beam=beam, vg2=vg2*step+initial_voltage) for beam in beam_list]
+            time.sleep(fixtime)
+    time.sleep(wait)
+
+    # end logger
+    pub.publish(f_msg)
+    time.sleep(trigger_wait)
+
+    # ---
+
+    # initialize
+    [ctrl.hemt.output_hemt_voltage(beam=beam, vg1=initial_voltage) for beam in beam_list] # vg1
+    [ctrl.hemt.output_hemt_voltage(beam=beam, vg2=initial_voltage) for beam in beam_list] # vg2
+    time.sleep(wait)
+    
+    # set cold
+    ctrl.slider.set_position('x', 0)
+    print('[INFO] cold position.')    
+    time.sleep(chopper_wait)
+
+    # start logger
+    msg.data = str(time.time())
+    pub.publish(msg)
+    time.sleep(trigger_wait)
+
+    # COLD
+    for vg1 in range(roop+1):
+        [ctrl.hemt.output_hemt_voltage(beam=beam, vg1=vg1*step+initial_voltage) for beam in beam_list]
+        time.sleep(vg1_wait)
+        for vg2 in range(roop+1):
+            [ctrl.hemt.output_hemt_voltage(beam=beam, vg2=vg2*step+initial_voltage) for beam in beam_list]
+            time.sleep(fixtime)
+    
+    # end logger
+    pub.publish(f_msg)
+    time.sleep(trigger_wait)
         
-        msg.data = str(time.time())
-        pub.publish(msg)
-
-        #COLD                                             
-        for vol1 in range(int((initial_voltage + i)/step) ,int((initial_voltage + i+2)/step)):
-            for vol2 in range(-20, 21):
-                for _ in beam_list:
-                    ctrl.output_hemt_voltage(beam = _, vd = 1.2 , vg1 = vol1*step, vg2 = vol2*step)
-
-                    time.sleep(interval)
-                time.sleep(fixtime)
-
-        time.sleep(fixtime)
-
-
-        pub.publish(f_msg)
-        time.sleep(fixtime)
-        
-        pub_mc.publish(0)
-        time.sleep(chopper_wait)
-
 except KeyboardInterrupt:
     pub.publish(f_msg)
-
-    for _ in beam_list:
-        ctrl.output_hemt_voltage(beam = _, vd = 0, vg1 = 0, vg2 = 0)
-        time.sleep(interval)
-
-for _ in beam_list:
-    ctrl.output_hemt_voltage(beam = _, vd = 0, vg1 = 0, vg2 = 0)
-    time.sleep(interval)
-
-
-
-
+    [ctrl.hemt.output_hemt_voltage(beam=beam, vd=0, vg1=0, vg2=0) for beam in beam_list]
     
+# finalize
+[ctrl.hemt.output_hemt_voltage(beam=beam, vd=0, vg1=0, vg2=0) for beam in beam_list]

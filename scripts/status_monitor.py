@@ -57,13 +57,15 @@ class status_monitor(object):
             f = open(saveto, 'a')
             _ctime = time.time()
             ctime = datetime.datetime.fromtimestamp(_ctime)
-            date = [ctime.strftime('%Y-%m-%d %H:%M:%S')]
+            date1 = [ctime.strftime('%Y-%m-%d %H:%M:%S')]
+            date2 = [time.time()]
             l218_temp = [temp for temp in self.l218_temp]
             pre = [self.tpg261_pressure]
             ondo = [self.ondo, self.hum]
-            msg = date + l218_temp + pre + ondo
-            msg1 = '{0} {1:.2f}K {2:.2f}K {3:.2f}K {4:.2f}K {5:.2f}K {6:.2f}K {7:.2f}K {8:.2f}K {9:.1}torr {10:.2f}deg {11:.2f}%'.format(*msg)
-            msg2 = '{0} {1:.2f} {2:.2f} {3:.2f} {4:.2f} {5:.2f} {6:.2f} {7:.2f} {8:.2f} {9:.1} {10:.2f} {11:.2f}\n'.format(*msg)
+            msg1 = date1 + l218_temp + pre + ondo
+            msg2 = date2 + l218_temp + pre + ondo
+            msg1 = '{0} {1:.2f}K {2:.2f}K {3:.2f}K {4:.2f}K {5:.2f}K {6:.2f}K {7:.2f}K {8:.2f}K {9:.1}torr {10:.2f}deg {11:.2f}%'.format(*msg1)
+            msg2 = '{0} {1:.2f} {2:.2f} {3:.2f} {4:.2f} {5:.2f} {6:.2f} {7:.2f} {8:.2f} {9:.1} {10:.2f} {11:.2f}\n'.format(*msg2)
             print(msg1)
             f.write(msg2)
             f.close()

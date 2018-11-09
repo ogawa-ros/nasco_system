@@ -1,7 +1,7 @@
 <launch>
 
 
-<node name = "power_1"
+  <node name = "power_1"
   	type = "relay.py"
     	pkg = "nasco_system">
     <remap from = '/cpz3177' to = '/cpz3177_rsw0_single53' />

@@ -10,14 +10,14 @@ import slider_controller
 ctrl = slider_controller.slider(rsw_id = "0")
 
 # set parameter
-x_start = 0
-x_last = 190
-y_start = - 0
-y_last = - 190
+x_start = 80 #0 #80
+x_last = 170 #190 #170
+y_start = - 60 #0 #- 60
+y_last = -150 #- 190 #-150
 strk = 1
 tool = 'nothing'
-sleep_measure = 1
-dir = '/home/amigos/beam_pattern/data/2018_10_26_script_test/test8/'
+sleep_measure = 2.5
+dir = '/home/amigos/beam_pattern/data/2018_11_09/test8/'
 beam_num = 'nothing'
 sleep = 3
 
@@ -28,13 +28,13 @@ time.sleep(sleep)
 ctrl.measure(start = x_start, last = x_last, axis = 'x', strk = strk, direction = 'ccw', tool = tool, sleep_measure = sleep_measure, beam_num = beam_num)
 ctrl.set_position(axis = 0, position = x_last)
 time.sleep(sleep)
-ctrl.measure(start = x_last, last = x_start, axis = 'x', strk = - strk, direction = 'cw', tool = tool, sleep_measure = sleep_measure, beam_num = beam_num)
+#ctrl.measure(start = x_last, last = x_start, axis = 'x', strk = - strk, direction = 'cw', tool = tool, sleep_measure = sleep_measure, beam_num = beam_num)
 ctrl.set_position(axis = 0, position = 0)
 time.sleep(sleep)
-ctrl.set_position(axis = 1, position = y_start)
-time.sleep(sleep)
-ctrl.measure(start = y_start, last = y_last, axis = 'y', strk = - strk, direction = 'cw', tool = tool, sleep_measure = sleep_measure, beam_num = beam_num)
-time.sleep(sleep)
+#ctrl.set_position(axis = 1, position = y_start)
+#time.sleep(sleep)
+#ctrl.measure(start = y_start, last = y_last, axis = 'y', strk = - strk, direction = 'cw', tool = tool, sleep_measure = sleep_measure, beam_num = beam_num)
+#time.sleep(sleep)
 ctrl.set_position(axis = 1, position = y_last)
 time.sleep(sleep)
 ctrl.measure(start = y_last, last = y_start, axis = 'y', strk = strk, direction = 'ccw', tool = tool, sleep_measure = sleep_measure, beam_num = beam_num)
