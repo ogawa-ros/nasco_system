@@ -208,7 +208,7 @@ class HEMT(object):
                     voltage = float(self.config_file1.get(beam, target))
                 
                 self.ps.publish(topic_name=name, msg=voltage)
-                time.sleep(0.001)
+                time.sleep(0.005)
         
         return
 
@@ -341,18 +341,18 @@ class SLIDER(object):
 
 
 class SWITCH(object):
-    num_list = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
+    ch_list = ["1X", "1Y", "2X", "2Y"]
     
     def __init__(self):
         self.ps = PS()
         pass
 
-    def switch(self, num, command):
-        if num not in self.num_list:
-            print("Invalid Switch Number")
+    def switch(self, ch, command):
+        if ch not in self.ch_list:
+            print("Invalid Channel")
             return
 
-        name = "/switch{}_cmd".format(num)
+        name = "/switch_{}_cmd".format(ch)
 
         if name not in self.ps.pub:
             self.ps.set_publisher(
@@ -361,6 +361,6 @@ class SWITCH(object):
                     queue_size = 1
                 )
 
-        self.ps.publish(topic_name=name, msg=command)
+        self.ps.publish(topic_name=name, msg=str(command))
         return
 

@@ -53,6 +53,10 @@ if __name__=='__main__':
     cfg.read(config_file)
     
     logic = cfg['Logic']['code']
+
+    print('---')
+    print(list(cfg['Publishers'].items()))
+    print('---')
     
     for argname, kwargs_str in cfg['Publishers'].items():
         kwargs = eval(kwargs_str)

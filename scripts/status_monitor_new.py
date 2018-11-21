@@ -6,7 +6,7 @@ import sys
 import time
 import numpy
 import datetime
-import n2lite
+from n2lite import n2lite
 import threading
 import rospy
 from std_msgs.msg import Float64
@@ -23,21 +23,21 @@ save_dir = '/home/amigos/data/sql/status/'
 class status_monitor(object):
 
     def __init__(self):
-        self.timestamp = 0.
+        self.timestamp = 0
         self.l218_temp = [0.] * 8
-        self.tpg261_pressure = 0.
-        self.ondo = 0.
-        self.hum = 0.
-        self.datatime = 0.
+        self.tpg261_pressure = 0
+        self.ondo = 0
+        self.hum = 0
+        self.datatime = 0
         self.interval = int(sys.argv[1])
         pass
     
     def make_table(self):
-        self.n2.make_table('datatime','(time float)')
-        self.n2.make_table('l218_temp','(CH1 float, CH2 float, CH3 float, CH4 float, CH5 float, CH6 float, CH7 float, CH8 float)')
-        self.n2.make_table('tpg261_pressure','(pressure float)')
-        self.n2.make_table('temperture','(ondo float)')
-        self.n2.make_table('humidity','(hum float)')
+        self.n2.make_table("datatime","(time float)")
+        self.n2.make_table("l218_temp","(CH1 float, CH2 float, CH3 float, CH4 float, CH5 float, CH6 float, CH7 float, CH8 float)")
+        self.n2.make_table("tpg261_pressure","(pressure float)")
+        self.n2.make_table("temperture","(ondo float)")
+        self.n2.make_table("humidity","(hum float)")
         return
 
     def callback_temp(self, req, idx):
@@ -63,7 +63,7 @@ class status_monitor(object):
             pass
 
         self.timestamp = time.time()
-        exp_time = datetime.datetime.fromtimestamp(self.timestamp)
+        exp_time = datetime.datetime.fromtimestamp(time.time())
         self.ymd = exp_time.strftime('%Y%m%d_')
         self.hms = exp_time.strftime('%H%M%S')
         self.saveto = os.path.join(save_dir, self.ymd + self.hms)
@@ -75,17 +75,17 @@ class status_monitor(object):
         self.make_table()
         
         while not rospy.is_shutdown():
-                    time.sleep(self.interval)
-                    
-                    self.n2.write('datatime','','({})'.format(time.time()), auto_commit=True)
-                    self.n2.write('l218_temp','',tuple(self.l218_temp), auto_commit=True)
-                    self.n2.write('tpg261_pressure','','({})'.format(self.tpg261_pressure), auto_commit=True)
-                    self.n2.write('temperture','','({})'.format(self.ondo), auto_commit=True)
-                    self.n2.write('humidity','','({})'.format(self.hum), auto_commit=True)
 
-                    time.sleep(1e-2)
+            time.sleep(self.interval)
+            self.n2.write("datatime","","({})".format(time.time()), auto_commit=True)
+            self.n2.write("l218_temp","",tuple(self.l218_temp), auto_commit=True)
+            self.n2.write("tpg261_pressure","","({})".format(self.tpg261_pressure), auto_commit=True)
+            self.n2.write("temperture","","({})".format(self.ondo), auto_commit=True)
+            self.n2.write("humidity","","({})".format(self.hum), auto_commit=True)
 
-                    self.n2.commit_data()
+            time.sleep(1e-2)
+
+            self.n2.commit_data()
 
         else:
             self.n2.close()

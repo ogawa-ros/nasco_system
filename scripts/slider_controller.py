@@ -99,7 +99,7 @@ class slider(object):
         time.sleep(self.sleep_long)
         return
 
-    def measure(self, start, last, axis, strk, direction, tool, sleep_measure, beam_num):
+    def measure(self, start, last, axis, strk, direction, sleep_measure):
         data = []
         x = start
         if axis == 'x':
@@ -111,26 +111,17 @@ class slider(object):
         
         for i in range(int(abs((last - start)/strk + 1))):
             if rospy.is_shutdown(): return
-                
-            if tool == 'nothing':
-                ret_1 = time.time()
-                time.sleep(sleep_measure)
-                ret_2 = time.time()
-                ret_3 = sleep_measure
-            elif tool == 'XFFTS':
-                ret_1 = time.time()
-                ret_2 = self.PM
-                ret_3 = beam_num
-            elif tool == 'Powermeter':
-                ret_1 = time.time()
-                ret_2 = self.PM1
-                ret_3 = self.PM2
-            else:
-                print('tool error')
+            ret_1 = time.time()
+            time.sleep(sleep_measure)
+            ret_3 = self.PM
+            ret_4 = self.PM1
+            ret_5 = self.PM2
+            ret_6 = sleep_measure
+            ret_2 = time.time()
             
-            data.append([x, ret_1,ret_2, ret_3])
+            data.append([x, ret_1,ret_2, ret_3, ret_4, ret_5, ret_6])
             
-            numpy.savetxt('{0:%Y%m%d-%H%M%S}_{1}_{2}_{3}.csv'.format(self.now, axis, direction, tool), numpy.array(data), delimiter=',', fmt=['%.0f', '%f', '%f', '%f'])
+            numpy.savetxt('{0:%Y%m%d-%H%M%S}_{1}_{2}.csv'.format(self.now, axis, direction), numpy.array(data), delimiter=',', fmt=['%.0f', '%f', '%f', '%f', '%f', '%f','%f'])
 
             msg = 'Axis : {0}\nStroke : {1} [mm]\nCoorValue : {0} = {2} [mm]\nDestinate : {0} = {3} [mm]\nRemaining : {0} = {4} [mm]\nx = {5}'.format(axis, strk, self.p[axis_num], last, last - x, x)
             print('============'+'Knifeedge Measurement'+'============')

@@ -7,7 +7,7 @@ import time
 import numpy
 import datetime
 import threading
-import n2lite
+from n2lite import n2lite
 
 import rospy
 import std_msgs.msg

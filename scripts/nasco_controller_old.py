@@ -322,7 +322,7 @@ class SLIDER(object):
                     queue_size = 1
                 )
 
-        self.ps.publish(topic_name=name, msg=position*100)
+        self.ps.publish(topic_name=name, msg=position)
         return
 
     def error_reset(self):
