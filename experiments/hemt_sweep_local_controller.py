@@ -1,8 +1,8 @@
 import sys
 import time
 sys.path.append('/home/amigos/ros/src/nasco_system/scripts')
-import nasco_controller
-ctrl = nasco_controller.controller()
+import controller
+ctrl = controller
 import rospy
 from std_msgs.msg import Int64
 from std_msgs.msg import String
@@ -22,7 +22,7 @@ initial_voltage = -2.0
 final_voltage = 2.0
 step = 0.1
 roop = int((final_voltage - initial_voltage) / step)
-[ctrl.hemt.output_hemt_voltage(beam=beam, vd=1.2) for beam in beam_list] # vd
+[ctrl.output_hemt_voltage(beam=beam, vd=1.2) for beam in beam_list] # vd
 
 # set_log
 msg = String()
@@ -36,12 +36,16 @@ pub = rospy.Publisher(flag_name, String , queue_size = 1)
 #print('[INFO] cold position.')
 #time.sleep(chopper_wait)
 
+# initialize
+# ctrl.output_sis_voltage(config=True)
+# ctrl.output_loatt_current(config=True)
+
 try:
     #---
     
     # initialize
-    [ctrl.hemt.output_hemt_voltage(beam=beam, vg1=initial_voltage) for beam in beam_list] # vg1
-    [ctrl.hemt.output_hemt_voltage(beam=beam, vg2=initial_voltage) for beam in beam_list] # vg2
+    [ctrl.output_hemt_voltage(beam=beam, vg1=initial_voltage) for beam in beam_list] # vg1
+    [ctrl.output_hemt_voltage(beam=beam, vg2=initial_voltage) for beam in beam_list] # vg2
     time.sleep(wait)
         
     # set hot
@@ -56,10 +60,10 @@ try:
 
     # HOT
     for vg1 in range(roop+1):
-        [ctrl.hemt.output_hemt_voltage(beam=beam, vg1=vg1*step+initial_voltage) for beam in beam_list]
+        [ctrl.output_hemt_voltage(beam=beam, vg1=vg1*step+initial_voltage) for beam in beam_list]
         time.sleep(vg1_wait)
         for vg2 in range(roop+1):
-            [ctrl.hemt.output_hemt_voltage(beam=beam, vg2=vg2*step+initial_voltage) for beam in beam_list]
+            [ctrl.output_hemt_voltage(beam=beam, vg2=vg2*step+initial_voltage) for beam in beam_list]
             time.sleep(fixtime)
     time.sleep(wait)
 
@@ -69,7 +73,7 @@ try:
 
 except KeyboardInterrupt:
     pub.publish(f_msg)
-    [ctrl.hemt.output_hemt_voltage(beam=beam, vd=0, vg1=0, vg2=0) for beam in beam_list]
+    [ctrl.output_hemt_voltage(beam=beam, vd=0, vg1=0, vg2=0) for beam in beam_list]
     
 # finalize
-[ctrl.hemt.output_hemt_voltage(beam=beam, vd=0, vg1=0, vg2=0) for beam in beam_list]
+[ctrl.output_hemt_voltage(beam=beam, vd=0, vg1=0, vg2=0) for beam in beam_list]

@@ -3,11 +3,14 @@
 
 import sys
 import time
-# import qlook
-# plotter = qlook.sisiv_plot
+import qlook
+plotter = qlook.sisiv_plot
 import argparse
 sys.path.append('/home/amigos/ros/src/nasco_system/scripts')
 import controller as ctrl
+import glob
+import shutil
+import os
 
 import rospy
 from std_msgs.msg import String
@@ -51,6 +54,7 @@ try:
         for _ in beam_list:
             ctrl.output_sis_voltage(sis=_, voltage=vol*step+initial_voltage)
             time.sleep(1e-2) # 10 msec.
+       
 except KeyboardInterrupt:
     for _ in beam_list:
         ctrl.output_sis_voltage(sis=_, voltage=0)
@@ -71,5 +75,12 @@ pub1.publish(msg)
 # Unset LO.
 if lo == '1': ctrl.unset_1st_lo()
 
+# cp data_tool
+data_path = '/home/amigos/data/sql/sisiv/'
+all_file = glob.glob(data_path + '*')
+path = max(all_file, key=os.path.getctime)
+plot_tool_path = '/home/amigos/ros/src/nasco_system/plot_tools/sisiv_plot.ipynb'
+shutil.copy(plot_tool_path, path + '/sisiv_plot.ipynb')
+
 # qlook
-# plotter.plot()
+plotter.plot()

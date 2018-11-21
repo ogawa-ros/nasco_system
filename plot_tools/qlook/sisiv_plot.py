@@ -13,19 +13,19 @@ sis_list = ['2l', '2r', '3l', '3r',
             '1lu', '1ll', '1ru', '1rl']
 
 def plot():
-    data_path = '/home/amigos/data/sql/'
-    all_file = glob.glob(data_path + '*')
+    data_path = '/home/amigos/data/sql/sisiv/'
+    all_file = glob.glob(data_path + '*' )
     path = max(all_file, key=os.path.getctime)
     file_name = path.split('/')[-1]
 
-    d = n2lite.N2lite(path)
+    d = n2lite.N2lite(path +'/param.db')
     D = d.read_pandas_all()
     
     ncol = 4
     nrow = 3
     nax = ncol * nrow
 
-    figsize = (ncol * 4, nrow * 4)
+    figsize = (ncol * 2, nrow * 2)
     
     fig = matplotlib.pyplot.figure(figsize=figsize)
     ax = [fig.add_subplot(nrow, ncol, i+1) for i in range(nax)]

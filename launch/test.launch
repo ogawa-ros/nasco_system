@@ -1,0 +1,13 @@
+
+<launch>
+  <node name = "test_cmd"
+  	type = "relay.py"
+	pkg = "nasco_system"
+	output = "screen">
+    <remap from = "/cpz3177" to = "/test_sub" />
+    <remap from = "/sis_vol" to = "/test_pub" />
+    <param name = "offset" value = "25.0" />
+    <param name = "config_file"
+    	   value = "$(find nasco_system)/relay_conf/sis_vol_reader_test.conf" />
+  </node>
+</launch>

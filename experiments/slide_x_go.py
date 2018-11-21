@@ -1,4 +1,6 @@
-#!/usr/bin/env python3
+###slide_x_go.py
+
+#!/usr/bin/env python3                                                                                                                                                
 
 import sys
 import time
@@ -8,17 +10,17 @@ import slider_controller
 
 ctrl = slider_controller.slider(rsw_id = "0")
 
-# set parameter
-x_start = 8000
-x_last = 17000
-strk = 100
-tool = 'nothing'
-sleep_measure = 1
-dir = '/home/amigos/beam_pattern/data/2018_10_24_script_test'
-beam_num = 'nothing'
+# set parameter                                                                                                                                                
+x_start = 0 #50 #0 #80                                                                                                                                            
+x_last = 190 #190 #170                                                                                                                                   
+strk = 1
+sleep_measure = 2.5
+dir = '/home/amigos/beam_pattern/data/2018_11_20/test15/'
+sleep = 3
 
-# command
-#ctrl.initialize(dir = dir)
+# command                                                                                                                                                             
+ctrl.initialize(dir = dir)                                                                                                                                           
 ctrl.set_position(axis = 0, position = x_start)
-ctrl.measure(start = x_start, last = x_last, axis = 'x', strk = strk, direction = 'ccw', tool = tool, sleep_measure = sleep_measure, beam_num = beam_num)
+time.sleep(sleep)
+ctrl.measure(start = x_start, last = x_last, axis = 'x', strk = strk, direction = 'ccw', sleep_measure = sleep_measure)
 ctrl.finalize()
