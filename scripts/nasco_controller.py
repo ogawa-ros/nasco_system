@@ -282,28 +282,28 @@ class SLIDER(object):
     def initialize(self):
         for key in self.axis:
             self.set_position(axis = key, position = self.axis[key][0])
-            time.sleep(5) # need?
         return
 
     def finalize(self):
         for key in self.axis:
             self.set_position(axis=key, position=self.axis[key][2])
-            time.sleep(5) # need?
         return
     
-    def set_origin_position(self):
-        name = "/cpz7415v_rsw{0}_do1_cmd".format(self.rsw_id)
+    def output_do(self, command):
+        if not 1<= command <= 8:
+            print("Invalid Command")
+            return
+
+        name = "/cpz7415v_rsw{0}_do_cmd".format(self.rsw_id)
         
         if name not in self.ps.pub:
             self.ps.set_publisher(
                     topic_name = name,
-                    data_class = std_msgs.msg.Bool,
+                    data_class = std_msgs.msg.Int64,
                     queue_size = 1
                 )
 
-        self.ps.publish(topic_name=name, msg=False)
-        time.sleep(1)
-        self.ps.publish(topic_name=name, msg=True)
+        self.ps.publish(topic_name=name, msg=command)
         return
 
     def set_step(self, axis, step):
@@ -321,22 +321,6 @@ class SLIDER(object):
                 )
 
         self.ps.publish(topic_name=name, msg=step)
-        return
-
-    def error_reset(self):
-        # False before True
-        name = "/cpz7415v_rsw{0}_do4_cmd".format(self.rsw_id)
-        
-        if name not in self.ps.pub:
-            self.ps.set_publisher(
-                    topic_name = name,
-                    data_class = std_msgs.msg.Bool,
-                    queue_size = 1
-                )
-
-        self.ps.publish(topic_name=name, msg=False)
-        time.sleep(1)
-        self.ps.publish(topic_name=name, msg=True)
         return
 
 

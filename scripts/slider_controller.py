@@ -18,18 +18,19 @@ class pycolor(object):
 class slider(object):
     p = [0, 0, 0]
 
-    sleep_long = 5
+    sleep_long = 3
     sleep_short = 2
 
     def __init__(self, rsw_id):
         rospy.init_node(name)
+        
         self.rsw_id = rsw_id
         
         self.axis = ['x', 'y', 'z']
-        self.pub_position = [rospy.Publisher('/cpz7415v_rsw{0}_{1}_position_cmd'.format(self.rsw_id, i), Int64, queue_size=1) for i in self.axis]
+        self.pub_step = [rospy.Publisher('/cpz7415v_rsw{0}_{1}_step_cmd'.format(self.rsw_id, i), Int64, queue_size=1) for i in self.axis]
         self.pub_speed = [rospy.Publisher('/cpz7415v_rsw{0}_{1}_speed_cmd'.format(self.rsw_id, i), Int64, queue_size=1) for i in self.axis]
         
-        self.sub_position = [rospy.Subscriber('/cpz7415v_rsw{0}_{1}_position'.format(self.rsw_id, i), Int64, self.callback_position, callback_args= i) for i in self.axis]
+        self.sub_step = [rospy.Subscriber('/cpz7415v_rsw{0}_{1}_step'.format(self.rsw_id, i), Int64, self.callback_step, callback_args= i) for i in self.axis]
 
         self.sub_XFFTS = rospy.Subscriber('/XFFTS_PM1', Float64, self.callback_XFFTS)
         
@@ -54,11 +55,11 @@ class slider(object):
         y : 1
         z : 2
         '''
-    def set_position(self, axis = 0, position = 0):
-        self.pub_position[axis].publish(position*100)
+    def set_step(self, axis = 0, step = 0):
+        self.pub_step[axis].publish(step * 100)
         return       
 
-    def callback_position(self, req, args):
+    def callback_step(self, req, args):
         if args == "x":
             self.p[0] = req.data
         if args == "y":
@@ -84,12 +85,12 @@ class slider(object):
         start_pos = [0,0]
 
         for axis, pos in zip(axis, start_pos):
-            self.set_position(axis = axis, position = pos)
+            self.set_step(axis = axis, step = pos)
             time.sleep(self.sleep_long)
 
         self.now = datetime.datetime.now()
-        os.makedirs('{0}/data_at_{1:%Y%m%d-%H%M%S}_test_1'.format(dir, self.now), exist_ok = True)
-        os.chdir('{0}/data_at_{1:%Y%m%d-%H%M%S}_test_1'.format(dir, self.now))
+        os.makedirs('{0}/data_at_{1:%Y%m%d-%H%M%S}'.format(dir, self.now), exist_ok = True)
+        os.chdir('{0}/data_at_{1:%Y%m%d-%H%M%S}'.format(dir, self.now))
 
         print(pycolor.RED + '\n\n' +
               '=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n'
@@ -113,9 +114,9 @@ class slider(object):
             if rospy.is_shutdown(): return
             ret_1 = time.time()
             time.sleep(sleep_measure)
-            ret_3 = self.PM
-            ret_4 = self.PM1
-            ret_5 = self.PM2
+            ret_5 = self.PM
+            ret_3 = self.PM1
+            ret_4 = self.PM2
             ret_6 = sleep_measure
             ret_2 = time.time()
             
@@ -128,7 +129,7 @@ class slider(object):
             print(msg)
             print('=========================================\n\n')
             x = x + strk
-            self.set_position(axis = axis_num, position = x)
+            self.set_step(axis = axis_num, step = int(x))
             time.sleep(self.sleep_short)
 
         return
@@ -137,8 +138,7 @@ class slider(object):
         axis = [0,1]
         final_pos = [0, 0]
         for axis, pos in zip(axis, final_pos):
-            self.set_position(axis = axis, position = pos)
+            self.set_step(axis = axis, step = pos)
             time.sleep(self.sleep_long)
         print(pycolor.RED + 'Measurement finished!!!' + pycolor.ENDC)
         return
-        

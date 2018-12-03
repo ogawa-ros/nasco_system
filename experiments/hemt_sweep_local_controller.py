@@ -7,6 +7,9 @@ import rospy
 from std_msgs.msg import Int64
 from std_msgs.msg import String
 
+import os
+import shutil
+import glob
 
 beam_list = ['2l','2r','3l','3r',
              '4l','4r','5l','5r']
@@ -77,3 +80,10 @@ except KeyboardInterrupt:
     
 # finalize
 [ctrl.output_hemt_voltage(beam=beam, vd=0, vg1=0, vg2=0) for beam in beam_list]
+
+# cp data_tool
+data_path = '/home/amigos/data/sql/hemt_sweep/'
+all_file = glob.glob(data_path + '*')
+path = max(all_file, key=os.path.getctime)
+plot_tool_path = '/home/amigos/ros/src/nasco_system/plot_tools/hemt_sweep_3beam.ipynb'
+shutil.copy(plot_tool_path, path + '/hemt_plot.ipynb')

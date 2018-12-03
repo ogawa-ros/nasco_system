@@ -5,8 +5,10 @@ import matplotlib
 import matplotlib.pyplot
 from n2lite import n2lite
 
-matplotlib.rcParams['figure.facecolor'] = 'white'
-matplotlib.rcParams['savefig.dpi'] = 200
+
+matplotlib.pyplot.rcParams['figure.facecolor'] = 'white'
+matplotlib.pyplot.rcParams['savefig.dpi'] = 100
+matplotlib.rcParams.update({'font.size': 12})
 
 sis_list = ['2l', '2r', '3l', '3r',
             '4l', '4r', '5l', '5r', 
@@ -25,7 +27,7 @@ def plot():
     nrow = 3
     nax = ncol * nrow
 
-    figsize = (ncol * 2, nrow * 2)
+    figsize = (ncol * 4, nrow * 4)
     
     fig = matplotlib.pyplot.figure(figsize=figsize)
     ax = [fig.add_subplot(nrow, ncol, i+1) for i in range(nax)]
@@ -37,12 +39,14 @@ def plot():
         _ax.set_ylabel('current [uA]')
         _ax.set_title('{}'.format(sis))
         
-    fig.subplots_adjust(wspace=0.6, hspace=0.6)
+    fig.subplots_adjust(wspace=1, hspace=1)
     fig.suptitle(path + '\nNASCO IV MEASUREMENT')
     
     # matplotlib.pyplot.savefig('{0}/{1}.png'.format(path, file_name))
         
     matplotlib.pyplot.show()
+
+    matplotlib.rcParams.update({'font.size': 12})
 
 if __name__ == '__main__':
     plot_sisiv()

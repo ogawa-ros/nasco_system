@@ -7,7 +7,10 @@ import qlook
 plotter = qlook.sisiv_plot
 import argparse
 sys.path.append('/home/amigos/ros/src/nasco_system/scripts')
-import controller as ctrl
+
+import nasco_controller
+ctrl = nasco_controller.controller()
+
 import glob
 import shutil
 import os
@@ -38,6 +41,10 @@ if lo == '1':
     ctrl.set_1st_lo(config=True)
 else: pass
 
+# Initialize
+for beam in beam_list:
+    ctrl.sis.output_sis_voltage(beam, initial_voltage)
+
 # Start Log.
 msg = String()
 msg.data = str(time.time()) # + lo
@@ -52,19 +59,19 @@ time.sleep(3.0)
 try:
     for vol in range(roop+1):
         for _ in beam_list:
-            ctrl.output_sis_voltage(sis=_, voltage=vol*step+initial_voltage)
+            ctrl.sis.output_sis_voltage(beam=_, voltage=vol*step+initial_voltage)
             time.sleep(1e-2) # 10 msec.
        
 except KeyboardInterrupt:
     for _ in beam_list:
-        ctrl.output_sis_voltage(sis=_, voltage=0)
+        ctrl.sis.output_sis_voltage(beam=_, voltage=0)
     msg = String
     msg.data = ''
     pub.publish(msg)
     rospy.signal_shutdown('')
 
 for _ in beam_list:
-    ctrl.output_sis_voltage(sis=_, voltage=0)
+    ctrl.sis.output_sis_voltage(beam=_, voltage=0)
     time.sleep(5e-2) # 50 msec.
 
 # Finish Log.
@@ -83,4 +90,5 @@ plot_tool_path = '/home/amigos/ros/src/nasco_system/plot_tools/sisiv_plot.ipynb'
 shutil.copy(plot_tool_path, path + '/sisiv_plot.ipynb')
 
 # qlook
-plotter.plot()
+
+#plotter.plot()

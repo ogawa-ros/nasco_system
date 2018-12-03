@@ -1,0 +1,135 @@
+<launch>
+
+	<node name = "sis_vol_2l_cmd"
+	            type = "relay.py"
+	            pkg = "nasco_system">
+		<remap from = "/cpz340816" to = "/cpz340816_rsw0_1_cmd" />
+		<remap from = "/sis_vol" to = "/sis_vol_2l_cmd" />
+		<param name = "bias_offset" value = "0.017" />
+		<param name = "bias_scale_factor" value = "0.999" />
+		<param name = "config_file"
+		              value = "$(find nasco_system)/relay_conf/sis_vol_writer_correct.conf" />
+	</node>
+
+	<node name = "sis_vol_2r_cmd"
+	            type = "relay.py"
+	            pkg = "nasco_system">
+		<remap from = "/cpz340816" to = "/cpz340816_rsw0_2_cmd" />
+		<remap from = "/sis_vol" to = "/sis_vol_2r_cmd" />
+		<param name = "bias_offset" value = "0.083" />
+		<param name = "bias_scale_factor" value = "1.000" />
+		<param name = "config_file"
+		              value = "$(find nasco_system)/relay_conf/sis_vol_writer_correct.conf" />
+	</node>
+
+	<node name = "sis_vol_3l_cmd"
+	            type = "relay.py"
+	            pkg = "nasco_system">
+		<remap from = "/cpz340816" to = "/cpz340816_rsw0_3_cmd" />
+		<remap from = "/sis_vol" to = "/sis_vol_3l_cmd" />
+		<param name = "bias_offset" value = "-0.009" />
+		<param name = "bias_scale_factor" value = "1.000" />
+		<param name = "config_file"
+		              value = "$(find nasco_system)/relay_conf/sis_vol_writer_correct.conf" />
+	</node>
+
+	<node name = "sis_vol_3r_cmd"
+	            type = "relay.py"
+	            pkg = "nasco_system">
+		<remap from = "/cpz340816" to = "/cpz340816_rsw0_4_cmd" />
+		<remap from = "/sis_vol" to = "/sis_vol_3r_cmd" />
+		<param name = "bias_offset" value = "0.021" />
+		<param name = "bias_scale_factor" value = "1.001" />
+		<param name = "config_file"
+		              value = "$(find nasco_system)/relay_conf/sis_vol_writer_correct.conf" />
+	</node>
+
+	<node name = "sis_vol_4l_cmd"
+	            type = "relay.py"
+	            pkg = "nasco_system">
+		<remap from = "/cpz340816" to = "/cpz340816_rsw1_1_cmd" />
+		<remap from = "/sis_vol" to = "/sis_vol_4l_cmd" />
+		<param name = "bias_offset" value = "-0.012" />
+		<param name = "bias_scale_factor" value = "1.001" />
+		<param name = "config_file"
+		              value = "$(find nasco_system)/relay_conf/sis_vol_writer_correct.conf" />
+	</node>
+
+	<node name = "sis_vol_4r_cmd"
+	            type = "relay.py"
+	            pkg = "nasco_system">
+		<remap from = "/cpz340816" to = "/cpz340816_rsw1_2_cmd" />
+		<remap from = "/sis_vol" to = "/sis_vol_4r_cmd" />
+		<param name = "bias_offset" value = "0.004" />
+		<param name = "bias_scale_factor" value = "1.000" />
+		<param name = "config_file"
+		              value = "$(find nasco_system)/relay_conf/sis_vol_writer_correct.conf" />
+	</node>
+
+	<node name = "sis_vol_5l_cmd"
+	            type = "relay.py"
+	            pkg = "nasco_system">
+		<remap from = "/cpz340816" to = "/cpz340816_rsw1_3_cmd" />
+		<remap from = "/sis_vol" to = "/sis_vol_5l_cmd" />
+		<param name = "bias_offset" value = "-0.000" />
+		<param name = "bias_scale_factor" value = "1.000" />
+		<param name = "config_file"
+		              value = "$(find nasco_system)/relay_conf/sis_vol_writer_correct.conf" />
+	</node>
+
+	<node name = "sis_vol_5r_cmd"
+	            type = "relay.py"
+	            pkg = "nasco_system">
+		<remap from = "/cpz340816" to = "/cpz340816_rsw1_4_cmd" />
+		<remap from = "/sis_vol" to = "/sis_vol_5r_cmd" />
+		<param name = "bias_offset" value = "0.015" />
+		<param name = "bias_scale_factor" value = "1.000" />
+		<param name = "config_file"
+		              value = "$(find nasco_system)/relay_conf/sis_vol_writer_correct.conf" />
+	</node>
+
+	<node name = "sis_vol_1lu_cmd"
+	            type = "relay.py"
+	            pkg = "nasco_system">
+		<remap from = "/cpz340816" to = "/cpz340816_rsw2_1_cmd" />
+		<remap from = "/sis_vol" to = "/sis_vol_1lu_cmd" />
+		<param name = "bias_offset" value = "-0.018" />
+		<param name = "bias_scale_factor" value = "0.999" />
+		<param name = "config_file"
+		              value = "$(find nasco_system)/relay_conf/sis_vol_writer_correct.conf" />
+	</node>
+
+	<node name = "sis_vol_1ll_cmd"
+	            type = "relay.py"
+	            pkg = "nasco_system">
+		<remap from = "/cpz340816" to = "/cpz340816_rsw2_2_cmd" />
+		<remap from = "/sis_vol" to = "/sis_vol_1ll_cmd" />
+		<param name = "bias_offset" value = "0.003" />
+		<param name = "bias_scale_factor" value = "0.999" />
+		<param name = "config_file"
+		              value = "$(find nasco_system)/relay_conf/sis_vol_writer_correct.conf" />
+	</node>
+
+	<node name = "sis_vol_1ru_cmd"
+	            type = "relay.py"
+	            pkg = "nasco_system">
+		<remap from = "/cpz340816" to = "/cpz340816_rsw2_3_cmd" />
+		<remap from = "/sis_vol" to = "/sis_vol_1ru_cmd" />
+		<param name = "bias_offset" value = "-0.010" />
+		<param name = "bias_scale_factor" value = "0.999" />
+		<param name = "config_file"
+		              value = "$(find nasco_system)/relay_conf/sis_vol_writer_correct.conf" />
+	</node>
+
+	<node name = "sis_vol_1rl_cmd"
+	            type = "relay.py"
+	            pkg = "nasco_system">
+		<remap from = "/cpz340816" to = "/cpz340816_rsw2_4_cmd" />
+		<remap from = "/sis_vol" to = "/sis_vol_1rl_cmd" />
+		<param name = "bias_offset" value = "0.001" />
+		<param name = "bias_scale_factor" value = "0.999" />
+		<param name = "config_file"
+		              value = "$(find nasco_system)/relay_conf/sis_vol_writer_correct.conf" />
+	</node>
+
+</launch>

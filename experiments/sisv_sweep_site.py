@@ -21,14 +21,16 @@ beam_list = ['2l', '2r', '3l', '3r',
              '1lu', '1ll', '1ru', '1rl']
 beam_num = 12
 
-initial_voltage = 6  # mV
-final_voltage = 9     # mV
+100G_initial_voltage = 6  # mV
+100G_final_voltage = 9     # mV
+200G_initial_voltage = 3  # mv
+200G_final_voltage = 6     # mv
 
 step = 0.05             # mV
 interval = 5e-2        # 50 msec.
 fixtime = 3           # 0.5 sec.
 wait = 1.5
-roop = int((final_voltage - initial_voltage) / step)
+roop = int((100G_final_voltage - 100G_initial_voltage) / step)
 
 # Set Chopper
 chopper_wait = 5.
@@ -54,8 +56,10 @@ time.sleep(1.5) # 1.5 sec.
 
 try:
     #HOT_initialize
-    for _ in beam_list:
-        ctrl.sis.output_sis_voltage(beam=_, voltage=initial_voltage)
+    for _ in beam_list[:8]:
+        ctrl.sis.output_sis_voltage(beam=_, voltage=100G_initial_voltage)
+    for _ in beam_list[8:]:
+        ctrl.sis.output_sis_voltage(beam=_, voltage=200G_initial_voltage)
 
     time.sleep(wait)
 
@@ -64,8 +68,8 @@ try:
     
     #HOT
     for vol in range(roop+1):
-        for _ in beam_list:
-            ctrl.sis.output_sis_voltage(beam=_, voltage=vol*step+initial_voltage)
+        for _ , ini_vol in zip(beam_list ,ini_vol_list) :
+            ctrl.sis.output_sis_voltage(beam=_, voltage=vol*step+ini_vol)
         time.sleep(fixtime)
 
     pub.publish(f_msg)
@@ -75,10 +79,13 @@ try:
     time.sleep(chopper_wait)
 
     #COLD_initialize
-    for _ in beam_list:
-        ctrl.sis.output_sis_voltage(beam=_, voltage=initial_voltage)
+    for _ in beam_list[:8]:
+        ctrl.sis.output_sis_voltage(beam=_, voltage=100G_initial_voltage)
+    for _ in beam_list[8:]:
+        ctrl.sis.output_sis_voltage(beam=_, voltage=200G_initial_voltage)
 
     time.sleep(wait)
+    
     
     #COLD
     msg_cold = String()
@@ -89,10 +96,9 @@ try:
     time.sleep(1e-3)
 
     for vol in range(roop+1):
-        for _ in beam_list:
-            ctrl.sis.output_sis_voltage(beam=_, voltage=vol*step+initial_voltage)
+        for _ ,ini_vol in zip(beam_list , ini_vol_list)
+            ctrl.sis.output_sis_voltage(beam=_, voltage=vol*step+ini_vol)
         time.sleep(fixtime)
-    time.sleep(fixtime)
 
     pub.publish(f_msg)
     

@@ -3,11 +3,17 @@
 
 import sys
 import time
-# import qlook
-# plotter = qlook.sisiv_plot
+import qlook
+plotter = qlook.sisiv_plot
 import argparse
 sys.path.append('/home/amigos/ros/src/nasco_system/scripts')
-import controller as ctrl
+
+import nasco_controller
+ctrl = nasco_controller.controller()
+
+import glob
+import shutil
+import os
 
 import rospy
 from std_msgs.msg import String
@@ -21,8 +27,7 @@ beam_num = 12
 initial_voltage = -15.  # mV
 final_voltage = 15.     # mV
 step = 0.01              # mV
-interval = 0.01          # sec.
-fixtime = 0             # sec.
+interval = 0.1          # sec.
 roop = int((final_voltage - initial_voltage) / step)
 
 # Set LO.
@@ -35,6 +40,10 @@ if lo == '1':
     lo = '-lo'
     ctrl.set_1st_lo(config=True)
 else: pass
+
+# Initialize
+for beam in beam_list:
+    ctrl.sis.output_sis_voltage(beam, initial_voltage)
 
 # Start Log.
 msg = String()
@@ -50,19 +59,19 @@ time.sleep(3.0)
 try:
     for vol in range(roop+1):
         for _ in beam_list:
-            ctrl.output_sis_voltage(sis=_, voltage=vol*step+initial_voltage)
+            ctrl.sis.output_sis_voltage(beam=_, voltage=vol*step+initial_voltage)
             time.sleep(1e-2) # 10 msec.
-        time.sleep(fixtime)
+       
 except KeyboardInterrupt:
     for _ in beam_list:
-        ctrl.output_sis_voltage(sis=_, voltage=0)
+        ctrl.sis.output_sis_voltage(beam=_, voltage=0)
     msg = String
     msg.data = ''
     pub.publish(msg)
     rospy.signal_shutdown('')
 
 for _ in beam_list:
-    ctrl.output_sis_voltage(sis=_, voltage=0)
+    ctrl.sis.output_sis_voltage(beam=_, voltage=0)
     time.sleep(5e-2) # 50 msec.
 
 # Finish Log.
@@ -73,5 +82,12 @@ pub1.publish(msg)
 # Unset LO.
 if lo == '1': ctrl.unset_1st_lo()
 
+# cp data_tool
+data_path = '/home/amigos/data/sql/sisiv/'
+all_file = glob.glob(data_path + '*')
+path = max(all_file, key=os.path.getctime)
+plot_tool_path = '/home/amigos/ros/src/nasco_system/plot_tools/sisiv_plot.ipynb'
+shutil.copy(plot_tool_path, path + '/sisiv_plot.ipynb')
+
 # qlook
-# plotter.plot()
+plotter.plot()

@@ -3,13 +3,17 @@ import time
 sys.path.append('/home/amigos/ros/src/nasco_system/scripts')
 import nasco_controller
 ctrl = nasco_controller.controller()
+
 import rospy
+import datetime
 import configparser
+
 from std_msgs.msg import Int64
 from std_msgs.msg import String
 
 import os
 import shutil
+import glob
 
 beam_list = ['2l','2r','3l','3r',
              '4l','4r','5l','5r']
@@ -22,16 +26,16 @@ vg1_wait = 1e-1 # 100 msec
 wait = 1
 
 # hemt_initial_param
-config_file = configparser.ConfigParser()
-config_file.read('/home/amigos/ros/src/nasco_system/configuration/')
-ini_vg1 = [float(config_file.get(beam,'vg1')) for beam in beam_list]
-ini_vg2 = [float(config_file.get(beam,'vg2')) for beam in beam_list]
+#config_file = configparser.ConfigParser()
+#config_file.read('/home/amigos/ros/src/nasco_system/configuration/')
+#ini_vg1 = [float(config_file.get(beam,'vg1')) for beam in beam_list]
+#ini_vg2 = [float(config_file.get(beam,'vg2')) for beam in beam_list]
 
 
 # hemt_param
 step = 0.1
-roop_vg1 = int() #
-roop_vg2 = int() #
+#roop_vg1 = int() #
+#roop_vg2 = int() #
 [ctrl.hemt.output_hemt_voltage(beam=beam, vd=1.2) for beam in beam_list] # vd_initialize
 
 # set_log
@@ -42,7 +46,7 @@ flag_name = 'hemt_sweep_trigger'
 pub = rospy.Publisher(flag_name, String , queue_size = 1)
 
 # home position
-ctrl.slider.set_position('x', 0)
+con.slider.set_step('z', 250)
 print('[INFO] cold position.')
 time.sleep(chopper_wait)
 
@@ -53,14 +57,10 @@ ctrl.sis.output_sis_voltage_config()
 try:
     
     # initialize
-    [ctrl.hemt.output_hemt_voltage(beam=beam, vg1=ini) for beam, ini in zip(beam_list, ini_vg1)] # vg1
-    [ctrl.hemt.output_hemt_voltage(beam=beam, vg2=ini) for beam, ini in zip(beam_list, ini_vg2)] # vg2
-    time.sleep(wait)
-        
-    # set hot
-    ctrl.slider.set_position('x', 100)
-    print('[INFO] hot position.')    
-    time.sleep(chopper_wait)
+   # [ctrl.hemt.output_hemt_voltage(beam=beam, vg1=ini) for beam, ini in zip(beam_list, ini_vg1)] # vg1
+    #[ctrl.hemt.output_hemt_voltage(beam=beam, vg2=ini) for beam, ini in zip(beam_list, ini_vg2)] # vg2
+    #time.sleep(wait)
+    
 
     # start logger
     msg_hot.data = str(time.time())
@@ -88,7 +88,7 @@ try:
     time.sleep(wait)
     
     # set cold
-    ctrl.slider.set_position('x', 0)
+    con.slider.set_position('z', 250)
     print('[INFO] cold position.')    
     time.sleep(chopper_wait)
 
@@ -128,17 +128,17 @@ hms = exp_time_cold.strftime('%H%M%S')
 cold_time = os.path.join(ymd +hms)
 
 
-hot_data = '~/sql/hemt_sweep/{}/param.db'.format(hot_time)
-cold_data = '~/sql/hemt_sweep/{}/param.db'.format(cold_time)
+hot_data = '/home/amigos/data/sql/hemt_sweep/{}/param.db'.format(hot_time)
+cold_data = '/home/amigos/data/sql/hemt_sweep/{}/param.db'.format(cold_time)
 
-os.rename(hot_data,'~sql/hemt_sweep/{}/hot_param.db'.format(hot_time))
-os.rename(cold_data,'~sql/hemt_sweep/{}/cold_param.db'.format(cold_time))
+os.rename(hot_data,'/home/amigos/data/sql/hemt_sweep/{}/hot_param.db'.format(hot_time))
+os.rename(cold_data,'/home/amigos/data/sql/hemt_sweep/{}/cold_param.db'.format(cold_time))
 
 # move data
-shutil.move('~sql/hemt_sweep/{}/cold_param.db'.format(cold_time),'~sql/hemt_sweep/{}'.format(hot_time))
+shutil.move('/home/amigos/data/sql/hemt_sweep/{}/cold_param.db'.format(cold_time),'/home/amigos/data/sql/hemt_sweep/{}'.format(hot_time))
 
 # remove cold_directory
-shutl.rmtree('~sql/hemt_sweep/{}'.format(cold_time))
+shutl.rmtree('/home/amigos/data/sql/hemt_sweep/{}'.format(cold_time))
 time.sleep(0.1)
 
 # cp data_tool
