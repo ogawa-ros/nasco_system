@@ -18,7 +18,8 @@ class controller(object):
         self.ps = PS()
 
         # ----
-        self.slider = SLIDER(rsw_id="0")
+        self.slider0 = SLIDER(rsw_id="0")
+        self.slider1 = SLIDER(rsw_id="1")
         self.sis = SIS()
         self.hemt = HEMT()
         self.loatt = LOATT()
@@ -290,7 +291,7 @@ class SLIDER(object):
         return
     
     def output_do(self, command):
-        if not 1<= command <= 8:
+        if not 0<= command <= 8:
             print("Invalid Command")
             return
 

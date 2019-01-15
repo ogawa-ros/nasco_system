@@ -26,6 +26,7 @@ saveto = os.path.join(save_dir + filename)
 
 interval = float(sys.argv[1])
 
+
 beam_list = ['2l', '2r', '3l', '3r',
              '4l', '4r', '5l', '5r',
              '1lu', '1ll', '1ru', '1rl']
