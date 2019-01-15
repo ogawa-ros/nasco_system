@@ -332,8 +332,12 @@ class SWITCH(object):
         pass
 
     def switch(self, ch, command):
+        """
+        command = ON / OFF
+        """
         if ch not in self.ch_list:
             print("Invalid Channel")
+            print("CH_LIST ['1X','1Y','2X','2Y']")
             return
 
         name = "/switch_{}_cmd".format(ch)
@@ -345,6 +349,23 @@ class SWITCH(object):
                     queue_size = 1
                 )
 
-        self.ps.publish(topic_name=name, msg=str(command))
+        self.ps.publish(topic_name=name, msg=str(command).upper())
+        return
+
+    def switch_all(self, command):
+        """
+        command = ON / OFF
+        """
+        for ch in self.ch_list:
+            name = "/switch_{}_cmd".format(ch)
+
+            if name not in self.ps.pub:
+                self.ps.set_publisher(
+                        topic_name = name,
+                        data_class = std_msgs.msg.String,
+                        queue_size = 1
+                    )
+
+            self.ps.publish(topic_name=name, msg=str(command).upper())
         return
 
