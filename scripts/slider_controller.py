@@ -86,8 +86,14 @@ class slider(object):
 
         for axis, pos in zip(axis, start_pos):
             self.set_step(axis = axis, step = pos)
-            time.sleep(self.sleep_long)
-
+            if axis == 'x':
+                axis_num = 0
+            elif axis == 'y':
+                axis_num = 1
+            else:
+                print('axis error')
+            while pos!= self.p[axis_num]:
+                continue
         self.now = datetime.datetime.now()
         os.makedirs('{0}/data_at_{1:%Y%m%d-%H%M%S}'.format(dir, self.now), exist_ok = True)
         os.chdir('{0}/data_at_{1:%Y%m%d-%H%M%S}'.format(dir, self.now))
@@ -97,7 +103,6 @@ class slider(object):
               '   Start : Knifeedge Measurement  \n'
               '=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n' +
               '\n\n' + pycolor.ENDC)
-        time.sleep(self.sleep_long)
         return
 
     def measure(self, start, last, axis, strk, direction, sleep_measure):
@@ -112,25 +117,29 @@ class slider(object):
         
         for i in range(int(abs((last - start)/strk + 1))):
             if rospy.is_shutdown(): return
+            
+            while x!=self.p[axis_num]:
+                continue
+
             ret_1 = time.time()
-            time.sleep(sleep_measure)
+            #time.sleep(sleep_measure):ROACH使用時に入れる
             ret_5 = self.PM
             ret_3 = self.PM1
             ret_4 = self.PM2
-            ret_6 = sleep_measure
+            ret_6 = 0 #sleep_measure
             ret_2 = time.time()
             
             data.append([x, ret_1,ret_2, ret_3, ret_4, ret_5, ret_6])
             
             numpy.savetxt('{0:%Y%m%d-%H%M%S}_{1}_{2}.csv'.format(self.now, axis, direction), numpy.array(data), delimiter=',', fmt=['%.0f', '%f', '%f', '%f', '%f', '%f','%f'])
 
-            msg = 'Axis : {0}\nStroke : {1} [mm]\nCoorValue : {0} = {2} [mm]\nDestinate : {0} = {3} [mm]\nRemaining : {0} = {4} [mm]\nx = {5}'.format(axis, strk, self.p[axis_num], last, last - x, x)
-            print('============'+'Knifeedge Measurement'+'============')
-            print(msg)
-            print('=========================================\n\n')
+            #msg = 'Axis : {0}\nStroke : {1} [mm]\nCoorValue : {0} = {2} [mm]\nDestinate : {0} = {3} [mm]\nRemaining : {0} = {4} [mm]\nx = {5}'.format(axis, strk, self.p[axis_num], last, last - x, x)
+            #print('============'+'Knifeedge Measurement'+'============')
+            #print(msg)
+            #print('=========================================\n\n')
             x = x + strk
             self.set_step(axis = axis_num, step = int(x))
-            time.sleep(self.sleep_short)
+            
 
         return
             
@@ -139,6 +148,13 @@ class slider(object):
         final_pos = [0, 0]
         for axis, pos in zip(axis, final_pos):
             self.set_step(axis = axis, step = pos)
-            time.sleep(self.sleep_long)
+            if axis == 'x':
+                axis_num = 0
+            elif axis == 'y':
+                axis_num = 1
+            else:
+                print('axis error')
+            while pos!= self.p[axis_num]:
+                continue
         print(pycolor.RED + 'Measurement finished!!!' + pycolor.ENDC)
         return
