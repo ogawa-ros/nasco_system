@@ -16,14 +16,14 @@ class pycolor(object):
 
 
 class slider(object):
-    p = [1, 0, 0]
+    p = [1, 1, 0]
 
     PM=0
     PM1=0
     PM2=0
 
-    sleep_long = 3
-    sleep_short = 2
+    #sleep_long = 3
+    #sleep_short = 2
 
     def __init__(self, rsw_id):
         rospy.init_node(name)
