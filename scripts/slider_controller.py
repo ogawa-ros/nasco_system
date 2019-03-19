@@ -16,7 +16,11 @@ class pycolor(object):
 
 
 class slider(object):
-    p = [0, 0, 0]
+    p = [1, 0, 0]
+
+    PM=0
+    PM1=0
+    PM2=0
 
     sleep_long = 3
     sleep_short = 2
@@ -61,11 +65,11 @@ class slider(object):
 
     def callback_step(self, req, args):
         if args == "x":
-            self.p[0] = req.data
+            self.p[0] = req.data/100
         if args == "y":
-            self.p[1] = req.data
+            self.p[1] = req.data/100
         if args == "z":
-            self.p[2] = req.data
+            self.p[2] = req.data/100
         return
 
     def callback_XFFTS(self, req):
@@ -86,13 +90,8 @@ class slider(object):
 
         for axis, pos in zip(axis, start_pos):
             self.set_step(axis = axis, step = pos)
-            if axis == 'x':
-                axis_num = 0
-            elif axis == 'y':
-                axis_num = 1
-            else:
-                print('axis error')
-            while pos!= self.p[axis_num]:
+            while pos!= self.p[axis]:
+                time.sleep(0.01)
                 continue
         self.now = datetime.datetime.now()
         os.makedirs('{0}/data_at_{1:%Y%m%d-%H%M%S}'.format(dir, self.now), exist_ok = True)
@@ -116,9 +115,11 @@ class slider(object):
             print('axis error')
         
         for i in range(int(abs((last - start)/strk + 1))):
+            print(x, self.p)
             if rospy.is_shutdown(): return
             
             while x!=self.p[axis_num]:
+                time.sleep(0.001)
                 continue
 
             ret_1 = time.time()
@@ -139,6 +140,7 @@ class slider(object):
             #print('=========================================\n\n')
             x = x + strk
             self.set_step(axis = axis_num, step = int(x))
+            time.sleep(sleep_measure)
             
 
         return
@@ -148,13 +150,8 @@ class slider(object):
         final_pos = [0, 0]
         for axis, pos in zip(axis, final_pos):
             self.set_step(axis = axis, step = pos)
-            if axis == 'x':
-                axis_num = 0
-            elif axis == 'y':
-                axis_num = 1
-            else:
-                print('axis error')
-            while pos!= self.p[axis_num]:
+            while pos!= self.p[axis]:
+                time.sleep(0.001)
                 continue
         print(pycolor.RED + 'Measurement finished!!!' + pycolor.ENDC)
         return
