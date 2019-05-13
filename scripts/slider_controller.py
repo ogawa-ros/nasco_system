@@ -33,6 +33,7 @@ class slider(object):
         self.axis = ['x', 'y', 'z']
         self.pub_step = [rospy.Publisher('/cpz7415v_rsw{0}_{1}_step_cmd'.format(self.rsw_id, i), Int64, queue_size=1) for i in self.axis]
         self.pub_speed = [rospy.Publisher('/cpz7415v_rsw{0}_{1}_speed_cmd'.format(self.rsw_id, i), Int64, queue_size=1) for i in self.axis]
+        self.pub_do = [rospy.Publisher('/cpz7415v_rsw{0}_do_cmd'.format(self.rsw_id, i), Int64, queue_size=1) for i in self.axis]
         
         self.sub_step = [rospy.Subscriber('/cpz7415v_rsw{0}_{1}_step'.format(self.rsw_id, i), Int64, self.callback_step, callback_args= i) for i in self.axis]
 
@@ -154,4 +155,31 @@ class slider(object):
                 time.sleep(0.001)
                 continue
         print(pycolor.RED + 'Measurement finished!!!' + pycolor.ENDC)
+        return
+
+    def M4(self, mo = 'IN'):
+        '''
+        M4の駆動を行う
+        M4が最も下の位置にある時を'OUT',
+        M4が200 mm上にある時を'IN'とする。
+        '''
+
+        if mo == 'IN':
+            self.set_step(axis = 2, step = 200) #z軸使用を想定
+
+        else:
+            self.set_step(axis = 2, step = 0) #z軸使用を想定
+
+        return
+
+    def M4_initalize(self):
+        '''
+        M4の位置をシリンダーの原点に戻す。
+        M4の電源を入れ直した時、
+        countの値が0の時のみ行ってください。
+        '''
+
+        self.pub_do[2].publish(1)
+        time.sleep(5)
+        self.pub_do[2].publish(0)
         return
