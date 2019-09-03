@@ -12,9 +12,10 @@
       <script src="monitor_hemt_id.js"></script>
       <script src="monitor_loatt.js"></script>
       <script>
+        time();
         function time(){
             var now = new Date();
-            document.getElementById("time").innerHTML = 現在時刻 ( JST ) : now.toLocaleTimeString();
+            document.getElementById("time").innerHTML = "現在時刻 ( JST ) : " +  now.toLocaleTimeString();
         }
         setInterval("time()",1000);
       </script>
