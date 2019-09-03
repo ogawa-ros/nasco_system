@@ -7,8 +7,8 @@
       <script src="https://static.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
       <script>
         function Listerner (name, msg) {
-            this.name = name;
-            this.age = age;
+            this.name = 'sis_vol_2l';
+            this.msg = 'Float64';
             this.ros = new ROSLIB.Ros();
 
             var sub = new ROSLIB.Topic(
@@ -30,7 +30,7 @@
   </head>
 
   <body>
-    console.log(Listerner("sis_vol_2l", "Float64"))
+    Listerner()
     <!--
     <div id="sis_vol_2l_value"><p></p></div>
     -->
