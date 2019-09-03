@@ -7,18 +7,57 @@
       <script src="https://static.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
       <script src="monitor.js"></script>
       <style type="text/css">
-        table {
+        #tblmembers {
+            display: flex;
+            justify-content: space-around;
+        }
+        #tblmembers > div {
+            width: 30%;
+        }
+        table_sis {
             border-collapse: collapse;
             border: solid 2px orange;
             text-align: center;
         }
-        table th {
+        table_sis th {
             border: dashed 1px orange;
             background-color: #fff5e5;
             padding: 10px;
             text-align: center;
         }
-        table td {
+        table_sis td {
+            border: dashed 1px orange;
+            padding: 3px 10px;
+            text-align: center;
+        }
+        table_hemt {
+            border-collapse: collapse;
+            border: solid 2px orange;
+            text-align: center;
+        }
+        table_hemt th {
+            border: dashed 1px orange;
+            background-color: #fff5e5;
+            padding: 10px;
+            text-align: center;
+        }
+        table_hemt td {
+            border: dashed 1px orange;
+            padding: 3px 10px;
+            text-align: center;
+        }
+        table_loatt {
+            border-collapse: collapse;
+            border: solid 2px orange;
+            text-align: center;
+        }
+        table_loatt th {
+            border: dashed 1px orange;
+            background-color: #fff5e5;
+            padding: 10px;
+            text-align: center;
+        }
+        table_loatt td {
             border: dashed 1px orange;
             padding: 3px 10px;
             text-align: center;
@@ -27,24 +66,36 @@
   </head>
 
   <body>
-
-    <table>
-      <tr><th colspan="3">SIS</th></tr>
-      <tr><th>beam</th><th>vol ( mV )</th><th>cur ( uA )</th></tr>
-      <tr><td>2l</td><td><a id='sis_vol_2l'></a></td><td><a id='sis_cur_2l'></a></td></tr>
-      <tr><td>2r</td><td><a id='sis_vol_2r'></a></td><td><a id='sis_cur_2r'></a></td></tr>
-      <tr><td>3l</td><td><a id='sis_vol_3l'></a></td><td><a id='sis_cur_3l'></a></td></tr>
-      <tr><td>3r</td><td><a id='sis_vol_3r'></a></td><td><a id='sis_cur_3r'></a></td></tr>
-      <tr><td>4l</td><td><a id='sis_vol_4l'></a></td><td><a id='sis_cur_4l'></a></td></tr>
-      <tr><td>4r</td><td><a id='sis_vol_4r'></a></td><td><a id='sis_cur_4r'></a></td></tr>
-      <tr><td>5l</td><td><a id='sis_vol_5l'></a></td><td><a id='sis_cur_5l'></a></td></tr>
-      <tr><td>5r</td><td><a id='sis_vol_5r'></a></td><td><a id='sis_cur_5r'></a></td></tr>
-      <tr><td>1rl</td><td><a id='sis_vol_1rl'></a></td><td><a id='sis_cur_1rl'></a></td></tr>
-      <tr><td>1ru</td><td><a id='sis_vol_1ru'></a></td><td><a id='sis_cur_1ru'></a></td></tr>
-      <tr><td>1ll</td><td><a id='sis_vol_1ll'></a></td><td><a id='sis_cur_1ll'></a></td></tr>
-      <tr><td>1lu</td><td><a id='sis_vol_1lu'></a></td><td><a id='sis_cur_1lu'></a></td></tr>
-    </table>
-
+    <div id="tblmembers">
+      <div>
+        <div>
+          <table_sis id="pitcher">
+            <tr><th colspan="3">SIS</th></tr>
+            <tr><th>beam</th><th>vol ( mV )</th><th>cur ( uA )</th></tr>
+            <tr><td>2l</td><td><a id='sis_vol_2l'></a></td><td><a id='sis_cur_2l'></a></td></tr>
+            <tr><td>2r</td><td><a id='sis_vol_2r'></a></td><td><a id='sis_cur_2r'></a></td></tr>
+            <tr><td>3l</td><td><a id='sis_vol_3l'></a></td><td><a id='sis_cur_3l'></a></td></tr>
+            <tr><td>3r</td><td><a id='sis_vol_3r'></a></td><td><a id='sis_cur_3r'></a></td></tr>
+            <tr><td>4l</td><td><a id='sis_vol_4l'></a></td><td><a id='sis_cur_4l'></a></td></tr>
+            <tr><td>4r</td><td><a id='sis_vol_4r'></a></td><td><a id='sis_cur_4r'></a></td></tr>
+            <tr><td>5l</td><td><a id='sis_vol_5l'></a></td><td><a id='sis_cur_5l'></a></td></tr>
+            <tr><td>5r</td><td><a id='sis_vol_5r'></a></td><td><a id='sis_cur_5r'></a></td></tr>
+            <tr><td>1rl</td><td><a id='sis_vol_1rl'></a></td><td><a id='sis_cur_1rl'></a></td></tr>
+            <tr><td>1ru</td><td><a id='sis_vol_1ru'></a></td><td><a id='sis_cur_1ru'></a></td></tr>
+            <tr><td>1ll</td><td><a id='sis_vol_1ll'></a></td><td><a id='sis_cur_1ll'></a></td></tr>
+            <tr><td>1lu</td><td><a id='sis_vol_1lu'></a></td><td><a id='sis_cur_1lu'></a></td></tr>
+          </table_sis>
+        </div>
+        <div>
+          <table_hemt id="infield">
+          </table_hemt>
+        </div>
+        <div>
+          <table_loatt id="outfield">
+          </table_loatt>
+        </div>
+      </div>
+    </div>
   </body>
 
 </html>
