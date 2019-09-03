@@ -125,7 +125,7 @@ sis_vol_1ll.subscribe(function(message) {
 
 sis_vol_1lu.subscribe(function(message) {
     document.getElementById("sis_vol_1lu").innerHTML = message.data;
-});
+})
 
 <!-- sis_vol -->
 
