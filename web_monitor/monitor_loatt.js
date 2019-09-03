@@ -68,43 +68,43 @@ var loatt_1r = new ROSLIB.Topic({
 });
 
 loatt_2l.subscribe(function(message) {
-    document.getElementById("loatt_2l").innerHTML = (message.data).toFixed(3);
+    document.getElementById("loatt_2l").innerHTML = (message.data).toFixed(2);
 });
 
 loatt_2r.subscribe(function(message) {
-    document.getElementById("loatt_2r").innerHTML = (message.data).toFixed(3);
+    document.getElementById("loatt_2r").innerHTML = (message.data).toFixed(2);
 });
 
 loatt_3l.subscribe(function(message) {
-    document.getElementById("loatt_3l").innerHTML = (message.data).toFixed(3);
+    document.getElementById("loatt_3l").innerHTML = (message.data).toFixed(2);
 });
 
 loatt_3r.subscribe(function(message) {
-    document.getElementById("loatt_3r").innerHTML = (message.data).toFixed(3);
+    document.getElementById("loatt_3r").innerHTML = (message.data).toFixed(2);
 });
 
 loatt_4l.subscribe(function(message) {
-    document.getElementById("loatt_4l").innerHTML = (message.data).toFixed(3);
+    document.getElementById("loatt_4l").innerHTML = (message.data).toFixed(2);
 });
 
 loatt_4r.subscribe(function(message) {
-    document.getElementById("loatt_4r").innerHTML = (message.data).toFixed(3);
+    document.getElementById("loatt_4r").innerHTML = (message.data).toFixed(2);
 });
 
 loatt_5l.subscribe(function(message) {
-    document.getElementById("loatt_5l").innerHTML = (message.data).toFixed(3);
+    document.getElementById("loatt_5l").innerHTML = (message.data).toFixed(2);
 });
 
 loatt_5r.subscribe(function(message) {
-    document.getElementById("loatt_5r").innerHTML = (message.data).toFixed(3);
+    document.getElementById("loatt_5r").innerHTML = (message.data).toFixed(2);
 });
 
 loatt_1l.subscribe(function(message) {
-    document.getElementById("loatt_1l").innerHTML = (message.data).toFixed(3);
+    document.getElementById("loatt_1l").innerHTML = (message.data).toFixed(2);
 });
 
 loatt_1r.subscribe(function(message) {
-    document.getElementById("loatt_1r").innerHTML = (message.data).toFixed(3);
+    document.getElementById("loatt_1r").innerHTML = (message.data).toFixed(2);
 });
 
 
