@@ -16,7 +16,7 @@
             var now = new Date();
             document.getElementById("time").innerHTML = 現在時刻 ( JST ) : now.toLocaleTimeString();
         }
-        setInterval('time()',1000);
+        setInterval("time()",1000);
       </script>
       <style type="text/css">
         table.sis {
@@ -73,7 +73,7 @@
             border-collapse: collapse;
             border: solid 2px #c0c0c0;
             text-align: center;
-            height: 470px;
+            /*height: 470px;*/
         }
         table.rx_device th {
             border: dashed 1px #c0c0c0;
@@ -93,7 +93,9 @@
     <h1 align="center">NASCO WEB MONITOR</h1>
     <h2 align="center" id="time"></h2>
 
-    <TABLE BORDER="1">
+    <br>
+
+    <TABLE BORDER="1" align="center">
       <TR><TD>
           <table class="sis">
             <tr><th colspan="3">SIS</th></tr>
