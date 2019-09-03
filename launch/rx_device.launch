@@ -1,7 +1,7 @@
 <launch>
 
   <node pkg="rx_device_driver" name="lakeshore_218" type="l218_temp_monitor.py" required="true" output="screen">
-    <param name="~host" value="192.168.100.108" />
+    <param name="~host" value="172.20.0.155" />
     <param name="~port" value="13" />
     <param name="~rate" value="1" />
     <param name="~onoff" value="[1,1,1,1,1,1,1,1]" />
@@ -13,7 +13,7 @@
     <param name="~rate" value="1" />
     <param name="~topic" value="tpg261_torr" />
   </node>
--->
+
   <node pkg="rx_device_driver" name="e8250d" type="e8250d_signal_generator.py" required="true">
     <param name="~host" value="192.168.100.116" />
     <param name="~port" value="19" />
@@ -32,12 +32,13 @@
     <param name="~host" value="192.168.100.105" />
     <param name="~rate" value="1" />
   </node>
-
+-->
 
 <!--
 <include file="$(find nasco_system)/launch/power.launch" />
 -->
-
+<!--
 <include file="$(find nasco_system)/launch/power_gpib.launch" />
+-->
 
 </launch>

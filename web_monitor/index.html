@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+      <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+      <title>NASCO WEB MONITOR</title>
+      <script src="https://static.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script>
+      <script src="https://static.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
+  </head>
+    <body>
+    <script type="text/javascript">
+if(!Listener){
+    var Listener = {
+        ros : null,
+        name : "",
+        init : function(){
+            this.ros = new ROSLIB.Ros();
+            this.ros.on('error', function(error) {
+                document.getElementById('state').innerHTML = "Error";
+            });
+            this.ros.on('connection', function(error) {
+                document.getElementById('state').innerHTML = "Connect";
+            });
+            this.ros.on('close', function(error) {
+                document.getElementById('state').innerHTML = "Close";
+            });
+            this.ros.connect('ws://' + location.hostname + ':9000');
+
+            var sub = new ROSLIB.Topic({
+                ros : this.ros,
+                name : '/sis_vol_2l',
+                messageType : 'std_msgs/Float64'
+            });
+            sub.subscribe(function(message) {
+                var res = message.data;
+                var el = document.createElement("p");
+                el.innerHTML = res
+                document.getElementById("talk").appendChild(el);
+            });
+        }
+    }
+    Listener.init();
+
+    window.onload = function(){
+    };
+    window.onunload = function(){
+        Listener.ros.close();
+    };
+}
+
+    </script>
+    <p>status： <label id="state">Disconnect</label></p>
+    <div id="talk"><p></p></div>
+
+  </body>
+  
+</html>
