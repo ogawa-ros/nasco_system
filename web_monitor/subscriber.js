@@ -5,21 +5,16 @@ function Listerner (name, msg) {
 
     var sub = new ROSLIB.Topic(
         {
-        ros : this.ros,
-        name : name,
-        messageType : 'std_msgs/' + msg,
+            ros : this.ros,
+            name : this.name,
+            messageType : 'std_msgs/' + this.msg,
         }
     );
 
     sub.subscribe(function(message) {
         var res = message.data;
-        <!--
-        var el = document.createElement(name);
-        el.innerHTML = res
-        document.getElementById(name+'_value').appendChild(el);
-        -->
     }
-                 );
+                 )
 
     return res
 }
