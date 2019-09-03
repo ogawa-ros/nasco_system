@@ -5,13 +5,18 @@
       <title>NASCO_WEB_MONITOR</title>
       <script src="https://static.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script>
       <script src="https://static.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
-      <script src="monitor_sis.js"></script>
-      <script src="monitor_hemt_vd.js"></script>
-      <script src="monitor_hemt_vg1.js"></script>
-      <script src="monitor_hemt_vg2.js"></script>
-      <script src="monitor_hemt_id.js"></script>
-      <script src="monitor_loatt.js"></script>
+      <script src="./scripts/monitor_sis.js"></script>
+      <script src="./scripts/monitor_hemt_vd.js"></script>
+      <script src="./scripts/monitor_hemt_vg1.js"></script>
+      <script src="./scripts/monitor_hemt_vg2.js"></script>
+      <script src="./scripts/monitor_hemt_id.js"></script>
+      <script src="./scripts/monitor_loatt.js"></script>
       <style type="text/css">
+        body {
+            font-size: 10px;
+            background-image: url("./img/bg.png");
+            font-family: "Noto Sans JP", sans-serif;
+        }
         table.sis {
             border-collapse: collapse;
             border: solid 2px orange;
@@ -66,7 +71,7 @@
             border-collapse: collapse;
             border: solid 2px #c0c0c0;
             text-align: center;
-            /*height: 470px;*/
+            height: 159px;
         }
         table.rx_device1 th {
             border: dashed 1px #c0c0c0;
