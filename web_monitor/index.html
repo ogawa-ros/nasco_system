@@ -5,39 +5,12 @@
       <title>NASCO WEB MONITOR</title>
       <script src="https://static.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script>
       <script src="https://static.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
-      <script src="./status_checker.js"></script>
+      <script src="./subscriber.js"></script>
   </head>
   <body>
-    <!--
-    <script type="text/javascript">
-            var sub = new ROSLIB.Topic({
-                ros : this.ros,
-                name : '/sis_vol_2l',
-                messageType : 'std_msgs/Float64'
-            });
-            sub.subscribe(function(message) {
-                var res = message.data;
-                var el = document.createElement("p");
-                el.innerHTML = res
-                document.getElementById("talk").appendChild(el);
-            });
-        }
-    }
-    Listener.init();
+    Listener("sis_vol_2l", "Float64")
+    <div id="sis_vol_2l_value"><p></p></div>
 
-    window.onload = function(){
-    };
-    window.onunload = function(){
-        Listener.ros.close();
-    };
-}
--->
-    </script>
-
-    <p>status： <label id="state">Disconnect</label></p>
-<!--    
-    <div id="talk"><p></p></div>
--->
   </body>
 
 </html>
