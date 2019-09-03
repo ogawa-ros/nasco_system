@@ -106,6 +106,6 @@ loatt_1l.subscribe(function(message) {
 loatt_1r.subscribe(function(message) {
     document.getElementById("loatt_1r").innerHTML = (message.data).toFixed(3);
 });
-});
+
 
 <!-- loatt -->
