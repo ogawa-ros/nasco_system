@@ -7,17 +7,11 @@
       <script src="https://static.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
       <script src="monitor.js"></script>
       <style type="text/css">
-        #tblmembers {
-            display: flex;
-            justify-content: space-around;
-        }
-        #tblmembers > div {
-            width: 30%;
-        }
         table_sis {
             border-collapse: collapse;
             border: solid 2px orange;
             text-align: center;
+            align: left;
         }
         table_sis th {
             border: dashed 1px orange;
@@ -34,6 +28,7 @@
             border-collapse: collapse;
             border: solid 2px orange;
             text-align: center;
+            align: center;
         }
         table_hemt th {
             border: dashed 1px orange;
@@ -50,6 +45,7 @@
             border-collapse: collapse;
             border: solid 2px orange;
             text-align: center;
+            align: right;
         }
         table_loatt th {
             border: dashed 1px orange;
@@ -66,7 +62,6 @@
   </head>
 
   <body>
-    <div id="tblmembers">
       <table_sis id="pitcher">
         <tr><th colspan="3">SIS</th></tr>
         <tr><th>beam</th><th>vol ( mV )</th><th>cur ( uA )</th></tr>
@@ -87,7 +82,6 @@
       </table_hemt>
       <table_loatt id="outfield">
       </table_loatt>
-    </div>
   </body>
 
 </html>
