@@ -5,35 +5,10 @@
       <title>NASCO_WEB_MONITOR</title>
       <script src="https://static.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script>
       <script src="https://static.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
-      <script type="text/javascript">
-        function Listerner (name, msg) {
-            this.name = 'sis_vol_2l';
-            this.msg = 'Float64';
-            this.ros = new ROSLIB.Ros();
-
-            var sub = new ROSLIB.Topic(
-                {
-                    ros : this.ros,
-                    name : this.name,
-                    messageType : 'std_msgs/' + this.msg,
-                }
-            );
-
-            sub.subscribe(function(message) {
-                var ret = message.data;
-            }
-                         )
-            document.getElementById('answer').innerHTML = ret
-        }
-        </script>
   </head>
 
   <body>
-    <div id='answer'></div>
-    <!--
-    <div id="sis_vol_2l_value"><p></p></div>
-    -->
-
+    <p><a id='sis_vol_2l'>no data</a></p>
   </body>
 
 </html>
