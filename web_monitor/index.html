@@ -5,7 +5,7 @@
       <title>NASCO_WEB_MONITOR</title>
       <script src="https://static.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script>
       <script src="https://static.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
-      <script>
+      <script type="text/javascript">
         function Listerner (name, msg) {
             this.name = 'sis_vol_2l';
             this.msg = 'Float64';
@@ -20,17 +20,17 @@
             );
 
             sub.subscribe(function(message) {
-                var res = message.data;
+                var ret = message.data;
             }
                          )
 
-            console.log(Listerner);
+            console.log(ret);
         }
         </script>
   </head>
 
   <body>
-    Listerner()
+    <p>Listerner()</p>
     <!--
     <div id="sis_vol_2l_value"><p></p></div>
     -->
