@@ -25,33 +25,33 @@
         }
         table.hemt {
             border-collapse: collapse;
-            border: solid 2px orange;
+            border: solid 2px #87cefa;
             text-align: center;
         }
         table.hemt th {
-            border: dashed 1px orange;
-            background-color: #fff5e5;
+            border: dashed 1px #87cefa;
+            background-color: #f0f8ff;
             padding: 10px;
             text-align: center;
         }
         table.hemt td {
-            border: dashed 1px orange;
+            border: dashed 1px #87cefa;
             padding: 3px 10px;
             text-align: center;
         }
         table.loatt {
             border-collapse: collapse;
-            border: solid 2px orange;
+            border: solid 2px #ffa07a;
             text-align: center;
         }
         table.loatt th {
-            border: dashed 1px orange;
-            background-color: #fff5e5;
+            border: dashed 1px #ffa07a;
+            background-color: #fff0f5;
             padding: 10px;
             text-align: center;
         }
         table.loatt td {
-            border: dashed 1px orange;
+            border: dashed 1px #ffa07a;
             padding: 3px 10px;
             text-align: center;
         }
@@ -59,24 +59,34 @@
   </head>
 
   <body>
-      <table class='sis'>
-        <tr><th colspan="3">SIS</th></tr>
-        <tr><th>beam</th><th>vol ( mV )</th><th>cur ( uA )</th></tr>
-        <tr><td>2l</td><td><a id='sis_vol_2l'></a></td><td><a id='sis_cur_2l'></a></td></tr>
-        <tr><td>2r</td><td><a id='sis_vol_2r'></a></td><td><a id='sis_cur_2r'></a></td></tr>
-        <tr><td>3l</td><td><a id='sis_vol_3l'></a></td><td><a id='sis_cur_3l'></a></td></tr>
-        <tr><td>3r</td><td><a id='sis_vol_3r'></a></td><td><a id='sis_cur_3r'></a></td></tr>
-        <tr><td>4l</td><td><a id='sis_vol_4l'></a></td><td><a id='sis_cur_4l'></a></td></tr>
-        <tr><td>4r</td><td><a id='sis_vol_4r'></a></td><td><a id='sis_cur_4r'></a></td></tr>
-        <tr><td>5l</td><td><a id='sis_vol_5l'></a></td><td><a id='sis_cur_5l'></a></td></tr>
-        <tr><td>5r</td><td><a id='sis_vol_5r'></a></td><td><a id='sis_cur_5r'></a></td></tr>
-        <tr><td>1rl</td><td><a id='sis_vol_1rl'></a></td><td><a id='sis_cur_1rl'></a></td></tr>
-        <tr><td>1ru</td><td><a id='sis_vol_1ru'></a></td><td><a id='sis_cur_1ru'></a></td></tr>
-        <tr><td>1ll</td><td><a id='sis_vol_1ll'></a></td><td><a id='sis_cur_1ll'></a></td></tr>
-        <tr><td>1lu</td><td><a id='sis_vol_1lu'></a></td><td><a id='sis_cur_1lu'></a></td></tr>
-      </table_sis>
-      <table class='hemt'>
-      </table>
+    <table class='sis'>
+      <tr><th colspan="3">SIS</th></tr>
+      <tr><th>beam</th><th>vol ( mV )</th><th>cur ( uA )</th></tr>
+      <tr><td>2l</td><td><a id='sis_vol_2l'></a></td><td><a id='sis_cur_2l'></a></td></tr>
+      <tr><td>2r</td><td><a id='sis_vol_2r'></a></td><td><a id='sis_cur_2r'></a></td></tr>
+      <tr><td>3l</td><td><a id='sis_vol_3l'></a></td><td><a id='sis_cur_3l'></a></td></tr>
+      <tr><td>3r</td><td><a id='sis_vol_3r'></a></td><td><a id='sis_cur_3r'></a></td></tr>
+      <tr><td>4l</td><td><a id='sis_vol_4l'></a></td><td><a id='sis_cur_4l'></a></td></tr>
+      <tr><td>4r</td><td><a id='sis_vol_4r'></a></td><td><a id='sis_cur_4r'></a></td></tr>
+      <tr><td>5l</td><td><a id='sis_vol_5l'></a></td><td><a id='sis_cur_5l'></a></td></tr>
+      <tr><td>5r</td><td><a id='sis_vol_5r'></a></td><td><a id='sis_cur_5r'></a></td></tr>
+      <tr><td>1rl</td><td><a id='sis_vol_1rl'></a></td><td><a id='sis_cur_1rl'></a></td></tr>
+      <tr><td>1ru</td><td><a id='sis_vol_1ru'></a></td><td><a id='sis_cur_1ru'></a></td></tr>
+      <tr><td>1ll</td><td><a id='sis_vol_1ll'></a></td><td><a id='sis_cur_1ll'></a></td></tr>
+      <tr><td>1lu</td><td><a id='sis_vol_1lu'></a></td><td><a id='sis_cur_1lu'></a></td></tr>
+    </table>
+    <table class='hemt'>
+      <tr><th colspan="3">HEMT</th></tr>
+      <tr><th>beam</th><th>VD ( V )</th><th>VG1 ( V )</th><th>VG2 ( V )</th><th>Id ( I )</th></tr>
+      <tr><td>2l</td><td><a id='hemt_2l_vd'></a></td><td><a id='hemt_2l_vg1'></a></td><td><a id='hemt_2l_vg2'></a></td><td><a id='hemt_2l_id'></a></td></tr>
+      <tr><td>2r</td><td><a id='hemt_2r_vd'></a></td><td><a id='hemt_2r_vg1'></a></td><td><a id='hemt_2r_vg2'></a></td><td><a id='hemt_2r_id'></a></td></tr>
+      <tr><td>3l</td><td><a id='hemt_3l_vd'></a></td><td><a id='hemt_3l_vg1'></a></td><td><a id='hemt_3l_vg2'></a></td><td><a id='hemt_3l_id'></a></td></tr>
+      <tr><td>3r</td><td><a id='hemt_3r_vd'></a></td><td><a id='hemt_3r_vg1'></a></td><td><a id='hemt_3r_vg2'></a></td><td><a id='hemt_3r_id'></a></td></tr>
+      <tr><td>4l</td><td><a id='hemt_4l_vd'></a></td><td><a id='hemt_4l_vg1'></a></td><td><a id='hemt_4l_vg2'></a></td><td><a id='hemt_4l_id'></a></td></tr>
+      <tr><td>4r</td><td><a id='hemt_4r_vd'></a></td><td><a id='hemt_4r_vg1'></a></td><td><a id='hemt_4r_vg2'></a></td><td><a id='hemt_4r_id'></a></td></tr>
+      <tr><td>5l</td><td><a id='hemt_5l_vd'></a></td><td><a id='hemt_5l_vg1'></a></td><td><a id='hemt_5l_vg2'></a></td><td><a id='hemt_5l_id'></a></td></tr>
+      <tr><td>5r</td><td><a id='hemt_5r_vd'></a></td><td><a id='hemt_5r_vg1'></a></td><td><a id='hemt_5r_vg2'></a></td><td><a id='hemt_5r_id'></a></td></tr>
+    </table>
       <table class='loatt'>
       </table>
   </body>
