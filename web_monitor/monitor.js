@@ -37,6 +37,12 @@ var sis_vol_4l = new ROSLIB.Topic({
     messageType : "std_msgs/Float64"
 });
 
+var sis_vol_4r = new ROSLIB.Topic({
+    ros : ros,
+    name : "/sis_vol_4r",
+    messageType : "std_msgs/Float64"
+});
+
 var sis_vol_5l = new ROSLIB.Topic({
     ros : ros,
     name : "/sis_vol_5l",
