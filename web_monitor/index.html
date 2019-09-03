@@ -11,14 +11,6 @@
       <script src="monitor_hemt_vg2.js"></script>
       <script src="monitor_hemt_id.js"></script>
       <script src="monitor_loatt.js"></script>
-      <script>
-        time();
-        function time(){
-            var now = new Date();
-            document.getElementById("time").innerHTML = "現在時刻 ( JST ) : " +  now.toLocaleString();
-        }
-        setInterval("time()",1000);
-      </script>
       <style type="text/css">
         table.sis {
             border-collapse: collapse;
@@ -93,6 +85,14 @@
   <body>
     <h1 align="center">NASCO WEB MONITOR</h1>
     <h2 align="center" id="time"></h2>
+    <script>
+      time();
+      function time(){
+          var now = new Date();
+          document.getElementById("time").innerHTML = "現在時刻 ( JST ) : " +  now.toLocaleString();
+      }
+      setInterval("time()",1000);
+    </script>
 
     <br>
 
