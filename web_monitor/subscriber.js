@@ -13,8 +13,13 @@ function Listerner (name, msg) {
 
     sub.subscribe(function(message) {
         var res = message.data;
+        <!--
         var el = document.createElement(name);
         el.innerHTML = res
         document.getElementById(name+'_value').appendChild(el);
+        -->
     }
                  );
+
+    return res
+}
