@@ -1,4 +1,4 @@
-var ros = new ROSLIB.Ros({url : "ws://" + "192.168.100.236" + ":9000"});
+var ros = new ROSLIB.Ros({url : "ws://" + "172.20.0.233" + ":8000"});
 
 ros.on("connection", function() {console.log("websocket: connected"); });
 ros.on("error", function(error) {console.log("websocket error; ", error); });
