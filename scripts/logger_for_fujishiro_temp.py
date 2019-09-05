@@ -215,9 +215,9 @@ class logger(object):
         th = threading.Thread(target=self.log)
         th.setDaemon(True)
         th.start()
-        th_roach = threading.Thread(target=self.save_roachspec)
-        th_roach.setDaemon(True)
-        th_roach.start()
+        # th_roach = threading.Thread(target=self.save_roachspec)
+        # th_roach.setDaemon(True)
+        # th_roach.start()
 
 
 if __name__ == '__main__':
