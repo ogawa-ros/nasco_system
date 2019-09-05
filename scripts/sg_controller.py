@@ -32,6 +32,7 @@ class sg(object):
             queue_size = 1
             )
 
+
         self.sub_freq = rospy.Subscriber(
             name = '/e8257d_freq',
             data_class = Float64,
@@ -75,6 +76,6 @@ class sg(object):
         return
 
 if __name__ == '__main__':
-    rospy.init(name)
+    rospy.init_node(name)
     sg()
     rospy.spin()
