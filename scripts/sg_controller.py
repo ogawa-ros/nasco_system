@@ -9,44 +9,44 @@ rospy.init_node(name)
 
 class controller(object):
 
-    def __init__(self):
+    def __init__(self, model='e8257d'):
         self.freq = 0.
         self.power = 0.
         self.onoff = 0
 
         self.pub_freq = rospy.Publisher(
-            name = '/e8257d_freq_cmd',
+            name = '/{}_freq_cmd'.format(model),
             data_class = Float64,
             queue_size = 1
             )
 
         self.pub_power = rospy.Publisher(
-            name = '/e8257d_power_cmd',
+            name = '/{}_power_cmd'.format(model),
             data_class = Float64,
             queue_size = 1
             )
 
         self.pub_onoff = rospy.Publisher(
-            name = '/e8257d_onoff_cmd',
+            name = '/{}_onoff_cmd'.format(model),
             data_class = Int32,
             queue_size = 1
             )
 
 
         self.sub_freq = rospy.Subscriber(
-            name = '/e8257d_freq',
+            name = '/{}_freq'.format(model),
             data_class = Float64,
             callback = self.callback_freq
             )
 
         self.sub_power = rospy.Subscriber(
-            name = '/e8257d_power',
+            name = '/{}_power'.format(model),
             data_class = Float64,
             callback = self.callback_power
             )
 
         self.sub_onoff = rospy.Subscriber(
-            name = '/e8257d_onoff',
+            name = '/{}_onoff'.format(model),
             data_class = Int32,
             callback = self.callback_onoff
             )
