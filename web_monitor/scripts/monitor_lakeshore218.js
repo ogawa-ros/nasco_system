@@ -48,7 +48,7 @@ var lakeshore_ch7 = new ROSLIB.Topic({
 
 var lakeshore_ch8 = new ROSLIB.Topic({
     ros : ros,
-    name : "/lakeshore_ch",
+    name : "/lakeshore_ch8",
     messageType : "std_msgs/Float64"
 });
 

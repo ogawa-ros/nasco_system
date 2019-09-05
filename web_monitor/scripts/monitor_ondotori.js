@@ -7,19 +7,19 @@ ros.on("close", function() {console.log("websocket: closed");});
 var tr71w_1_temp_ch1 = new ROSLIB.Topic({
     ros : ros,
     name : "/tr71w_1_temp_ch1",
-    messageType : "std_msgs/Int32"
+    messageType : "std_msgs/Float64"
 });
 
 var tr71w_2_temp_ch1 = new ROSLIB.Topic({
     ros : ros,
     name : "tr71w_2_temp_ch1",
-    messageType : "std_msgs/Int32"
+    messageType : "std_msgs/Float64"
 });
 
 var patt_3l = new ROSLIB.Topic({
     ros : ros,
     name : "tr71w_3_temp_ch1",
-    messageType : "std_msgs/Int32"
+    messageType : "std_msgs/Float64"
 });
 
 
