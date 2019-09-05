@@ -16,7 +16,7 @@ var tr71w_2_temp_ch1 = new ROSLIB.Topic({
     messageType : "std_msgs/Float64"
 });
 
-var patt_3l = new ROSLIB.Topic({
+var tr71w_3_temp_ch1 = new ROSLIB.Topic({
     ros : ros,
     name : "tr71w_3_temp_ch1",
     messageType : "std_msgs/Float64"
