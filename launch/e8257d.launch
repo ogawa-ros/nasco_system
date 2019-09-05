@@ -2,7 +2,7 @@
 
   <node pkg="rx_device_driver" name="e8257d" type="e8257d_signal_generator.py" required="true">
     <param name="~host" value="172.20.0.170" />
-    <param name="~port" value="19" />
+    <param name="~port" value="5025" />
     <param name="~rate" value="1" />
   </node>
 
