@@ -1,6 +1,6 @@
 <launch>
 
-  <include file="$(find nasco_system)/launch/lakeshor218.launch" />
+  <include file="$(find nasco_system)/launch/lakeshore218.launch" />
   <include file="$(find nasco_system)/launch/tpg261.launch" />
   <include file="$(find nasco_system)/launch/ondotori.launch" />
   <include file="$(find nasco_system)/launch/power.launch" />
