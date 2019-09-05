@@ -1,5 +1,7 @@
 <launch>
 
+<!--
+
 <include file="$(find nasco_system)/launch/sis_vol.launch" />
 <include file="$(find nasco_system)/launch/sis_cur.launch" />
 <include file="$(find nasco_system)/launch/sis_vol_cmd.launch" />
@@ -13,6 +15,11 @@
 <include file="$(find nasco_system)/launch/loatt.launch" />
 <include file="$(find nasco_system)/launch/loatt_cmd.launch" />
 
+-->
+
 <include file="$(find nasco_system)/launch/rx_device.launch" />
+
+<include file="$(find nasco_system)/launch/a11713b.launch" />
+<include file="$(find nasco_system)/launch/a11713b_cmd.launch" />
 
 </launch>
