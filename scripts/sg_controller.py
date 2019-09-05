@@ -35,19 +35,19 @@ class sg(object):
         self.sub_freq = rospy.Subscriber(
             name = '/e8257d_freq',
             data_class = Float64,
-            callback = callback_freq
+            callback = self.callback_freq
             )
 
         self.sub_power = rospy.Subscriber(
             name = '/e8257d_power',
             data_class = Float64,
-            callback = callback_power
+            callback = self.callback_power
             )
 
         self.sub_onoff = rospy.Subscriber(
             name = '/e8257d_onoff',
-            data_class = Float64,
-            callback = callback_onoff
+            data_class = Int32,
+            callback = self.callback_onoff
             )
 
     def set_freq(self, freq=0.):
