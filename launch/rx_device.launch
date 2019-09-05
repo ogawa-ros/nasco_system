@@ -1,44 +1,16 @@
 <launch>
 
-  <node pkg="rx_device_driver" name="lakeshore_218" type="l218_temp_monitor.py" required="true" output="screen">
-    <param name="~host" value="172.20.0.155" />
-    <param name="~port" value="13" />
-    <param name="~rate" value="1" />
-    <param name="~onoff" value="[1,1,1,1,1,1,1,1]" />
-  </node>
+  <include file="$(find nasco_system)/launch/lakeshor218.launch" />
+  <include file="$(find nasco_system)/launch/tpg261.launch" />
+  <include file="$(find nasco_system)/launch/ondotori.launch" />
+  <include file="$(find nasco_system)/launch/power.launch" />
+
+ <include file="$(find nasco_system)/launch/e8257d.launch" />
+  <include file="$(find nasco_system)/launch/mg3692c.launch" />
 <!--
-  <node pkg="rx_device_driver" name="tpg261" type="tpg261_vaccume_monitor.py" required="true" output="screen">
-    <param name="~host" value="192.168.100.112" />
-    <param name="~port" value="9600" />
-    <param name="~rate" value="1" />
-    <param name="~topic" value="tpg261_torr" />
-  </node>
-
-  <node pkg="rx_device_driver" name="e8250d" type="e8250d_signal_generator.py" required="true">
-    <param name="~host" value="192.168.100.116" />
-    <param name="~port" value="19" />
-    <param name="~rate" value="1" />
-    <param name="~topic_pub_freq" value="lo_1st_freq" />
-    <param name="~topic_pub_power" value="lo_1st_power" />
-    <param name="~topic_pub_onoff" value="lo_1st_onoff" />
-    <param name="~topic_pub_status" value="lo_1st_status" />
-    <param name="~topic_sub_freq" value="lo_1st_freq_cmd" />
-    <param name="~topic_sub_power" value="lo_1st_power_cmd" />
-    <param name="~topic_sub_onoff" value="lo_1st_onoff_cmd" />
-    <param name="~topic_sub_status" value="lo_1st_status_cmd" />
-  </node>
-
-  <node pkg="rx_device_driver" name="ondotori" type="ondotori_monitor.py" required="true" output="screen">
-    <param name="~host" value="192.168.100.105" />
-    <param name="~rate" value="1" />
-  </node>
+<include file="$(find nasco_system)/launch/fsw0020.launch" />
 -->
 
-<!--
-<include file="$(find nasco_system)/launch/power.launch" />
--->
-<!--
-<include file="$(find nasco_system)/launch/power_gpib.launch" />
--->
+  <include file="$(find nasco_system)/launch/a11713b.launch" />
 
 </launch>

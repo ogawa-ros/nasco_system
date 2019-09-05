@@ -1,0 +1,21 @@
+<launch>
+
+  <node pkg="rx_device_driver" name="ondotori_1" type="ondotori_tr71w_monitor.py" required="true" output="screen">
+    <param name="~host" value="172.20.0.152" />
+    <param name="~rate" value="1" />
+    <param name="~ondotori_no" value="1" />
+  </node>
+
+  <node pkg="rx_device_driver" name="ondotori_2" type="ondotori_tr71w_monitor.py" required="true" output="screen">
+    <param name="~host" value="172.20.0.153" />
+    <param name="~rate" value="1" />
+    <param name="~ondotori_no" value="2" />
+  </node>
+
+  <node pkg="rx_device_driver" name="ondotori_3" type="ondotori_tr71w_monitor.py" required="true" output="screen">
+    <param name="~host" value="172.20.0.154" />
+    <param name="~rate" value="1" />
+    <param name="~ondotori_no" value="3" />
+  </node>
+
+</launch

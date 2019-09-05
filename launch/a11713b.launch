@@ -1,0 +1,45 @@
+<launch>
+
+  <node pkg="rx_device_driver" name="a11713b_1" type="a11713b_patt_driver.py" required="true" output="screen">
+    <param name="~host" value="172.20.0.161" />
+    <param name="~port" value="28" />
+    <param name="~connection" value="GPIB" />
+    <param name="~driver_no" value="1" />
+  </node>
+
+  <node pkg="rx_device_driver" name="a11713b_2" type="a11713b_patt_driver.py" required="true" output="screen">
+    <param name="~host" value="172.20.0.162" />
+    <param name="~port" value="28" />
+    <param name="~connection" value="GPIB" />
+    <param name="~driver_no" value="2" />
+  </node>
+
+  <node pkg="rx_device_driver" name="a11713b_3" type="a11713b_patt_driver.py" required="true" output="screen">
+    <param name="~host" value="172.20.0.163" />
+    <param name="~port" value="28" />
+    <param name="~connection" value="GPIB" />
+    <param name="~driver_no" value="3" />
+  </node>
+
+  <node pkg="rx_device_driver" name="a11713b_4" type="a11713b_patt_driver.py" required="true" output="screen">
+    <param name="~host" value="172.20.0.245" />
+    <param name="~port" value="28" />
+    <param name="~connection" value="LAN" />
+    <param name="~driver_no" value="4" />
+  </node>
+
+  <node pkg="rx_device_driver" name="a11713b_5" type="a11713b_patt_driver.py" required="true" output="screen">
+    <param name="~host" value="172.20.0.246" />
+    <param name="~port" value="28" />
+    <param name="~connection" value="LAN" />
+    <param name="~driver_no" value="5" />
+  </node>
+
+  <node pkg="rx_device_driver" name="a11713b_6" type="a11713b_patt_driver.py" required="true" output="screen">
+    <param name="~host" value="172.20.0.247" />
+    <param name="~port" value="28" />
+    <param name="~connection" value="LAN" />
+    <param name="~driver_no" value="6" />
+  </node>
+
+</launch>

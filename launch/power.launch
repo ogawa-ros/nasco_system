@@ -1,6 +1,5 @@
 <launch>
 
-
   <node name = "power_1"
   	type = "relay.py"
     	pkg = "nasco_system">
@@ -18,6 +17,5 @@
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/power_reader.conf" />
   </node>
-
 
 </launch>

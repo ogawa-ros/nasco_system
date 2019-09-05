@@ -1,0 +1,19 @@
+<launch>
+
+  <node pkg="rx_device_driver" name="ms3692c" type="mg3692c_signal_generator.py" required="true">
+    <param name="~host" value="172.20.0.171" />
+    <param name="~port" value="19" />
+    <param name="~rate" value="1" />
+
+    <param name="~topic_pub_freq" value="lo_2nd_freq" />
+    <param name="~topic_pub_power" value="lo_2nd_power" />
+    <param name="~topic_pub_onoff" value="lo_2nd_onoff" />
+    <param name="~topic_pub_status" value="lo_2nd_status" />
+
+    <param name="~topic_sub_freq" value="lo_2nd_freq_cmd" />
+    <param name="~topic_sub_power" value="lo_2nd_power_cmd" />
+    <param name="~topic_sub_onoff" value="lo_2nd_onoff_cmd" />
+    <param name="~topic_sub_status" value="lo_2nd_status_cmd" />
+  </node>
+
+</launch>

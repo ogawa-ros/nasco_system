@@ -3,7 +3,5 @@
 
 <include file="$(find nasco_system)/launch/pci_boards.launch" />
 
-<include file="$(find nasco_system)/launch/rx_device.launch" />
-
 
 </launch>
