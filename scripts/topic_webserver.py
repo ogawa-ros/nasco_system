@@ -7,7 +7,7 @@ def kill():
     os.system('kill -KILL ' + str(os.getpid()))
 
 os.chdir('/home/amigos/ros/src/nasco_system/web_monitor')
-host = 'localhost'
+host = 172.20.0.21
 port = 10000
 httpd = HTTPServer(('', port), SimpleHTTPRequestHandler)
 print('serving at port', port)
