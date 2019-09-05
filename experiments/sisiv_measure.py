@@ -61,7 +61,7 @@ try:
         for _ in beam_list:
             ctrl.sis.output_sis_voltage(beam=_, voltage=vol*step+initial_voltage)
             time.sleep(1e-2) # 10 msec.
-       
+
 except KeyboardInterrupt:
     for _ in beam_list:
         ctrl.sis.output_sis_voltage(beam=_, voltage=0)
@@ -83,7 +83,7 @@ pub1.publish(msg)
 if lo == '1': ctrl.unset_1st_lo()
 
 # cp data_tool
-data_path = '/home/amigos/data/sql/sisiv/'
+data_path = '/home/amigos/data/experiments/sisiv/'
 all_file = glob.glob(data_path + '*')
 path = max(all_file, key=os.path.getctime)
 plot_tool_path = '/home/amigos/ros/src/nasco_system/plot_tools/sisiv_plot.ipynb'
@@ -91,4 +91,4 @@ shutil.copy(plot_tool_path, path + '/sisiv_plot.ipynb')
 
 # qlook
 
-#plotter.plot()
+# plotter.plot()
