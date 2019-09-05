@@ -7,7 +7,7 @@ from std_msgs.msg import Float64
 name = 'controller'
 rospy.init_node(name)
 
-class sg(object):
+class controller(object):
 
     def __init__(self):
         self.freq = 0.
@@ -89,5 +89,5 @@ class sg(object):
 
 if __name__ == '__main__':
     rospy.init_node(name)
-    sg()
+    controller()
     rospy.spin()
