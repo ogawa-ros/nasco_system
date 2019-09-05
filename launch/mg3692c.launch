@@ -1,7 +1,6 @@
 <launch>
 
   <node pkg="rx_device_driver" name="ms3692c" type="mg3692c_signal_generator.py" required="true">
-    <param name="~sg_name" value="lo_2nd" />
     <param name="~host" value="172.20.0.171" />
     <param name="~port" value="19" />
     <param name="~rate" value="1" />

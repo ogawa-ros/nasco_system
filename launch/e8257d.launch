@@ -4,7 +4,6 @@
     <param name="~host" value="172.20.0.170" />
     <param name="~port" value="19" />
     <param name="~rate" value="1" />
-    <param name="~sg_name" value="lo_1st" />
   </node>
 
 </launch>
