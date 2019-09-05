@@ -49,7 +49,7 @@ class PS(object):
     pub = {
             #"topic_name":rospy.Publisher(name, data_class, queue_size, latch)
             }
-    
+
     """
     sub = {
             #"topic_name":[rospy.Subscriber(name, data_class, callback, callback_args), 0]
@@ -69,7 +69,7 @@ class PS(object):
     def publish(self, topic_name, msg):
         self.pub[topic_name].publish(msg)
         return
-    
+
     """
     def subscribe(self, topic_name):
         return self.sub[topic_name][1]
@@ -106,7 +106,7 @@ class PS(object):
 
 
 class SIS(object):
-    
+
     beam_list = ['2l', '2r', '3l', '3r',
                  '4l', '4r', '5l', '5r',
                  '1lu', '1ll', '1ru', '1rl']
@@ -124,7 +124,7 @@ class SIS(object):
             return
 
         name = "/sis_vol_{}_cmd".format(beam)
-        
+
         if name not in self.ps.pub:
             self.ps.set_publisher(
                     topic_name = name,
@@ -145,16 +145,16 @@ class SIS(object):
                         data_class = std_msgs.msg.Float64,
                         queue_size = 1
                     )
-            
+
             voltage = float(self.config_file.get(beam, 'sisv'))
             self.ps.publish(topic_name=name, msg=voltage)
             time.sleep(0.001)
-        
+
         return
 
 
 class HEMT(object):
-    
+
     beam_list = ['2l', '2r', '3l', '3r',
                  '4l', '4r', '5l', '5r',
                  '1lu', '1ll', '1ru', '1rl']
@@ -177,7 +177,7 @@ class HEMT(object):
 
         for key in kargs:
             name = "/hemt_{0}_{1}_cmd".format(beam, key)
-        
+
             if name not in self.ps.pub:
                 self.ps.set_publisher(
                         topic_name = name,
@@ -200,22 +200,22 @@ class HEMT(object):
                             data_class = std_msgs.msg.Float64,
                             queue_size = 1
                         )
-                
+
                 if config == None:
                     voltage = float(self.config_file.get(beam, target))
                 elif config == 0:
                     voltage = float(self.config_file0.get(beam, target))
                 elif config == 1:
                     voltage = float(self.config_file1.get(beam, target))
-                
+
                 self.ps.publish(topic_name=name, msg=voltage)
                 time.sleep(0.005)
-        
+
         return
 
 
 class LOATT(object):
-    
+
     loatt_list = ['2l', '2r', '3l', '3r',
                  '4l', '4r', '5l', '5r',
                  '1l', '1r']
@@ -233,7 +233,7 @@ class LOATT(object):
             return
 
         name = "/loatt_{}_cmd".format(beam)
-        
+
         if name not in self.ps.pub:
             self.ps.set_publisher(
                     topic_name = name,
@@ -254,15 +254,15 @@ class LOATT(object):
                         data_class = std_msgs.msg.Float64,
                         queue_size = 1
                     )
-            
+
             if beam == "1l" or beam == "1r":
                 current = float(self.config_file.get(beam+'u', 'lo_att'))
             else:
                 current = float(self.config_file.get(beam, 'lo_att'))
-            
+
             self.ps.publish(topic_name=name, msg=current)
             time.sleep(0.005)
-        
+
         return
 
 
@@ -289,14 +289,14 @@ class SLIDER(object):
         for key in self.axis:
             self.set_position(axis=key, position=self.axis[key][2])
         return
-    
+
     def output_do(self, command):
         if not 0<= command <= 8:
             print("Invalid Command")
             return
 
         name = "/cpz7415v_rsw{0}_do_cmd".format(self.rsw_id)
-        
+
         if name not in self.ps.pub:
             self.ps.set_publisher(
                     topic_name = name,
@@ -313,7 +313,7 @@ class SLIDER(object):
             return
 
         name = "/cpz7415v_rsw{0}_{1}_step_cmd".format(self.rsw_id, axis)
-        
+
         if name not in self.ps.pub:
             self.ps.set_publisher(
                     topic_name = name,
@@ -327,7 +327,7 @@ class SLIDER(object):
 
 class SWITCH(object):
     ch_list = ["1X", "1Y", "2X", "2Y"]
-    
+
     def __init__(self):
         self.ps = PS()
         pass
@@ -370,3 +370,4 @@ class SWITCH(object):
             self.ps.publish(topic_name=name, msg=str(command).upper())
         return
 
+class
