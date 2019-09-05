@@ -2,7 +2,7 @@
 
 name = 'nasco_controller'
 
-# ----
+# ---
 import time
 import threading
 import configparser
@@ -370,4 +370,3 @@ class SWITCH(object):
             self.ps.publish(topic_name=name, msg=str(command).upper())
         return
 
-class

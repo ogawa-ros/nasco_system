@@ -52,7 +52,7 @@ class logger(object):
         self.hemt_id = [0.] * 12
         self.loatt = [0.] * 10
         self.power = [0.] * 2
-        self.xffts = 0
+        # self.xffts = 0
         self.filename_datatime = ''
         self.filename_vol = ''
         self.filename_cur = ''
@@ -62,7 +62,7 @@ class logger(object):
         self.filename_id = ''
         self.filename_loatt = ''
         self.filename_power = ''
-        self.filename_xffts = ''
+        # self.filename_xffts = ''
 
     def set_flag(self, req, param):
         trigger = req.data
@@ -87,7 +87,7 @@ class logger(object):
             self.filename_id = self.saveto + '/hemt_id.txt'
             self.filename_loatt = self.saveto + '/loatt.txt'
             self.filename_power = self.saveto + '/power.txt'
-            self.filename_xffts = self.saveto + '/xffts.txt'
+            # self.filename_xffts = self.saveto + '/xffts.txt'
 
             print("FILE OPEN")
             f_datetime = open(self.filename_datatime, 'a')
@@ -99,7 +99,7 @@ class logger(object):
             f_id = open(self.filename_id, 'a')
             f_loatt = open(self.filename_loatt, 'a')
             f_power = open(self.filename_power, 'a')
-            f_xffts = open(self.filename_xffts, 'a')
+            # f_xffts = open(self.filename_xffts, 'a')
 
             f_datetime.close()
             f_vol.close()
@@ -110,7 +110,7 @@ class logger(object):
             f_id.close()
             f_loatt.close()
             f_power.close()
-            f_xffts.close()
+            # f_xffts.close()
             self.flag = 1
 
     def callback_voltage(self, req, idx):
@@ -153,10 +153,12 @@ class logger(object):
         self.power[idx] = req.data
         return
 
+    '''
     def callback_xffts(self, req):
 
         self.xffts = req.data
         return
+    '''
 
     def log(self):
         while not rospy.is_shutdown():
@@ -173,7 +175,7 @@ class logger(object):
             hemt_id = ' '.join(map(str, self.hemt_id)) + '\n'
             loatt = ' '.join(map(str, self.loatt)) + '\n'
             power = ' '.join(map(str, self.power)) + '\n'
-            xffts = str(self.xffts) + '\n'
+            # xffts = str(self.xffts) + '\n'
 
             f_datatime = open(self.filename_datatime, 'a')
             f_vol = open(self.filename_vol, 'a')
@@ -184,7 +186,7 @@ class logger(object):
             f_id = open(self.filename_id, 'a')
             f_loatt = open(self.filename_loatt, 'a')
             f_power = open(self.filename_power, 'a')
-            f_xffts = open(self.filename_xffts, 'a')
+            # f_xffts = open(self.filename_xffts, 'a')
             f_datatime.write(datatime)
             f_vol.write(sis_vol)
             f_cur.write(sis_cur)
@@ -194,7 +196,7 @@ class logger(object):
             f_id.write(hemt_id)
             f_loatt.write(loatt)
             f_power.write(power)
-            f_xffts.write(xffts)
+            # f_xffts.write(xffts)
             f_datatime.close()
             f_vol.close()
             f_cur.close()
@@ -204,46 +206,10 @@ class logger(object):
             f_id.close()
             f_loatt.close()
             f_power.close()
-            f_xffts.close()
+            # f_xffts.close()
 
-
-            #time.sleep(4.0) # for gpib
+            # time.sleep(4.0) # for gpib
             time.sleep(1e-2) # 10 msec.
-
-    def save_roachspec(self):
-        from subprocess import Popen
-        cmd = 'python /home/amigos/ros/src/roach/scripts/save_spec_hemtsweep.py {} {}'
-
-        while not rospy.is_shutdown():
-            if self.flag == 0:
-                time.sleep(0.1)
-                continue
-            else:
-                p_1_1 = Popen(cmd.format(1,1).split(' '))
-                p_1_2 = Popen(cmd.format(1,2).split(' '))
-                p_2_1 = Popen(cmd.format(2,1).split(' '))
-                p_2_2 = Popen(cmd.format(2,2).split(' '))
-                p_3_1 = Popen(cmd.format(3,1).split(' '))
-                p_3_2 = Popen(cmd.format(3,2).split(' '))
-                p_4_1 = Popen(cmd.format(4,1).split(' '))
-                p_4_2 = Popen(cmd.format(4,2).split(' '))
-                p_5_1 = Popen(cmd.format(5,1).split(' '))
-                p_5_2 = Popen(cmd.format(5,2).split(' '))
-                if self.flag == 0:
-                    p_1_1.kill()
-                    p_1_2.kill()
-                    p_2_1.kill()
-                    p_2_2.kill()
-                    p_3_1.kill()
-                    p_3_2.kill()
-                    p_4_1.kill()
-                    p_4_2.kill()
-                    p_5_1.kill()
-                    p_5_2.kill()
-                    print('process killed')
-                    continue
-                else:
-                    time.sleep(0.1)
 
     def start_thread(self):
         th = threading.Thread(target=self.log)
@@ -278,9 +244,11 @@ if __name__ == '__main__':
                                        callback_args = idx)
                         for ch, idx in enumerate(range(2), start=1)]
 
+    '''
     xffts_sub_list = rospy.Subscriber('/XFFTS_PM1',
                                        Float64,
                                        st.callback_xffts)
+    '''
 
     hemt_vd_sub_list = [rospy.Subscriber('/hemt_{}_vd'.format(beam),
                                          Float64,
@@ -307,6 +275,7 @@ if __name__ == '__main__':
                                          st.callback_loatt,
                                          callback_args = idx)
                         for idx, loatt in enumerate(loatt_list)]
+
     sisiv_flag_sub = rospy.Subscriber(sisiv_flag,
                                       String,
                                       st.set_flag,
@@ -323,7 +292,6 @@ if __name__ == '__main__':
                                       String,
                                       st.set_flag,
                                       callback_args = 'hemt_sweep')
-
     hot_monitor_flag_sub = rospy.Subscriber(hot_monitor_flag,
                                       String,
                                       st.set_flag,
