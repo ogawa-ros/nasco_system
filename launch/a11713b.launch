@@ -1,113 +1,45 @@
 <launch>
 
-
-  <node name = "patt_2l"
-  	type = "relay.py"
-    	pkg = "nasco_system">
-    <remap from = "/patt_beam" to = "/patt_2l" />
-    <remap from = "/a11713b" to = "/a11713b_1X_1_level" />
-    <param name = "config_file"
-           value = "$(find nasco_system)/relay_conf/a11713b_reader.conf" />
+  <node pkg="rx_device_driver" name="a11713b_1" type="a11713b_patt_driver.py" required="true" output="screen">
+    <param name="~host" value="172.20.0.161" />
+    <param name="~port" value="28" />
+    <param name="~connection" value="GPIB" />
+    <param name="~driver_no" value="1" />
   </node>
 
-  <node name = "patt_2r"
-  	type = "relay.py"
-    	pkg = "nasco_system">
-    <remap from = "/patt_beam" to = "/patt_2r" />
-    <remap from = "/a11713b" to = "/a11713b_1X_2_level" />
-    <param name = "config_file"
-           value = "$(find nasco_system)/relay_conf/a11713b_reader.conf" />
+  <node pkg="rx_device_driver" name="a11713b_2" type="a11713b_patt_driver.py" required="true" output="screen">
+    <param name="~host" value="172.20.0.162" />
+    <param name="~port" value="28" />
+    <param name="~connection" value="GPIB" />
+    <param name="~driver_no" value="2" />
   </node>
 
-  <node name = "patt_3l"
-  	type = "relay.py"
-    	pkg = "nasco_system">
-    <remap from = "/patt_beam" to = "/patt_3l" />
-    <remap from = "/a11713b" to = "/a11713b_2X_1_level" />
-    <param name = "config_file"
-           value = "$(find nasco_system)/relay_conf/a11713b_reader.conf" />
+  <node pkg="rx_device_driver" name="a11713b_3" type="a11713b_patt_driver.py" required="true" output="screen">
+    <param name="~host" value="172.20.0.163" />
+    <param name="~port" value="28" />
+    <param name="~connection" value="GPIB" />
+    <param name="~driver_no" value="3" />
   </node>
 
-  <node name = "patt_3r"
-  	type = "relay.py"
-    	pkg = "nasco_system">
-    <remap from = "/patt_beam" to = "/patt_3r" />
-    <remap from = "/a11713b" to = "/a11713b_2X_2_level" />
-    <param name = "config_file"
-           value = "$(find nasco_system)/relay_conf/a11713b_reader.conf" />
+  <node pkg="rx_device_driver" name="a11713b_4" type="a11713b_patt_driver.py" required="true" output="screen">
+    <param name="~host" value="172.20.0.245" />
+    <param name="~port" value="28" />
+    <param name="~connection" value="LAN" />
+    <param name="~driver_no" value="4" />
   </node>
 
-  <node name = "patt_4l"
-  	type = "relay.py"
-    	pkg = "nasco_system">
-    <remap from = "/patt_beam" to = "/patt_4l" />
-    <remap from = "/a11713b" to = "/a11713b_3X_1_level" />
-    <param name = "config_file"
-           value = "$(find nasco_system)/relay_conf/a11713b_reader.conf" />
+  <node pkg="rx_device_driver" name="a11713b_5" type="a11713b_patt_driver.py" required="true" output="screen">
+    <param name="~host" value="172.20.0.246" />
+    <param name="~port" value="28" />
+    <param name="~connection" value="LAN" />
+    <param name="~driver_no" value="5" />
   </node>
 
-  <node name = "patt_4r"
-  	type = "relay.py"
-    	pkg = "nasco_system">
-    <remap from = "/patt_beam" to = "/patt_4r" />
-    <remap from = "/a11713b" to = "/a11713b_3X_2_level" />
-    <param name = "config_file"
-           value = "$(find nasco_system)/relay_conf/a11713b_reader.conf" />
+  <node pkg="rx_device_driver" name="a11713b_6" type="a11713b_patt_driver.py" required="true" output="screen">
+    <param name="~host" value="172.20.0.247" />
+    <param name="~port" value="28" />
+    <param name="~connection" value="LAN" />
+    <param name="~driver_no" value="6" />
   </node>
-
-  <node name = "patt_5l"
-  	type = "relay.py"
-    	pkg = "nasco_system">
-    <remap from = "/patt_beam" to = "/patt_5l" />
-    <remap from = "/a11713b" to = "/a11713b_4X_1_level" />
-    <param name = "config_file"
-           value = "$(find nasco_system)/relay_conf/a11713b_reader.conf" />
-  </node>
-
-  <node name = "patt_5r"
-  	type = "relay.py"
-    	pkg = "nasco_system">
-    <remap from = "/patt_beam" to = "/patt_5r" />
-    <remap from = "/a11713b" to = "/a11713b_4X_2_level" />
-    <param name = "config_file"
-           value = "$(find nasco_system)/relay_conf/a11713b_reader.conf" />
-  </node>
-
-  <node name = "patt_1lu"
-  	type = "relay.py"
-    	pkg = "nasco_system">
-    <remap from = "/patt_beam" to = "/patt_1lu" />
-    <remap from = "/a11713b" to = "/a11713b_5X_1_level" />
-    <param name = "config_file"
-           value = "$(find nasco_system)/relay_conf/a11713b_reader.conf" />
-  </node>
-
-  <node name = "patt_1ll"
-  	type = "relay.py"
-    	pkg = "nasco_system">
-    <remap from = "/patt_beam" to = "/patt_1ll" />
-    <remap from = "/a11713b" to = "/a11713b_5X_2_level" />
-    <param name = "config_file"
-           value = "$(find nasco_system)/relay_conf/a11713b_reader.conf" />
-  </node>
-
-  <node name = "patt_1ru"
-  	type = "relay.py"
-    	pkg = "nasco_system">
-    <remap from = "/patt_beam" to = "/patt_1ru" />
-    <remap from = "/a11713b" to = "/a11713b_6X_1_level" />
-    <param name = "config_file"
-           value = "$(find nasco_system)/relay_conf/a11713b_reader.conf" />
-  </node>
-
-  <node name = "patt_1rl"
-  	type = "relay.py"
-    	pkg = "nasco_system">
-    <remap from = "/patt_beam" to = "/patt_1rl" />
-    <remap from = "/a11713b" to = "/a11713b_6X_2_level" />
-    <param name = "config_file"
-           value = "$(find nasco_system)/relay_conf/a11713b_reader.conf" />
-  </node>
-
 
 </launch>
