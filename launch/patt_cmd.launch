@@ -4,7 +4,7 @@
   <node name = "patt_2l_cmd"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/patt_beam" to = "/patt_2l_cmd" />
+    <remap from = "/patt_beam_cmd" to = "/patt_2l_cmd" />
     <remap from = "/a11713b_cmd" to = "/a11713b_1X_1_level_cmd" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/a11713b_writer.conf" />
@@ -13,7 +13,7 @@
   <node name = "patt_2r_cmd"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/patt_beam" to = "/patt_2r_cmd" />
+    <remap from = "/patt_beam_cmd" to = "/patt_2r_cmd" />
     <remap from = "/a11713b_cmd" to = "/a11713b_1X_2_level_cmd" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/a11713b_writer.conf" />
@@ -22,7 +22,7 @@
   <node name = "patt_3l_cmd"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/patt_beam" to = "/patt_3l_cmd" />
+    <remap from = "/patt_beam_cmd" to = "/patt_3l_cmd" />
     <remap from = "/a11713b_cmd" to = "/a11713b_2X_1_level_cmd" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/a11713b_writer.conf" />
@@ -31,7 +31,7 @@
   <node name = "patt_3r_cmd"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/patt_beam" to = "/patt_3r_cmd" />
+    <remap from = "/patt_beam_cmd" to = "/patt_3r_cmd" />
     <remap from = "/a11713b_cmd" to = "/a11713b_2X_2_level_cmd" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/a11713b_writer.conf" />
@@ -40,7 +40,7 @@
   <node name = "patt_4l_cmd"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/patt_beam" to = "/patt_4l_cmd" />
+    <remap from = "/patt_beam_cmd" to = "/patt_4l_cmd" />
     <remap from = "/a11713b_cmd" to = "/a11713b_3X_1_level_cmd" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/a11713b_writer.conf" />
@@ -49,7 +49,7 @@
   <node name = "patt_4r_cmd"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/patt_beam" to = "/patt_4r_cmd" />
+    <remap from = "/patt_beam_cmd" to = "/patt_4r_cmd" />
     <remap from = "/a11713b_cmd" to = "/a11713b_3X_2_level_cmd" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/a11713b_writer.conf" />
@@ -58,7 +58,7 @@
   <node name = "patt_5l_cmd"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/patt_beam" to = "/patt_5l_cmd" />
+    <remap from = "/patt_beam_cmd" to = "/patt_5l_cmd" />
     <remap from = "/a11713b_cmd" to = "/a11713b_4X_1_level_cmd" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/a11713b_writer.conf" />
@@ -67,7 +67,7 @@
   <node name = "patt_5r_cmd"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/patt_beam" to = "/patt_5r_cmd" />
+    <remap from = "/patt_beam_cmd" to = "/patt_5r_cmd" />
     <remap from = "/a11713b_cmd" to = "/a11713b_4X_2_level_cmd" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/a11713b_writer.conf" />
@@ -76,7 +76,7 @@
   <node name = "patt_1lu_cmd"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/patt_beam" to = "/patt_1lu_cmd" />
+    <remap from = "/patt_beam_cmd" to = "/patt_1lu_cmd" />
     <remap from = "/a11713b_cmd" to = "/a11713b_5X_1_level_cmd" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/a11713b_writer.conf" />
@@ -85,7 +85,7 @@
   <node name = "patt_1ll_cmd"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/patt_beam" to = "/patt_1ll_cmd" />
+    <remap from = "/patt_beam_cmd" to = "/patt_1ll_cmd" />
     <remap from = "/a11713b_cmd" to = "/a11713b_5X_2_level_cmd" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/a11713b_writer.conf" />
@@ -94,7 +94,7 @@
   <node name = "patt_1ru_cmd"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/patt_beam" to = "/patt_1ru_cmd" />
+    <remap from = "/patt_beam_cmd" to = "/patt_1ru_cmd" />
     <remap from = "/a11713b_cmd" to = "/a11713b_6X_1_level_cmd" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/a11713b_writer.conf" />
@@ -103,7 +103,7 @@
   <node name = "patt_1rl_cmd"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/patt_beam" to = "/patt_1rl_cmd" />
+    <remap from = "/patt_beam_cmd" to = "/patt_1rl_cmd" />
     <remap from = "/a11713b_cmd" to = "/a11713b_6X_2_level_cmd" />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/a11713b_writer.conf" />
