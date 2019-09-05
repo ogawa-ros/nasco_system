@@ -63,6 +63,18 @@ class sg(object):
         self.pub_onoff.publish(onoff)
         return
 
+    def get_freq(self):
+
+        return self.freq
+
+    def get_power(self):
+
+        return self.power
+
+    def get_onoff(self):
+
+        return self.onoff
+
     def callback_freq(self, q):
         self.freq = q.data
         return
