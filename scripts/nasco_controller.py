@@ -25,7 +25,9 @@ class controller(object):
         self.hemt = HEMT()
         self.loatt = LOATT()
         self.switch = SWITCH()
-        self.sg = SG()
+        self.sg_8257d = SG(model='e8257d')
+        self.sg_mg3692c = SG(model='mg3692c')
+        self.sg_fsw0020 = SG(model='fsw0020')
         self.patt = PATT()
         pass
 
