@@ -4,6 +4,7 @@ name = 'nasco_controller'
 
 # ---
 import time
+import numpy
 import threading
 import configparser
 
@@ -33,16 +34,6 @@ class controller(object):
     def delete_publisher(self):
         self.ps.pub.clear()
         return
-
-    """
-    def display_subscriber(self):
-        print(self.ps.sub.keys())
-        return
-
-    def delete_subscriber(self):
-        self.ps.sub.clear()
-        return
-    """
 
 
 class PS(object):
@@ -370,3 +361,123 @@ class SWITCH(object):
             self.ps.publish(topic_name=name, msg=str(command).upper())
         return
 
+class SG(object):
+    model_list = ['e8257d', 'mg3692c', 'fsw0020']
+
+    def __init__(self, model):
+        self.ps = PS()
+        self.model = model
+        pass
+
+    def set_freq(self, freq): # GHz
+
+        name = '/{}_freq_cmd'.format(model)
+
+        if name not in self.ps.pub:
+            self.ps.set_publisher(
+                topic_name = name,
+                data_class = std_msgs.msg.Float64,
+                queue_size = 1
+                )
+
+        if self.model == 'e8257d':
+            if not(0.00025 <= freq <= 20.): print('InvalidRangeError')
+        if self.model == 'mg3692c':
+            if not(2. <= freq <= 20.): print('InvalidRangeError')
+        if self.model == 'fsw0020':
+            if not(0.5 <= freq <= 20.): print('InvalidRangeError')
+
+        self.ps.publish(name, freq)
+        time.sleep(1)
+        return
+
+    def set_power(self, power): # dBm
+
+        name = '/{}_power_cmd'.format(model)
+
+        if name not in self.ps.pub:
+            self.ps.set_publisher(
+                topic_name = name,
+                data_class = std_msgs.msg.Float64,
+                queue_size = 1
+                )
+
+        if self.model == 'e8257d':
+            if not(-20. <= power <= 30.): print('InvalidRangeError')
+        if self.model == 'mg3692c':
+            if not(-20. <= power <= 30.): print('InvalidRangeError')
+        if self.model == 'fsw0020':
+            if not(-10. <= power <= 13.): print('InvalidRangeError')
+
+        self.ps.publish(name, power)
+        time.sleep(1)
+        return
+
+    def set_onoff(self, onoff): # on : 1, off : 0
+
+        name = '/{}_onoff_cmd'.format(model)
+
+        if name not in self.ps.pub:
+            self.ps.set_publisher(
+                topic_name = name,
+                data_class = std_msgs.msg.Int32,
+                queue_size = 1
+                )
+
+        if not(onoff in [0, 1]): print('InvalidOnoffError')
+
+        self.ps.publish(name, onoff)
+        time.sleep(1)
+        return
+
+
+class PATT(object):
+
+    beam_list = [
+        '2l', '2r', '3l', '3r',
+        '4l', '4r', '5l', '5r',
+        '1lu', '1ll', '1ru', '1rl'
+        ]
+
+    def __init__(self):
+        self.ps = PS()
+        pass
+
+    def set_att(self, beam, att):
+
+        name = '/patt_{}_cmd'.format(beam)
+
+        if name not in self.ps.pub:
+            self.ps.set_publisher(
+                topic_name = name,
+                data_class = std_msgs.msg.Int32,
+                queue_size = 1
+                )
+
+        if 0 <= att <= 11:
+            self.ps.publish(name, att)
+            time.sleep(1)
+
+        else:
+            pritn('InvalidRangeError ( 0 <= att < 11 )')
+        return
+
+    def set_att_all(self, att_list):
+
+        _ = numpy.array(att_list)
+        if 0 in if 0 in numpy.array((0 <= _) * (_ <=11)).astype(int):
+            print('InvalidRangeError ( 0 <= att <= 11 )')
+
+        for bema, att in zip(self.beam_list, att_list):
+
+            name = '/patt_{}_cmd'.format(beam)
+
+            if name not in self.ps.pub:
+                self.ps.set_publisher(
+                        topic_name = name,
+                        data_class = std_msgs.msg.Int32,
+                        queue_size = 1
+                    )
+
+            self.ps.publish(name, att)
+        return
