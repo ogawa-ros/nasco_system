@@ -375,7 +375,7 @@ class SG(object):
 
     def set_freq(self, freq): # GHz
 
-        name = '/{}_freq_cmd'.format(model)
+        name = '/{}_freq_cmd'.format(self.model)
 
         if name not in self.ps.pub:
             self.ps.set_publisher(
