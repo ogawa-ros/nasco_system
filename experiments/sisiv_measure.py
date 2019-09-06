@@ -83,7 +83,7 @@ pub1.publish(msg)
 if lo == '1': ctrl.unset_1st_lo()
 
 # cp data_tool
-data_path = '/home/amigos/data/experiments/sisiv/'
+data_path = '/home/amigos/data/experiments/logger/sisiv/'
 all_file = glob.glob(data_path + '*')
 path = max(all_file, key=os.path.getctime)
 plot_tool_path = '/home/amigos/ros/src/nasco_system/plot_tools/sisiv_plot.ipynb'
