@@ -465,7 +465,7 @@ class PATT(object):
     def set_att_all(self, att_list):
 
         _ = numpy.array(att_list)
-        if 0 in if 0 in numpy.array((0 <= _) * (_ <=11)).astype(int):
+        if 0 in numpy.array((0 <= _) * (_ <=11)).astype(int):
             print('InvalidRangeError ( 0 <= att <= 11 )')
 
         for bema, att in zip(self.beam_list, att_list):
