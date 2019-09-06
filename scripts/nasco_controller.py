@@ -484,4 +484,5 @@ class PATT(object):
                     )
 
             self.ps.publish(name, att)
+            time.sleep(0.5)
         return
