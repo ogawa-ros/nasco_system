@@ -397,7 +397,7 @@ class SG(object):
 
     def set_power(self, power): # dBm
 
-        name = '/{}_power_cmd'.format(model)
+        name = '/{}_power_cmd'.format(self.model)
 
         if name not in self.ps.pub:
             self.ps.set_publisher(
@@ -419,7 +419,7 @@ class SG(object):
 
     def set_onoff(self, onoff): # on : 1, off : 0
 
-        name = '/{}_onoff_cmd'.format(model)
+        name = '/{}_onoff_cmd'.format(self.model)
 
         if name not in self.ps.pub:
             self.ps.set_publisher(
