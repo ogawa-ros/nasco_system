@@ -385,7 +385,7 @@ class SG(object):
                 )
 
         if self.model == 'e8257d':
-            if not(0.00025 <= freq <= 20.): print('InvalidRangeError')
+            if not(0.0001 <= freq <= 20.): print('InvalidRangeError')
         if self.model == 'mg3692c':
             if not(2. <= freq <= 20.): print('InvalidRangeError')
         if self.model == 'fsw0020':
