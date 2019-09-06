@@ -25,6 +25,8 @@ class controller(object):
         self.hemt = HEMT()
         self.loatt = LOATT()
         self.switch = SWITCH()
+        self.sg = SG()
+        self.patt = PATT()
         pass
 
     def display_publisher(self):
