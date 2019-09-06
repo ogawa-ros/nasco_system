@@ -472,7 +472,7 @@ class PATT(object):
         if 0 in numpy.array((0 <= _) * (_ <=11)).astype(int):
             print('InvalidRangeError ( 0 <= att <= 11 )')
 
-        for bema, att in zip(self.beam_list, att_list):
+        for beam, att in zip(self.beam_list, att_list):
 
             name = '/patt_{}_cmd'.format(beam)
 
