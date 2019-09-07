@@ -14,8 +14,11 @@ import std_msgs.msg
 
 class controller(object):
 
-    def __init__(self):
-        rospy.init_node(name)
+    def __init__(self, node=True):
+        if node:
+            rospy.init_node(name)
+        else:
+            pass
         self.ps = PS()
 
         # ----
