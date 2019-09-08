@@ -28,7 +28,8 @@ def callback(req):
     if not os.path.exists(path):
         shutil.copyfile(temp_jpynb_path, path)
 
-    print('[INFO] Save : {}'.format(path))
+    print('[INFO] Copy : {0}\n' \
+          '       --> {1}'.format(temp_jpynb, jpynb_path))
     return
 
 
