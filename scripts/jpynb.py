@@ -13,20 +13,22 @@ import std_msgs.msg
 
 
 analy_path = '/home/amigos/analysis/rx'
-plot_tool_path = '/home/amigos/ros/src/nasco_system/plot_tool'
+plot_tool_path = '/home/amigos/ros/src/nasco_system/plot_tools'
 
 
 def callback(req):
     temp_jpynb = req.data.split('/')[0] + '_temp.ipynb' # need yfactor_necstdb_temp.ipynb
     temp_jpynb_path = os.path.join(plot_tool_path, temp_jpynb)
 
-    jpynb_path = os.path.join(analy_path, q.data)
+    jpynb_path = os.path.join(analy_path, req.data)
     if not os.path.exists(jpynb_path):
         os.makedirs(jpynb_path)
 
-    path = os.path.join(jpynb_path, temp_ipynb)
+    path = os.path.join(jpynb_path, temp_jpynb)
     if not os.path.exists(path):
-        shutil.copyfile(temp_jpynb_path, jpynb_path)
+        shutil.copyfile(temp_jpynb_path, path)
+
+    print('[INFO] Save : {}'.format(path))
     return
 
 
