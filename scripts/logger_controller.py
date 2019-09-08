@@ -43,7 +43,11 @@ class logger(object):
         topic_name = '/logger_path'
         data_class = std_msgs.msg.String
         self.make_pub.publish(topic_name, data_class, msg = db_path)
-        return
+        msg = '[INFO] : Data Saved to\n' \
+              '         amigos@172.20.0.11 ( 記録 PC ) :\n' \
+              '         /media/usbdisk/data/rx/{}'.format(db_path)
+        print(msg)
+        return msg
 
     def stop(self):
         topic_name = '/logger_path'
