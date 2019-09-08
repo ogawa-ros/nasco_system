@@ -17,7 +17,7 @@ plot_tool_path = '/home/amigos/ros/src/nasco_system/plot_tool'
 
 
 def callback(req):
-    temp_jpynb = req.data.split('/')[0] + '_temp.ipynb' # yfactor 用の yfactor_necstdb_temp.ipynb が必要
+    temp_jpynb = req.data.split('/')[0] + '_temp.ipynb' # need yfactor_necstdb_temp.ipynb
     temp_jpynb_path = os.path.join(plot_tool_path, temp_jpynb)
 
     jpynb_path = os.path.join(analy_path, q.data)
