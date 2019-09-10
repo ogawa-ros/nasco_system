@@ -23,27 +23,44 @@ logger = logger_controller.logger()
 jpynb = jpynb_controller.jpynb()
 
 date = datetime.datetime.today().strftime('%Y%m%d_%H%M%S')
-dir_name_hot = name + date + '.necstdb'
+dir_name = name + date + '.necstdb'
 dir_name_jpynb = name + '/' + date
 
+# set params.
+beam_list = con.beam_list
 
-# measure hot.
-print('[INFO] : Start to measure HOT.')
-logger.start(dir_name_hot)
-time.sleep(1.)
+initial_voltage = -10.  # mV
+final_voltage = 10.     # mV
+step = 0.1              # mV
+interval = 0.1          # sec.
+roop = int((final_voltage - initial_voltage) / step)
+
+
+# initialize.
+print('[INFO] : Initializing... ')
+for beam in beam_list:
+    con.sis.output_sis_voltage(beam, initial_voltage)
+    time.sleep(1e-2) # 10 msec.
+
+# measure sisiv.
+print('[INFO] : Start to measure sisiv.')
+logger.start(dir_name)
+
+for vol in range(roop + 1):
+    for beam in beam_list:
+        con.sis.output_sis_voltage(beam=beam, voltage=vol*step+initial_voltage)
+        time.sleep(1e-2) # 10 msec.
+
+print('[INFO] : Finish measure sisiv')
 logger.stop()
 
-# move
-print('[INFO] : Movo chopper from HOT to COLD...')
-# con.??
-time.sleep(1.)
+# finalize.
+print('[INFO] : Finalizing... ')
+for beam in beam_list:
+    con.sis.output_sis_voltage(beam, 0.)
+    time.sleep(1e-2) # 10 msec.
 
-# measure cold.
-print('[INFO] : Start to measure COLD.')
-logger.start(dir_name_cold)
-time.sleep(1.)
-
-# setup plot_tool
+# setup plot_tool.
 jpynb.make(dir_name_jpynb)
 time.sleep(1.)
 
