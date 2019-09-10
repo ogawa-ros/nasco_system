@@ -31,8 +31,8 @@ dir_name_jpynb = name + '/' + date
 # set params.
 hemt_list = con.beam_list[:8]
 
-initial_voltage = -2.0 # mV
-final_voltage   = 2.0  # mV
+initial_voltage = -0.2 # mV
+final_voltage   = 0.2  # mV
 step            = 0.1  # mV
 interval        = 0.1  # sec.
 fixtime         = 0.1  # sec.
