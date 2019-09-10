@@ -57,7 +57,7 @@ logger.start(dir_name_hot)
 
 for vg1 in range(roop + 1):
     [con.hemt.output_hemt_voltage(beam=hemt, vg1=vg1*step+initial_voltage) for hemt in hemt_list]
-    time.sleep(1.)
+    time.sleep(0.1)
     for vg2 in range(roop + 1):
         [con.hemt.output_hemt_voltage(beam=hemt, vg2=vg2*step+initial_voltage) for hemt in hemt_list]
         time.sleep(fixtime)
@@ -76,11 +76,13 @@ print('[INFO] : Start to measure COLD with hemt ( vg1, vg2 ) sweep.')
 logger.start(dir_name_cold)
 time.sleep(1.)
 
-for vol in range(roop + 1):
-    for hemt in hemt_list:
-        con.hemt.output_hemt_voltage(hemt=hemt, voltage=vol*step+initial_voltage)
-        time.sleep(1e-2) # 10 msec.
-    time.sleep(fixtime)
+for vg1 in range(roop + 1):
+    [con.hemt.output_hemt_voltage(beam=hemt, vg1=vg1*step+initial_voltage) for hemt in hemt_list]
+    time.sleep(0.1)
+    for vg2 in range(roop + 1):
+        [con.hemt.output_hemt_voltage(beam=hemt, vg2=vg2*step+initial_voltage) for hemt in hemt_list]
+        time.sleep(fixtime)
+time.sleep(1.)
 
 print('[INFO] : Finish measure COLD with hemt ( vg1, vg2 ) sweep.')
 logger.stop()
