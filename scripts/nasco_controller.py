@@ -22,6 +22,11 @@ class controller(object):
         self.ps = PS()
 
         # ----
+        self.beam_list = [
+            '2l', '2r', '3l', '3r',
+            '4l', '4r', '5l', '5r',
+            '1lu', '1ll', '1ru', '1rl'
+        ]
         self.slider0 = SLIDER(rsw_id="0")
         self.slider1 = SLIDER(rsw_id="1")
         self.sis = SIS()
