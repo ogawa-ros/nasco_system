@@ -29,14 +29,16 @@ def callback(req):
     if not os.path.exists(path):
         shutil.copyfile(temp_jpynb_path, path)
 
+    print('[INFO] Copy : {0}\n' \
+          '       --> {1}'.format(temp_jpynb, jpynb_path))
+
     subprocess.run(['jupyter', 'nbconvert', "--output-dir={0}".format(jpynb_path), '--to', 'script', path])
+    os.chdir(jpynb_path)
     py = os.path.join(jpynb_path, temp_jpynb.replace('ipynb', 'py'))
+    print('py', py)    
     while not(os.path.exists(py)):
         continue
     subprocess.run(['python', '{0}'.format(py)])
-
-    print('[INFO] Copy : {0}\n' \
-          '       --> {1}'.format(temp_jpynb, jpynb_path))
     return
 
 
