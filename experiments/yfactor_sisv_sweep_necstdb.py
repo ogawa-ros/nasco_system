@@ -35,7 +35,7 @@ initial_voltage = 7.0 # mV
 final_voltage   = 9.0 # mV
 step            = 0.1 # mV
 interval        = 0.1 # sec.
-fixtime         = 1.0 # sec.
+fixtime         = 0.1 # sec.
 roop = int((final_voltage - initial_voltage) / step)
 
 
@@ -70,6 +70,7 @@ time.sleep(1.)
 # measure cold.
 print('[INFO] : Start to measure cold with sisv sweep.')
 logger.start(dir_name_cold)
+time.sleep(1.)
 
 for vol in range(roop + 1):
     for beam in beam_list:
@@ -79,6 +80,7 @@ for vol in range(roop + 1):
 
 print('[INFO] : Finish measure cold with sisv sweep')
 logger.stop()
+time.sleep(1.)
 
 # setup plot_tool.
 jpynb.make(dir_name_jpynb)

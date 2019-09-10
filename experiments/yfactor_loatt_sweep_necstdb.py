@@ -35,7 +35,7 @@ initial_current = 0.0 # mA
 final_current   = 5.0 # mA
 step            = 0.1 # mA
 interval        = 0.1 # sec.
-fixtime         = 1.0 # sec.
+fixtime         = 0.1 # sec.
 roop = int((final_current - initial_current) / step)
 
 
@@ -52,6 +52,7 @@ for beam in beam_list:
 # measure hot.
 print('[INFO] : Start to measure hot with loatt sweep.')
 logger.start(dir_name_hot)
+time.sleep(1.)
 
 for cur in range(roop + 1):
     for beam in beam_list:
@@ -61,6 +62,7 @@ for cur in range(roop + 1):
 
 print('[INFO] : Finish measure hot with loatt sweep')
 logger.stop()
+time.sleep(1.)
 
 # move.
 print('[INFO] : Movo chopper from HOT to COLD...')
@@ -70,6 +72,7 @@ time.sleep(1.)
 # measure cold.
 print('[INFO] : Start to measure cold with loatt sweep.')
 logger.start(dir_name_cold)
+time.sleep(1.)
 
 for cur in range(roop + 1):
     for beam in beam_list:
@@ -79,6 +82,7 @@ for cur in range(roop + 1):
 
 print('[INFO] : Finish measure cold with loatt sweep')
 logger.stop()
+time.sleep(1.)
 
 # setup plot_tool.
 jpynb.make(dir_name_jpynb)
