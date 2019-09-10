@@ -36,7 +36,7 @@ final_current   = 5.0 # mA
 step            = 0.1 # mA
 interval        = 0.1 # sec.
 fixtime         = 1.0 # sec.
-roop = int((final_voltage - initial_voltage) / step)
+roop = int((final_current - initial_current) / step)
 
 
 # initialize ( hot ).
