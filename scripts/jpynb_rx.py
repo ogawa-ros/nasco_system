@@ -5,8 +5,9 @@ name = 'jpynb_rx'
 
 
 import os
-import shutil
 import time
+import shutil
+import subprocess
 
 import rospy
 import std_msgs.msg
@@ -27,6 +28,12 @@ def callback(req):
     path = os.path.join(jpynb_path, temp_jpynb)
     if not os.path.exists(path):
         shutil.copyfile(temp_jpynb_path, path)
+
+    subprocess.run(['jupyter', 'nbconvert', "--output-dir={0}".format(jpynb_path), '--to', 'script', path])
+    py = os.path.join(jpynb_path, temp_jpynb.replace('ipynb', 'py'))
+    while not(os.path.exists(py)):
+        continue
+    subprocess.run(['python', '{0}'.format(py)])
 
     print('[INFO] Copy : {0}\n' \
           '       --> {1}'.format(temp_jpynb, jpynb_path))
