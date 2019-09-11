@@ -35,10 +35,10 @@ def callback(req):
     subprocess.run(['jupyter', 'nbconvert', "--output-dir={0}".format(jpynb_path), '--to', 'script', path])
     os.chdir(jpynb_path)
     py = os.path.join(jpynb_path, temp_jpynb.replace('ipynb', 'py'))
-    print('py', py)    
+
     while not(os.path.exists(py)):
         continue
-    subprocess.run(['ipython', '{0}'.format(py), '-f'])
+    subprocess.run(['ipython', '{0}'.format(py), 'xxx'])
     return
 
 
