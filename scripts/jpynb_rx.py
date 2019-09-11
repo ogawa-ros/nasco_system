@@ -38,7 +38,7 @@ def callback(req):
     print('py', py)    
     while not(os.path.exists(py)):
         continue
-    subprocess.run(['ipython', '{0}'.format(py)])
+    subprocess.run(['ipython', '{0}'.format(py), '-f'])
     return
 
 
