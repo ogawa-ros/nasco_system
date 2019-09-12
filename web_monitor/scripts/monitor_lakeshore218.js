@@ -1,3 +1,14 @@
+var ros = new ROSLIB.Ros({url : 'ws://' + IP_rxobs + ':9000'});
+
+ros.on('connection', function() {console.log('websocket: connected'); });
+ros.on('error', function(error) {console.log('websocket error; ', error); });
+ros.on('close', function() {
+    console.log('websocket: closed, and reconection...');
+    var ros = new ROSLIB.Ros({url : 'ws://' + IP_rxobs + ':9000'});
+    console.log('websocket: connected')
+        });
+
+
 var lakeshore_ch1 = new ROSLIB.Topic({
     ros : ros,
     name : "/lakeshore_ch1",
