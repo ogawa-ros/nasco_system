@@ -7,8 +7,8 @@ def kill():
     os.system('kill -KILL ' + str(os.getpid()))
 
 os.chdir('/home/amigos/ros/src/nasco_system/web_monitor')
-host = rospy.get_params('~host')
-port = rospy.get_params('~port')
+host = rospy.get_param('~host')
+port = rospy.get_param('~port')
 httpd = HTTPServer((host, port), SimpleHTTPRequestHandler)
 print('serving at port', port)
 httpd.serve_forever()
