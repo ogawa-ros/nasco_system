@@ -19,4 +19,6 @@
 <include file="$(find nasco_system)/launch/patt.launch" />
 <include file="$(find nasco_system)/launch/patt_cmd.launch" />
 
+
+<include file="$(find nasco_system)/launch/topic_server.launch" />
 </launch>
