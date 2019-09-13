@@ -53,4 +53,5 @@ if __name__ == '__main__':
         data_class = std_msgs.msg.String,
         callback = callback
         )
+    print('[INFO] Waiting trigger...')
     rospy.spin()
