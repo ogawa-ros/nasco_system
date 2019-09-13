@@ -298,7 +298,7 @@ class SLIDER(object):
             print("Invalid Command")
             return
 
-        name = "/cpz7415v_rsw{0}_do_cmd".format(self.rsw_id)
+        name = "/cpz7415v_1_rsw{0}_do_cmd".format(self.rsw_id)
 
         if name not in self.ps.pub:
             self.ps.set_publisher(
@@ -315,7 +315,7 @@ class SLIDER(object):
             print("Invalid Axis")
             return
 
-        name = "/cpz7415v_rsw{0}_{1}_step_cmd".format(self.rsw_id, axis)
+        name = "/cpz7415v_1_rsw{0}_{1}_step_cmd".format(self.rsw_id, axis)
 
         if name not in self.ps.pub:
             self.ps.set_publisher(
