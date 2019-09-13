@@ -27,6 +27,8 @@ dir_name_hot = name + '/hot/' + date + '.necstdb'
 dir_name_cold = name + '/cold/' + date + '.necstdb'
 dir_name_jpynb = name + '/' + date
 
+logging_time = 5. # sec.
+
 # initialize
 print('[INFO] : initialize...')
 # set bias point...??
@@ -35,7 +37,7 @@ print('[INFO] : initialize...')
 input('Ready HOT Measurement ?? Press ENTER Please !!')
 print('[INFO] : Start to measure HOT.')
 logger.start(dir_name_hot)
-time.sleep(1.)
+time.sleep(logging_time)
 logger.stop()
 
 # move. ( hot --> cold )
@@ -47,7 +49,8 @@ time.sleep(1.)
 input('Ready COLD Measurement ?? Press ENTER Please !!')
 print('[INFO] : Start to measure COLD.')
 logger.start(dir_name_cold)
-time.sleep(1.)
+time.sleep(logging_time)
+logger.stop()
 
 # setup plot_tool.
 jpynb.make(dir_name_jpynb)
