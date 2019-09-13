@@ -22,21 +22,21 @@
   </node>
 
   <node pkg="rx_device_driver" name="a11713b_4" type="a11713b_patt_driver.py" required="true" output="screen">
-    <param name="~host" value="172.20.0.245" />
+    <param name="~host" value="172.20.0.164" />
     <param name="~port" value="5025" />
     <param name="~connection" value="LAN" />
     <param name="~driver_no" value="4" />
   </node>
 
   <node pkg="rx_device_driver" name="a11713b_5" type="a11713b_patt_driver.py" required="true" output="screen">
-    <param name="~host" value="172.20.0.246" />
+    <param name="~host" value="172.20.0.165" />
     <param name="~port" value="5025" />
     <param name="~connection" value="LAN" />
     <param name="~driver_no" value="5" />
   </node>
 
   <node pkg="rx_device_driver" name="a11713b_6" type="a11713b_patt_driver.py" required="true" output="screen">
-    <param name="~host" value="172.20.0.247" />
+    <param name="~host" value="172.20.0.166" />
     <param name="~port" value="5025" />
     <param name="~connection" value="LAN" />
     <param name="~driver_no" value="6" />
