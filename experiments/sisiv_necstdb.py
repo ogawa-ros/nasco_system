@@ -23,7 +23,7 @@ logger = logger_controller.logger()
 jpynb = jpynb_controller.jpynb()
 
 date = datetime.datetime.today().strftime('%Y%m%d_%H%M%S')
-dir_name = name + date + '.necstdb'
+dir_name = name + '/' + date + '.necstdb'
 dir_name_jpynb = name + '/' + date
 
 # set params.
