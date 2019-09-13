@@ -125,7 +125,7 @@ sis_vol_1ll.subscribe(sleep(1, function(message) {
 
 sis_vol_1lu.subscribe(sleep(1, function(message) {
     document.getElementById("sis_vol_1lu").innerHTML = (message.data).toFixed(3);
-})
+}));
 
 <!-- sis_vol -->
 
@@ -249,6 +249,6 @@ sis_cur_1ll.subscribe(sleep(1, function(message) {
 
 sis_cur_1lu.subscribe(sleep(1, function(message) {
     document.getElementById("sis_cur_1lu").innerHTML = (message.data).toFixed(3);
-})
+}));
 
 <!-- sis_cur -->
