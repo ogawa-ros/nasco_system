@@ -79,51 +79,51 @@ var sis_vol_1lu = new ROSLIB.Topic({
     messageType : "std_msgs/Float64"
 });
 
-sis_vol_2l.subscribe(function(message) {
+sis_vol_2l.subscribe(sleep(1, function(message) {
     document.getElementById("sis_vol_2l").innerHTML = (message.data).toFixed(3);
-});
+}));
 
-sis_vol_2r.subscribe(function(message) {
+sis_vol_2r.subscribe(sleep(1, function(message) {
     document.getElementById("sis_vol_2r").innerHTML = (message.data).toFixed(3);
-});
+}));
 
-sis_vol_3l.subscribe(function(message) {
+sis_vol_3l.subscribe(sleep(1, function(message) {
     document.getElementById("sis_vol_3l").innerHTML = (message.data).toFixed(3);
-});
+}));
 
-sis_vol_3r.subscribe(function(message) {
+sis_vol_3r.subscribe(sleep(1, function(message) {
     document.getElementById("sis_vol_3r").innerHTML = (message.data).toFixed(3);
-});
+}));
 
-sis_vol_4l.subscribe(function(message) {
+sis_vol_4l.subscribe(sleep(1, function(message) {
     document.getElementById("sis_vol_4l").innerHTML = (message.data).toFixed(3);
-});
+}));
 
-sis_vol_4r.subscribe(function(message) {
+sis_vol_4r.subscribe(sleep(1, function(message) {
     document.getElementById("sis_vol_4r").innerHTML = (message.data).toFixed(3);
-});
+}));
 
-sis_vol_5l.subscribe(function(message) {
+sis_vol_5l.subscribe(sleep(1, function(message) {
     document.getElementById("sis_vol_5l").innerHTML = (message.data).toFixed(3);
-});
+}));
 
-sis_vol_5r.subscribe(function(message) {
+sis_vol_5r.subscribe(sleep(1, function(message) {
     document.getElementById("sis_vol_5r").innerHTML = (message.data).toFixed(3);
-});
+}));
 
-sis_vol_1rl.subscribe(function(message) {
+sis_vol_1rl.subscribe(sleep(1, function(message) {
     document.getElementById("sis_vol_1rl").innerHTML = (message.data).toFixed(3);
-});
+}));
 
-sis_vol_1ru.subscribe(function(message) {
+sis_vol_1ru.subscribe(sleep(1, function(message) {
     document.getElementById("sis_vol_1ru").innerHTML = (message.data).toFixed(3);
-});
+}));
 
-sis_vol_1ll.subscribe(function(message) {
+sis_vol_1ll.subscribe(sleep(1, function(message) {
     document.getElementById("sis_vol_1ll").innerHTML = (message.data).toFixed(3);
-});
+}));
 
-sis_vol_1lu.subscribe(function(message) {
+sis_vol_1lu.subscribe(sleep(1, function(message) {
     document.getElementById("sis_vol_1lu").innerHTML = (message.data).toFixed(3);
 })
 
