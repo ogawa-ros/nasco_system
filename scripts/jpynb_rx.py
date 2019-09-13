@@ -13,8 +13,8 @@ import rospy
 import std_msgs.msg
 
 
-analy_path = '/home/amigos/analysis/rx'
-plot_tool_path = '/home/amigos/ros/src/nasco_system/plot_tools'
+analy_path = '/home/necst/analysis/rx'
+plot_tool_path = '/home/necst/ros/src/nasco_system/plot_tools'
 
 
 def callback(req):
