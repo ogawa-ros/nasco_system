@@ -32,6 +32,7 @@ print('[INFO] : initialize...')
 # set bias point...??
 
 # measure hot.
+input('Ready HOT Measurement ?? Press ENTER Please !!')
 print('[INFO] : Start to measure HOT.')
 logger.start(dir_name_hot)
 time.sleep(1.)
@@ -43,6 +44,7 @@ print('[INFO] : Movo chopper from HOT to COLD...')
 time.sleep(1.)
 
 # measure cold.
+input('Ready COLD Measurement ?? Press ENTER Please !!')
 print('[INFO] : Start to measure COLD.')
 logger.start(dir_name_cold)
 time.sleep(1.)
