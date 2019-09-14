@@ -4,6 +4,8 @@
   <include file="$(find nasco_system)/launch/sis_cur_web.launch" />
   <include file="$(find nasco_system)/launch/hemt_web.launch" />
   <include file="$(find nasco_system)/launch/loatt_web.launch" />
+  <!--
   <include file="$(find nasco_system)/launch/xffts_total_power_web.launch" />
+  -->
 
 </launch>
