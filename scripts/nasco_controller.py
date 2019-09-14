@@ -492,5 +492,5 @@ class PATT(object):
                     )
 
             self.ps.publish(name, att)
-            time.sleep(1.)
+            time.sleep(0.5)
         return
