@@ -82,14 +82,12 @@ var sis_vol_1lu = new ROSLIB.Topic({
 setTimeout(
     sis_vol_2l.subscribe(function(message) {
         document.getElementById("sis_vol_2l").innerHTML = (message.data).toFixed(3);
-    }, 5000);
-);
+    }), 5000);
 
 setTimeout(
     sis_vol_2r.subscribe(function(message) {
         document.getElementById("sis_vol_2r").innerHTML = (message.data).toFixed(3);
-    }, 5000);
-);
+    }), 5000);
 
 sis_vol_3l.subscribe(function(message) {
     document.getElementById("sis_vol_3l").innerHTML = (message.data).toFixed(3);
