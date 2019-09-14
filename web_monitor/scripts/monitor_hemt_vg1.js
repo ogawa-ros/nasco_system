@@ -9,49 +9,49 @@ ros.on("close", function() {console.log("websocket: closed");});
 
 var hemt_2l_vg1 = new ROSLIB.Topic({
     ros : ros,
-    name : "/hemt_2l_vg1",
+    name : "/hemt_2l_vg1_web",
     messageType : "std_msgs/Float64"
 });
 
 var hemt_2r_vg1 = new ROSLIB.Topic({
     ros : ros,
-    name : "/hemt_2r_vg1",
+    name : "/hemt_2r_vg1_web",
     messageType : "std_msgs/Float64"
 });
 
 var hemt_3l_vg1 = new ROSLIB.Topic({
     ros : ros,
-    name : "/hemt_3l_vg1",
+    name : "/hemt_3l_vg1_web",
     messageType : "std_msgs/Float64"
 });
 
 var hemt_3r_vg1 = new ROSLIB.Topic({
     ros : ros,
-    name : "/hemt_3r_vg1",
+    name : "/hemt_3r_vg1_web",
     messageType : "std_msgs/Float64"
 });
 
 var hemt_4l_vg1 = new ROSLIB.Topic({
     ros : ros,
-    name : "/hemt_4l_vg1",
+    name : "/hemt_4l_vg1_web",
     messageType : "std_msgs/Float64"
 });
 
 var hemt_4r_vg1 = new ROSLIB.Topic({
     ros : ros,
-    name : "/hemt_4r_vg1",
+    name : "/hemt_4r_vg1_web",
     messageType : "std_msgs/Float64"
 });
 
 var hemt_5l_vg1 = new ROSLIB.Topic({
     ros : ros,
-    name : "/hemt_5l_vg1",
+    name : "/hemt_5l_vg1_web",
     messageType : "std_msgs/Float64"
 });
 
 var hemt_5r_vg1 = new ROSLIB.Topic({
     ros : ros,
-    name : "/hemt_5r_vg1",
+    name : "/hemt_5r_vg1_web",
     messageType : "std_msgs/Float64"
 });
 

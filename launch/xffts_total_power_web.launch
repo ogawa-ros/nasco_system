@@ -1,0 +1,163 @@
+<launch>
+
+  <node name = "xffts_board_board01_web"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = '/web' to = '/xffts_power_board01_web'/>
+    <remap from = '/value' to = '/xffts_power_board01' />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/web_xffts.conf" />
+    <param name = "rate" value = "1." />
+  </node>
+
+  <node name = "xffts_board_board02_web"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = '/web' to = '/xffts_power_board02_web'/>
+    <remap from = '/value' to = '/xffts_power_board02' />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/web_xffts.conf" />
+    <param name = "rate" value = "1." />
+  </node>
+
+  <node name = "xffts_board_board03_web"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = '/web' to = '/xffts_power_board03_web'/>
+    <remap from = '/value' to = '/xffts_power_board03' />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/web_xffts.conf" />
+    <param name = "rate" value = "1." />
+  </node>
+
+  <node name = "xffts_board_board04_web"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = '/web' to = '/xffts_power_board04_web'/>
+    <remap from = '/value' to = '/xffts_power_board04' />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/web_xffts.conf" />
+    <param name = "rate" value = "1." />
+  </node>
+
+  <node name = "xffts_board_board05_web"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = '/web' to = '/xffts_power_board05_web'/>
+    <remap from = '/value' to = '/xffts_power_board05' />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/web_xffts.conf" />
+    <param name = "rate" value = "1." />
+  </node>
+
+  <node name = "xffts_board_board06_web"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = '/web' to = '/xffts_power_board06_web'/>
+    <remap from = '/value' to = '/xffts_power_board06' />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/web_xffts.conf" />
+    <param name = "rate" value = "1." />
+  </node>
+
+  <node name = "xffts_board_board07_web"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = '/web' to = '/xffts_power_board07_web'/>
+    <remap from = '/value' to = '/xffts_power_board07' />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/web_xffts.conf" />
+    <param name = "rate" value = "1." />
+  </node>
+
+  <node name = "xffts_board_board08_web"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = '/web' to = '/xffts_power_board08_web'/>
+    <remap from = '/value' to = '/xffts_power_board08' />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/web_xffts.conf" />
+    <param name = "rate" value = "1." />
+  </node>
+
+  <node name = "xffts_board_board09_web"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = '/web' to = '/xffts_power_board09_web'/>
+    <remap from = '/value' to = '/xffts_power_board09' />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/web_xffts.conf" />
+    <param name = "rate" value = "1." />
+  </node>
+
+  <node name = "xffts_board_board10_web"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = '/web' to = '/xffts_power_board10_web'/>
+    <remap from = '/value' to = '/xffts_power_board10' />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/web_xffts.conf" />
+    <param name = "rate" value = "1." />
+  </node>
+
+  <node name = "xffts_board_board11_web"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = '/web' to = '/xffts_power_board11_web'/>
+    <remap from = '/value' to = '/xffts_power_board11' />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/web_xffts.conf" />
+    <param name = "rate" value = "1." />
+  </node>
+
+  <node name = "xffts_board_board12_web"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = '/web' to = '/xffts_power_board12_web'/>
+    <remap from = '/value' to = '/xffts_power_board12' />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/web_xffts.conf" />
+    <param name = "rate" value = "1." />
+  </node>
+
+  <node name = "xffts_board_board13_web"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = '/web' to = '/xffts_power_board13_web'/>
+    <remap from = '/value' to = '/xffts_power_board13' />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/web_xffts.conf" />
+    <param name = "rate" value = "1." />
+  </node>
+
+  <node name = "xffts_board_board14_web"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = '/web' to = '/xffts_power_board14_web'/>
+    <remap from = '/value' to = '/xffts_power_board14' />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/web_xffts.conf" />
+    <param name = "rate" value = "1." />
+  </node>
+
+  <node name = "xffts_board_board15_web"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = '/web' to = '/xffts_power_board15_web'/>
+    <remap from = '/value' to = '/xffts_power_board15' />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/web_xffts.conf" />
+    <param name = "rate" value = "1." />
+  </node>
+
+  <node name = "xffts_board_board16_web"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = '/web' to = '/xffts_power_board16_web'/>
+    <remap from = '/value' to = '/xffts_power_board16' />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/web_xffts.conf" />
+    <param name = "rate" value = "1." />
+  </node>
+
+</launch>

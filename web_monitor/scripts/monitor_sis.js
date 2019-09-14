@@ -15,67 +15,67 @@ var sis_vol_2l = new ROSLIB.Topic({
 
 var sis_vol_2r = new ROSLIB.Topic({
     ros : ros,
-    name : "/sis_vol_2r",
+    name : "/sis_vol_2r_web",
     messageType : "std_msgs/Float64"
 });
 
 var sis_vol_3l = new ROSLIB.Topic({
     ros : ros,
-    name : "/sis_vol_3l",
+    name : "/sis_vol_3l_web",
     messageType : "std_msgs/Float64"
 });
 
 var sis_vol_3r = new ROSLIB.Topic({
     ros : ros,
-    name : "/sis_vol_3r",
+    name : "/sis_vol_3r_web",
     messageType : "std_msgs/Float64"
 });
 
 var sis_vol_4l = new ROSLIB.Topic({
     ros : ros,
-    name : "/sis_vol_4l",
+    name : "/sis_vol_4l_web",
     messageType : "std_msgs/Float64"
 });
 
 var sis_vol_4r = new ROSLIB.Topic({
     ros : ros,
-    name : "/sis_vol_4r",
+    name : "/sis_vol_4r_web",
     messageType : "std_msgs/Float64"
 });
 
 var sis_vol_5l = new ROSLIB.Topic({
     ros : ros,
-    name : "/sis_vol_5l",
+    name : "/sis_vol_5l_web",
     messageType : "std_msgs/Float64"
 });
 
 var sis_vol_5r = new ROSLIB.Topic({
     ros : ros,
-    name : "/sis_vol_5r",
+    name : "/sis_vol_5r_web",
     messageType : "std_msgs/Float64"
 });
 
 var sis_vol_1rl = new ROSLIB.Topic({
     ros : ros,
-    name : "/sis_vol_1rl",
+    name : "/sis_vol_1rl_web",
     messageType : "std_msgs/Float64"
 });
 
 var sis_vol_1ru = new ROSLIB.Topic({
     ros : ros,
-    name : "/sis_vol_1ru",
+    name : "/sis_vol_1ru_web",
     messageType : "std_msgs/Float64"
 });
 
 var sis_vol_1ll = new ROSLIB.Topic({
     ros : ros,
-    name : "/sis_vol_1ll",
+    name : "/sis_vol_1ll_web",
     messageType : "std_msgs/Float64"
 });
 
 var sis_vol_1lu = new ROSLIB.Topic({
     ros : ros,
-    name : "/sis_vol_1lu",
+    name : "/sis_vol_1lu_web",
     messageType : "std_msgs/Float64"
 });
 
@@ -135,73 +135,73 @@ sis_vol_1lu.subscribe(function(message) {
 
 var sis_cur_2l = new ROSLIB.Topic({
     ros : ros,
-    name : "/sis_cur_2l",
+    name : "/sis_cur_2l_web",
     messageType : "std_msgs/Float64"
 });
 
 var sis_cur_2r = new ROSLIB.Topic({
     ros : ros,
-    name : "/sis_cur_2r",
+    name : "/sis_cur_2r_web",
     messageType : "std_msgs/Float64"
 });
 
 var sis_cur_3l = new ROSLIB.Topic({
     ros : ros,
-    name : "/sis_cur_3l",
+    name : "/sis_cur_3l_web",
     messageType : "std_msgs/Float64"
 });
 
 var sis_cur_3r = new ROSLIB.Topic({
     ros : ros,
-    name : "/sis_cur_3r",
+    name : "/sis_cur_3r_web",
     messageType : "std_msgs/Float64"
 });
 
 var sis_cur_4l = new ROSLIB.Topic({
     ros : ros,
-    name : "/sis_cur_4l",
+    name : "/sis_cur_4l_web",
     messageType : "std_msgs/Float64"
 });
 
 var sis_cur_4r = new ROSLIB.Topic({
     ros : ros,
-    name : "/sis_cur_4r",
+    name : "/sis_cur_4r_web",
     messageType : "std_msgs/Float64"
 });
 
 var sis_cur_5l = new ROSLIB.Topic({
     ros : ros,
-    name : "/sis_cur_5l",
+    name : "/sis_cur_5l_web",
     messageType : "std_msgs/Float64"
 });
 
 var sis_cur_5r = new ROSLIB.Topic({
     ros : ros,
-    name : "/sis_cur_5r",
+    name : "/sis_cur_5r_web",
     messageType : "std_msgs/Float64"
 });
 
 var sis_cur_1rl = new ROSLIB.Topic({
     ros : ros,
-    name : "/sis_cur_1rl",
+    name : "/sis_cur_1rl_web",
     messageType : "std_msgs/Float64"
 });
 
 var sis_cur_1ru = new ROSLIB.Topic({
     ros : ros,
-    name : "/sis_cur_1ru",
+    name : "/sis_cur_1ru_web",
     messageType : "std_msgs/Float64"
 });
 
 var sis_cur_1ll = new ROSLIB.Topic({
     ros : ros,
-    name : "/sis_cur_1ll",
+    name : "/sis_cur_1ll_web",
     messageType : "std_msgs/Float64"
 });
 
 var sis_cur_1lu = new ROSLIB.Topic({
     ros : ros,
-    name : "/sis_cur_1lu",
+    name : "/sis_cur_1lu_web",
     messageType : "std_msgs/Float64"
 });
 

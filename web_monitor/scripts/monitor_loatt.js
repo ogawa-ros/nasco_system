@@ -9,61 +9,61 @@ ros.on("close", function() {console.log("websocket: closed");});
 
 var loatt_2l = new ROSLIB.Topic({
     ros : ros,
-    name : "/loatt_2l",
+    name : "/loatt_2l_web",
     messageType : "std_msgs/Float64"
 });
 
 var loatt_2r = new ROSLIB.Topic({
     ros : ros,
-    name : "/loatt_2r",
+    name : "/loatt_2r_web",
     messageType : "std_msgs/Float64"
 });
 
 var loatt_3l = new ROSLIB.Topic({
     ros : ros,
-    name : "/loatt_3l",
+    name : "/loatt_3l_web",
     messageType : "std_msgs/Float64"
 });
 
 var loatt_3r = new ROSLIB.Topic({
     ros : ros,
-    name : "/loatt_3r",
+    name : "/loatt_3r_web",
     messageType : "std_msgs/Float64"
 });
 
 var loatt_4l = new ROSLIB.Topic({
     ros : ros,
-    name : "/loatt_4l",
+    name : "/loatt_4l_web",
     messageType : "std_msgs/Float64"
 });
 
 var loatt_4r = new ROSLIB.Topic({
     ros : ros,
-    name : "/loatt_4r",
+    name : "/loatt_4r_web",
     messageType : "std_msgs/Float64"
 });
 
 var loatt_5l = new ROSLIB.Topic({
     ros : ros,
-    name : "/loatt_5l",
+    name : "/loatt_5l_web",
     messageType : "std_msgs/Float64"
 });
 
 var loatt_5r = new ROSLIB.Topic({
     ros : ros,
-    name : "/loatt_5r",
+    name : "/loatt_5r_web",
     messageType : "std_msgs/Float64"
 });
 
 var loatt_1l = new ROSLIB.Topic({
     ros : ros,
-    name : "/loatt_1l",
+    name : "/loatt_1l_web",
     messageType : "std_msgs/Float64"
 });
 
 var loatt_1r = new ROSLIB.Topic({
     ros : ros,
-    name : "/loatt_1r",
+    name : "/loatt_1r_web",
     messageType : "std_msgs/Float64"
 });
 

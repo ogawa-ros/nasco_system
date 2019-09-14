@@ -1,0 +1,123 @@
+<launch>
+
+  <node name = "sis_cur_2l_web"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = '/web' to = '/sis_cur_2l_web'/>
+    <remap from = '/value' to = '/sis_cur_2l' />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/web.conf" />
+    <param name = "rate" value = "1." />
+  </node>
+
+  <node name = "sis_cur_2r_web"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = '/web' to = '/sis_cur_2r_web'/>
+    <remap from = '/value' to = '/sis_cur_2r' />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/web.conf" />
+    <param name = "rate" value = "1." />
+  </node>
+
+  <node name = "sis_cur_3l_web"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = '/web' to = '/sis_cur_3l_web'/>
+    <remap from = '/value' to = '/sis_cur_3l' />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/web.conf" />
+    <param name = "rate" value = "1." />
+  </node>
+
+  <node name = "sis_cur_3r_web"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = '/web' to = '/sis_cur_3r_web'/>
+    <remap from = '/value' to = '/sis_cur_3r' />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/web.conf" />
+    <param name = "rate" value = "1." />
+  </node>
+
+  <node name = "sis_cur_4l_web"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = '/web' to = '/sis_cur_4l_web'/>
+    <remap from = '/value' to = '/sis_cur_4l' />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/web.conf" />
+    <param name = "rate" value = "1." />
+  </node>
+
+  <node name = "sis_cur_4r_web"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = '/web' to = '/sis_cur_4r_web'/>
+    <remap from = '/value' to = '/sis_cur_4r' />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/web.conf" />
+    <param name = "rate" value = "1." />
+  </node>
+
+  <node name = "sis_cur_5l_web"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = '/web' to = '/sis_cur_5l_web'/>
+    <remap from = '/value' to = '/sis_cur_5l' />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/web.conf" />
+    <param name = "rate" value = "1." />
+  </node>
+
+  <node name = "sis_cur_5r_web"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = '/web' to = '/sis_cur_5r_web'/>
+    <remap from = '/value' to = '/sis_cur_5r' />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/web.conf" />
+    <param name = "rate" value = "1." />
+  </node>
+
+  <node name = "sis_cur_1lu_web"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = '/web' to = '/sis_cur_1lu_web'/>
+    <remap from = '/value' to = '/sis_cur_1lu' />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/web.conf" />
+    <param name = "rate" value = "1." />
+  </node>
+
+  <node name = "sis_cur_1ll_web"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = '/web' to = '/sis_cur_1ll_web'/>
+    <remap from = '/value' to = '/sis_cur_1ll' />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/web.conf" />
+    <param name = "rate" value = "1." />
+  </node>
+
+  <node name = "sis_cur_1ru_web"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = '/web' to = '/sis_cur_1ru_web'/>
+    <remap from = '/value' to = '/sis_cur_1ru' />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/web.conf" />
+    <param name = "rate" value = "1." />
+  </node>
+
+  <node name = "sis_cur_1rl_web"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = '/web' to = '/sis_cur_1rl_web'/>
+    <remap from = '/value' to = '/sis_cur_1rl' />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/web.conf" />
+    <param name = "rate" value = "1." />
+  </node>
+
+</launch>
