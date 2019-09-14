@@ -1,0 +1,12 @@
+<launch>
+
+  <node name = "sis_vol_2l_web"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = '/web' to = '/sis_vol_2l_web'/>
+    <remap from = '/value' to = '/sis_vol_2l' />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/web.conf" />
+  </node>
+
+</launch>
