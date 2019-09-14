@@ -81,7 +81,9 @@ var sis_vol_1lu = new ROSLIB.Topic({
 
 sis_vol_2l.subscribe(function(message) {
     document.getElementById("sis_vol_2l").innerHTML = (message.data).toFixed(3);
-    sleep(3000);
+    sleep(5, function() {
+        console.log('!!!');
+    });
 });
 
 sis_vol_2r.subscribe(function(message) {
