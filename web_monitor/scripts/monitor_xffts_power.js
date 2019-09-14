@@ -7,97 +7,97 @@ ros.on("close", function() {console.log("websocket: closed");});
 
 var xffts_power_board01 = new ROSLIB.Topic({
     ros : ros,
-    name : "/xffts_power_board01s",
+    name : "/xffts_power_board01_web",
     messageType : "std_msgs/Float64"
 });
 
 var xffts_power_board02 = new ROSLIB.Topic({
     ros : ros,
-    name : "/xffts_power_board02s",
+    name : "/xffts_power_board02_web",
     messageType : "std_msgs/Float64"
 });
 
 var xffts_power_board03 = new ROSLIB.Topic({
     ros : ros,
-    name : "/xffts_power_board03s",
+    name : "/xffts_power_board03_web",
     messageType : "std_msgs/Float64"
 });
 
 var xffts_power_board04 = new ROSLIB.Topic({
     ros : ros,
-    name : "/xffts_power_board04s",
+    name : "/xffts_power_board04_web",
     messageType : "std_msgs/Float64"
 });
 
 var xffts_power_board05 = new ROSLIB.Topic({
     ros : ros,
-    name : "/xffts_power_board05s",
+    name : "/xffts_power_board05_web",
     messageType : "std_msgs/Float64"
 });
 
 var xffts_power_board06 = new ROSLIB.Topic({
     ros : ros,
-    name : "/xffts_power_board06s",
+    name : "/xffts_power_board06_web",
     messageType : "std_msgs/Float64"
 });
 
 var xffts_power_board07 = new ROSLIB.Topic({
     ros : ros,
-    name : "/xffts_power_board07s",
+    name : "/xffts_power_board07_web",
     messageType : "std_msgs/Float64"
 });
 
 var xffts_power_board08 = new ROSLIB.Topic({
     ros : ros,
-    name : "/xffts_power_board08s",
+    name : "/xffts_power_board08_web",
     messageType : "std_msgs/Float64"
 });
 
 var xffts_power_board09 = new ROSLIB.Topic({
     ros : ros,
-    name : "/xffts_power_board09s",
+    name : "/xffts_power_board09_web",
     messageType : "std_msgs/Float64"
 });
 
 var xffts_power_board10 = new ROSLIB.Topic({
     ros : ros,
-    name : "/xffts_power_board10s",
+    name : "/xffts_power_board10_web",
     messageType : "std_msgs/Float64"
 });
 
 var xffts_power_board11 = new ROSLIB.Topic({
     ros : ros,
-    name : "/xffts_power_board11s",
+    name : "/xffts_power_board11_web",
     messageType : "std_msgs/Float64"
 });
 
 var xffts_power_board12 = new ROSLIB.Topic({
     ros : ros,
-    name : "/xffts_power_board12s",
+    name : "/xffts_power_board12_web",
     messageType : "std_msgs/Float64"
 });
 
 var xffts_power_board13 = new ROSLIB.Topic({
     ros : ros,
-    name : "/xffts_power_board13s",
+    name : "/xffts_power_board13_web",
     messageType : "std_msgs/Float64"
 });
 
 var xffts_power_board14 = new ROSLIB.Topic({
     ros : ros,
-    name : "/xffts_power_board14s",
+    name : "/xffts_power_board14_web",
     messageType : "std_msgs/Float64"
 });
 
 var xffts_power_board15 = new ROSLIB.Topic({
     ros : ros,
-    name : "/xffts_power_board15s",
+    name : "/xffts_power_board15_web",
     messageType : "std_msgs/Float64"
 });
 
 var xffts_power_board16 = new ROSLIB.Topic({
     ros : ros,
-    name : "/xffts_power_board16s",
+    name : "/xffts_power_board16_web",
     messageType : "std_msgs/Float64"
 });
 
