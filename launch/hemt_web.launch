@@ -4,7 +4,7 @@
   <node name = "hemt_2l_vd_web"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "value" to = "/hemt_2l_vd"/>
+    <remap from = "/value" to = "/hemt_2l_vd"/>
     <remap from = "/web" to = "/hemt_2l_vd_web" />
     <param name = "rate" value = "1." />
     <param name = "config_file"
@@ -14,7 +14,7 @@
   <node name = "hemt_2l_vg1_web"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "value" to = "/hemt_2l_vg1"/>
+    <remap from = "/value" to = "/hemt_2l_vg1"/>
     <remap from = "/web" to = "/hemt_2l_vg1_web" />
     <param name = "rate" value = "1." />
     <param name = "config_file"
@@ -24,7 +24,7 @@
   <node name = "hemt_2l_vg2_web"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "value" to = "/hemt_2l_vg2"/>
+    <remap from = "/value" to = "/hemt_2l_vg2"/>
     <remap from = "/web" to = "/hemt_2l_vg2_web" />
     <param name = "rate" value = "1." />
     <param name = "config_file"
@@ -34,7 +34,7 @@
   <node name = "hemt_2l_id_web"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "value" to = "/hemt_2l_id"/>
+    <remap from = "/value" to = "/hemt_2l_id"/>
     <remap from = "/web" to = "/hemt_2l_id_web" />
     <param name = "rate" value = "1." />
     <param name = "config_file"
@@ -44,7 +44,7 @@
   <node name = "hemt_2r_vd_web"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "value" to = "/hemt_2r_vd"/>
+    <remap from = "/value" to = "/hemt_2r_vd"/>
     <remap from = "/web" to = "/hemt_2r_vd_web" />
     <param name = "rate" value = "1." />
     <param name = "config_file"
@@ -54,7 +54,7 @@
   <node name = "hemt_2r_vg1_web"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "value" to = "/hemt_2r_vg1"/>
+    <remap from = "/value" to = "/hemt_2r_vg1"/>
     <remap from = "/web" to = "/hemt_2r_vg1_web" />
     <param name = "rate" value = "1." />
     <param name = "config_file"
@@ -64,7 +64,7 @@
   <node name = "hemt_2r_vg2_web"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "value" to = "/hemt_2r_vg2"/>
+    <remap from = "/value" to = "/hemt_2r_vg2"/>
     <remap from = "/web" to = "/hemt_2r_vg2_web" />
     <param name = "rate" value = "1." />
     <param name = "config_file"
@@ -74,7 +74,7 @@
   <node name = "hemt_2r_id_web"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "value" to = "/hemt_2r_id"/>
+    <remap from = "/value" to = "/hemt_2r_id"/>
     <remap from = "/web" to = "/hemt_2r_id_web" />
     <param name = "rate" value = "1." />
     <param name = "config_file"
@@ -84,7 +84,7 @@
   <node name = "hemt_3l_vd_web"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "value" to = "/hemt_3l_vd"/>
+    <remap from = "/value" to = "/hemt_3l_vd"/>
     <remap from = "/web" to = "/hemt_3l_vd_web" />
     <param name = "rate" value = "1." />
     <param name = "config_file"
@@ -94,7 +94,7 @@
   <node name = "hemt_3l_vg1_web"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "value" to = "/hemt3l_vg1"/>
+    <remap from = "/value" to = "/hemt3l_vg1"/>
     <remap from = "/web" to = "/hemt_3l_vg1_web" />
     <param name = "rate" value = "1." />
     <param name = "config_file"
@@ -104,7 +104,7 @@
   <node name = "hemt_3l_vg2_web"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "value" to = "/hemt_3l_vg2"/>
+    <remap from = "/value" to = "/hemt_3l_vg2"/>
     <remap from = "/web" to = "/hemt_3l_vg2_web" />
     <param name = "rate" value = "1." />
     <param name = "config_file"
@@ -114,7 +114,7 @@
   <node name = "hemt_3l_id_web"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "value" to = "/hemt_3l_id"/>
+    <remap from = "/value" to = "/hemt_3l_id"/>
     <remap from = "/web" to = "/hemt_3l_id_web" />
     <param name = "rate" value = "1." />
     <param name = "config_file"
@@ -124,7 +124,7 @@
   <node name = "hemt_3r_vd_web"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "value" to = "/hemt_3r_vd"/>
+    <remap from = "/value" to = "/hemt_3r_vd"/>
     <remap from = "/web" to = "/hemt_3r_vd_web" />
     <param name = "rate" value = "1." />
     <param name = "config_file"
@@ -134,7 +134,7 @@
   <node name = "hemt_3r_vg1_web"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "value" to = "/hemt_3r_vg1"/>
+    <remap from = "/value" to = "/hemt_3r_vg1"/>
     <remap from = "/web" to = "/hemt_3r_vg1_web" />
     <param name = "rate" value = "1." />
     <param name = "config_file"
@@ -144,7 +144,7 @@
   <node name = "hemt_3r_vg2_web"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "value" to = "/hemt_3r_vg2"/>
+    <remap from = "/value" to = "/hemt_3r_vg2"/>
     <remap from = "/web" to = "/hemt_3r_vg2_web" />
     <param name = "rate" value = "1." />
     <param name = "config_file"
@@ -154,7 +154,7 @@
   <node name = "hemt_3r_id_web"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "value" to = "/hemt_3r_id"/>
+    <remap from = "/value" to = "/hemt_3r_id"/>
     <remap from = "/web" to = "/hemt_3r_id_web" />
     <param name = "rate" value = "1." />
     <param name = "config_file"
@@ -164,7 +164,7 @@
   <node name = "hemt_4l_vd_web"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "value" to = "/hemt_3l_vd"/>
+    <remap from = "/value" to = "/hemt_3l_vd"/>
     <remap from = "/web" to = "/hemt_4l_vd_web" />
     <param name = "rate" value = "1." />
     <param name = "config_file"
@@ -174,7 +174,7 @@
   <node name = "hemt_4l_vg1_web"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "value" to = "/hemt_4l_vg1"/>
+    <remap from = "/value" to = "/hemt_4l_vg1"/>
     <remap from = "/web" to = "/hemt_4l_vg1_web" />
     <param name = "rate" value = "1." />
     <param name = "config_file"
@@ -184,7 +184,7 @@
   <node name = "hemt_4l_vg2_web"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "value" to = "/hemt_4l_vg2"/>
+    <remap from = "/value" to = "/hemt_4l_vg2"/>
     <remap from = "/web" to = "/hemt_4l_vg2_web" />
     <param name = "rate" value = "1." />
     <param name = "config_file"
@@ -194,7 +194,7 @@
   <node name = "hemt_4l_id_web"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "value" to = "/hemt_4l_id"/>
+    <remap from = "/value" to = "/hemt_4l_id"/>
     <remap from = "/web" to = "/hemt_4l_id_web" />
     <param name = "rate" value = "1." />
     <param name = "config_file"
@@ -204,7 +204,7 @@
   <node name = "hemt_4r_vd_web"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "value" to = "/hemt_4r_vd"/>
+    <remap from = "/value" to = "/hemt_4r_vd"/>
     <remap from = "/web" to = "/hemt_4r_vd_web" />
     <param name = "rate" value = "1." />
     <param name = "config_file"
@@ -214,7 +214,7 @@
   <node name = "hemt_4r_vg1_web"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "value" to = "/hemt_4r_vg1"/>
+    <remap from = "/value" to = "/hemt_4r_vg1"/>
     <remap from = "/web" to = "/hemt_4r_vg1_web" />
     <param name = "rate" value = "1." />
     <param name = "config_file"
@@ -224,7 +224,7 @@
   <node name = "hemt_4r_vg2_web"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "value" to = "/hemt_4r_vg2"/>
+    <remap from = "/value" to = "/hemt_4r_vg2"/>
     <remap from = "/web" to = "/hemt_4r_vg2_web" />
     <param name = "rate" value = "1." />
     <param name = "config_file"
@@ -234,7 +234,7 @@
   <node name = "hemt_4r_id_web"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "value" to = "/hemt_4r_id"/>
+    <remap from = "/value" to = "/hemt_4r_id"/>
     <remap from = "/web" to = "/hemt_4r_id_web" />
     <param name = "rate" value = "1." />
     <param name = "config_file"
@@ -244,7 +244,7 @@
   <node name = "hemt_5l_vd_web"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "value" to = "/hemt_5l_vd"/>
+    <remap from = "/value" to = "/hemt_5l_vd"/>
     <remap from = "/web" to = "/hemt_5l_vd_web" />
     <param name = "rate" value = "1." />
     <param name = "config_file"
@@ -254,7 +254,7 @@
   <node name = "hemt_5l_vg1_web"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "value" to = "/hemt_5l_vg1"/>
+    <remap from = "/value" to = "/hemt_5l_vg1"/>
     <remap from = "/web" to = "/hemt_5l_vg1_web" />
     <param name = "rate" value = "1." />
     <param name = "config_file"
@@ -264,7 +264,7 @@
   <node name = "hemt_5l_vg2_web"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "value" to = "/hemt_5l_vg2"/>
+    <remap from = "/value" to = "/hemt_5l_vg2"/>
     <remap from = "/web" to = "/hemt_5l_vg2_web" />
     <param name = "rate" value = "1." />
     <param name = "config_file"
@@ -274,7 +274,7 @@
   <node name = "hemt_5l_id_web"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "value" to = "/hemt_5l_id"/>
+    <remap from = "/value" to = "/hemt_5l_id"/>
     <remap from = "/web" to = "/hemt_5l_id_web" />
     <param name = "rate" value = "1." />
     <param name = "config_file"
@@ -284,7 +284,7 @@
   <node name = "hemt_5r_vd_web"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "value" to = "/hemt_5r_vd"/>
+    <remap from = "/value" to = "/hemt_5r_vd"/>
     <remap from = "/web" to = "/hemt_5r_vd_web" />
     <param name = "rate" value = "1." />
     <param name = "config_file"
@@ -294,7 +294,7 @@
   <node name = "hemt_5r_vg1_web"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "value" to = "/hemt_5r_vg1"/>
+    <remap from = "/value" to = "/hemt_5r_vg1"/>
     <remap from = "/web" to = "/hemt_5r_vg1_web" />
     <param name = "rate" value = "1." />
     <param name = "config_file"
@@ -304,7 +304,7 @@
   <node name = "hemt_5r_vg2_web"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "value" to = "/hemt_5r_vg2"/>
+    <remap from = "/value" to = "/hemt_5r_vg2"/>
     <remap from = "/web" to = "/hemt_5r_vg2_web" />
     <param name = "rate" value = "1." />
     <param name = "config_file"
@@ -314,7 +314,7 @@
   <node name = "hemt_5r_id_web"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "value" to = "/hemt_5r_id"/>
+    <remap from = "/value" to = "/hemt_5r_id"/>
     <remap from = "/web" to = "/hemt_5r_id_web" />
     <param name = "rate" value = "1." />
     <param name = "config_file"
