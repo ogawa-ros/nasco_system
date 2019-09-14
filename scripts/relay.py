@@ -7,7 +7,6 @@ import configparser
 import time
 import rospy
 import std_msgs.msg
-import nascorx_xffts.msg
 
 subscribers = {}
 publishers = {}
