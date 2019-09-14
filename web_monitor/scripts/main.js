@@ -20,15 +20,14 @@ function sleep(waitsecond, callback){
 '''
 
 function sleep(waitSec, callbackFunc) {
-    var spanedSec = 0;
-    var id = setInterval(function () {
-        spanedSec++;
-        if (spanedSec >= waitSec) {
-            clearInterval(id);
-            if (callbackFunc) callbackFunc();
+    const d1 = new Date();
+    while (true) {
+        const d2 = new Date();
+        if (d2 - d1 > 5000) {
+            break;
         }
-    }, 1000);
-}
+    }
+ }
 
 var topic_data = new ROSLIB.Topic({
     ros : ros,
