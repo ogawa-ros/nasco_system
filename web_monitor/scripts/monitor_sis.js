@@ -9,7 +9,7 @@ ros.on("close", function() {console.log("websocket: closed");});
 
 var sis_vol_2l = new ROSLIB.Topic({
     ros : ros,
-    name : "/sis_vol_2l",
+    name : "/sis_vol_2l_web",
     messageType : "std_msgs/Float64"
 });
 
