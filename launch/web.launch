@@ -7,6 +7,117 @@
     <remap from = '/value' to = '/sis_vol_2l' />
     <param name = "config_file"
            value = "$(find nasco_system)/relay_conf/web.conf" />
+    <param name = "rate" value = "1." />
+  </node>
+
+  <node name = "sis_vol_2r_web"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = '/web' to = '/sis_vol_2r_web'/>
+    <remap from = '/value' to = '/sis_vol_2r' />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/web.conf" />
+    <param name = "rate" value = "1." />
+  </node>
+
+  <node name = "sis_vol_3l_web"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = '/web' to = '/sis_vol_3l_web'/>
+    <remap from = '/value' to = '/sis_vol_3l' />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/web.conf" />
+    <param name = "rate" value = "1." />
+  </node>
+
+  <node name = "sis_vol_3r_web"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = '/web' to = '/sis_vol_3r_web'/>
+    <remap from = '/value' to = '/sis_vol_3r' />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/web.conf" />
+    <param name = "rate" value = "1." />
+  </node>
+
+  <node name = "sis_vol_4l_web"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = '/web' to = '/sis_vol_4l_web'/>
+    <remap from = '/value' to = '/sis_vol_4l' />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/web.conf" />
+    <param name = "rate" value = "1." />
+  </node>
+
+  <node name = "sis_vol_4r_web"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = '/web' to = '/sis_vol_4r_web'/>
+    <remap from = '/value' to = '/sis_vol_4r' />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/web.conf" />
+    <param name = "rate" value = "1." />
+  </node>
+
+  <node name = "sis_vol_5l_web"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = '/web' to = '/sis_vol_5l_web'/>
+    <remap from = '/value' to = '/sis_vol_5l' />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/web.conf" />
+    <param name = "rate" value = "1." />
+  </node>
+
+  <node name = "sis_vol_5r_web"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = '/web' to = '/sis_vol_5r_web'/>
+    <remap from = '/value' to = '/sis_vol_5r' />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/web.conf" />
+    <param name = "rate" value = "1." />
+  </node>
+
+  <node name = "sis_vol_1lu_web"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = '/web' to = '/sis_vol_1lu_web'/>
+    <remap from = '/value' to = '/sis_vol_1lu' />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/web.conf" />
+    <param name = "rate" value = "1." />
+  </node>
+
+  <node name = "sis_vol_1ll_web"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = '/web' to = '/sis_vol_1ll_web'/>
+    <remap from = '/value' to = '/sis_vol_1ll' />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/web.conf" />
+    <param name = "rate" value = "1." />
+  </node>
+
+  <node name = "sis_vol_1ru_web"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = '/web' to = '/sis_vol_1ru_web'/>
+    <remap from = '/value' to = '/sis_vol_1ru' />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/web.conf" />
+    <param name = "rate" value = "1." />
+  </node>
+
+  <node name = "sis_vol_1rl_web"
+  	type = "relay.py"
+    	pkg = "nasco_system">
+    <remap from = '/web' to = '/sis_vol_1rl_web'/>
+    <remap from = '/value' to = '/sis_vol_1rl' />
+    <param name = "config_file"
+           value = "$(find nasco_system)/relay_conf/web.conf" />
+    <param name = "rate" value = "1." />
   </node>
 
 </launch>
