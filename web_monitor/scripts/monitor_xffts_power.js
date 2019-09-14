@@ -103,65 +103,65 @@ var xffts_power_board16 = new ROSLIB.Topic({
 
 
 xffts_power_board01.subscribe(function(message) {
-    document.getElementById("xffts_power_board01").innerHTML = (message.data).toFixed(3);
+    document.getElementById("xffts_power_board01").innerHTML = (message.data);
 });
 
 xffts_power_board02.subscribe(function(message) {
-    document.getElementById("xffts_power_board02").innerHTML = (message.data).toFixed(3);
+    document.getElementById("xffts_power_board02").innerHTML = (message.data);
 });
 
 xffts_power_board03.subscribe(function(message) {
-    document.getElementById("xffts_power_board03").innerHTML = (message.data).toFixed(3);
+    document.getElementById("xffts_power_board03").innerHTML = (message.data);
 });
 
 xffts_power_board04.subscribe(function(message) {
-    document.getElementById("xffts_power_board04").innerHTML = (message.data).toFixed(3);
+    document.getElementById("xffts_power_board04").innerHTML = (message.data);
 });
 
 xffts_power_board05.subscribe(function(message) {
-    document.getElementById("xffts_power_board05").innerHTML = (message.data).toFixed(3);
+    document.getElementById("xffts_power_board05").innerHTML = (message.data);
 });
 
 xffts_power_board06.subscribe(function(message) {
-    document.getElementById("xffts_power_board06").innerHTML = (message.data).toFixed(3);
+    document.getElementById("xffts_power_board06").innerHTML = (message.data);
 });
 
 xffts_power_board07.subscribe(function(message) {
-    document.getElementById("xffts_power_board07").innerHTML = (message.data).toFixed(3);
+    document.getElementById("xffts_power_board07").innerHTML = (message.data);
 });
 
 xffts_power_board08.subscribe(function(message) {
-    document.getElementById("xffts_power_board08").innerHTML = (message.data).toFixed(3);
+    document.getElementById("xffts_power_board08").innerHTML = (message.data);
 });
 
 xffts_power_board09.subscribe(function(message) {
-    document.getElementById("xffts_power_board09").innerHTML = (message.data).toFixed(3);
+    document.getElementById("xffts_power_board09").innerHTML = (message.data);
 });
 
 xffts_power_board10.subscribe(function(message) {
-    document.getElementById("xffts_power_board10").innerHTML = (message.data).toFixed(3);
+    document.getElementById("xffts_power_board10").innerHTML = (message.data);
 });
 
 xffts_power_board11.subscribe(function(message) {
-    document.getElementById("xffts_power_board11").innerHTML = (message.data).toFixed(3);
+    document.getElementById("xffts_power_board11").innerHTML = (message.data);
 })
 
 xffts_power_board12.subscribe(function(message) {
-    document.getElementById("xffts_power_board12").innerHTML = (message.data).toFixed(3);
+    document.getElementById("xffts_power_board12").innerHTML = (message.data);
 })
 
 xffts_power_board13.subscribe(function(message) {
-    document.getElementById("xffts_power_board13").innerHTML = (message.data).toFixed(3);
+    document.getElementById("xffts_power_board13").innerHTML = (message.data);
 })
 
 xffts_power_board14.subscribe(function(message) {
-    document.getElementById("xffts_power_board14").innerHTML = (message.data).toFixed(3);
+    document.getElementById("xffts_power_board14").innerHTML = (message.data);
 })
 
 xffts_power_board15.subscribe(function(message) {
-    document.getElementById("xffts_power_board15").innerHTML = (message.data).toFixed(3);
+    document.getElementById("xffts_power_board15").innerHTML = (message.data);
 })
 
 xffts_power_board16.subscribe(function(message) {
-    document.getElementById("xffts_power_board16").innerHTML = (message.data).toFixed(3);
+    document.getElementById("xffts_power_board16").innerHTML = (message.data);
 })
