@@ -4,7 +4,7 @@ ros.on('connection', function() {console.log('websocket: connected'); });
 ros.on('error', function(error) {console.log('websocket error; ', error); });
 ros.on('close', function() {console.log('websocket: closed');});
 
-
+'''
 function sleep(waitsecond, callback){
     var time_count = 0;
     var id = setInterval(function(){
@@ -16,6 +16,18 @@ function sleep(waitsecond, callback){
 	    }
 	}else{};
     },1000);
+}
+'''
+
+function sleep(waitSec, callbackFunc) {
+    var spanedSec = 0;
+    var id = setInterval(function () {
+        spanedSec++;
+        if (spanedSec >= waitSec) {
+            clearInterval(id);
+            if (callbackFunc) callbackFunc();
+        }
+    }, 1000);
 }
 
 var topic_data = new ROSLIB.Topic({
