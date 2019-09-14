@@ -103,81 +103,81 @@ var xffts_power_board16 = new ROSLIB.Topic({
 
 
 xffts_power_board01.subscribe(function(message) {
-    document.getElementById("xffts_power_board01").innerHTML = Math.log10(message.total_power).toFixed(3);
+    document.getElementById("xffts_power_board01").innerHTML = Math.log10(message.data).toFixed(3);
     sleep(3000);
     });
 
 xffts_power_board02.subscribe(function(message) {
-    document.getElementById("xffts_power_board02").innerHTML = Math.log10(message.total_power).toFixed(3);
+    document.getElementById("xffts_power_board02").innerHTML = Math.log10(message.data).toFixed(3);
     sleep(3000);
 });
 
 xffts_power_board03.subscribe(function(message) {
-    document.getElementById("xffts_power_board03").innerHTML = Math.log10(message.total_power).toFixed(3);
+    document.getElementById("xffts_power_board03").innerHTML = Math.log10(message.data).toFixed(3);
     sleep(3000);    
 });
 
 xffts_power_board04.subscribe(function(message) {
-    document.getElementById("xffts_power_board04").innerHTML = Math.log10(message.total_power).toFixed(3);
+    document.getElementById("xffts_power_board04").innerHTML = Math.log10(message.data).toFixed(3);
     sleep(3000);    
 });
 
 xffts_power_board05.subscribe(function(message) {
-    document.getElementById("xffts_power_board05").innerHTML = Math.log10(message.total_power).toFixed(3);
+    document.getElementById("xffts_power_board05").innerHTML = Math.log10(message.data).toFixed(3);
     sleep(3000);    
 });
 
 xffts_power_board06.subscribe(function(message) {
-    document.getElementById("xffts_power_board06").innerHTML = Math.log10(message.total_power).toFixed(3);
+    document.getElementById("xffts_power_board06").innerHTML = Math.log10(message.data).toFixed(3);
     sleep(3000);    
 });
 
 xffts_power_board07.subscribe(function(message) {
-    document.getElementById("xffts_power_board07").innerHTML = Math.log10(message.total_power).toFixed(3);
+    document.getElementById("xffts_power_board07").innerHTML = Math.log10(message.data).toFixed(3);
     sleep(3000);    
 });
 
 xffts_power_board08.subscribe(function(message) {
-    document.getElementById("xffts_power_board08").innerHTML = Math.log10(message.total_power).toFixed(3);
+    document.getElementById("xffts_power_board08").innerHTML = Math.log10(message.data).toFixed(3);
     sleep(3000);    
 });
 
 xffts_power_board09.subscribe(function(message) {
-    document.getElementById("xffts_power_board09").innerHTML = Math.log10(message.total_power).toFixed(3);
+    document.getElementById("xffts_power_board09").innerHTML = Math.log10(message.data).toFixed(3);
     sleep(3000);    
 });
 
 xffts_power_board10.subscribe(function(message) {
-    document.getElementById("xffts_power_board10").innerHTML = Math.log10(message.total_power).toFixed(3);
+    document.getElementById("xffts_power_board10").innerHTML = Math.log10(message.data).toFixed(3);
     sleep(3000);    
 });
 
 xffts_power_board11.subscribe(function(message) {
-    document.getElementById("xffts_power_board11").innerHTML = Math.log10(message.total_power).toFixed(3);
+    document.getElementById("xffts_power_board11").innerHTML = Math.log10(message.data).toFixed(3);
     sleep(3000);    
 })
 
 xffts_power_board12.subscribe(function(message) {
-    document.getElementById("xffts_power_board12").innerHTML = Math.log10(message.total_power).toFixed(3);
+    document.getElementById("xffts_power_board12").innerHTML = Math.log10(message.data).toFixed(3);
     sleep(3000);    
 })
 
 xffts_power_board13.subscribe(function(message) {
-    document.getElementById("xffts_power_board13").innerHTML = Math.log10(message.total_power).toFixed(3);
+    document.getElementById("xffts_power_board13").innerHTML = Math.log10(message.data).toFixed(3);
     sleep(3000);    
 })
 
 xffts_power_board14.subscribe(function(message) {
-    document.getElementById("xffts_power_board14").innerHTML = Math.log10(message.total_power).toFixed(3);
+    document.getElementById("xffts_power_board14").innerHTML = Math.log10(message.data).toFixed(3);
     sleep(3000);    
 })
 
 xffts_power_board15.subscribe(function(message) {
-    document.getElementById("xffts_power_board15").innerHTML = Math.log10(message.total_power).toFixed(3);
+    document.getElementById("xffts_power_board15").innerHTML = Math.log10(message.data).toFixed(3);
     sleep(3000);    
 })
 
 xffts_power_board16.subscribe(function(message) {
-    document.getElementById("xffts_power_board16").innerHTML = Math.log10(message.total_power).toFixed(3);
-    sleep(3000);    
+    document.getElementById("xffts_power_board16").innerHTML = Math.log10(message.data).toFixed(3);
+    sleep(3000);
 })
