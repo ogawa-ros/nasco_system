@@ -13,7 +13,6 @@
 <include file="$(find nasco_system)/launch/fsw0020.launch" />
 -->
 
-<!--
   <include file="$(find nasco_system)/launch/a11713b.launch" />
--->
+
 </launch>
