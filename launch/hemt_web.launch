@@ -94,7 +94,7 @@
   <node name = "hemt_3l_vg1_web"
   	type = "relay.py"
     	pkg = "nasco_system">
-    <remap from = "/value" to = "/hemt3l_vg1"/>
+    <remap from = "/value" to = "/hemt_3l_vg1"/>
     <remap from = "/web" to = "/hemt_3l_vg1_web" />
     <param name = "rate" value = "1." />
     <param name = "config_file"
