@@ -102,9 +102,10 @@ var xffts_power_board16 = new ROSLIB.Topic({
 });
 
 
-xffts_power_board01.subscribe(function(message) {
+xffts_power_board01.subscribe(
+    sleep(1, function(message) {
     document.getElementById("xffts_power_board01").innerHTML = Math.log10(message.total_power).toFixed(3);
-});
+    }));
 
 xffts_power_board02.subscribe(function(message) {
     document.getElementById("xffts_power_board02").innerHTML = Math.log10(message.total_power).toFixed(3);
