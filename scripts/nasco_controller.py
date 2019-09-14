@@ -468,7 +468,7 @@ class PATT(object):
 
         if 0 <= att <= 11:
             self.ps.publish(name, att)
-            time.sleep(1)
+            time.sleep(0.1)
 
         else:
             pritn('InvalidRangeError ( 0 <= att < 11 )')
