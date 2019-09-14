@@ -27,12 +27,12 @@ def callback2():
     global logic
 
     namespace = globals()
-    
+
     for _key in params.keys():
         exec('{argname} = params["{argname}"]'.format(argname=_key),
              namespace)
         continue
-    
+
     for _key in publishers.keys():
         exec('{argname} = publishers["{argname}"]'.format(argname=_key),
              namespace)
