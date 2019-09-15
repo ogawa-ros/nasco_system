@@ -115,7 +115,7 @@ class SIS(object):
                  '1lu', '1ll', '1ru', '1rl']
 
     config_file = configparser.ConfigParser()
-    config_file.read('/home/amigos/ros/src/nasco_system/configuration/Tuning_power.conf')
+    config_file.read('/home/amigos/ros/src/nasco_system/configuration/test_tuning.conf')
 
     def __init__(self):
         self.ps = PS()
@@ -224,7 +224,7 @@ class LOATT(object):
                  '1l', '1r']
 
     config_file = configparser.ConfigParser()
-    config_file.read('/home/amigos/ros/src/nasco_system/configuration/Tuning_power.conf')
+    config_file.read('/home/amigos/ros/src/nasco_system/configuration/test_tuning.conf')
 
     def __init__(self):
         self.ps = PS()

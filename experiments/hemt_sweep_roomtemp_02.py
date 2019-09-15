@@ -33,7 +33,7 @@ wait = 1.
 # hemt_param
 initial_voltage = -2.0
 final_voltage = 2.0
-step = 0.5
+step = 0.2
 roop = int((final_voltage - initial_voltage) / step)
 [ctrl.hemt.output_hemt_voltage(beam=beam, vd=1.2) for beam in beam_list] # vd
 
