@@ -115,6 +115,7 @@ for beam in beam_list:
     con.loatt.output_loatt_current(beam, 0.)
     time.sleep(1e-2) # 10 msec.
 
+time.sleep(2)
 logger.publish('')
 
 print('')

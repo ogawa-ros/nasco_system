@@ -42,6 +42,7 @@ for beam in beam_list:
     con.sis.output_sis_voltage(beam, initial_voltage)
     time.sleep(0.01) # 10 msec.
 
+    
 #logger start
 logger.publish(dir_name
 )
@@ -100,7 +101,7 @@ for beam in beam_list:
     con.sis.output_sis_voltage(beam, 0.)
     time.sleep(0.01) # 10 msec.                                
 
-
+time.sleep(2)
 logger.publish('')
 
 print('')
