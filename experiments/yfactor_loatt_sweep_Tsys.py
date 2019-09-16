@@ -22,7 +22,6 @@ jpynb = jpynb_controller.jpynb()
 
 date = datetime.datetime.today().strftime('%Y%m%d_%H%M%S')
 dir_name = name + '/' + date + '.necstdb'
-dir_name_jpynb = name + '/' + date
 
 # pub intialize
 # ------------
@@ -50,7 +49,7 @@ for beam in beam_list:
     con.loatt.output_loatt_current(beam, initial_current)
     time.sleep(1e-2) # 10 msec.
 
-            
+
 #logger start
 logger.publish(dir_name)
 
@@ -80,7 +79,6 @@ for beam in beam_list:
     con.loatt.output_loatt_current(beam, initial_current)
     time.sleep(0.01) # 10 msec.
 
-            
 
 # move cold
 print('[INFO] : Movo chopper from HOT to COLD...')
@@ -102,7 +100,7 @@ print('[INFO] : Finish measure cold with loatt sweep')
 time.sleep(1.)
 
 # setup plot_tool.
-jpynb.make(dir_name_jpynb)
+jpynb.make(dir_name.replace('.necstdb', ''))
 time.sleep(1.)
 
 # finalize.
@@ -115,7 +113,7 @@ for beam in beam_list:
     con.loatt.output_loatt_current(beam, 0.)
     time.sleep(1e-2) # 10 msec.
 
-time.sleep(2)
+time.sleep(2.)
 logger.publish('')
 
 print('')

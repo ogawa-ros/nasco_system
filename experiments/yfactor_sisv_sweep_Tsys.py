@@ -21,7 +21,6 @@ jpynb = jpynb_controller.jpynb()
 
 date = datetime.datetime.today().strftime('%Y%m%d_%H%M%S')
 dir_name = name + '/' + date + '.necstdb'
-dir_name_jpynb = name + '/' + date + '.necstdb'
 
 # pub initialize
 # --------------
@@ -42,10 +41,9 @@ for beam in beam_list:
     con.sis.output_sis_voltage(beam, initial_voltage)
     time.sleep(0.01) # 10 msec.
 
-    
+
 #logger start
-logger.publish(dir_name
-)
+logger.publish(dir_name)
 # move hot
 print('[INFO] : Movo chopper to HOT ...')
 con.slider0.set_step('u', 0)
@@ -89,7 +87,7 @@ time.sleep(1.)
 
 # setup plot_tool
 #-------------
-jpynb.make(dir_name_jpynb)
+jpynb.make(dir_name.replace('.necstdb', ''))
 time.sleep(1.)
 
 #finalize
@@ -97,14 +95,13 @@ con.slider0.set_step('u', 0)
 status.publish('{0:4s}'.format('hot'))
 time.sleep(1.)
 
-for beam in beam_list:   
+for beam in beam_list:
     con.sis.output_sis_voltage(beam, 0.)
-    time.sleep(0.01) # 10 msec.                                
+    time.sleep(0.01) # 10 msec.
 
-time.sleep(2)
+time.sleep(2.)
 logger.publish('')
 
 print('')
 print('FINISH!!')
 print('')
-
