@@ -15,9 +15,9 @@
 
 
 <include file="$(find nasco_system)/launch/rx_device.launch" />
-
+<!--
 <include file="$(find nasco_system)/launch/patt.launch" />
 <include file="$(find nasco_system)/launch/patt_cmd.launch" />
-
+-->
 
 </launch>

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 
-name = 'yfactor_necstdb'
+name = 'yfactor_necstdb_chopper'
 
 
 import sys

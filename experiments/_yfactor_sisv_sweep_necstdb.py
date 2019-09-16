@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 
-name = 'yfactor_sisv_sweep_necstdb'
+name = '_yfactor_sisv_sweep_necstdb'
 
 
 import sys
@@ -12,88 +12,98 @@ import datetime
 
 sys.path.append('/home/amigos/ros/src/nasco_system/scripts/')
 import nasco_controller
-import logger_controller
 import jpynb_controller
-
 
 rospy.init_node(name)
 
 con = nasco_controller.controller(node=False)
-logger = logger_controller.logger()
 jpynb = jpynb_controller.jpynb()
 
 date = datetime.datetime.today().strftime('%Y%m%d_%H%M%S')
-dir_name_hot = name + '/hot/' + date + '.necstdb'
-dir_name_cold = name + '/cold/' + date + '.necstdb'
+dir_name = name + '/' + date + '.necstdb'
 dir_name_jpynb = name + '/' + date + '.necstdb'
 
+# pub initialize
+# --------------
+logger = rospy.Publisher('/logger_path', std_msgs.msg.String, queue_size=1)
+status = rospy.Publisher('/'+name+'/status', std_msgs.msg.String, queue_size=1)
+time.sleep(0.5)
 
 # set params.
 beam_list = con.beam_list
 
-initial_voltage = 7.0 # mV
-final_voltage   = 9.0 # mV
+initial_voltage = 0 # mV
+final_voltage   = 10 # mV
 step            = 0.1 # mV
-interval        = 0.1 # sec.
-fixtime         = 0.1 # sec.
 roop = int((final_voltage - initial_voltage) / step)
 
+#initialize
+for beam in beam_list:
+    con.sis.output_sis_voltage(beam, initial_voltage)
+    time.sleep(0.01) # 10 msec.
 
-# initialize ( hot ).
-print('[INFO] : Initializing for hot... ')
+#logger start
+logger.publish(dir_name
+)
 # move hot
 print('[INFO] : Movo chopper to HOT ...')
 con.slider0.set_step('u', 0)
-# con.??
+status.publish('{0:4s}'.format('hot'))
 time.sleep(1.)
-for beam in beam_list:
-    con.sis.output_sis_voltage(beam, initial_voltage)
-    time.sleep(1e-2) # 10 msec.
 
-# measure hot.
+#sweep voltage(hot)
 print('[INFO] : Start to measure hot with sisv sweep.')
-logger.start(dir_name_hot)
 
 for vol in range(roop + 1):
     for beam in beam_list:
         con.sis.output_sis_voltage(beam=beam, voltage=vol*step+initial_voltage)
-        time.sleep(1e-2) # 10 msec.
-    time.sleep(fixtime)
+        time.sleep(0.01) # 10 msec.
+    time.sleep(1.)
 
 print('[INFO] : Finish measure hot with sisv sweep')
-logger.stop()
 
-# move.
+#initilize voltage
+for beam in beam_list:
+    con.sis.output_sis_voltage(beam, initial_voltage)
+    time.sleep(0.01) # 10 msec.
+
+
+#move cold
 print('[INFO] : Movo chopper from HOT to COLD...')
 con.slider0.set_step('u', 250)
-time.sleep(1.)
-# con.??
+status.publish('{0:4s}'.format('cold'))
 time.sleep(1.)
 
-# measure cold.
+#sweep voltage(cold)
 print('[INFO] : Start to measure cold with sisv sweep.')
-logger.start(dir_name_cold)
-time.sleep(1.)
 
 for vol in range(roop + 1):
     for beam in beam_list:
         con.sis.output_sis_voltage(beam=beam, voltage=vol*step+initial_voltage)
-        time.sleep(1e-2) # 10 msec.
-    time.sleep(fixtime)
+        time.sleep(0.01) # 10 msec.
+    time.sleep(1.)
 
 print('[INFO] : Finish measure cold with sisv sweep')
-logger.stop()
 time.sleep(1.)
 
-# setup plot_tool.
+# setup plot_tool
+#-------------
 jpynb.make(dir_name_jpynb)
 time.sleep(1.)
 
-# finalize.
-print('[INFO] : Finalizing... ')
+#finalize
 con.slider0.set_step('u', 0)
+status.publish('{0:4s}'.format('hot'))
 time.sleep(1.)
 
-for beam in beam_list:
+for beam in beam_list:   
     con.sis.output_sis_voltage(beam, 0.)
-    time.sleep(1e-2) # 10 msec.
+    time.sleep(0.01) # 10 msec.                                
+
+
+logger.publish('')
+
+print('')
+print('FINISH!!')
+print('')
+

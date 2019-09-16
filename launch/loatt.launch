@@ -7,7 +7,7 @@
     <remap from = "/cpz340516" to = "/cpz340516_rsw0_1_DA0_100mA" />
     <remap from = "/loatt" to = "/loatt_2l" />
     <param name = "config_file"
-           value = "$(find nasco_system)/relay_conf/web.conf" />
+           value = "$(find nasco_system)/relay_conf/loatt_reader.conf" />
   </node>
 
   <node name = "loatt_2r"
@@ -16,7 +16,7 @@
     <remap from = "/cpz340516" to = "/cpz340516_rsw0_2_DA0_100mA" />
     <remap from = "/loatt" to = "/loatt_2r" />
     <param name = "config_file"
-           value = "$(find nasco_system)/relay_conf/web.conf" />
+           value = "$(find nasco_system)/relay_conf/loatt_reader.conf" />
   </node>
 
   <node name = "loatt_3l"
@@ -25,7 +25,7 @@
     <remap from = "/cpz340516" to = "/cpz340516_rsw0_3_DA0_100mA" />
     <remap from = "/loatt" to = "/loatt_3l" />
     <param name = "config_file"
-           value = "$(find nasco_system)/relay_conf/web.conf" />
+           value = "$(find nasco_system)/relay_conf/loatt_reader.conf" />
   </node>
 
   <node name = "loatt_3r"
@@ -34,7 +34,7 @@
     <remap from = "/cpz340516" to = "/cpz340516_rsw0_4_DA0_100mA" />
     <remap from = "/loatt" to = "/loatt_3r" />
     <param name = "config_file"
-           value = "$(find nasco_system)/relay_conf/web.conf" />
+           value = "$(find nasco_system)/relay_conf/loatt_reader.conf" />
   </node>
 
   <node name = "loatt_4l"
@@ -43,7 +43,7 @@
     <remap from = "/cpz340516" to = "/cpz340516_rsw0_5_DA0_100mA" />
     <remap from = "/loatt" to = "/loatt_4l" />
     <param name = "config_file"
-           value = "$(find nasco_system)/relay_conf/web.conf" />
+           value = "$(find nasco_system)/relay_conf/loatt_reader.conf" />
   </node>
 
   <node name = "loatt_4r"
@@ -52,7 +52,7 @@
     <remap from = "/cpz340516" to = "/cpz340516_rsw0_6_DA0_100mA" />
     <remap from = "/loatt" to = "/loatt_4r" />
     <param name = "config_file"
-           value = "$(find nasco_system)/relay_conf/web.conf" />
+           value = "$(find nasco_system)/relay_conf/loatt_reader.conf" />
   </node>
 
   <node name = "loatt_5l"
@@ -61,7 +61,7 @@
     <remap from = "/cpz340516" to = "/cpz340516_rsw0_7_DA0_100mA" />
     <remap from = "/loatt" to = "/loatt_5l" />
     <param name = "config_file"
-           value = "$(find nasco_system)/relay_conf/web.conf" />
+           value = "$(find nasco_system)/relay_conf/loatt_reader.conf" />
   </node>
 
   <node name = "loatt_5r"
@@ -70,7 +70,7 @@
     <remap from = "/cpz340516" to = "/cpz340516_rsw0_8_DA0_100mA" />
     <remap from = "/loatt" to = "/loatt_5r" />
     <param name = "config_file"
-           value = "$(find nasco_system)/relay_conf/web.conf" />
+           value = "$(find nasco_system)/relay_conf/loatt_reader.conf" />
   </node>
 
   <node name = "loatt_1l"
@@ -79,7 +79,7 @@
     <remap from = "/cpz340516" to = "/cpz340516_rsw1_2_DA0_100mA" />
     <remap from = "/loatt" to = "/loatt_1l" />
     <param name = "config_file"
-           value = "$(find nasco_system)/relay_conf/web.conf" />
+           value = "$(find nasco_system)/relay_conf/loatt_reader.conf" />
   </node>
 
   <node name = "loatt_1r"
@@ -88,7 +88,7 @@
     <remap from = "/cpz340516" to = "/cpz340516_rsw1_1_DA0_100mA" />
     <remap from = "/loatt" to = "/loatt_1r" />
     <param name = "config_file"
-           value = "$(find nasco_system)/relay_conf/web.conf" />
+           value = "$(find nasco_system)/relay_conf/loatt_reader.conf" />
   </node>
 
 

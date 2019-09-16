@@ -7,7 +7,7 @@ sisv =  7.64
 vd =  1.2
 vg1 = 0.0
 vg2 = 0.0
-lo_att = 1.6
+lo_att = 2.3
 
 
 [2r]
@@ -27,43 +27,42 @@ lo_att = 1.8
 
 
 [3r]
-sisv = 7.52
+sisv = 7.2
 vd = 1.2
 vg1 = 1.8
 vg2 = 2.0
-lo_att = 1.6
+lo_att = 3.0
 
 
 [4l]
-sisv = 7.79
+sisv = 6.7
 vd = 1.2
 vg1 = -0.8
 vg2 = -0.8
-lo_att = 1.4
+lo_att = 1.2
 
 
 [4r]
 sisv = 7.55
 vd = 1.2
-vg1 = 0
-vg2 = -0.5
-lo_att = 1.1
+vg1 = 0.24
+vg2 = 0.81
+lo_att = 3.2
 
 
 [5l]
-sisv = 8.25
+sisv = 8.5
 vd = 1.2
 vg1 = -1.8
 vg2 = -1.8
-lo_att = 2.2
-
+lo_att = 3.0
 
 [5r]
 sisv = 7.73
 vd = 1.2
 vg1 = 2.0
 vg2 = 2.0
-lo_att = 1.1
+lo_att =0.5
 
 
 [1lu]
@@ -83,7 +82,7 @@ lo_att = 2.0
 
 
 [1ru]
-sisv = 5.20
+ sisv = 5.20
 vd = 1.0
 vg1 = 0.0
 vg2 = 0.0
