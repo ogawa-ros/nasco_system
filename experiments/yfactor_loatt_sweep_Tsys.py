@@ -38,7 +38,7 @@ beam_list = ['2l', '2r', '3l', '3r',
 
 initial_current = 0.0 # mA
 final_current   = 10.0 # mA
-step            = 0.5 # mA
+step            = 0.1 # mA
 interval        = 0.1 # sec.
 fixtime         = 1 # sec.
 roop = int((final_current - initial_current) / step)
