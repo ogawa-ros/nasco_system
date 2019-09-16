@@ -30,9 +30,11 @@ time.sleep(0.5)
 
 # set params.
 beam_list = con.beam_list
+con.loatt.output_loatt_current_config()
+con.hemt.output_hemt_voltage_config()
 
 initial_voltage = 0 # mV
-final_voltage   = 10 # mV
+final_voltage   = 1 # mV
 step            = 0.1 # mV
 roop = int((final_voltage - initial_voltage) / step)
 
@@ -46,7 +48,7 @@ for beam in beam_list:
 logger.publish(dir_name)
 # move hot
 print('[INFO] : Movo chopper to HOT ...')
-con.slider0.set_step('u', 0)
+#con.slider0.set_step('u', 0)
 status.publish('{0:4s}'.format('hot'))
 time.sleep(1.)
 
@@ -69,7 +71,7 @@ for beam in beam_list:
 
 #move cold
 print('[INFO] : Movo chopper from HOT to COLD...')
-con.slider0.set_step('u', 250)
+#con.slider0.set_step('u', 250)
 status.publish('{0:4s}'.format('cold'))
 time.sleep(1.)
 
@@ -91,7 +93,7 @@ jpynb.make(dir_name.replace('.necstdb', ''))
 time.sleep(1.)
 
 #finalize
-con.slider0.set_step('u', 0)
+#con.slider0.set_step('u', 0)
 status.publish('{0:4s}'.format('hot'))
 time.sleep(1.)
 
