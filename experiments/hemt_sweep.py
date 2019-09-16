@@ -18,8 +18,7 @@ logger = logger_controller.logger()
 jpynb = jpynb_controller.jpynb()
 
 date = datetime.datetime.today().strftime('%Y%m%d_%H%M%S')
-dir_name_hot = name + '/' + date + '.necstdb'
-dir_name_jpynb = name + '/' + date + '.necstdb'
+dir_name = name + '/' + date + '.necstdb'
 
 beam_list = ['2l','2r','3l','3r',
              '4l','4r','5l','5r']
@@ -63,7 +62,7 @@ try:
   #  time.sleep(chopper_wait)
 
     # start logger
-    logger.start(dir_name_hot)
+    logger.start(dir_name)
     # msg.data = str(time.time())
    # pub.publish(msg)
    # time.sleep(trigger_wait)
@@ -83,7 +82,7 @@ try:
     logger.stop()
 
     # setup plot_tool.
-    jpynb.make(dir_name_jpynb)
+    jpynb.make(dir_name.replace('.necstdb', ''))
     time.sleep(1.)
     
 except KeyboardInterrupt:
