@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 
-name = '_yfactor_loatt_sweep_necstdb'
+name = 'yfactor_loatt_sweep_Tsys'
 
 
 import sys

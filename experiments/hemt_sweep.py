@@ -1,5 +1,5 @@
 
-name = 'hemt_sweep_test'
+name = 'hemt_sweep'
 
 import sys
 import time
