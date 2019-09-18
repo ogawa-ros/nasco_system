@@ -13,7 +13,7 @@ import rospy
 import std_msgs.msg
 
 
-analy_path = '/media/usbdisk/analysis/rx'
+analy_path = '/home/amigos/hdd/analysis'
 plot_tool_path = '/home/necst/ros/src/nasco_system/plot_tools'
 
 
