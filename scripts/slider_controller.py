@@ -37,7 +37,7 @@ class slider(object):
         
         self.sub_step = [rospy.Subscriber('/cpz7415v_rsw{0}_{1}_step'.format(self.rsw_id, i), Int64, self.callback_step, callback_args= i) for i in self.axis]
 
-        self.sub_XFFTS = rospy.Subscriber('/XFFTS_PM1', Float64, self.callback_XFFTS)
+        self.sub_XFFTS = [rospy.Subscriber('/xffts_power_board{0}s'.format(i+1), Float64, self.callback_XFFTS, callback_args = i) for i in range(0,16,1)]
         
         self.sub_PM1 = rospy.Subscriber('/power_1', Float64, self.callback_PM1)
         self.sub_PM2 = rospy.Subscriber('/power_2', Float64, self.callback_PM2)
@@ -73,8 +73,8 @@ class slider(object):
             self.p[2] = req.data/100
         return
 
-    def callback_XFFTS(self, req):
-        self.PM = req.data
+    def callback_XFFTS(self, req, args):
+        self.PM[args] = req.data
         return
         
     def callback_PM1(self, req):
