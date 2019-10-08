@@ -8,16 +8,16 @@ sys.path.append('/home/amigos/ros/src/nasco_system/scripts')
 
 import slider_controller
 
-ctrl = slider_controller.slider(rsw_id = "0")
+ctrl = slider_controller.slider(rsw_id = "1")
 
 # set parameter
-x_start = 80 #50 #0 #80
-x_last = 170 #190 #190 #170
-y_start = - 60 #- 30 #0 #- 60
-y_last = - 150 #-170 #- 190 #-150
+x_start = 0 #50 #0 #80
+x_last = 190 #190 #190 #170
+y_start = 0 #- 30 #0 #- 60
+y_last = - 190 #-170 #- 190 #-150
 strk = 1
 sleep_measure = 0.1
-dir = '/home/amigos/beam_pattern/data/2018_11_22/test05/'
+dir = '/home/amigos/beam_pattern/data/2019_10_08/test01/'
 sleep = 1
 
 # command

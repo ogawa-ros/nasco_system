@@ -53,7 +53,7 @@ for beam in beam_list:
 
 #logger start
 logger.publish(dir_name)
-
+time.sleep(1.)
 # move hot
 print('[INFO] : Movo chopper to HOT ...')
 con.slider0.set_step('u',0)

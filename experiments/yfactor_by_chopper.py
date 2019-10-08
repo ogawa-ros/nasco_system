@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 
-name = 'yfactor_sisv_sweep_Tsys'
+name = 'yfactor_by_chopper'
 
 
 import sys
@@ -26,23 +26,7 @@ dir_name = name + '/' + date + '.necstdb'
 # --------------
 logger = rospy.Publisher('/logger_path', std_msgs.msg.String, queue_size=1)
 status = rospy.Publisher('/'+name+'/status', std_msgs.msg.String, queue_size=1)
-time.sleep(0.5)
-
-# set params.
-beam_list = con.beam_list
-con.loatt.output_loatt_current_config()
-con.hemt.output_hemt_voltage_config()
-
-initial_voltage = 0.  # mV
-final_voltage   = 10. # mV
-step            = 0.1 # mV
-roop = int((final_voltage - initial_voltage) / step)
-
-#initialize
-for beam in beam_list:
-    con.sis.output_sis_voltage(beam, initial_voltage)
-    time.sleep(0.01) # 10 msec.
-
+time.sleep(1.)
 
 #logger start
 logger.publish(dir_name)
@@ -54,21 +38,10 @@ status.publish('{0:4s}'.format('hot'))
 time.sleep(1.)
 
 #sweep voltage(hot)
-print('[INFO] : Start to measure hot with sisv sweep.')
+print('[INFO] : Start to measure hot')
+time.sleep(5.)
 
-for vol in range(roop + 1):
-    for beam in beam_list:
-        con.sis.output_sis_voltage(beam=beam, voltage=vol*step+initial_voltage)
-        time.sleep(0.01) # 10 msec.
-    time.sleep(1.)
-
-print('[INFO] : Finish measure hot with sisv sweep')
-
-#initilize voltage
-for beam in beam_list:
-    con.sis.output_sis_voltage(beam, initial_voltage)
-    time.sleep(0.01) # 10 msec.
-
+print('[INFO] : Finish measure hot')
 
 #move cold
 print('[INFO] : Movo chopper from HOT to COLD...')
@@ -77,20 +50,15 @@ status.publish('{0:4s}'.format('cold'))
 time.sleep(1.)
 
 #sweep voltage(cold)
-print('[INFO] : Start to measure cold with sisv sweep.')
-
-for vol in range(roop + 1):
-    for beam in beam_list:
-        con.sis.output_sis_voltage(beam=beam, voltage=vol*step+initial_voltage)
-        time.sleep(0.01) # 10 msec.
-    time.sleep(1.)
+print('[INFO] : Start to measure cold')
+time.sleep(5.)
 
 print('[INFO] : Finish measure cold with sisv sweep')
 time.sleep(1.)
 
 # setup plot_tool
 #-------------
-jpynb.make(dir_name.replace('.necstdb', ''))
+jpynb.make(dir_name)
 time.sleep(1.)
 
 #finalize
@@ -98,11 +66,6 @@ con.slider0.set_step('u', 0)
 status.publish('{0:4s}'.format('hot'))
 time.sleep(1.)
 
-for beam in beam_list:
-    con.sis.output_sis_voltage(beam, 0.)
-    time.sleep(0.01) # 10 msec.
-
-time.sleep(2.)
 logger.publish('')
 
 print('')

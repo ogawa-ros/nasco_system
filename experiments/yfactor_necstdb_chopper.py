@@ -32,7 +32,7 @@ logging_time = 5. # sec.
 # initialize
 print('[INFO] : initialize...')
 print('[INFO] : Move chopper to HOT ...')
-con.slider0.set_step('u', 0)
+#con.slider0.set_step('u', 0)
 time.sleep(1.)
 
 # measure hot.
@@ -44,7 +44,7 @@ logger.stop()
 
 # move. ( hot --> cold )
 print('[INFO] : Movo chopper from HOT to COLD...')
-con.slider0.set_step('u', 250)
+#con.slider0.set_step('u', 250)
 time.sleep(1.)
 
 # measure cold.
@@ -61,5 +61,5 @@ time.sleep(1.)
 # finalize.
 print('[INFO] : finalize...')
 print('[INFO] : Movo chopper to HOT...')
-con.slider0.set_step('u', 0)
+#con.slider0.set_step('u', 0)
 time.sleep(1.)

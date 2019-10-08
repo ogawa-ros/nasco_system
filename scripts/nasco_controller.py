@@ -163,7 +163,7 @@ class HEMT(object):
                  '1lu', '1ll', '1ru', '1rl']
 
     config_file = configparser.ConfigParser()
-    config_file.read('/home/amigos/ros/src/nasco_system/configuration/Tuning_power.conf')
+    config_file.read('/home/amigos/ros/src/nasco_system/configuration/test_tuning.conf')
     config_file0 = configparser.ConfigParser()
     config_file0.read('/home/amigos/ros/src/nasco_system/configuration/hemt0.conf')
     config_file1 = configparser.ConfigParser()
