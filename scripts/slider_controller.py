@@ -8,6 +8,8 @@ import rospy
 from std_msgs.msg import Int64
 from std_msgs.msg import Float64
 from std_msgs.msg import Bool
+from nasco_system.msg import XFFTS_totalp_msg
+import logger_controller
 
 class pycolor(object):
     #表示の色
@@ -33,18 +35,18 @@ class slider(object):
         
         self.rsw_id = rsw_id
         
-        self.axis = ['x', 'y', 'z']
+        self.axis = ['x', 'y', 'z', 'u']
         self.pub_step = [rospy.Publisher('/cpz7415v_{0}_rsw{1}_{2}_step_cmd'.format(str(int(self.rsw_id) + 1), self.rsw_id, i), Int64, queue_size=1) for i in self.axis]
         self.pub_speed = [rospy.Publisher('/cpz7415v_{0}_rsw{1}_{2}_speed_cmd'.format(str(int(self.rsw_id) + 1), self.rsw_id, i), Int64, queue_size=1) for i in self.axis]
         self.pub_do = [rospy.Publisher('/cpz7415v_{0}_rsw{1}_do_cmd'.format(str(int(self.rsw_id) + 1), self.rsw_id, i), Int64, queue_size=1) for i in self.axis]
         
         self.sub_step = [rospy.Subscriber('/cpz7415v_{0}_rsw{1}_{2}_step'.format(str(int(self.rsw_id) + 1), self.rsw_id, i), Int64, self.callback_step, callback_args= i) for i in self.axis]
-
-        self.sub_XFFTS = [rospy.Subscriber('/xffts_power_board{0}s'.format(i+1), Float64, self.callback_XFFTS, callback_args = i) for i in range(0,16,1)]
+        l = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16']
+        self.sub_XFFTS = [rospy.Subscriber('/xffts_power_board{0}'.format(i), XFFTS_totalp_msg, self.callback_XFFTS, callback_args = j) for i, j in zip(l, range(0,16,1))]
         
         self.sub_PM1 = rospy.Subscriber('/power_1', Float64, self.callback_PM1)
         self.sub_PM2 = rospy.Subscriber('/power_2', Float64, self.callback_PM2)
-       
+        #self.now = datetime.datetime.now()
         
         sub_th = threading.Thread(
                 target = self.sub_function,
@@ -77,7 +79,7 @@ class slider(object):
         return
 
     def callback_XFFTS(self, req, args):
-        self.PM[args] = req.data
+        self.PM[args] = req.total_power
         return
         
     def callback_PM1(self, req):
@@ -93,30 +95,20 @@ class slider(object):
         return
 
     def initialize(self, dir):
-        print('s')
         axis = [0,1]
         start_pos = [0,0]
-        print('l')
 
         for axis, pos in zip(axis, start_pos):
-            print('i')
             self.set_step(axis = axis, step = pos)
-            print('d')
             while pos!= self.p[axis]:
-            #while pos!=self.sub_step[axis]:
                 print(pos)
-                print(self.p)
-                print(axis)
-                print('d-1')
+                #print(self.p)
+                #print(axis)
                 time.sleep(0.01)
-                print('d-2')
                 continue
-        print('d-3')
         self.now = datetime.datetime.now()
-        print('e')
         os.makedirs('{0}/data_at_{1:%Y%m%d-%H%M%S}'.format(dir, self.now), exist_ok = True)
         os.chdir('{0}/data_at_{1:%Y%m%d-%H%M%S}'.format(dir, self.now))
-        print('r')
 
         print(pycolor.RED + '\n\n' +
               '=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n'
@@ -138,10 +130,7 @@ class slider(object):
         for i in range(int(abs((last - start)/strk + 1))):
             print(x, self.p)
             if rospy.is_shutdown(): return
-
-            print('test1')
             while x!=self.p[axis_num]:
-                print('test2')
                 time.sleep(0.001)
                 continue
 
@@ -150,14 +139,12 @@ class slider(object):
             ret_5 = 0#self.PM
             ret_3 = self.PM1
             ret_4 = self.PM2
-            ret_6 = 0 #sleep_measure
+            ret_6 = sleep_measure
             ret_2 = time.time()
 
-            print('test3')
+            print(self.PM)
             data.append([x, ret_1,ret_2, ret_3, ret_4, ret_5, ret_6] + self.PM)
-            print('test4')
             numpy.savetxt('{0:%Y%m%d-%H%M%S}_{1}_{2}.csv'.format(self.now, axis, direction), numpy.array(data), delimiter=',', fmt=['%.0f', '%f', '%f', '%f', '%f', '%f','%f', '%f', '%f', '%f', '%f', '%f', '%f', '%f', '%f', '%f', '%f', '%f', '%f', '%f', '%f', '%f', '%f'])
-            print('test5')
             #msg = 'Axis : {0}\nStroke : {1} [mm]\nCoorValue : {0} = {2} [mm]\nDestinate : {0} = {3} [mm]\nRemaining : {0} = {4} [mm]\nx = {5}'.format(axis, strk, self.p[axis_num], last, last - x, x)
             #print('============'+'Knifeedge Measurement'+'============')
             #print(msg)
@@ -206,3 +193,17 @@ class slider(object):
         time.sleep(5)
         self.pub_do[2].publish(0)
         return
+
+
+
+    def hot(self, logging_time, d):
+        logger = logger_controller.logger()
+        time.sleep(1.)
+        dir_name_hot = name  + '{0:%Y%m%d-%H%M%S}'.format(self.now) + d + '.necstdb'
+
+
+        logger.start(dir_name_hot)
+
+        time.sleep(logging_time)
+        logger.stop()
+        
