@@ -33,9 +33,12 @@ class controller(object):
         self.hemt = HEMT()
         self.loatt = LOATT()
         self.switch = SWITCH()
-        self.sg_e8257d = SG(model='e8257d')
-        self.sg_mg3692c = SG(model='mg3692c')
-        self.sg_fsw0020 = SG(model='fsw0020')
+        self.sg_100ghz_1st = SG(bandwidth='100ghz', mode='1st')
+        self.sg_100ghz_2nd_upper = SG(bandwidth='100ghz', mode='2nd_upper')
+        self.sg_100ghz_2nd_lower = SG(bandwidth='100ghz', mode='2nd_lower')
+        self.sg_200ghz_1st = SG(bandwidth='200ghz', mode='1st')
+        self.sg_200ghz_1st_upper = SG(bandwidth='200ghz', mode='2nd_upper')
+        self.sg_200ghz_2nd_lower = None
         self.patt = PATT()
         pass
 
@@ -374,16 +377,16 @@ class SWITCH(object):
         return
 
 class SG(object):
-    model_list = ['e8257d', 'mg3692c', 'fsw0020']
 
-    def __init__(self, model):
+    def __init__(self, bandwidth, mode):
         self.ps = PS()
-        self.model = model
+        self.bandwidth = bandwidth
+        self.mode = mode
         pass
 
     def set_freq(self, freq): # GHz
 
-        name = '/{}_freq_cmd'.format(self.model)
+        name = '/sg_{0}_{1}_freq_cmd'.format(self.bandwidth, self.mode)
 
         if name not in self.ps.pub:
             self.ps.set_publisher(
@@ -392,12 +395,10 @@ class SG(object):
                 queue_size = 1
                 )
 
-        if self.model == 'e8257d':
+        if self.mode == '1st':
             if not(0.0001 <= freq <= 20.): print('InvalidRangeError')
-        if self.model == 'mg3692c':
+        elif self.mode == '2nd':
             if not(2. <= freq <= 20.): print('InvalidRangeError')
-        if self.model == 'fsw0020':
-            if not(0.5 <= freq <= 20.): print('InvalidRangeError')
 
         self.ps.publish(name, freq)
         time.sleep(1)
@@ -405,7 +406,7 @@ class SG(object):
 
     def set_power(self, power): # dBm
 
-        name = '/{}_power_cmd'.format(self.model)
+        name = '/sg_{0}_{1}_power_cmd'.format(self.bandwidth, self.mode)
 
         if name not in self.ps.pub:
             self.ps.set_publisher(
@@ -414,12 +415,10 @@ class SG(object):
                 queue_size = 1
                 )
 
-        if self.model == 'e8257d':
+        if self.mode == '1st':
             if not(-20. <= power <= 30.): print('InvalidRangeError')
-        if self.model == 'mg3692c':
+        elif self.mode == '2nd':
             if not(-20. <= power <= 30.): print('InvalidRangeError')
-        if self.model == 'fsw0020':
-            if not(-10. <= power <= 13.): print('InvalidRangeError')
 
         self.ps.publish(name, power)
         time.sleep(1)
@@ -427,7 +426,7 @@ class SG(object):
 
     def set_onoff(self, onoff): # on : 1, off : 0
 
-        name = '/{}_onoff_cmd'.format(self.model)
+        name = '/sg_{0}_{1}_onoff_cmd'.format(self.bandwidth, self.mode)
 
         if name not in self.ps.pub:
             self.ps.set_publisher(

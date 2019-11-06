@@ -9,8 +9,11 @@
 -->
   <include file="$(find nasco_system)/launch/power.launch" />
 
+<!--
   <include file="$(find nasco_system)/launch/e8257d.launch" />
   <include file="$(find nasco_system)/launch/mg3692c.launch" />
+-->
+  <include file="$(find nasco_system)/launch/sg.launch" />
 
 <!--
 <include file="$(find nasco_system)/launch/fsw0020.launch" />

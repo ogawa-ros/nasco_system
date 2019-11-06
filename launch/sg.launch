@@ -1,0 +1,41 @@
+<launch>
+
+  <node pkg="rx_device_driver" name="e8257d" type="e8257d_signal_generator.py" required="true">
+    <param name="~host" value="172.20.0.170" />
+    <param name="~port" value="5025" />
+    <param name="~node_name" value="sg_100ghz_1st" />
+    <param name="~rate" value="1" />
+  </node>
+
+  <node pkg="rx_device_driver" name="e8257d" type="e8257d_signal_generator.py" required="true">
+    <param name="~host" value="172.20.0.171" />
+    <param name="~port" value="5025" />
+    <param name="~node_name" value="sg_200ghz_1st" />
+    <param name="~rate" value="1" />
+  </node>
+
+  <node pkg="rx_device_driver" name="ms3692c" type="mg3692c_signal_generator.py" required="true">
+    <param name="~host" value="172.20.0.172" />
+    <param name="~port" value="19" />
+    <!-- <param name="~port" value="5025" /> -->
+    <param name="~node_name" value="sg_100ghz_2nd" />
+    <param name="~rate" value="1" />
+  </node>
+
+  <node pkg="rx_device_driver" name="ms3692c" type="mg3692c_signal_generator.py" required="true">
+    <param name="~host" value="172.20.0.173" />
+    <param name="~port" value="19" />
+    <!-- <param name="~port" value="5025" /> -->
+    <param name="~node_name" value="sg_100ghz_2nd" />
+    <param name="~rate" value="1" />
+  </node>
+
+  <node pkg="rx_device_driver" name="ms3692c" type="mg3692c_signal_generator.py" required="true">
+    <param name="~host" value="172.20.0.174" />
+    <!-- <param name="~port" value="19" /> -->
+    <param name="~port" value="5025" />
+    <param name="~node_name" value="sg_200ghz_2nd" />
+    <param name="~rate" value="1" />
+  </node>
+
+</launch>
