@@ -90,44 +90,50 @@ class sg_monitor(object):
         self.sg_200ghz_onoff[idx] = onoff
 
     def web_100ghz_freq(self):
-        for i, pub in enumerate(self.pub_sg_100ghz_freq):
-            pub.publish(self.sg_100ghz_freq[i])
-            time.sleep(rate_pub)
-        time.sleep(rate)
+        while True:
+            for i, pub in enumerate(self.pub_sg_100ghz_freq):
+                pub.publish(self.sg_100ghz_freq[i])
+                time.sleep(rate_pub)
+            time.sleep(rate)
 
     def web_100ghz_power(self):
-        for i, pub in enumerate(self.pub_sg_100ghz_power):
-            pub.publish(self.sg_100ghz_power[i])
-            time.sleep(rate_pub)
-        time.sleep(rate)
+        while True:
+            for i, pub in enumerate(self.pub_sg_100ghz_power):
+                pub.publish(self.sg_100ghz_power[i])
+                time.sleep(rate_pub)
+            time.sleep(rate)
 
     def web_100ghz_onoff(self):
-        for i, pub in enumerate(self.pub_sg_100ghz_onoff):
-            if self.sg_100ghz_onoff[i] == 0: onoff = 'ON'
-            else: onoff = 'OFF'
-            pub.publish(onoff)
-            time.sleep(rate_pub)
-        time.sleep(rate)
+        while True:
+            for i, pub in enumerate(self.pub_sg_100ghz_onoff):
+                if self.sg_100ghz_onoff[i] == 0: onoff = 'ON'
+                else: onoff = 'OFF'
+                pub.publish(onoff)
+                time.sleep(rate_pub)
+            time.sleep(rate)
 
     def web_200ghz_freq(self):
-        for i, pub in enumerate(self.pub_sg_200ghz_freq):
-            pub.publish(self.sg_200ghz_freq[i])
-            time.sleep(rate_pub)
-        time.sleep(rate)
+        while True
+            for i, pub in enumerate(self.pub_sg_200ghz_freq):
+                pub.publish(self.sg_200ghz_freq[i])
+                time.sleep(rate_pub)
+            time.sleep(rate)
 
     def web_200ghz_power(self):
-        for i, pub in enumerate(self.pub_sg_200ghz_power):
-            pub.publish(self.sg_200ghz_power[i])
-            time.sleep(rate_pub)
-        time.sleep(rate)
+        while True:
+            for i, pub in enumerate(self.pub_sg_200ghz_power):
+                pub.publish(self.sg_200ghz_power[i])
+                time.sleep(rate_pub)
+            time.sleep(rate)
 
     def web_200ghz_onoff(self):
-        for i, pub in enumerate(self.pub_sg_200ghz_onoff):
-            if self.sg_200ghz_onoff[i] == 0: onoff = 'ON'
-            else: onoff = 'OFF'
-            pub.publish(onoff)
-            time.sleep(rate_pub)
-        time.sleep(rate)
+        while True:
+            for i, pub in enumerate(self.pub_sg_200ghz_onoff):
+                if self.sg_200ghz_onoff[i] == 0: onoff = 'ON'
+                else: onoff = 'OFF'
+                pub.publish(onoff)
+                time.sleep(rate_pub)
+            time.sleep(rate)
 
     def start_thread(self):
         th_100ghz_freq = threading.Thread(target=self.web_100ghz_freq)
