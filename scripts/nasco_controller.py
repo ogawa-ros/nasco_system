@@ -437,7 +437,7 @@ class SG(object):
 
         if not(onoff in [0, 1]): print('InvalidOnoffError')
 
-        self.ps.publish(name, onoff)
+        self.ps.publish(name, int(onoff))
         time.sleep(1)
         return
 
