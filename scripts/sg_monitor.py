@@ -13,7 +13,6 @@ name = 'sg_monitor'
 
 
 class sg_monitor(object):
-
     def __init__(self):
         mode_list = ['1st', '2nd_upper', '2nd_lower']
 
@@ -88,7 +87,7 @@ class sg_monitor(object):
 
     def set_200ghz_onoff(self, onoff=0., mode=''):
         idx = mode_list.index(mode)
-        self.sg_200ghz_onoff[idx] = ofoff
+        self.sg_200ghz_onoff[idx] = onoff
 
     def web_100ghz_freq(self):
         for i, pub in enumerate(self.pub_sg_100ghz_freq):
@@ -134,20 +133,20 @@ class sg_monitor(object):
         th_100ghz_freq = threading.Thread(target=self.web_100ghz_freq)
         th_100ghz_freq.setDaemon(True)
         th_100ghz_freq.start()
-        th_100ghz_power = threading.Thread(target=self.web_100ghz_freq)
+        th_100ghz_power = threading.Thread(target=self.web_100ghz_power)
         th_100ghz_power.setDaemon(True)
         th_100ghz_power.start()
-        th_100ghz_onoff = threading.Thread(target=self.web_100ghz_freq)
+        th_100ghz_onoff = threading.Thread(target=self.web_100ghz_onoff)
         th_100ghz_onoff.setDaemon(True)
         th_100ghz_onoff.start()
 
         th_200ghz_freq = threading.Thread(target=self.web_200ghz_freq)
         th_200ghz_freq.setDaemon(True)
         th_200ghz_freq.start()
-        th_200ghz_power = threading.Thread(target=self.web_200ghz_freq)
+        th_200ghz_power = threading.Thread(target=self.web_200ghz_power)
         th_200ghz_power.setDaemon(True)
         th_200ghz_power.start()
-        th_200ghz_onoff = threading.Thread(target=self.web_200ghz_freq)
+        th_200ghz_onoff = threading.Thread(target=self.web_200ghz_onoff)
         th_200ghz_onoff.setDaemon(True)
         th_200ghz_onoff.start()
 
