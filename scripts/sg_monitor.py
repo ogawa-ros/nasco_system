@@ -159,5 +159,6 @@ class sg_monitor(object):
 
 if __name__ == '__main__':
     rospy.init_node(name)
-    sg_monitor()
+    sg = sg_monitor()
+    sg.start_thread()
     rospy.spin()
