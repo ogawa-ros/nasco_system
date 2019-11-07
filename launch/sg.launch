@@ -36,14 +36,12 @@
   <node pkg="rx_device_driver" name="mg3692c_3" type="mg3692c_signal_generator.py" required="true">
     <param name="~host" value="172.20.0.174" />
     <param name="~port" value="19" /> -->
-    <!-- <param name="~port" value="5025" /> -->
     <param name="~node_name" value="sg_200ghz_2nd_upper" />
     <param name="~rate" value="1" />
   </node>
 
   <node pkg="rx_device_driver" name="mg3692c_4" type="mg3692c_signal_generator.py" required="true">
     <param name="~host" value="172.20.0.175" />
-    <!-- <param name="~port" value="19" /> -->
     <param name="~port" value="5025" />
     <param name="~node_name" value="sg_200ghz_2nd_lower" />
     <param name="~rate" value="1" />
