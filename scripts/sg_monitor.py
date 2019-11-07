@@ -42,7 +42,7 @@ class sg_monitor(object):
             rospy.Subscriber('sg_100ghz_{}_power'.format(_mode), Float64, self.set_100ghz_power, callback_args=_mode)
             for _mode in mode_list]
         self.sub_sg_100ghz_onoff = [
-            rospy.Subscriber('sg_100ghz_{}_onoff'.format(_mode), String, self.set_100ghz_onoff, callback_args=_mode)
+            rospy.Subscriber('sg_100ghz_{}_onoff'.format(_mode), Int32, self.set_100ghz_onoff, callback_args=_mode)
             for _mode in mode_list]
 
         self.pub_sg_200ghz_freq = [
@@ -52,7 +52,7 @@ class sg_monitor(object):
             rospy.Publisher('sg_200ghz_{}_power_web'.format(_mode), Float64, queue_size=1)
             for _mode in mode_list]
         self.pub_sg_200ghz_onoff = [
-            rospy.Publisher('sg_200ghz_{}_onoff_web'.format(_mode), Int32, queue_size=1)
+            rospy.Publisher('sg_200ghz_{}_onoff_web'.format(_mode), String, queue_size=1)
             for _mode in mode_list]
 
         self.sub_sg_200ghz_freq = [
