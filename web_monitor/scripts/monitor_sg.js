@@ -8,33 +8,33 @@ ros.on("close", function() {console.log("websocket: closed");});
 
 var 100ghz_1st_freq = new ROSLIB.Topic({
     ros : ros,
-    name : "/100ghz_1st_freq_web",
+    name : "/sg_100ghz_1st_freq_web",
     messageType : "std_msgs/Float64"
 });
 var 100ghz_1st_power = new ROSLIB.Topic({
     ros : ros,
-    name : "/100ghz_1st_power_web",
+    name : "/sg_100ghz_1st_power_web",
     messageType : "std_msgs/Float64"
 });
 var 100ghz_1st_onoff = new ROSLIB.Topic({
     ros : ros,
-    name : "/100ghz_1st_onoff_web",
+    name : "/sg_100ghz_1st_onoff_web",
     messageType : "std_msgs/String"
 });
 
 var 200ghz_1st_freq = new ROSLIB.Topic({
     ros : ros,
-    name : "/200ghz_1st_freq_web",
+    name : "/sg_200ghz_1st_freq_web",
     messageType : "std_msgs/Float64"
 });
 var 200ghz_1st_power = new ROSLIB.Topic({
     ros : ros,
-    name : "/200ghz_1st_power_web",
+    name : "/sg_200ghz_1st_power_web",
     messageType : "std_msgs/Float64"
 });
 var 200ghz_1st_onoff = new ROSLIB.Topic({
     ros : ros,
-    name : "/200ghz_1st_onoff_web",
+    name : "/sg_200ghz_1st_onoff_web",
     messageType : "std_msgs/String"
 });
 
@@ -42,33 +42,33 @@ var 200ghz_1st_onoff = new ROSLIB.Topic({
 
 var 100ghz_2nd_upper_freq = new ROSLIB.Topic({
     ros : ros,
-    name : "/100ghz_2nd_upper_freq_web",
+    name : "/sg_100ghz_2nd_upper_freq_web",
     messageType : "std_msgs/Float64"
 });
 var 100ghz_2nd_upper_power = new ROSLIB.Topic({
     ros : ros,
-    name : "/100ghz_2nd_upper_power_web",
+    name : "/sg_100ghz_2nd_upper_power_web",
     messageType : "std_msgs/Float64"
 });
 var 100ghz_2nd_upper_onoff = new ROSLIB.Topic({
     ros : ros,
-    name : "/100ghz_2nd_upper_onoff_web",
+    name : "/sg_100ghz_2nd_upper_onoff_web",
     messageType : "std_msgs/String"
 });
 
 var 200ghz_2nd_upper_freq = new ROSLIB.Topic({
     ros : ros,
-    name : "/200ghz_2nd_upper_freq_web",
+    name : "/sg_200ghz_2nd_upper_freq_web",
     messageType : "std_msgs/Float64"
 });
 var 200ghz_2nd_upper_power = new ROSLIB.Topic({
     ros : ros,
-    name : "/200ghz_2nd_upper_power_web",
+    name : "/sg_200ghz_2nd_upper_power_web",
     messageType : "std_msgs/Float64"
 });
 var 200ghz_2nd_upper_onoff = new ROSLIB.Topic({
     ros : ros,
-    name : "/200ghz_2nd_upper_onoff_web",
+    name : "/sg_200ghz_2nd_upper_onoff_web",
     messageType : "std_msgs/String"
 });
 
@@ -76,33 +76,33 @@ var 200ghz_2nd_upper_onoff = new ROSLIB.Topic({
 
 var 100ghz_2nd_lower_freq = new ROSLIB.Topic({
     ros : ros,
-    name : "/100ghz_2nd_lower_freq_web",
+    name : "/sg_100ghz_2nd_lower_freq_web",
     messageType : "std_msgs/Float64"
 });
 var 100ghz_2nd_lower_power = new ROSLIB.Topic({
     ros : ros,
-    name : "/100ghz_2nd_lower_power_web",
+    name : "/sg_100ghz_2nd_lower_power_web",
     messageType : "std_msgs/Float64"
 });
 var 100ghz_2nd_lower_onoff = new ROSLIB.Topic({
     ros : ros,
-    name : "/100ghz_2nd_lower_onoff_web",
+    name : "/sg_100ghz_2nd_lower_onoff_web",
     messageType : "std_msgs/String"
 });
 
 var 200ghz_2nd_lower_freq = new ROSLIB.Topic({
     ros : ros,
-    name : "/200ghz_2nd_lower_freq_web",
+    name : "/sg_200ghz_2nd_lower_freq_web",
     messageType : "std_msgs/Float64"
 });
 var 200ghz_2nd_lower_power = new ROSLIB.Topic({
     ros : ros,
-    name : "/200ghz_2nd_lower_power_web",
+    name : "/sg_200ghz_2nd_lower_power_web",
     messageType : "std_msgs/Float64"
 });
 var 200ghz_2nd_lower_onoff = new ROSLIB.Topic({
     ros : ros,
-    name : "/200ghz_2nd_lower_onoff_web",
+    name : "/sg_200ghz_2nd_lower_onoff_web",
     messageType : "std_msgs/String"
 });
 
