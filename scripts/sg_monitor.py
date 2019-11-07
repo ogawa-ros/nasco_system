@@ -66,27 +66,27 @@ class sg_monitor(object):
             rospy.Publisher('sg_200ghz_{}_onoff'.format(_mode), Int32, callback=self.set_200ghz_onoff, callback_args=_mode)
             for _mode in mode_list]
 
-    def set_100ghz_freq(self, freq=0., mode):
+    def set_100ghz_freq(self, freq=0., mode=''):
         idx = mode_list.index(mode)
         self.sg_100ghz_freq[idx] = freq
 
-    def set_100ghz_power(self, power=0., mode):
+    def set_100ghz_power(self, power=0., mode=''):
         idx = mode_list.index(mode)
         self.sg_100ghz_power[idx] = power
 
-    def set_100ghz_onoff(self, onoff=0., mode):
+    def set_100ghz_onoff(self, onoff=0., mode=''):
         idx = mode_list.index(mode)
         self.sg_100ghz_onoff[idx] = onoff
 
-    def set_200ghz_freq(self, freq=0., mode):
+    def set_200ghz_freq(self, freq=0., mode=''):
         idx = mode_list.index(mode)
         self.sg_200ghz_freq[idx] = freq
 
-    def set_200ghz_power(self, power=0., mode):
+    def set_200ghz_power(self, power=0., mode=''):
         idx = mode_list.index(mode)
         self.sg_200ghz_power[idx] = power
 
-    def set_200ghz_onoff(self, onoff=0., mode):
+    def set_200ghz_onoff(self, onoff=0., mode=''):
         idx = mode_list.index(mode)
         self.sg_200ghz_onoff[idx] = ofoff
 
