@@ -36,13 +36,13 @@ class sg_monitor(object):
             for _mode in mode_list]
 
         self.sub_sg_100ghz_freq = [
-            rospy.Publisher('sg_100ghz_{}_freq'.format(_mode), Float64, callback=self.set_100ghz_freq, callback_args=_mode)
+            rospy.Subscriber('sg_100ghz_{}_freq'.format(_mode), Float64, self.set_100ghz_freq, callback_args=_mode)
             for _mode in mode_list]
         self.sub_sg_100ghz_power = [
-            rospy.Publisher('sg_100ghz_{}_power'.format(_mode), Float64, callback=self.set_100ghz_power, callback_args=_mode)
+            rospy.Subscriber('sg_100ghz_{}_power'.format(_mode), Float64, self.set_100ghz_power, callback_args=_mode)
             for _mode in mode_list]
         self.sub_sg_100ghz_onoff = [
-            rospy.Publisher('sg_100ghz_{}_onoff'.format(_mode), String, callback=self.set_100ghz_onoff, callback_args=_mode)
+            rospy.Subscriber('sg_100ghz_{}_onoff'.format(_mode), String, self.set_100ghz_onoff, callback_args=_mode)
             for _mode in mode_list]
 
         self.pub_sg_200ghz_freq = [
@@ -56,13 +56,13 @@ class sg_monitor(object):
             for _mode in mode_list]
 
         self.sub_sg_200ghz_freq = [
-            rospy.Publisher('sg_200ghz_{}_freq'.format(_mode), Float64, callback=self.set_200ghz_freq, callback_args=_mode)
+            rospy.Subscriber('sg_200ghz_{}_freq'.format(_mode), Float64, self.set_200ghz_freq, callback_args=_mode)
             for _mode in mode_list]
         self.sub_sg_200ghz_power = [
-            rospy.Publisher('sg_200ghz_{}_power'.format(_mode), Float64, callback=self.set_200ghz_power, callback_args=_mode)
+            rospy.Subscriber('sg_200ghz_{}_power'.format(_mode), Float64, self.set_200ghz_power, callback_args=_mode)
             for _mode in mode_list]
         self.sub_sg_200ghz_onoff = [
-            rospy.Publisher('sg_200ghz_{}_onoff'.format(_mode), Int32, callback=self.set_200ghz_onoff, callback_args=_mode)
+            rospy.Subscriber('sg_200ghz_{}_onoff'.format(_mode), Int32, self.set_200ghz_onoff, callback_args=_mode)
             for _mode in mode_list]
 
     def set_100ghz_freq(self, freq=0., mode=''):
