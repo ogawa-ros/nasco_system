@@ -1,4 +1,5 @@
 import time
+import threading
 
 import rospy
 from std_msgs.msg import Int32
@@ -126,6 +127,27 @@ class sg_monitor(object):
             pub.publish(onoff)
             time.sleep(rate_pub)
         time.sleep(rate)
+
+    def start_thread(self):
+        th_100ghz_freq = threading.Thread(target=self.web_100ghz_freq)
+        th_100ghz_freq.setDaemon(True)
+        th_100ghz_freq.start()
+        th_100ghz_power = threading.Thread(target=self.web_100ghz_freq)
+        th_100ghz_power.setDaemon(True)
+        th_100ghz_power.start()
+        th_100ghz_onoff = threading.Thread(target=self.web_100ghz_freq)
+        th_100ghz_onoff.setDaemon(True)
+        th_100ghz_onoff.start()
+
+        th_200ghz_freq = threading.Thread(target=self.web_200ghz_freq)
+        th_200ghz_freq.setDaemon(True)
+        th_200ghz_freq.start()
+        th_200ghz_power = threading.Thread(target=self.web_200ghz_freq)
+        th_200ghz_power.setDaemon(True)
+        th_200ghz_power.start()
+        th_200ghz_onoff = threading.Thread(target=self.web_200ghz_freq)
+        th_200ghz_onoff.setDaemon(True)
+        th_200ghz_onoff.start()
 
 
 if __name__ == '__main__':
