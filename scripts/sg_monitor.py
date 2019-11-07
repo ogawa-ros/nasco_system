@@ -74,9 +74,7 @@ class sg_monitor(object):
 
     def set_100ghz_onoff(self, onoff, mode):
         idx = self.mode_list.index(mode)
-        print(onoff)
-        print(type(onoff))
-        self.sg_100ghz_onoff[idx] = onoff
+        self.sg_100ghz_onoff[idx] = int(onoff.data)
 
     def set_200ghz_freq(self, freq, mode):
         idx = self.mode_list.index(mode)
@@ -88,8 +86,7 @@ class sg_monitor(object):
 
     def set_200ghz_onoff(self, onoff, mode):
         idx = self.mode_list.index(mode)
-        onoff = int(onoff)
-        self.sg_200ghz_onoff[idx] = onoff
+        self.sg_200ghz_onoff[idx] = int(onoff.data)
 
     def web_100ghz_freq(self):
         while True:
