@@ -16,7 +16,7 @@ class sg_monitor(object):
     def __init__(self):
         mode_list = ['1st', '2nd_upper', '2nd_lower']
 
-        reta = 1.
+        rate = 1.
         rate_pub = 5e-2
         self.sg_100ghz_freq = [0., 0., 0.]
         self.sg_100ghz_power = [0., 0., 0.]
