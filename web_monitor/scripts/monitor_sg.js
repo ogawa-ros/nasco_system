@@ -19,7 +19,7 @@ var 100ghz_1st_power = new ROSLIB.Topic({
 var 100ghz_1st_onoff = new ROSLIB.Topic({
     ros : ros,
     name : "/100ghz_1st_onoff",
-    messageType : "std_msgs/Int32"
+    messageType : "std_msgs/String"
 });
 
 var 200ghz_1st_freq = new ROSLIB.Topic({
@@ -35,7 +35,7 @@ var 200ghz_1st_power = new ROSLIB.Topic({
 var 200ghz_1st_onoff = new ROSLIB.Topic({
     ros : ros,
     name : "/200ghz_1st_onoff",
-    messageType : "std_msgs/Int32"
+    messageType : "std_msgs/String"
 });
 
 /*-- 2nd upper --*/
@@ -53,7 +53,7 @@ var 100ghz_2nd_upper_power = new ROSLIB.Topic({
 var 100ghz_2nd_upper_onoff = new ROSLIB.Topic({
     ros : ros,
     name : "/100ghz_2nd_upper_onoff",
-    messageType : "std_msgs/Int32"
+    messageType : "std_msgs/String"
 });
 
 var 200ghz_2nd_upper_freq = new ROSLIB.Topic({
@@ -69,7 +69,7 @@ var 200ghz_2nd_upper_power = new ROSLIB.Topic({
 var 200ghz_2nd_upper_onoff = new ROSLIB.Topic({
     ros : ros,
     name : "/200ghz_2nd_upper_onoff",
-    messageType : "std_msgs/Int32"
+    messageType : "std_msgs/String"
 });
 
 /*-- 2nd lower --*/
@@ -87,7 +87,7 @@ var 100ghz_2nd_lower_power = new ROSLIB.Topic({
 var 100ghz_2nd_lower_onoff = new ROSLIB.Topic({
     ros : ros,
     name : "/100ghz_2nd_lower_onoff",
-    messageType : "std_msgs/Int32"
+    messageType : "std_msgs/String"
 });
 
 var 200ghz_2nd_lower_freq = new ROSLIB.Topic({
@@ -103,7 +103,7 @@ var 200ghz_2nd_lower_power = new ROSLIB.Topic({
 var 200ghz_2nd_lower_onoff = new ROSLIB.Topic({
     ros : ros,
     name : "/200ghz_2nd_lower_onoff",
-    messageType : "std_msgs/Int32"
+    messageType : "std_msgs/String"
 });
 
 
