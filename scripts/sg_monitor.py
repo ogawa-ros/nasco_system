@@ -74,7 +74,7 @@ class sg_monitor(object):
 
     def set_100ghz_onoff(self, onoff, mode):
         idx = self.mode_list.index(mode)
-        self.sg_100ghz_onoff[idx] = onoff
+        self.sg_100ghz_onoff[idx] = int(onoff)
 
     def set_200ghz_freq(self, freq, mode):
         idx = self.mode_list.index(mode)
@@ -86,7 +86,7 @@ class sg_monitor(object):
 
     def set_200ghz_onoff(self, onoff, mode):
         idx = self.mode_list.index(mode)
-        self.sg_200ghz_onoff[idx] = onoff
+        self.sg_200ghz_onoff[idx] = int(onoff)
 
     def web_100ghz_freq(self):
         while True:
@@ -105,8 +105,8 @@ class sg_monitor(object):
     def web_100ghz_onoff(self):
         while True:
             for i, pub in enumerate(self.pub_sg_100ghz_onoff):
-                if self.sg_100ghz_onoff[i] == str(0): onoff = 'OFF'
-                elif self.sg_100ghz_onoff[i] == str(1): onoff = 'ON'
+                if self.sg_100ghz_onoff[i] == 0: onoff = 'OFF'
+                elif self.sg_100ghz_onoff[i] == 1: onoff = 'ON'
                 pub.publish(onoff)
                 time.sleep(self.rate_pub)
             time.sleep(self.rate)
@@ -128,8 +128,8 @@ class sg_monitor(object):
     def web_200ghz_onoff(self):
         while True:
             for i, pub in enumerate(self.pub_sg_200ghz_onoff):
-                if self.sg_200ghz_onoff[i] == str(0): onoff = 'OFF'
-                elif self.sg_200ghz_onoff[i] == str(1): onoff = 'ON'
+                if self.sg_200ghz_onoff[i] == 0: onoff = 'OFF'
+                elif self.sg_200ghz_onoff[i] == 1: onoff = 'ON'
                 pub.publish(onoff)
                 time.sleep(self.rate_pub)
             time.sleep(self.rate)
