@@ -5,5 +5,6 @@
   <include file="$(find nasco_system)/launch/hemt_web.launch" />
   <include file="$(find nasco_system)/launch/loatt_web.launch" />
   <include file="$(find nasco_system)/launch/xffts_total_power_web.launch" />
+  <node pkg="nasco_system" name="sg_monitor" type="sg_monitor.py" required="true" output="screen"></node>
 
 </launch>
