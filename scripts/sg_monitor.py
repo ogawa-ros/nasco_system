@@ -5,8 +5,9 @@ from std_msgs.msg import Int32
 from std_msgs.msg import Float64
 from std_msgs.msg import String
 
+
 name = 'sg_monitor'
-rospy.init_node(name)
+
 
 class sg_monitor(object):
 
