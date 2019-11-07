@@ -14,7 +14,7 @@ name = 'sg_monitor'
 
 class sg_monitor(object):
 
-    def __init__(self)
+    def __init__(self):
         mode_list = ['1st', '2nd_upper', '2nd_lower']
 
         reta = 1.
