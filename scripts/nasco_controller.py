@@ -37,7 +37,7 @@ class controller(object):
         self.sg_100ghz_2nd_upper = SG(bandwidth='100ghz', mode='2nd_upper')
         self.sg_100ghz_2nd_lower = SG(bandwidth='100ghz', mode='2nd_lower')
         self.sg_200ghz_1st = SG(bandwidth='200ghz', mode='1st')
-        self.sg_200ghz_1st_upper = SG(bandwidth='200ghz', mode='2nd_upper')
+        self.sg_200ghz_2nd_upper = SG(bandwidth='200ghz', mode='2nd_upper')
         self.sg_200ghz_2nd_lower = SG(bandwidth='200ghz', mode='2nd_lower')
         self.patt = PATT()
         pass
