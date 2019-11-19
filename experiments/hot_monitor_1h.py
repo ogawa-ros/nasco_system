@@ -22,7 +22,7 @@ dir_name_hot = name  + date + '.necstdb'
 logging_time = 3600. # sec.
 
 #Hot
-con.slider0.set_step('u', 0)
+#con.slider0.set_step('u', 0)
 print('[INFO] : Hot')
 time.sleep(2.)
 
