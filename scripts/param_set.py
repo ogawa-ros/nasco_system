@@ -1,11 +1,12 @@
 #!/usr/bin/env/ python3
 import sys
 import nasco_controller
+#import configparser
 ctrl = nasco_controller.controller()
 
 
 #config_file = configparser.ConfigParser()
-#config_file.read('/home/amigos/ros/src/nasco_system/configuration/')
+#config_file.read('/home/amigos/ros/src/nasco_system/configuration/test_tuning.conf')
 
 
 # Set Param

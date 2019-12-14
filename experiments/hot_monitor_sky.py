@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-name = 'hot_monitor_1h'
+name = 'hot_monitor_sky'
 
 import sys
 import rospy
@@ -21,9 +21,9 @@ dir_name_hot = name  + date + '.necstdb'
 
 logging_time = int(sys.argv[1]) # sec.
 
-#Hot
-con.slider0.set_step('u', 0)
-print('[INFO] : Hot')
+#sky
+con.slider0.set_step('u', 250)
+print('[INFO] : Sky')
 time.sleep(2.)
 
 

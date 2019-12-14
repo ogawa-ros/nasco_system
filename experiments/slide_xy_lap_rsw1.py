@@ -12,8 +12,8 @@ x_start = 10 #50 #0 #80
 x_last = 190 #190 #190 #170
 y_start = 10 #- 30 #0 #- 60
 y_last = 190 #-170 #- 190 #-150
-strk = 1
-sleep_measure = 0.5
+strk = 3
+sleep_measure = 2
 dir = '/home/amigos/beam_pattern/data/2019_10_10/test06/'
 sleep = 1
 # command

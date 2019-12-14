@@ -56,6 +56,6 @@ class jpynb(object):
         msg = '[INFO] : Setup plot_tool to\n' \
               '         amigos@172.20.0.20 ( 解析 PC ) :\n' \
               '         /home/amigos/analysis/rx/{}'.format(jpynb_path)
-        print(msg)
+       # print(msg)
         return
 

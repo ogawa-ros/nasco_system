@@ -38,14 +38,14 @@
     <param name="~rate" value="1" />
   </node>
 
-  <!--
-  <node pkg="rx_device_driver" name="mg3692c_4" type="mg3692c_signal_generator.py" required="true">
+
+  <node pkg="rx_device_driver" name="e8257d_3" type="e8257d_signal_generator.py" required="true">
     <param name="~host" value="172.20.0.175" />
     <param name="~port" value="5025" />
     <param name="~node_name" value="sg_200ghz_2nd_lower" />
     <param name="connection" value="GPIB" />
     <param name="~rate" value="1" />
   </node>
-  -->
+ 
 
 </launch>

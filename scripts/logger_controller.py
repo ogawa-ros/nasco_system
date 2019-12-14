@@ -46,7 +46,7 @@ class logger(object):
         msg = '[INFO] : Data Saved to\n' \
               '         amigos@172.20.0.11 ( 記録 PC ) :\n' \
               '         /media/usbdisk/data/rx/{}'.format(db_path)
-        print(msg)
+   #     print(msg)
         return msg
 
     def stop(self):
