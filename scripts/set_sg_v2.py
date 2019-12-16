@@ -10,8 +10,8 @@ freq_2nd_upper_100ghz = 9.5
 freq_2nd_lower_100ghz = 4.0
 
 freq_1st_200ghz = 18.764
-freq_2nd_upper_200ghz = 4.0
-freq_2nd_lower_200ghz = 6.6
+freq_2nd_upper_200ghz = 6.6
+freq_2nd_lower_200ghz = 4.0
 
 # --- power params.
 power_1st_100ghz = 14
